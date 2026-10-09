@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  job-platform:
+    build: .
+    container_name: autonomous-job-platform
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./storage:/app/storage
+    environment:
+      - ENVIRONMENT=production
+      - PYTHONUNBUFFERED=1

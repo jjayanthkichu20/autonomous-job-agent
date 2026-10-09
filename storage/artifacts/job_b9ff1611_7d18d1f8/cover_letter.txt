@@ -1,0 +1,11 @@
+Dear Hiring Team at 127,
+
+I am writing to express my strong interest in the Senior Distributed Systems Engineer position. With my background in ci/cd, distributed systems, docker, ebpf, I am excited by the opportunity to contribute to 127's team.
+
+Recently at ScaleDistributed Systems, I engineered high-performance api edge proxy in go with custom ebpf packet filters, delivering 42% latency reduction at 300k RPS.
+
+Reviewing the requirements for Senior Distributed Systems Engineer, my hands-on background in Senior Distributed Systems Engineer and process discipline directly aligns with your team's operational goals. I welcome the opportunity to discuss how my skill set can support your organization.
+
+Sincerely,
+Alex Vance
+alex.vance.eng@example.com | +1-555-019-4829

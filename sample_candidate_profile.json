@@ -1,0 +1,83 @@
+{
+  "candidate_id": "cand_89320a",
+  "first_name": "Alex",
+  "last_name": "Vance",
+  "email": "alex.vance.eng@example.com",
+  "phone": "+1-555-019-4829",
+  "linkedin_url": "https://linkedin.com/in/alex-vance-eng",
+  "github_url": "https://github.com/alexvance-code",
+  "portfolio_url": "https://alexvance.dev",
+  "location": "San Francisco, CA (Remote Eligible)",
+  "target_roles": [
+    "Senior Distributed Systems Engineer",
+    "Senior Infrastructure Engineer",
+    "Staff Platform Engineer"
+  ],
+  "verified_skills": [
+    "Go",
+    "Python",
+    "Rust",
+    "Kubernetes",
+    "Docker",
+    "PostgreSQL",
+    "Redis",
+    "Kafka",
+    "eBPF",
+    "gRPC",
+    "AWS",
+    "CI/CD",
+    "Linux",
+    "Distributed Systems"
+  ],
+  "min_desired_salary_usd": 160000.0,
+  "experiences": [
+    {
+      "id": "exp_001",
+      "company": "ScaleDistributed Systems",
+      "role": "Senior Infrastructure Engineer",
+      "start_date": "2021-04",
+      "end_date": null,
+      "achievements": [
+        {
+          "id": "ach_001_1",
+          "metric": "42% latency reduction at 300k RPS",
+          "action": "Engineered high-performance API edge proxy in Go with custom eBPF packet filters",
+          "skills": ["Go", "eBPF", "Linux", "Kubernetes", "gRPC"],
+          "verifiable_context": "Production load tested across multi-region Kubernetes cluster"
+        },
+        {
+          "id": "ach_001_2",
+          "metric": "99.995% uptime and 60% compute cost savings",
+          "action": "Redesigned distributed event streaming bus using Kafka and PostgreSQL partitioning",
+          "skills": ["Kafka", "PostgreSQL", "Python", "Docker"],
+          "verifiable_context": "Ingesting 8TB daily telemetry data with zero data loss"
+        }
+      ]
+    },
+    {
+      "id": "exp_002",
+      "company": "Nexus Data Cloud",
+      "role": "Backend Software Engineer",
+      "start_date": "2018-06",
+      "end_date": "2021-03",
+      "achievements": [
+        {
+          "id": "ach_002_1",
+          "metric": "3.5x throughput improvement",
+          "action": "Developed concurrent Redis caching layer and optimized SQL execution plans",
+          "skills": ["Python", "Redis", "PostgreSQL", "Docker"],
+          "verifiable_context": "Handled Black Friday peak load with sub-15ms p99 response times"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of California, Berkeley",
+      "degree": "Bachelor of Science",
+      "field_of_study": "Computer Science",
+      "graduation_year": 2018
+    }
+  ],
+  "version": 1
+}
