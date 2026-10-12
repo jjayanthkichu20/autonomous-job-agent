@@ -81,3 +81,39 @@ docker compose up -d --build
 ```
 The application will be accessible at port `8000` with persistent volume storage for ledger and CV artifacts.
 
+---
+
+## Deploying Live to Hostinger
+
+### Option 1: Hostinger VPS (Recommended for 24/7 Multi-Agent Suite)
+1. **Connect to your Hostinger VPS via SSH:**
+   ```bash
+   ssh root@<YOUR_HOSTINGER_VPS_IP>
+   ```
+2. **Clone this repository onto the server:**
+   ```bash
+   git clone https://github.com/jjayanthkichu20/autonomous-job-agent.git /var/www/autonomous-job-agent
+   cd /var/www/autonomous-job-agent
+   ```
+3. **Run the automated setup script:**
+   ```bash
+   chmod +x deploy_hostinger_vps.sh
+   sudo ./deploy_hostinger_vps.sh
+   ```
+4. **Attach Domain & Free SSL (Certbot):**
+   ```bash
+   sudo certbot --nginx -d yourdomain.com
+   ```
+   Your platform is now live over HTTPS!
+
+### Option 2: Hostinger Shared/Cloud Web Hosting (hPanel Python App)
+1. Log into **Hostinger hPanel** -> **Advanced** -> **Python App** (or CloudLinux Setup).
+2. Create Python App:
+   - Python Version: `3.10` or `3.11`
+   - Application Root: `public_html/job-agent` (or `/job-agent`)
+   - Application Startup File: `passenger_wsgi.py`
+   - Application Entry Point: `application`
+3. Upload project files via Git or hPanel File Manager.
+4. Run `pip install -r requirements.txt` in the virtual environment terminal.
+5. Restart the Python application from hPanel.
+

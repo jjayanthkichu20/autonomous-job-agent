@@ -185,6 +185,12 @@ class ApplicationExecutorEngine:
             # Verify response
             if resp.status_code in [200, 201, 302]:
                 confirmation_id = f"CONF-{int(datetime.now(timezone.utc).timestamp())}"
+                try:
+                    res_json = resp.json()
+                    if isinstance(res_json, dict) and "confirmation_id" in res_json:
+                        confirmation_id = str(res_json["confirmation_id"])
+                except Exception:
+                    pass
                 return ApplicationSubmission(
                     id=submission_id,
                     candidate_id=profile.candidate_id,
