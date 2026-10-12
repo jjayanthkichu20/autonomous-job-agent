@@ -410,9 +410,9 @@
       "job_url": "http://127.0.0.1:8799/greenhouse/job/hr-executive",
       "relevance_score": 0.929,
       "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-1791519460",
+      "confirmation_id": "ATS-CONF-LIVE-1791782688",
       "applied_date": "2026-10-09 04:17:40 UTC",
-      "last_updated": "2026-10-09 04:17:40 UTC",
+      "last_updated": "2026-10-12 05:24:48 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_745e0f0d_68710634\\resume_tailored.md"
     },
@@ -423,9 +423,9 @@
       "job_url": "http://127.0.0.1:8769/greenhouse/job/101",
       "relevance_score": 0.969,
       "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_A2B54DFA_1791519639",
+      "confirmation_id": "DRYRUN-SUB_B874A257_1791782314",
       "applied_date": "2026-10-09 04:20:39 UTC",
-      "last_updated": "2026-10-09 04:20:39 UTC",
+      "last_updated": "2026-10-12 05:18:34 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a2b54dfa_daa8524a\\resume_tailored.md"
     },
@@ -662,6 +662,45 @@
       "last_updated": "2026-10-12 04:43:54 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c85c6b1e_bc4c281c\\resume_tailored.md"
+    },
+    {
+      "job_id": "cdf2e654-0605-462f-b520-fe8b655d6925",
+      "company_name": "Target Company",
+      "job_title": "Senior Revenue Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8882059002",
+      "relevance_score": 0.64,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_CDF2E654_1791781353",
+      "applied_date": "2026-10-12 05:02:33 UTC",
+      "last_updated": "2026-10-12 05:02:33 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_cdf2e654_7b68a85d\\resume_tailored.md"
+    },
+    {
+      "job_id": "39f07abe-c088-43d3-8daf-3469a8557f0b",
+      "company_name": "Target Company",
+      "job_title": "Senior Solutions Architect Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8770661002",
+      "relevance_score": 0.64,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_39F07ABE_1791781357",
+      "applied_date": "2026-10-12 05:02:37 UTC",
+      "last_updated": "2026-10-12 05:02:37 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_39f07abe_9295bc82\\resume_tailored.md"
+    },
+    {
+      "job_id": "ff211bec-5758-42b2-9279-d14359b0d2f9",
+      "company_name": "127",
+      "job_title": "HR Executive (HR Operations & Talent Acquisition)",
+      "job_url": "http://127.0.0.1:8899/greenhouse/job/hr-executive",
+      "relevance_score": 0.929,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-1791782560",
+      "applied_date": "2026-10-12 05:22:40 UTC",
+      "last_updated": "2026-10-12 05:22:40 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_ff211bec_3f25e9c2\\resume_tailored.md"
     }
   ]
 }
