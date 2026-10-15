@@ -62,6 +62,12 @@ def main():
     verify_parser = subparsers.add_parser("verify", help="Run formal 6-phase system audit and live submission test")
     verify_parser.add_argument("--profile", default="my_profile.json", help="Path to profile JSON")
 
+    # Command: recurring
+    rec_parser = subparsers.add_parser("recurring", help="Run continuous 2-hour autonomous job hunter daemon")
+    rec_parser.add_argument("--interval", type=float, default=2.0, help="Interval in hours (default: 2.0)")
+    rec_parser.add_argument("--live-submit", action="store_true", help="Execute live applications instead of dry-run")
+    rec_parser.add_argument("--once", action="store_true", help="Execute a single cycle and exit (for cron/scheduled tasks)")
+
     args = parser.parse_args()
 
     if args.command == "run-mock-e2e":
@@ -134,6 +140,19 @@ def main():
 
     elif args.command == "verify":
         run_formal_verification_test(profile_path=args.profile)
+
+    elif args.command == "recurring":
+        import asyncio
+        from autonomous_job_agent.orchestration.recurring_scheduler import recurring_hunter
+        recurring_hunter.interval_seconds = int(args.interval * 3600)
+        recurring_hunter.live_submit = args.live_submit
+        if args.once:
+            console.print(f"[bold cyan]Executing single 2-hour job hunt cycle (Live: {args.live_submit})...[/bold cyan]")
+            res = recurring_hunter.run_cycle()
+            console.print(f"[bold green]Cycle complete. Scanned: {res.get('scanned', 0)}, Applied: {res.get('applied', 0)}, Staged: {res.get('staged_drafts', 0)}[/bold green]")
+        else:
+            console.print(Panel.fit(f"[bold green]2-Hour Autonomous Job Hunter Daemon[/bold green]\nScanning and auto-applying every {args.interval} hours (Live Submit: {args.live_submit})"))
+            asyncio.run(recurring_hunter.start_async_loop())
 
     else:
         parser.print_help()

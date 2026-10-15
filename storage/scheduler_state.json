@@ -1,0 +1,113 @@
+{
+  "is_active": true,
+  "live_submit": true,
+  "interval_seconds": 7200,
+  "interval_hours": 2.0,
+  "last_run": "2026-10-15T06:53:17.135645+00:00",
+  "next_run": "2026-10-15T08:53:17.135645+00:00",
+  "total_scans": 107,
+  "total_applied": 1,
+  "recent_logs": [
+    {
+      "timestamp": "2026-10-15T06:03:04.046979+00:00",
+      "scanned": 0,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-15T06:41:20.435136+00:00",
+      "scanned": 29,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-15T06:43:52.013935+00:00",
+      "scanned": 29,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-15T06:45:23.915361+00:00",
+      "scanned": 10,
+      "applied": 1,
+      "staged_drafts": 4,
+      "details": [
+        {
+          "title": "HR Generalist (Employee Lifecycle & Compliance)",
+          "company": "Quince",
+          "score": "69.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f94c7b6a_f7eb8dd0\\resume_tailored.md"
+        },
+        {
+          "title": "Talent Acquisition & People Operations Coordinator",
+          "company": "Inmobi",
+          "score": "76.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "DRYRUN-SUB_01BB0F58_1792046722"
+        },
+        {
+          "title": "HR Operations Specialist (UAE & Gulf Hub)",
+          "company": "Al-Futtaim",
+          "score": "66.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_1f50a231_37898767\\resume_tailored.md"
+        },
+        {
+          "title": "HR Coordinator (India & APAC Hub)",
+          "company": "Appsflyer",
+          "score": "68.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f71a0e5c_2eec0574\\resume_tailored.md"
+        },
+        {
+          "title": "Junior HR Business Partner (Operations)",
+          "company": "Browserstack",
+          "score": "61.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_0b3ab65b_5906af77\\resume_tailored.md"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-15T06:53:17.135645+00:00",
+      "scanned": 39,
+      "applied": 0,
+      "staged_drafts": 4,
+      "details": [
+        {
+          "title": "HR Generalist (Employee Lifecycle & Compliance)",
+          "company": "Quince",
+          "score": "69.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c9509e8b_48192c6a\\resume_tailored.md"
+        },
+        {
+          "title": "HR Operations Specialist (UAE & Gulf Hub)",
+          "company": "Al-Futtaim",
+          "score": "66.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_5f56e278_7042d240\\resume_tailored.md"
+        },
+        {
+          "title": "HR Coordinator (India & APAC Hub)",
+          "company": "Appsflyer",
+          "score": "68.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_8add3bc8_a5b52973\\resume_tailored.md"
+        },
+        {
+          "title": "Junior HR Business Partner (Operations)",
+          "company": "Browserstack",
+          "score": "61.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_84406edc_d5eb6a6b\\resume_tailored.md"
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-10-15T06:53:17.136162+00:00"
+}

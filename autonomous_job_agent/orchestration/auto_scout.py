@@ -1,5 +1,8 @@
 """Auto-Scout Engine: Resilient discovery across career boards, location-aware matching, and auto-apply."""
 
+import concurrent.futures
+import json
+from pathlib import Path
 import re
 import time
 from typing import Dict, List, Optional
@@ -36,10 +39,10 @@ class AutoScoutEngine:
         self.pipeline = AutonomousJobApplicationPipeline()
 
     def discover_jobs_on_greenhouse(self, board_name: str) -> List[Dict]:
-        """Queries public Greenhouse API for active postings."""
+        """Queries public Greenhouse API for active postings with resilient fast timeout."""
         api_url = f"https://boards-api.greenhouse.io/v1/boards/{board_name}/jobs"
         try:
-            resp = requests.get(api_url, timeout=10)
+            resp = requests.get(api_url, timeout=3.5)
             if resp.status_code == 200:
                 data = resp.json()
                 return data.get("jobs", [])
@@ -99,8 +102,13 @@ class AutoScoutEngine:
         is_hr_profile = any("hr" in r.lower() or "people" in r.lower() or "talent" in r.lower() for r in profile.target_roles)
         
         discovered = []
-        for board in boards:
-            raw_jobs = self.discover_jobs_on_greenhouse(board)
+        def fetch_board(b_name):
+            return b_name, self.discover_jobs_on_greenhouse(b_name)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+            board_results = list(executor.map(fetch_board, boards))
+
+        for board, raw_jobs in board_results:
             for j in raw_jobs:
                 title = j.get("title", "")
                 title_lower = title.lower()
@@ -132,6 +140,49 @@ class AutoScoutEngine:
                     "is_remote": any(r in loc_name.lower() for r in ["remote", "anywhere", "worldwide"]),
                     "location_matched": loc_matched
                 })
+
+        # Resilient merge: Always include verified job index openings if not already in discovered
+        verified_file = Path(__file__).resolve().parents[2] / "storage" / "verified_job_index.json"
+        if verified_file.exists():
+            try:
+                with open(verified_file, "r", encoding="utf-8") as f:
+                    v_jobs = json.load(f)
+                existing_urls = {d.get("url") for d in discovered}
+                for vj in v_jobs:
+                    job_url = vj.get("url")
+                    if job_url in existing_urls:
+                        continue
+
+                    title = vj.get("title", "")
+                    title_lower = title.lower()
+                    loc_name = vj.get("location", "Remote")
+
+                    # Keyword match
+                    if is_hr_profile:
+                        hr_keywords = ["hr", "people", "talent", "recruit", "onboarding", "human resources", "hrms", "payroll", "personnel"]
+                        if not any(k in title_lower for k in hr_keywords):
+                            continue
+                    elif target_role_terms and not any(term in title_lower for term in target_role_terms):
+                        continue
+
+                    # Location match
+                    loc_matched = self.is_location_match(loc_name, allowed_locations)
+                    if not loc_matched:
+                        continue
+
+                    already_applied = job_url in already_applied_urls
+
+                    discovered.append({
+                        "board": vj.get("board", "Company"),
+                        "title": title,
+                        "location": loc_name,
+                        "url": job_url,
+                        "already_applied": already_applied,
+                        "is_remote": vj.get("is_remote", False),
+                        "location_matched": loc_matched
+                    })
+            except Exception as ex:
+                self.console.print(f"[red]Error loading verified job index: {ex}[/red]")
 
         return discovered
 

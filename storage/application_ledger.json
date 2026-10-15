@@ -795,6 +795,71 @@
       "interview_time": "15:00 IST",
       "interview_round": "Round 1 - People Ops Screening",
       "meeting_link": "https://meet.google.com/xyz-swiggy-hr"
+    },
+    {
+      "job_id": "01bb0f58-5db8-4215-82c7-751eac9ea836",
+      "company_name": "InMobi",
+      "job_title": "Talent Acquisition & People Operations Coordinator",
+      "job_url": "https://inmobi.com/careers/talent-coordinator-india",
+      "relevance_score": 0.76,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_01BB0F58_1792046722",
+      "applied_date": "2026-10-15 06:45:22 UTC",
+      "last_updated": "2026-10-15 06:45:22 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_01bb0f58_4f2eb2f5\\resume_tailored.md"
+    },
+    {
+      "job_id": "c9509e8b-5a86-49ca-bcc4-5b736a8fb11d",
+      "company_name": "Quince",
+      "job_title": "HR Generalist (Employee Lifecycle & Compliance)",
+      "job_url": "https://quince.com/careers/hr-generalist-bangalore",
+      "relevance_score": 0.69,
+      "status": "DRAFT",
+      "confirmation_id": "DRAFT_STAGED_9d93c2a3",
+      "applied_date": "2026-10-15 06:53:17 UTC",
+      "last_updated": "2026-10-15 06:53:17 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c9509e8b_48192c6a\\resume_tailored.md"
+    },
+    {
+      "job_id": "5f56e278-e595-4f2e-a678-f48d1244a20a",
+      "company_name": "Al-Futtaim",
+      "job_title": "HR Operations Specialist (UAE & Gulf Hub)",
+      "job_url": "https://alfuttaim.com/careers/hr-operations-specialist",
+      "relevance_score": 0.66,
+      "status": "DRAFT",
+      "confirmation_id": "DRAFT_STAGED_ab460420",
+      "applied_date": "2026-10-15 06:53:17 UTC",
+      "last_updated": "2026-10-15 06:53:17 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_5f56e278_7042d240\\resume_tailored.md"
+    },
+    {
+      "job_id": "8add3bc8-b7ce-4f9a-930d-32eddf04e453",
+      "company_name": "AppsFlyer",
+      "job_title": "HR Coordinator (India & APAC Hub)",
+      "job_url": "https://appsflyer.com/jobs/hr-coordinator-apac",
+      "relevance_score": 0.68,
+      "status": "DRAFT",
+      "confirmation_id": "DRAFT_STAGED_da556efe",
+      "applied_date": "2026-10-15 06:53:17 UTC",
+      "last_updated": "2026-10-15 06:53:17 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_8add3bc8_a5b52973\\resume_tailored.md"
+    },
+    {
+      "job_id": "84406edc-006b-48a4-9a09-93b91f0f8989",
+      "company_name": "BrowserStack",
+      "job_title": "Junior HR Business Partner (Operations)",
+      "job_url": "https://browserstack.com/careers/junior-hrbp-operations",
+      "relevance_score": 0.61,
+      "status": "DRAFT",
+      "confirmation_id": "DRAFT_STAGED_610c6554",
+      "applied_date": "2026-10-15 06:53:17 UTC",
+      "last_updated": "2026-10-15 06:53:17 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_84406edc_d5eb6a6b\\resume_tailored.md"
     }
   ]
 }

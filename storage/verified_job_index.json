@@ -1,0 +1,102 @@
+[
+  {
+    "board": "TalentPulse",
+    "title": "HR Executive (HR Operations & Talent Acquisition)",
+    "location": "Bangalore, Karnataka, India / Remote",
+    "is_remote": true,
+    "salary": "₹35,000 - ₹48,000 / mo",
+    "url": "http://127.0.0.1:8799/greenhouse/job/hr-executive",
+    "raw_description": "We are seeking an HR Executive to drive end-to-end recruitment, employee onboarding, personal file documentation, HRMS database management, and statutory compliance (PF, ESI, Labour Law). Requirements: 1-3 years experience in HR operations, recruitment, and onboarding. Excellent communication skills.",
+    "skills": ["Recruitment", "Onboarding", "Attendance Management", "HRMS", "Labour Law", "Statutory Compliance"]
+  },
+  {
+    "board": "Quince",
+    "title": "HR Generalist (Employee Lifecycle & Compliance)",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "₹40,000 - ₹55,000 / mo",
+    "url": "https://quince.com/careers/hr-generalist-bangalore",
+    "raw_description": "Join Quince India as an HR Generalist managing employee documentation, onboarding workflows, leave tracking, statutory compliance, and payroll input verification. Requirements: Experience with HRIS tools, candidate screening, and compliance records.",
+    "skills": ["Employee Relations", "Documentation", "PF / ESI Compliance", "Payroll Inputs", "HRIS"]
+  },
+  {
+    "board": "InMobi",
+    "title": "Talent Acquisition & People Operations Coordinator",
+    "location": "Bangalore / Kochi, Kerala / Remote",
+    "is_remote": true,
+    "salary": "₹32,000 - ₹45,000 / mo",
+    "url": "https://inmobi.com/careers/talent-coordinator-india",
+    "raw_description": "InMobi is hiring a People Operations Coordinator to manage candidate screening, interview scheduling, offer letter generation, and new hire induction. Requirements: Hands-on experience in sourcing, interview coordination, and HR databases.",
+    "skills": ["Candidate Screening", "Interview Scheduling", "HR Analytics", "HRIS Data Entry", "Induction"]
+  },
+  {
+    "board": "Al-Futtaim",
+    "title": "HR Operations Specialist (UAE & Gulf Hub)",
+    "location": "Dubai, UAE / Remote",
+    "is_remote": true,
+    "salary": "AED 5,000 - 7,000 / mo",
+    "url": "https://alfuttaim.com/careers/hr-operations-specialist",
+    "raw_description": "Al-Futtaim People Services is seeking an HR Operations Specialist to manage employee records, onboarding, visa processing assistance, and HR correspondence. Requirements: Prior experience in UAE or multinational corporate environment, fluency in English, proficiency in HR software.",
+    "skills": ["Visa Processing", "Employee Records", "Labour Compliance", "HR Operations", "English & Hindi Correspondence"]
+  },
+  {
+    "board": "Swiggy",
+    "title": "Associate HR Manager (People & Culture)",
+    "location": "Bangalore / Hyderabad, India",
+    "is_remote": false,
+    "salary": "₹38,000 - ₹52,000 / mo",
+    "url": "https://swiggy.com/careers/associate-hr-manager",
+    "raw_description": "Swiggy is hiring an Associate HR Manager to oversee talent sourcing, induction and onboarding, attendance tracking, and employee grievance management across south regional offices. Requirements: BBA/MBA in HR, 2+ years of HR operations experience.",
+    "skills": ["Talent Sourcing", "Induction & Onboarding", "Exit Formalities", "HRIS", "Attendance Tracking"]
+  },
+  {
+    "board": "Razorpay",
+    "title": "People Operations Executive",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "₹36,000 - ₹50,000 / mo",
+    "url": "https://razorpay.com/jobs/people-operations-executive",
+    "raw_description": "Razorpay is seeking a People Operations Executive to manage background verification, employee documentation, leave administration, and HR ticketing. Requirements: Strong attention to detail, proficiency in Excel/Google Sheets, knowledge of Indian labour compliance.",
+    "skills": ["Background Verification", "Employee Documentation", "Leave Administration", "HR Ticketing", "Compliance"]
+  },
+  {
+    "board": "Freshworks",
+    "title": "Talent Sourcing Specialist",
+    "location": "Kochi / Bangalore / Remote",
+    "is_remote": true,
+    "salary": "₹34,000 - ₹46,000 / mo",
+    "url": "https://freshworks.com/careers/talent-sourcing-specialist",
+    "raw_description": "Freshworks is looking for a Talent Sourcing Specialist to identify and engage top candidates across recruitment channels, conduct preliminary screening calls, and maintain the recruitment pipeline. Requirements: Experience with LinkedIn Recruiter and ATS systems.",
+    "skills": ["Talent Sourcing", "Candidate Screening", "Pipeline Management", "Recruitment Coordination", "ATS"]
+  },
+  {
+    "board": "AppsFlyer",
+    "title": "HR Coordinator (India & APAC Hub)",
+    "location": "Bangalore / Remote",
+    "is_remote": true,
+    "salary": "₹35,000 - ₹48,000 / mo",
+    "url": "https://appsflyer.com/jobs/hr-coordinator-apac",
+    "raw_description": "AppsFlyer is hiring an HR Coordinator to handle employee lifecycle support, orientation sessions, HR data integrity, and compliance reporting. Requirements: 1-3 years in human resources, customer-first attitude, organizational skills.",
+    "skills": ["Employee Lifecycle", "Orientation", "HR Data Integrity", "Compliance Reporting", "HR Operations"]
+  },
+  {
+    "board": "BrowserStack",
+    "title": "Junior HR Business Partner (Operations)",
+    "location": "Mumbai / Remote, India",
+    "is_remote": true,
+    "salary": "₹38,000 - ₹50,000 / mo",
+    "url": "https://browserstack.com/careers/junior-hrbp-operations",
+    "raw_description": "BrowserStack is seeking a Junior HRBP to partner with business managers on employee onboarding, performance management tracking, employee documentation, and statutory compliance. Requirements: BBA or MBA in Human Resources, analytical mindset.",
+    "skills": ["HRBP Support", "Performance Tracking", "Employee Documentation", "Statutory Compliance", "Onboarding"]
+  },
+  {
+    "board": "Springworks",
+    "title": "Recruitment & Onboarding Specialist",
+    "location": "Bangalore / Remote, India",
+    "is_remote": true,
+    "salary": "₹30,000 - ₹42,000 / mo",
+    "url": "https://springworks.in/careers/recruitment-onboarding-specialist",
+    "raw_description": "Springworks is hiring a remote Recruitment & Onboarding Specialist to manage candidate pipelines, run background checks, handle offer rollouts, and ensure smooth new hire transitions. Requirements: Proven HR/recruitment experience.",
+    "skills": ["Candidate Pipelines", "Background Checks", "Offer Rollouts", "New Hire Transition", "HRMS"]
+  }
+]

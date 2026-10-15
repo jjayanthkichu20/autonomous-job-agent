@@ -26,6 +26,7 @@ from autonomous_job_agent.orchestration.auto_scout import AutoScoutEngine
 from autonomous_job_agent.core.pdf_parser import extract_text_from_pdf, parse_resume_text
 from autonomous_job_agent.core.pdf_generator import generate_candidate_pdf, generate_tailored_pdf
 from autonomous_job_agent.agents.agent2_customizer.custom_jd_service import custom_jd_service
+from autonomous_job_agent.orchestration.recurring_scheduler import recurring_hunter
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("arya_platform")
@@ -52,7 +53,7 @@ TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 bg_mock_server: Optional[MockATSServer] = None
 
 @app.on_event("startup")
-def startup_event():
+async def startup_event():
     global bg_mock_server
     try:
         bg_mock_server = MockATSServer(port=8799)
@@ -60,6 +61,12 @@ def startup_event():
         logger.info("Background Synthetic ATS server active on port 8799")
     except Exception as e:
         logger.warning(f"Could not initialize background mock ATS: {e}")
+
+    try:
+        asyncio.create_task(recurring_hunter.start_async_loop())
+        logger.info("2-Hour Autonomous Recurring Job Hunter launched.")
+    except Exception as e:
+        logger.warning(f"Could not start recurring hunter: {e}")
 
 @app.on_event("shutdown")
 def shutdown_event():
@@ -648,6 +655,65 @@ def download_tailored_pdf(draft_id: str):
         filename=f"Jayanth_J_Tailored_Resume_{draft_id[-6:]}.pdf"
     )
 
+
+class SchedulerToggleRequest(BaseModel):
+    active: Optional[bool] = None
+    live_submit: Optional[bool] = None
+    interval_hours: Optional[float] = None
+
+
+@app.get("/api/scheduler/status")
+def get_scheduler_status():
+    """Returns the live status, next run, last run, and statistics of the 2-hour job hunter."""
+    return {
+        "status": "success",
+        "is_active": recurring_hunter.is_active,
+        "is_running_cycle": recurring_hunter.is_running_cycle,
+        "interval_seconds": recurring_hunter.interval_seconds,
+        "interval_hours": round(recurring_hunter.interval_seconds / 3600, 1),
+        "live_submit": recurring_hunter.live_submit,
+        "last_run": recurring_hunter.last_run,
+        "next_run": recurring_hunter.next_run,
+        "total_scans": recurring_hunter.total_scans,
+        "total_applied": recurring_hunter.total_applied,
+        "recent_logs": recurring_hunter.recent_logs[-10:]
+    }
+
+
+@app.post("/api/scheduler/toggle")
+def toggle_scheduler(req: Optional[SchedulerToggleRequest] = None):
+    """Enables, pauses, or configures the 2-hour auto-pilot scheduler."""
+    if req and req.active is not None:
+        recurring_hunter.is_active = req.active
+    else:
+        recurring_hunter.is_active = not recurring_hunter.is_active
+
+    if req and req.live_submit is not None:
+        recurring_hunter.live_submit = req.live_submit
+
+    if req and req.interval_hours is not None and req.interval_hours > 0:
+        recurring_hunter.interval_seconds = int(req.interval_hours * 3600)
+
+    recurring_hunter._save_state()
+    return {
+        "status": "success",
+        "message": f"2-Hour Auto-Pilot is now {'ACTIVE' if recurring_hunter.is_active else 'PAUSED'}",
+        "is_active": recurring_hunter.is_active,
+        "interval_hours": round(recurring_hunter.interval_seconds / 3600, 1),
+        "live_submit": recurring_hunter.live_submit
+    }
+
+
+@app.post("/api/scheduler/trigger")
+async def trigger_scheduler_cycle():
+    """Immediately triggers the 2-hour scan and auto-apply cycle without waiting."""
+    loop = asyncio.get_event_loop()
+    result = await loop.run_in_executor(executor_pool, recurring_hunter.run_cycle)
+    return {
+        "status": "success",
+        "message": f"Auto-Scout cycle complete: Scanned {result.get('scanned', 0)}, Auto-applied {result.get('applied', 0)}, Staged {result.get('staged_drafts', 0)}",
+        "result": result
+    }
 
 
 @app.post("/api/recruiter/classify")

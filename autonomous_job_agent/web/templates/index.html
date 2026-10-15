@@ -334,6 +334,44 @@
           <div class="absolute right-4 -bottom-6 opacity-10 text-9xl pointer-events-none text-blue-500">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
+        <!-- 2-Hour Autonomous Auto-Pilot Control Card -->
+        <div class="glass-card p-5 rounded-2xl border-l-4 border-l-emerald-500 relative overflow-hidden">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div class="space-y-1.5">
+              <div class="flex items-center space-x-2.5">
+                <span class="relative flex h-3 w-3">
+                  <span id="scheduler-pulse" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span id="scheduler-dot" class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                <span class="text-sm font-bold text-white tracking-wide flex items-center gap-2">
+                  2-Hour Auto-Pilot Job Hunter
+                  <span id="scheduler-status-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">Active (Every 2h)</span>
+                </span>
+                <span id="scheduler-live-badge" class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">Auto-Apply (≥70%)</span>
+              </div>
+              <p class="text-xs text-gray-400" style="color: var(--text-muted);">
+                Autonomous daemon runs every 2 hours: scouts Greenhouse, Lever, and verified career portals across Bangalore, Kochi, Hyderabad, Mumbai, UAE & Remote. High-match roles (≥70%) are auto-applied; intermediate matches (55-69%) are staged as drafts for review.
+              </p>
+              <div class="flex flex-wrap items-center gap-4 text-xs pt-1 text-gray-300">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left text-blue-400"></i> Next cycle in: <strong id="scheduler-countdown" class="text-white font-mono">--:--:--</strong></span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-radar text-emerald-400"></i> Total Scanned: <strong id="scheduler-total-scans" class="text-white">0</strong></span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-paper-plane text-purple-400"></i> Total Applied: <strong id="scheduler-total-applied" class="text-white">0</strong></span>
+                <span id="scheduler-last-run-label" class="text-gray-400 text-[11px]">Last run: Just now</span>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-2.5 self-start lg:self-center shrink-0">
+              <button onclick="triggerSchedulerNow()" id="btn-trigger-scheduler" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs px-3.5 py-2.5 rounded-xl transition-all flex items-center space-x-2 shadow-md shadow-emerald-600/20">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Run Auto-Scout Now</span>
+              </button>
+              <button onclick="toggleScheduler()" id="btn-toggle-scheduler" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-gray-700 transition-all flex items-center space-x-2">
+                <i class="fa-solid fa-pause" id="toggle-scheduler-icon"></i>
+                <span id="toggle-scheduler-text">Pause Auto-Pilot</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- Filter & Search Controls -->
@@ -2056,6 +2094,112 @@
       }
     }
 
+    // ==========================================
+    // 2-HOUR AUTO-PILOT SCHEDULER CONTROLS
+    // ==========================================
+    let schedulerNextRun = null;
+
+    async function loadSchedulerStatus() {
+      try {
+        const res = await fetch('/api/scheduler/status');
+        const data = await res.json();
+        if (data.status === 'success') {
+          const isActive = data.is_active;
+          const statusBadge = document.getElementById('scheduler-status-badge');
+          const pulse = document.getElementById('scheduler-pulse');
+          const dot = document.getElementById('scheduler-dot');
+          const toggleText = document.getElementById('toggle-scheduler-text');
+          const toggleIcon = document.getElementById('toggle-scheduler-icon');
+
+          if (statusBadge) {
+            if (isActive) {
+              statusBadge.innerText = 'Active (Every 2h)';
+              statusBadge.className = 'px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+              if (pulse) pulse.className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75';
+              if (dot) dot.className = 'relative inline-flex rounded-full h-3 w-3 bg-emerald-500';
+              if (toggleText) toggleText.innerText = 'Pause Auto-Pilot';
+              if (toggleIcon) toggleIcon.className = 'fa-solid fa-pause';
+            } else {
+              statusBadge.innerText = 'Paused';
+              statusBadge.className = 'px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/40';
+              if (pulse) pulse.className = 'hidden';
+              if (dot) dot.className = 'relative inline-flex rounded-full h-3 w-3 bg-amber-500';
+              if (toggleText) toggleText.innerText = 'Resume Auto-Pilot';
+              if (toggleIcon) toggleIcon.className = 'fa-solid fa-play';
+            }
+          }
+
+          if (document.getElementById('scheduler-total-scans')) {
+            document.getElementById('scheduler-total-scans').innerText = data.total_scans || 0;
+          }
+          if (document.getElementById('scheduler-total-applied')) {
+            document.getElementById('scheduler-total-applied').innerText = data.total_applied || 0;
+          }
+
+          if (data.last_run && document.getElementById('scheduler-last-run-label')) {
+            const lr = new Date(data.last_run);
+            document.getElementById('scheduler-last-run-label').innerText = `Last cycle: ${lr.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+          }
+
+          schedulerNextRun = data.next_run ? new Date(data.next_run) : null;
+          updateSchedulerCountdown();
+        }
+      } catch (err) {
+        console.warn('Could not load scheduler status:', err);
+      }
+    }
+
+    function updateSchedulerCountdown() {
+      const countdownElem = document.getElementById('scheduler-countdown');
+      if (!countdownElem) return;
+      if (!schedulerNextRun) {
+        countdownElem.innerText = 'Ready';
+        return;
+      }
+      const now = new Date();
+      const diffMs = schedulerNextRun - now;
+      if (diffMs <= 0) {
+        countdownElem.innerText = 'Running now...';
+        return;
+      }
+      const hours = Math.floor(diffMs / (1000 * 60 * 60));
+      const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+      countdownElem.innerText = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    async function triggerSchedulerNow() {
+      const btn = document.getElementById('btn-trigger-scheduler');
+      const orig = btn.innerHTML;
+      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>Scouting Boards...</span>`;
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/scheduler/trigger', { method: 'POST' });
+        const data = await res.json();
+        showToast(data.message || 'Auto-Scout cycle complete!', 'success');
+        loadSchedulerStatus();
+        loadLedgerData();
+        loadDrafts();
+        loadJobFeed();
+      } catch (err) {
+        showToast('Auto-Scout failed: ' + err.message, 'error');
+      } finally {
+        btn.innerHTML = orig;
+        btn.disabled = false;
+      }
+    }
+
+    async function toggleScheduler() {
+      try {
+        const res = await fetch('/api/scheduler/toggle', { method: 'POST' });
+        const data = await res.json();
+        showToast(data.message || 'Auto-Pilot updated', 'info');
+        loadSchedulerStatus();
+      } catch (err) {
+        showToast('Failed to toggle Auto-Pilot: ' + err.message, 'error');
+      }
+    }
+
     // Auto-detect route from URL path on load
     window.onload = () => {
       const path = window.location.pathname.replace('/', '') || 'jobs';
@@ -2067,6 +2211,9 @@
       loadProfileData();
       loadLedgerData();
       loadJobFeed();
+      loadSchedulerStatus();
+      setInterval(updateSchedulerCountdown, 1000);
+      setInterval(loadSchedulerStatus, 30000);
     };
   </script>
 </body>
