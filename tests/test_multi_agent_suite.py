@@ -147,3 +147,108 @@ def test_end_to_end_mock_pipeline_run(sample_profile):
         assert Path(result["artifacts"]["markdown_path"]).exists()
     finally:
         server.stop()
+
+
+def test_ledger_classification_and_updates():
+    from autonomous_job_agent.core.ledger import ApplicationLedger
+    import tempfile
+
+    test_ledger = ApplicationLedger()
+    
+    # 1. Test classifications
+    live_app = {"status": "SUBMITTED", "confirmation_id": "CONF-1791517525"}
+    cls_live = test_ledger.classify_entry(live_app)
+    assert cls_live["is_live"] is True
+    assert cls_live["tier"] == "LIVE"
+
+    staged_app = {"status": "SUBMITTED", "confirmation_id": "DRYRUN-SUB_12345_6789"}
+    cls_staged = test_ledger.classify_entry(staged_app)
+    assert cls_staged["is_staged"] is True
+    assert cls_staged["tier"] == "DRY_RUN"
+
+    interview_app = {"status": "INTERVIEW_SCHEDULED", "confirmation_id": "CONF-999"}
+    cls_interview = test_ledger.classify_entry(interview_app)
+    assert cls_interview["is_interview"] is True
+    assert cls_interview["tier"] == "INTERVIEW"
+
+    # 2. Test status & interview update
+    test_url = "https://test-company.local/jobs/hr-specialist"
+    test_ledger.record_entry(
+        job_id="test_job_001",
+        company_name="Test Corp",
+        job_title="HR Specialist",
+        job_url=test_url,
+        relevance_score=0.95,
+        status="SUBMITTED",
+        confirmation_id="CONF-TEST-123"
+    )
+
+    updated = test_ledger.update_application(
+        job_url_or_id=test_url,
+        new_status="INTERVIEW_SCHEDULED",
+        notes="Hiring manager screening scheduled",
+        interview_date="2026-10-20",
+        interview_time="14:30",
+        interview_round="Round 1 Screening",
+        meeting_link="https://meet.google.com/test-abc-xyz"
+    )
+    assert updated is not None
+    assert updated["status"] == "INTERVIEW_SCHEDULED"
+    assert updated["interview_date"] == "2026-10-20"
+    assert updated["interview_round"] == "Round 1 Screening"
+
+    # 3. Test follow-up logging
+    followed_up = test_ledger.record_followup(test_url, cadence="T+7", notes="Polite check-in sent")
+    assert followed_up is not None
+    assert followed_up["status"] == "FOLLOW_UP_SENT"
+    assert len(followed_up["followup_history"]) >= 1
+
+
+def test_custom_jd_service_tailoring_and_apply(sample_profile):
+    from autonomous_job_agent.agents.agent2_customizer.custom_jd_service import custom_jd_service
+
+    profile_path = Path(__file__).resolve().parent.parent / "my_profile.json"
+    if profile_path.exists():
+        with open(profile_path, "r", encoding="utf-8") as f:
+            test_profile = CandidateMasterProfile(**json.load(f))
+    else:
+        test_profile = sample_profile
+
+    jd_text = """
+    We are seeking an HR Operations Executive to join our team in Bangalore / Remote.
+    Responsibilities:
+    - Oversee employee onboarding, documentation, and induction programs.
+    - Manage HRIS data entry, employee lifecycle records, and personnel files.
+    - Ensure statutory compliance including PF, ESI, and Labour Law adherence.
+    - Support talent acquisition with interview scheduling and candidate engagement.
+    Qualifications:
+    - 2+ years experience in HR operations or talent acquisition.
+    - Proficiency in HRMS, Microsoft Excel, and labour compliance.
+    """
+
+    result = custom_jd_service.tailor_from_jd_text(
+        profile=test_profile,
+        job_title="HR Operations Executive",
+        company_name="Swiggy Technologies",
+        jd_text=jd_text,
+        location="Bangalore, Karnataka, India / Remote"
+    )
+
+    assert result["match_score"] >= 80
+    assert len(result["matched_skills"]) >= 2
+    assert any(s.lower() in ("hr operations", "onboarding", "hris") for s in result["matched_skills"])
+    assert "Swiggy Technologies" in result["cover_letter"]
+    assert len(result["bullet_diffs"]) >= 1
+    assert Path(result["artifacts_dir"]).exists()
+    assert (Path(result["artifacts_dir"]) / "tailored_resume.pdf").exists()
+
+    # Test applying
+    applied = custom_jd_service.apply_for_custom_jd(
+        profile=test_profile,
+        draft_id=result["draft_id"],
+        dry_run=True
+    )
+    assert applied["status"] == "success"
+    assert applied["delivery_status"] == "STAGED"
+    assert applied["confirmation_id"].startswith("DRYRUN-")
+

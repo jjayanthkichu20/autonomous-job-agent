@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional
 import uvicorn
 from fastapi import FastAPI, HTTPException, UploadFile, File, Response, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from pydantic import BaseModel, Field
 
 from autonomous_job_agent.core.config import config
@@ -21,9 +21,11 @@ from autonomous_job_agent.core.models import CandidateMasterProfile, JobPosting
 from autonomous_job_agent.orchestration.pipeline import AutonomousJobApplicationPipeline
 from autonomous_job_agent.mock_ats.server import MockATSServer
 from autonomous_job_agent.agents.agent4_outreach.email_classifier import RecruiterEmailClassifier
+from autonomous_job_agent.agents.agent4_outreach.scheduler import OutreachCoordinator
 from autonomous_job_agent.orchestration.auto_scout import AutoScoutEngine
 from autonomous_job_agent.core.pdf_parser import extract_text_from_pdf, parse_resume_text
-from autonomous_job_agent.core.pdf_generator import generate_candidate_pdf
+from autonomous_job_agent.core.pdf_generator import generate_candidate_pdf, generate_tailored_pdf
+from autonomous_job_agent.agents.agent2_customizer.custom_jd_service import custom_jd_service
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("arya_platform")
@@ -114,12 +116,49 @@ class DraftApproveRequest(BaseModel):
     draft_id: str
 
 
+class ApplicationStatusUpdateRequest(BaseModel):
+    job_url_or_id: str
+    status: str
+    notes: Optional[str] = ""
+    interview_date: Optional[str] = ""
+    interview_time: Optional[str] = ""
+    interview_round: Optional[str] = ""
+    meeting_link: Optional[str] = ""
+
+
+class FollowupGenerateRequest(BaseModel):
+    job_url_or_id: str
+    cadence_stage: Optional[str] = "T+7"
+
+
+class FollowupRecordRequest(BaseModel):
+    job_url_or_id: str
+    cadence: str = "T+7"
+    notes: Optional[str] = ""
+
+
+class CustomJDTailorRequest(BaseModel):
+    job_title: str
+    company_name: str
+    jd_text: str
+    job_url: Optional[str] = ""
+    location: Optional[str] = ""
+
+
+class CustomJDApplyRequest(BaseModel):
+    draft_id: str
+    job_url: Optional[str] = ""
+    dry_run: bool = False
+
+
+
 # Page Routes (SPA Deep-Linking)
 @app.get("/", response_class=HTMLResponse)
 @app.get("/jobs", response_class=HTMLResponse)
 @app.get("/drafts", response_class=HTMLResponse)
 @app.get("/applications", response_class=HTMLResponse)
 @app.get("/conversations", response_class=HTMLResponse)
+@app.get("/custom-jd", response_class=HTMLResponse)
 @app.get("/resume", response_class=HTMLResponse)
 @app.get("/profile", response_class=HTMLResponse)
 @app.get("/referrals", response_class=HTMLResponse)
@@ -423,19 +462,192 @@ def get_ledger():
     apps = data.get("applications", [])
 
     total = len(apps)
-    submitted = sum(1 for a in apps if a.get("status") in ("SUBMITTED", "APPLIED"))
-    dry_run = sum(1 for a in apps if "DRY_RUN" in str(a.get("status", "")).upper() or "ASSERTION" in str(a.get("confirmation_id", "")))
+    live_count = 0
+    dry_run_count = 0
+    interview_count = 0
+    paused_count = 0
+
+    enriched_apps = []
+    for a in reversed(apps):
+        cls = ledger.classify_entry(a)
+        if cls["is_live"]:
+            live_count += 1
+        elif cls["is_staged"]:
+            dry_run_count += 1
+        elif cls["is_interview"]:
+            interview_count += 1
+        elif cls["is_paused"]:
+            paused_count += 1
+
+        app_copy = dict(a)
+        app_copy["delivery_tier"] = cls["tier"]
+        app_copy["delivery_label"] = cls["label"]
+        app_copy["delivery_badge"] = cls["badge"]
+        app_copy["is_live"] = cls["is_live"]
+        app_copy["is_staged"] = cls["is_staged"]
+        app_copy["is_interview"] = cls["is_interview"]
+        app_copy["is_paused"] = cls["is_paused"]
+        enriched_apps.append(app_copy)
+
     avg_relevance = (sum(a.get("relevance_score", 0) for a in apps) / total) if total > 0 else 0.94
 
     return {
         "summary": {
             "total_tracked": total,
-            "submitted": submitted,
-            "dry_run_verified": dry_run,
+            "submitted": live_count,
+            "dry_run_verified": dry_run_count,
+            "interviews_scheduled": interview_count,
+            "paused_screening": paused_count,
             "average_match_score": round(avg_relevance * 100, 1),
         },
-        "applications": list(reversed(apps))
+        "applications": enriched_apps
     }
+
+
+@app.post("/api/applications/update-status")
+def update_application_status(req: ApplicationStatusUpdateRequest):
+    """Updates application status, recruiter notes, and interview details."""
+    updated = ledger.update_application(
+        job_url_or_id=req.job_url_or_id,
+        new_status=req.status,
+        notes=req.notes or "",
+        interview_date=req.interview_date or "",
+        interview_time=req.interview_time or "",
+        interview_round=req.interview_round or "",
+        meeting_link=req.meeting_link or ""
+    )
+    if not updated:
+        raise HTTPException(status_code=404, detail="Application record not found in ledger.")
+    return {
+        "status": "success",
+        "message": f"Application status updated to '{req.status}' successfully.",
+        "application": updated
+    }
+
+
+@app.post("/api/applications/generate-followup")
+def generate_followup(req: FollowupGenerateRequest):
+    """Generates personalized follow-up email draft based on target job and cadence."""
+    profile = load_current_profile()
+    data = ledger._load_data()
+    target_app = next((a for a in data.get("applications", []) if a.get("job_url") == req.job_url_or_id or a.get("job_id") == req.job_url_or_id), None)
+
+    company = target_app.get("company_name", "Hiring Team") if target_app else "Hiring Team"
+    title = target_app.get("job_title", "HR Position") if target_app else "Target Role"
+    applied_date = target_app.get("applied_date", "recently") if target_app else "recently"
+
+    mock_job = JobPosting(
+        canonical_url=req.job_url_or_id,
+        source_platform="company_site",
+        company_name=company,
+        job_title=title,
+        location=profile.location,
+        raw_description=f"Follow-up for {title} role at {company}",
+        cleaned_description=f"Follow-up for {title} role at {company}",
+        required_skills=profile.verified_skills[:3]
+    )
+
+    cadence = req.cadence_stage or "T+7"
+    email_draft = OutreachCoordinator.generate_followup_message(profile, mock_job, cadence_stage=cadence)
+
+    return {
+        "status": "success",
+        "cadence": cadence,
+        "company_name": company,
+        "job_title": title,
+        "applied_date": applied_date,
+        "recipient_email": f"careers@{company.lower().replace(' ', '')}.com",
+        "email_draft": email_draft
+    }
+
+
+@app.post("/api/applications/record-followup")
+def record_followup(req: FollowupRecordRequest):
+    """Logs that a follow-up email was transmitted."""
+    updated = ledger.record_followup(req.job_url_or_id, req.cadence, notes=req.notes or "")
+    if not updated:
+        raise HTTPException(status_code=404, detail="Application record not found in ledger.")
+    return {
+        "status": "success",
+        "message": f"{req.cadence} follow-up successfully logged.",
+        "application": updated
+    }
+
+
+@app.get("/api/interviews")
+def list_interviews():
+    """Returns all interviews scheduled across tracked applications."""
+    data = ledger._load_data()
+    interviews = []
+    for a in data.get("applications", []):
+        cls = ledger.classify_entry(a)
+        if cls["is_interview"] or a.get("interview_date") or a.get("status") in ("INTERVIEW_SCHEDULED", "INTERVIEWING"):
+            interviews.append({
+                "job_id": a.get("job_id"),
+                "company_name": a.get("company_name"),
+                "job_title": a.get("job_title"),
+                "job_url": a.get("job_url"),
+                "interview_date": a.get("interview_date", "TBD"),
+                "interview_time": a.get("interview_time", "TBD"),
+                "interview_round": a.get("interview_round", "Round 1 Screening"),
+                "meeting_link": a.get("meeting_link", ""),
+                "notes": a.get("notes", ""),
+                "status": a.get("status")
+            })
+    return {"status": "success", "count": len(interviews), "interviews": interviews}
+
+
+@app.post("/api/cv/tailor-custom-jd")
+def tailor_custom_jd(req: CustomJDTailorRequest):
+    """Analyzes a user-provided JD, tailors resume & cover letter with zero hallucination, and prepares ATS PDF."""
+    if not req.jd_text or len(req.jd_text.strip()) < 15:
+        raise HTTPException(status_code=400, detail="Please provide a valid Job Description text (at least 15 characters).")
+
+    profile = load_current_profile()
+    try:
+        result = custom_jd_service.tailor_from_jd_text(
+            profile=profile,
+            job_title=req.job_title,
+            company_name=req.company_name,
+            jd_text=req.jd_text,
+            job_url=req.job_url,
+            location=req.location
+        )
+        return {"status": "success", "result": result}
+    except Exception as e:
+        logger.exception("Error tailoring custom JD")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/cv/apply-custom-jd")
+def apply_custom_jd(req: CustomJDApplyRequest):
+    """Applies directly to the customized job opening using the generated variant."""
+    profile = load_current_profile()
+    try:
+        result = custom_jd_service.apply_for_custom_jd(
+            profile=profile,
+            draft_id=req.draft_id,
+            job_url=req.job_url,
+            dry_run=req.dry_run
+        )
+        return {"status": "success", "result": result}
+    except Exception as e:
+        logger.exception("Error applying custom JD")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/cv/download-tailored-pdf/{draft_id}")
+def download_tailored_pdf(draft_id: str):
+    """Streams the custom-tailored ATS PDF resume."""
+    pdf_path = config.storage_path / "artifacts" / draft_id / "tailored_resume.pdf"
+    if not pdf_path.exists():
+        raise HTTPException(status_code=404, detail="Tailored PDF resume not found for this draft.")
+    return FileResponse(
+        path=str(pdf_path),
+        media_type="application/pdf",
+        filename=f"Jayanth_J_Tailored_Resume_{draft_id[-6:]}.pdf"
+    )
+
 
 
 @app.post("/api/recruiter/classify")

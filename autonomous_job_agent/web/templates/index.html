@@ -95,6 +95,31 @@
       color: #a855f7;
       border: 1px solid rgba(168, 85, 247, 0.25);
     }
+    .badge-interview {
+      background-color: rgba(234, 179, 8, 0.18);
+      color: #facc15;
+      border: 1px solid rgba(234, 179, 8, 0.4);
+    }
+    .badge-offer {
+      background-color: rgba(34, 197, 94, 0.22);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+    }
+    .badge-followup {
+      background-color: rgba(14, 165, 233, 0.18);
+      color: #38bdf8;
+      border: 1px solid rgba(14, 165, 233, 0.35);
+    }
+    .badge-paused {
+      background-color: rgba(249, 115, 22, 0.18);
+      color: #fb923c;
+      border: 1px solid rgba(249, 115, 22, 0.35);
+    }
+    .badge-failed {
+      background-color: rgba(239, 68, 68, 0.18);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
 
     /* Theme toggle pill */
     .theme-seg {
@@ -223,6 +248,12 @@
           <span id="badge-jobs-count" class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">31</span>
         </button>
 
+        <button onclick="switchTab('custom-jd')" id="nav-custom-jd" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors text-gray-400 hover:text-white hover:bg-gray-800/40">
+          <i class="fa-solid fa-wand-magic-sparkles w-4 text-center text-purple-400"></i>
+          <span>Tailor & Apply JD</span>
+          <span class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400">AI</span>
+        </button>
+
         <button onclick="switchTab('drafts')" id="nav-drafts" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors text-gray-400 hover:text-white hover:bg-gray-800/40">
           <i class="fa-solid fa-paper-plane w-4 text-center"></i>
           <span>Application Drafts</span>
@@ -345,6 +376,145 @@
       </section>
 
       <!-- ========================================== -->
+      <!-- TAB: CUSTOM JD TAILOR (/custom-jd)         -->
+      <!-- ========================================== -->
+      <section id="tab-custom-jd" class="space-y-6 hidden">
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight">Tailor Resume to Custom Job Description</h2>
+              <p class="text-xs text-gray-400" style="color: var(--text-muted);">
+                Paste any job description or company opening. Agent 2 extracts required skills, tailors your resume bullets with verified STAR metrics (zero hallucination), creates a tailored cover letter and ATS PDF, and lets you submit immediately.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Form Card -->
+        <div class="glass-card p-6 rounded-2xl space-y-4">
+          <h3 class="text-sm font-bold text-gray-300 uppercase tracking-wider flex items-center space-x-2">
+            <i class="fa-solid fa-file-pen text-blue-400"></i>
+            <span>Target Job Opening Details</span>
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-gray-300 mb-1">Target Job Title *</label>
+              <input type="text" id="custom-jd-title" placeholder="e.g. HR Executive / HR Operations Specialist" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-300 mb-1">Company / Organization *</label>
+              <input type="text" id="custom-jd-company" placeholder="e.g. Swiggy, InMobi, TalentPulse" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-300 mb-1">Target Location</label>
+              <input type="text" id="custom-jd-location" value="Bangalore, India / Remote" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Target Application Web URL (Optional - for direct ATS submission)</label>
+            <input type="url" id="custom-jd-url" placeholder="https://job-boards.greenhouse.io/... or company careers page link" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Paste Job Description (JD) *</label>
+            <textarea id="custom-jd-text" rows="7" placeholder="Paste the full job description, responsibilities, and required qualifications here..." class="w-full text-xs p-3.5 rounded-xl bg-gray-900 border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-blue-500"></textarea>
+          </div>
+
+          <div class="flex items-center justify-between pt-2">
+            <span class="text-[11px] text-gray-400">Strict zero-hallucination grounding: all tailored bullets are verified against your master candidate facts.</span>
+            <button onclick="runCustomJDTailor()" id="btn-custom-tailor" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold text-xs px-6 py-3 rounded-xl transition-all shadow-lg shadow-purple-600/25 flex items-center space-x-2">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Tailor Resume for this JD</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tailored Results Display (Initially Hidden) -->
+        <div id="custom-jd-results" class="hidden space-y-6">
+          <!-- Score & Skills Summary -->
+          <div class="glass-card p-6 rounded-2xl space-y-4 border border-purple-500/30">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border-2 border-emerald-500 flex flex-col items-center justify-center">
+                  <span id="custom-res-score" class="text-xl font-black text-emerald-400">96%</span>
+                  <span class="text-[9px] font-bold uppercase text-emerald-300">Match</span>
+                </div>
+                <div>
+                  <h3 id="custom-res-title" class="text-lg font-bold text-white">HR Operations Specialist</h3>
+                  <p id="custom-res-company" class="text-xs text-gray-400">Target Enterprise • Grounded ATS Variant Ready</p>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-wrap items-center gap-2">
+                <a id="custom-res-download-btn" href="#" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs px-4 py-2.5 rounded-xl border border-gray-700 flex items-center space-x-1.5 transition-all">
+                  <i class="fa-solid fa-file-arrow-down text-blue-400"></i>
+                  <span>Download Tailored PDF</span>
+                </a>
+                <button onclick="submitCustomJD(false)" id="btn-custom-dryrun" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 font-semibold text-xs px-4 py-2.5 rounded-xl border border-indigo-500/40 flex items-center space-x-1.5 transition-all">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span>Test Run (Dry-Run)</span>
+                </button>
+                <button onclick="submitCustomJD(true)" id="btn-custom-live" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-5 py-2.5 rounded-xl shadow-lg shadow-emerald-600/20 flex items-center space-x-1.5 transition-all">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Apply Now (Live Submission)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Matched Skills -->
+            <div class="pt-3 border-t border-gray-800 space-y-2">
+              <div class="text-xs font-semibold text-gray-300">Matched ATS Competencies:</div>
+              <div id="custom-res-matched-skills" class="flex flex-wrap gap-1.5">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Tailored Summary & Headline -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center space-x-2">
+                <i class="fa-solid fa-heading text-blue-400"></i>
+                <span>Tailored Headline & Professional Summary</span>
+              </h4>
+              <div id="custom-res-headline" class="text-sm font-bold text-blue-400 font-mono"></div>
+              <div id="custom-res-summary" class="text-xs text-gray-300 leading-relaxed bg-gray-900/60 p-3 rounded-xl border border-gray-800"></div>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div class="flex items-center justify-between">
+                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center space-x-2">
+                  <i class="fa-solid fa-envelope-open-text text-indigo-400"></i>
+                  <span>AI-Synthesized Cover Letter</span>
+                </h4>
+                <button onclick="copyCustomCoverLetter()" class="text-xs text-blue-400 hover:underline">
+                  <i class="fa-solid fa-copy"></i> Copy
+                </button>
+              </div>
+              <textarea id="custom-res-cover-letter" rows="6" readonly class="w-full text-xs p-3 rounded-xl bg-gray-900/60 border border-gray-800 text-gray-300 font-mono"></textarea>
+            </div>
+          </div>
+
+          <!-- Bullet Diffs -->
+          <div class="glass-card p-6 rounded-2xl space-y-4">
+            <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center space-x-2">
+              <i class="fa-solid fa-code-compare text-emerald-400"></i>
+              <span>Experience Bullets: Grounded Fact Alignment (STAR Diffs)</span>
+            </h4>
+            <div id="custom-res-diffs" class="space-y-3">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
       <!-- TAB 2: APPLICATION DRAFTS (/drafts)        -->
       <!-- ========================================== -->
       <section id="tab-drafts" class="space-y-6 hidden">
@@ -371,52 +541,72 @@
       <!-- TAB 3: MY APPLICATIONS (/applications)     -->
       <!-- ========================================== -->
       <section id="tab-applications" class="space-y-6 hidden">
-        <!-- 4 Funnel Stats -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="glass-card p-5 rounded-2xl">
+        <!-- 5 Funnel Stats -->
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
+          <div class="glass-card p-4 rounded-2xl">
             <div class="flex items-center justify-between text-xs text-gray-400">
-              <span>Total Applications</span>
+              <span>Total Tracked</span>
               <i class="fa-solid fa-briefcase text-blue-400"></i>
             </div>
             <div id="stat-total" class="text-2xl font-bold text-white mt-2">0</div>
-            <div class="text-[11px] text-gray-500 mt-0.5">Tracked in Ledger</div>
+            <div class="text-[10px] text-gray-500 mt-0.5">Recorded in Ledger</div>
           </div>
-          <div class="glass-card p-5 rounded-2xl">
+          <div class="glass-card p-4 rounded-2xl">
             <div class="flex items-center justify-between text-xs text-gray-400">
               <span>Delivered (Live)</span>
               <i class="fa-solid fa-circle-check text-emerald-400"></i>
             </div>
             <div id="stat-submitted" class="text-2xl font-bold text-emerald-400 mt-2">0</div>
-            <div class="text-[11px] text-gray-500 mt-0.5">Verified ATS Receipt</div>
+            <div class="text-[10px] text-gray-500 mt-0.5">Live ATS Confirmation</div>
           </div>
-          <div class="glass-card p-5 rounded-2xl">
+          <div class="glass-card p-4 rounded-2xl">
             <div class="flex items-center justify-between text-xs text-gray-400">
               <span>Pre-Flight Staged</span>
               <i class="fa-solid fa-shield-halved text-indigo-400"></i>
             </div>
             <div id="stat-dryrun" class="text-2xl font-bold text-indigo-400 mt-2">0</div>
-            <div class="text-[11px] text-gray-500 mt-0.5">Dry-Run Passes</div>
+            <div class="text-[10px] text-gray-500 mt-0.5">Dry-Run Passes</div>
           </div>
-          <div class="glass-card p-5 rounded-2xl">
+          <div class="glass-card p-4 rounded-2xl">
             <div class="flex items-center justify-between text-xs text-gray-400">
-              <span>Average Match Score</span>
+              <span>Interviews</span>
+              <i class="fa-solid fa-calendar-check text-amber-400"></i>
+            </div>
+            <div id="stat-interviews" class="text-2xl font-bold text-amber-400 mt-2">0</div>
+            <div class="text-[10px] text-gray-500 mt-0.5">Scheduled Rounds</div>
+          </div>
+          <div class="glass-card p-4 rounded-2xl">
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>Average Match</span>
               <i class="fa-solid fa-bullseye text-cyan-400"></i>
             </div>
             <div id="stat-avg-score" class="text-2xl font-bold text-cyan-400 mt-2">0%</div>
-            <div class="text-[11px] text-gray-500 mt-0.5">Target Skill Alignment</div>
+            <div class="text-[10px] text-gray-500 mt-0.5">Target Skill Alignment</div>
           </div>
         </div>
 
         <!-- Ledger Table Card -->
         <div class="glass-card p-6 rounded-2xl space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-bold">Applications History</h3>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-bold">Applications History & Audit Ledger</h3>
+              <p class="text-xs text-gray-400" style="color: var(--text-muted);">Real-time audit trail of all applications with delivery receipts, interview stages, and follow-ups.</p>
+            </div>
             <div class="flex items-center space-x-2">
               <input type="text" id="tracker-search-input" oninput="filterTrackerTable()" placeholder="Search company or title..." class="text-xs bg-gray-900 border border-gray-700 px-3 py-1.5 rounded-lg text-white">
               <button onclick="loadLedgerData()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-1.5 rounded-lg border border-gray-700">
                 <i class="fa-solid fa-arrows-rotate"></i>
               </button>
             </div>
+          </div>
+
+          <!-- Delivery Tier Filter Pills -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <button onclick="setLedgerFilter('ALL')" id="filter-pill-ALL" class="ledger-pill active px-3 py-1 rounded-full text-xs font-semibold bg-blue-600 text-white">All (<span id="count-all">0</span>)</button>
+            <button onclick="setLedgerFilter('LIVE')" id="filter-pill-LIVE" class="ledger-pill px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/80 text-gray-300 hover:text-white">Delivered Live (<span id="count-live">0</span>)</button>
+            <button onclick="setLedgerFilter('DRY_RUN')" id="filter-pill-DRY_RUN" class="ledger-pill px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/80 text-gray-300 hover:text-white">Staged Dry-Run (<span id="count-dryrun">0</span>)</button>
+            <button onclick="setLedgerFilter('INTERVIEW')" id="filter-pill-INTERVIEW" class="ledger-pill px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/80 text-gray-300 hover:text-white">Interviews (<span id="count-interview">0</span>)</button>
+            <button onclick="setLedgerFilter('PAUSED')" id="filter-pill-PAUSED" class="ledger-pill px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/80 text-gray-300 hover:text-white">Paused Screening (<span id="count-paused">0</span>)</button>
           </div>
 
           <div class="overflow-x-auto">
@@ -540,6 +730,26 @@
                 <textarea id="res-draft-body" rows="3" readonly class="w-full text-[11px] font-mono p-2 rounded bg-gray-950 border border-gray-800 text-gray-300"></textarea>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Live Scheduled Interviews & Recruiter Updates Card -->
+        <div class="glass-card p-6 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-base font-bold flex items-center space-x-2 text-white">
+                <i class="fa-solid fa-calendar-check text-amber-400"></i>
+                <span>Scheduled Interviews & Recruiter Updates</span>
+              </h3>
+              <p class="text-xs text-gray-400">Track all confirmed recruiter interviews, rounds, and meeting links.</p>
+            </div>
+            <button onclick="loadInterviewsList()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-1.5 rounded-lg border border-gray-700">
+              <i class="fa-solid fa-arrows-rotate mr-1"></i> Refresh
+            </button>
+          </div>
+
+          <div id="conversations-interviews-container">
+            <!-- Populated dynamically by loadInterviewsList() -->
           </div>
         </div>
       </section>
@@ -753,10 +963,129 @@
     </div>
   </div>
 
+  <!-- Modal for Interview Logging & Status Update -->
+  <div id="interview-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden">
+    <div class="glass-card max-w-lg w-full p-6 rounded-2xl space-y-4 border border-blue-500/30">
+      <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+        <div>
+          <h3 id="modal-interview-heading" class="text-base font-bold text-white">Log Interview / Update Status</h3>
+          <p id="modal-interview-subheading" class="text-xs text-gray-400">Target Company • Job Title</p>
+        </div>
+        <button onclick="closeInterviewModal()" class="text-gray-400 hover:text-white text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <input type="hidden" id="modal-interview-target-url" value="">
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium text-gray-300 mb-1">Application Status</label>
+          <select id="modal-interview-status" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
+            <option value="INTERVIEW_SCHEDULED">📅 Interview Scheduled</option>
+            <option value="SUBMITTED">✅ Delivered (Live to ATS)</option>
+            <option value="FOLLOW_UP_SENT">✉️ Follow-Up Sent</option>
+            <option value="OFFER">🎉 Offer Received</option>
+            <option value="REJECTED">❌ Not Moving Forward / Rejected</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-gray-300 mb-1">Interview Date</label>
+            <input type="date" id="modal-interview-date" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block font-medium text-gray-300 mb-1">Interview Time</label>
+            <input type="time" id="modal-interview-time" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-medium text-gray-300 mb-1">Interview Round / Stage</label>
+          <input type="text" id="modal-interview-round" placeholder="e.g. Round 1 HR Screening, Hiring Manager, Technical" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div>
+          <label class="block font-medium text-gray-300 mb-1">Meeting Link (Zoom / Teams / Google Meet)</label>
+          <input type="url" id="modal-interview-link" placeholder="https://meet.google.com/... or https://teams.microsoft.com/..." class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div>
+          <label class="block font-medium text-gray-300 mb-1">Recruiter Notes / Instructions</label>
+          <textarea id="modal-interview-notes" rows="3" placeholder="Add recruiter feedback, interview topics, or instructions..." class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500"></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end space-x-3 pt-3 border-t border-gray-800">
+        <button onclick="closeInterviewModal()" class="px-4 py-2 text-xs font-medium text-gray-400 hover:text-white">Cancel</button>
+        <button onclick="saveInterviewStatus()" id="btn-save-interview" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all shadow-lg shadow-blue-600/20">
+          <i class="fa-solid fa-floppy-disk mr-1"></i> Save Interview & Status
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Automated Recruiter Follow-Up -->
+  <div id="followup-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden">
+    <div class="glass-card max-w-lg w-full p-6 rounded-2xl space-y-4 border border-indigo-500/30">
+      <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+        <div>
+          <h3 id="modal-followup-heading" class="text-base font-bold text-white">Recruiter Follow-Up Outreach</h3>
+          <p id="modal-followup-subheading" class="text-xs text-gray-400">Target Company • Job Title</p>
+        </div>
+        <button onclick="closeFollowupModal()" class="text-gray-400 hover:text-white text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <input type="hidden" id="modal-followup-target-url" value="">
+      <input type="hidden" id="modal-followup-active-cadence" value="T+7">
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium text-gray-300 mb-1">Follow-up Cadence Stage</label>
+          <div class="flex space-x-2">
+            <button type="button" onclick="changeFollowupCadence('T+3')" id="btn-cadence-T3" class="cadence-btn px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-900 text-gray-300 font-semibold hover:border-blue-500">T+3 (3-Day Check-in)</button>
+            <button type="button" onclick="changeFollowupCadence('T+7')" id="btn-cadence-T7" class="cadence-btn active px-3 py-1.5 rounded-lg border border-blue-500 bg-blue-900/30 text-blue-300 font-semibold">T+7 (1-Week Value-Add)</button>
+            <button type="button" onclick="changeFollowupCadence('T+14')" id="btn-cadence-T14" class="cadence-btn px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-900 text-gray-300 font-semibold hover:border-blue-500">T+14 (Status Check)</button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-medium text-gray-300 mb-1">Recipient</label>
+          <input type="text" id="modal-followup-recipient" readonly class="w-full px-3 py-1.5 rounded-lg bg-gray-950 border border-gray-800 text-gray-400 font-mono">
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="font-medium text-gray-300">Generated Follow-Up Email</label>
+            <button type="button" onclick="copyFollowupDraft()" class="text-blue-400 hover:underline text-[11px]">
+              <i class="fa-solid fa-copy mr-1"></i> Copy to Clipboard
+            </button>
+          </div>
+          <textarea id="modal-followup-body" rows="8" class="w-full p-3 rounded-lg bg-gray-950 border border-gray-800 text-gray-200 font-mono text-[11px]"></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-gray-800">
+        <button onclick="closeFollowupModal()" class="px-4 py-2 text-xs font-medium text-gray-400 hover:text-white">Close</button>
+        <div class="flex space-x-2">
+          <button onclick="copyFollowupDraft()" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs px-3 py-2 rounded-xl transition-all">
+            <i class="fa-solid fa-copy mr-1"></i> Copy
+          </button>
+          <button onclick="markFollowupSent()" id="btn-mark-followup-sent" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all shadow-lg shadow-emerald-600/20">
+            <i class="fa-solid fa-check mr-1"></i> Mark as Sent in Ledger
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Client-Side JavaScript Logic -->
   <script>
     // Tab switching
-    const tabs = ['jobs', 'drafts', 'applications', 'conversations', 'resume', 'profile', 'referrals'];
+    const tabs = ['jobs', 'custom-jd', 'drafts', 'applications', 'conversations', 'resume', 'profile', 'referrals'];
 
     function switchTab(tabId) {
       tabs.forEach(t => {
@@ -1094,8 +1423,12 @@
       }
     }
 
-    // Ledger Data
+    // ==========================================
+    // LEDGER DATA & AUDIT TRAIL
+    // ==========================================
     let allApplications = [];
+    let currentLedgerFilter = 'ALL';
+
     async function loadLedgerData() {
       try {
         const res = await fetch('/api/ledger');
@@ -1103,22 +1436,63 @@
         const summary = data.summary || {};
         allApplications = data.applications || [];
 
-        document.getElementById('stat-total').innerText = summary.total_tracked || 0;
-        document.getElementById('stat-submitted').innerText = summary.submitted || 0;
-        document.getElementById('stat-dryrun').innerText = summary.dry_run_verified || 0;
-        document.getElementById('stat-avg-score').innerText = `${summary.average_match_score || 0}%`;
-        document.getElementById('badge-applied-count').innerText = `${summary.submitted || 0} Live`;
+        // Update 5 funnel stats
+        if (document.getElementById('stat-total')) document.getElementById('stat-total').innerText = summary.total_tracked || 0;
+        if (document.getElementById('stat-submitted')) document.getElementById('stat-submitted').innerText = summary.submitted || 0;
+        if (document.getElementById('stat-dryrun')) document.getElementById('stat-dryrun').innerText = summary.dry_run_verified || 0;
+        if (document.getElementById('stat-interviews')) document.getElementById('stat-interviews').innerText = summary.interviews_scheduled || 0;
+        if (document.getElementById('stat-avg-score')) document.getElementById('stat-avg-score').innerText = `${summary.average_match_score || 0}%`;
+        if (document.getElementById('badge-applied-count')) document.getElementById('badge-applied-count').innerText = `${summary.submitted || 0} Live`;
 
-        renderLedgerTable(allApplications);
+        // Update filter badge counts
+        if (document.getElementById('count-all')) document.getElementById('count-all').innerText = summary.total_tracked || 0;
+        if (document.getElementById('count-live')) document.getElementById('count-live').innerText = summary.submitted || 0;
+        if (document.getElementById('count-dryrun')) document.getElementById('count-dryrun').innerText = summary.dry_run_verified || 0;
+        if (document.getElementById('count-interview')) document.getElementById('count-interview').innerText = summary.interviews_scheduled || 0;
+        if (document.getElementById('count-paused')) document.getElementById('count-paused').innerText = summary.paused_screening || 0;
+
+        applyLedgerFilters();
+        loadInterviewsList();
       } catch (err) {
-        console.error(err);
+        console.error("Failed to load ledger data:", err);
       }
+    }
+
+    function setLedgerFilter(filterType) {
+      currentLedgerFilter = filterType;
+      document.querySelectorAll('.ledger-pill').forEach(btn => {
+        if (btn.id === `filter-pill-${filterType}`) {
+          btn.className = 'ledger-pill active px-3 py-1 rounded-full text-xs font-semibold bg-blue-600 text-white';
+        } else {
+          btn.className = 'ledger-pill px-3 py-1 rounded-full text-xs font-semibold bg-gray-800/80 text-gray-300 hover:text-white';
+        }
+      });
+      applyLedgerFilters();
+    }
+
+    function applyLedgerFilters() {
+      const q = (document.getElementById('tracker-search-input')?.value || '').toLowerCase().trim();
+      const filtered = allApplications.filter(a => {
+        const textMatch = !q || (a.company_name && a.company_name.toLowerCase().includes(q)) || (a.job_title && a.job_title.toLowerCase().includes(q)) || (a.confirmation_id && a.confirmation_id.toLowerCase().includes(q));
+
+        if (!textMatch) return false;
+        if (currentLedgerFilter === 'ALL') return true;
+        if (currentLedgerFilter === 'LIVE') return a.is_live;
+        if (currentLedgerFilter === 'DRY_RUN') return a.is_staged;
+        if (currentLedgerFilter === 'INTERVIEW') return a.is_interview || !!a.interview_date;
+        if (currentLedgerFilter === 'PAUSED') return a.is_paused;
+        return true;
+      });
+
+      renderLedgerTable(filtered);
     }
 
     function renderLedgerTable(apps) {
       const container = document.getElementById('applications-table-container');
+      if (!container) return;
+
       if (!apps || apps.length === 0) {
-        container.innerHTML = `<div class="p-8 text-center text-gray-500 text-xs">No application records recorded yet.</div>`;
+        container.innerHTML = `<div class="p-8 text-center text-gray-500 text-xs">No application records found matching current filter.</div>`;
         return;
       }
 
@@ -1130,25 +1504,58 @@
               <th class="py-2.5">Job Title</th>
               <th class="py-2.5">Fit Score</th>
               <th class="py-2.5">Delivery Status</th>
-              <th class="py-2.5">Confirmation ID</th>
-              <th class="py-2.5">Date</th>
+              <th class="py-2.5">Confirmation ID / Audit Receipt</th>
+              <th class="py-2.5">Timeline / Schedule</th>
+              <th class="py-2.5 text-right">Actions</th>
             </tr>
           </thead>
           <tbody>`;
 
       apps.forEach(a => {
-        const isLive = a.status === 'SUBMITTED' || a.status === 'APPLIED';
-        const badgeClass = isLive ? 'badge-delivered' : 'badge-staged';
-        const statusLabel = isLive ? 'DELIVERED (Live)' : 'STAGED (Dry-Run)';
+        const badgeClass = a.delivery_badge || (a.is_live ? 'badge-delivered' : 'badge-staged');
+        const statusLabel = a.delivery_label || (a.is_live ? 'DELIVERED (Live to ATS)' : 'STAGED (Dry-Run)');
+
+        // Format interview badge if scheduled
+        let interviewSnippet = '';
+        if (a.interview_date) {
+          interviewSnippet = `<div class="text-[10px] text-amber-300 font-bold mt-0.5"><i class="fa-solid fa-calendar-day mr-1"></i>${a.interview_date} ${a.interview_time || ''}</div>`;
+        }
+
+        const compEsc = (a.company_name || '').replace(/'/g, "\\'");
+        const titleEsc = (a.job_title || '').replace(/'/g, "\\'");
+        const urlEsc = (a.job_url || a.job_id || '').replace(/'/g, "\\'");
+        const statusEsc = (a.status || '').replace(/'/g, "\\'");
+        const dateEsc = (a.interview_date || '').replace(/'/g, "\\'");
+        const timeEsc = (a.interview_time || '').replace(/'/g, "\\'");
+        const roundEsc = (a.interview_round || '').replace(/'/g, "\\'");
+        const notesEsc = (a.notes || '').replace(/'/g, "\\'").replace(/\n/g, " ");
 
         html += `
-          <tr class="border-b border-gray-800/60 hover:bg-gray-800/20">
+          <tr class="border-b border-gray-800/60 hover:bg-gray-800/20 transition-colors">
             <td class="py-3 font-bold text-white">${a.company_name}</td>
-            <td class="py-3 text-gray-300">${a.job_title}</td>
+            <td class="py-3 text-gray-300">
+              <div>${a.job_title}</div>
+              ${a.meeting_link ? `<a href="${a.meeting_link}" target="_blank" class="text-[10px] text-blue-400 hover:underline flex items-center space-x-1 mt-0.5"><i class="fa-solid fa-video text-[9px]"></i><span>Join Meeting</span></a>` : ''}
+            </td>
             <td class="py-3 font-mono text-cyan-400 font-bold">${((a.relevance_score || 0.9) * 100).toFixed(0)}%</td>
-            <td class="py-3"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${badgeClass}">${statusLabel}</span></td>
-            <td class="py-3 font-mono text-[11px] text-gray-400">${a.confirmation_id || 'CONF-STORED'}</td>
-            <td class="py-3 text-gray-400">${(a.applied_date || '').substring(0, 10)}</td>
+            <td class="py-3">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${badgeClass}">${statusLabel}</span>
+            </td>
+            <td class="py-3 font-mono text-[11px] text-gray-400">
+              ${a.confirmation_id || 'CONF-STORED'}
+            </td>
+            <td class="py-3 text-gray-400">
+              <div>${(a.applied_date || '').substring(0, 10)}</div>
+              ${interviewSnippet}
+            </td>
+            <td class="py-3 text-right space-x-1.5 whitespace-nowrap">
+              <button onclick="openInterviewModal('${urlEsc}', '${compEsc}', '${titleEsc}', '${statusEsc}', '${dateEsc}', '${timeEsc}', '${roundEsc}', '${notesEsc}')" class="px-2.5 py-1 rounded-lg bg-blue-900/40 hover:bg-blue-800 text-blue-300 border border-blue-700/50 text-[11px] font-semibold transition-colors" title="Log Interview / Update Status">
+                <i class="fa-solid fa-calendar-plus mr-1"></i><span>Log Interview</span>
+              </button>
+              <button onclick="openFollowupModal('${urlEsc}', '${compEsc}', '${titleEsc}')" class="px-2.5 py-1 rounded-lg bg-indigo-900/40 hover:bg-indigo-800 text-indigo-300 border border-indigo-700/50 text-[11px] font-semibold transition-colors" title="Generate Recruiter Follow-up Email">
+                <i class="fa-solid fa-envelope mr-1"></i><span>Follow-up</span>
+              </button>
+            </td>
           </tr>`;
       });
 
@@ -1157,11 +1564,346 @@
     }
 
     function filterTrackerTable() {
-      const q = document.getElementById('tracker-search-input').value.toLowerCase().trim();
-      const filtered = allApplications.filter(a => 
-        !q || a.company_name.toLowerCase().includes(q) || a.job_title.toLowerCase().includes(q)
-      );
-      renderLedgerTable(filtered);
+      applyLedgerFilters();
+    }
+
+    // ==========================================
+    // INTERVIEW LOGGING & STATUS UPDATE MODAL
+    // ==========================================
+    function openInterviewModal(targetUrl, company, title, status, date, time, round, notes) {
+      document.getElementById('modal-interview-target-url').value = targetUrl;
+      document.getElementById('modal-interview-heading').innerText = `Interview & Status: ${company}`;
+      document.getElementById('modal-interview-subheading').innerText = title;
+
+      if (status && ['INTERVIEW_SCHEDULED', 'SUBMITTED', 'FOLLOW_UP_SENT', 'OFFER', 'REJECTED'].includes(status)) {
+        document.getElementById('modal-interview-status').value = status;
+      } else {
+        document.getElementById('modal-interview-status').value = 'INTERVIEW_SCHEDULED';
+      }
+
+      document.getElementById('modal-interview-date').value = date || '';
+      document.getElementById('modal-interview-time').value = time || '';
+      document.getElementById('modal-interview-round').value = round || '';
+      document.getElementById('modal-interview-notes').value = notes || '';
+
+      document.getElementById('interview-modal').classList.remove('hidden');
+    }
+
+    function closeInterviewModal() {
+      document.getElementById('interview-modal').classList.add('hidden');
+    }
+
+    async function saveInterviewStatus() {
+      const targetUrl = document.getElementById('modal-interview-target-url').value;
+      const status = document.getElementById('modal-interview-status').value;
+      const date = document.getElementById('modal-interview-date').value;
+      const time = document.getElementById('modal-interview-time').value;
+      const round = document.getElementById('modal-interview-round').value;
+      const link = document.getElementById('modal-interview-link').value;
+      const notes = document.getElementById('modal-interview-notes').value;
+
+      const btn = document.getElementById('btn-save-interview');
+      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-1"></i> Saving...`;
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/applications/update-status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            job_url_or_id: targetUrl,
+            status: status,
+            interview_date: date,
+            interview_time: time,
+            interview_round: round,
+            meeting_link: link,
+            notes: notes
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          showToast(`Status updated to '${status}' successfully!`, 'success');
+          closeInterviewModal();
+          loadLedgerData();
+        } else {
+          showToast(data.detail || 'Failed to update status', 'error');
+        }
+      } catch (err) {
+        showToast('Error saving: ' + err.message, 'error');
+      } finally {
+        btn.innerHTML = `<i class="fa-solid fa-floppy-disk mr-1"></i> Save Interview & Status`;
+        btn.disabled = false;
+      }
+    }
+
+    // ==========================================
+    // RECRUITER FOLLOW-UP MODAL & CADENCE
+    // ==========================================
+    let activeFollowupUrl = '';
+    async function openFollowupModal(targetUrl, company, title) {
+      activeFollowupUrl = targetUrl;
+      document.getElementById('modal-followup-target-url').value = targetUrl;
+      document.getElementById('modal-followup-heading').innerText = `Follow-Up: ${company}`;
+      document.getElementById('modal-followup-subheading').innerText = title;
+      changeFollowupCadence('T+7');
+      document.getElementById('followup-modal').classList.remove('hidden');
+    }
+
+    function closeFollowupModal() {
+      document.getElementById('followup-modal').classList.add('hidden');
+    }
+
+    async function changeFollowupCadence(cadence) {
+      document.getElementById('modal-followup-active-cadence').value = cadence;
+
+      ['T3', 'T7', 'T14'].forEach(c => {
+        const btn = document.getElementById(`btn-cadence-${c}`);
+        if (btn) {
+          if (c === cadence.replace('+', '')) {
+            btn.className = 'cadence-btn active px-3 py-1.5 rounded-lg border border-blue-500 bg-blue-900/30 text-blue-300 font-semibold';
+          } else {
+            btn.className = 'cadence-btn px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-900 text-gray-300 font-semibold hover:border-blue-500';
+          }
+        }
+      });
+
+      document.getElementById('modal-followup-body').value = 'Generating tailored follow-up draft with candidate achievements...';
+
+      try {
+        const res = await fetch('/api/applications/generate-followup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            job_url_or_id: activeFollowupUrl,
+            cadence_stage: cadence
+          })
+        });
+        const data = await res.json();
+        document.getElementById('modal-followup-recipient').value = data.recipient_email || 'hiring-team@employer.com';
+        document.getElementById('modal-followup-body').value = data.email_draft || '';
+      } catch (err) {
+        document.getElementById('modal-followup-body').value = 'Failed to generate follow-up draft: ' + err.message;
+      }
+    }
+
+    function copyFollowupDraft() {
+      const text = document.getElementById('modal-followup-body').value;
+      navigator.clipboard.writeText(text);
+      showToast("Follow-up email copied to clipboard!", "success");
+    }
+
+    async function markFollowupSent() {
+      const targetUrl = document.getElementById('modal-followup-target-url').value;
+      const cadence = document.getElementById('modal-followup-active-cadence').value;
+
+      const btn = document.getElementById('btn-mark-followup-sent');
+      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-1"></i> Logging...`;
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/applications/record-followup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            job_url_or_id: targetUrl,
+            cadence: cadence,
+            notes: `Follow-up sent via ${cadence} cadence template`
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          showToast(`${cadence} follow-up marked as sent in ledger!`, 'success');
+          closeFollowupModal();
+          loadLedgerData();
+        } else {
+          showToast(data.detail || 'Could not log follow-up', 'error');
+        }
+      } catch (err) {
+        showToast('Error logging follow-up: ' + err.message, 'error');
+      } finally {
+        btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i> Mark as Sent in Ledger`;
+        btn.disabled = false;
+      }
+    }
+
+    // ==========================================
+    // SCHEDULED INTERVIEWS LIST (Conversations Tab)
+    // ==========================================
+    async function loadInterviewsList() {
+      const container = document.getElementById('conversations-interviews-container');
+      if (!container) return;
+
+      try {
+        const res = await fetch('/api/interviews');
+        const data = await res.json();
+        const interviews = data.interviews || [];
+
+        if (interviews.length === 0) {
+          container.innerHTML = `
+            <div class="p-6 text-center rounded-xl bg-gray-900/60 border border-gray-800 text-gray-400 text-xs space-y-2">
+              <i class="fa-regular fa-calendar-xmark text-2xl text-gray-600 block"></i>
+              <p class="font-medium text-gray-300">No scheduled interviews currently recorded.</p>
+              <p class="text-[11px] text-gray-500">Go to <button onclick="switchTab('applications')" class="text-blue-400 underline font-semibold">My Applications</button> and click <b>Log Interview</b> on any application when a recruiter invites you to interview.</p>
+            </div>`;
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${interviews.map(i => `
+              <div class="p-4 rounded-xl bg-gray-900/80 border border-amber-500/30 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">${i.interview_round || 'Round 1'}</span>
+                  <span class="text-xs font-mono text-cyan-400 font-bold">${i.interview_date} ${i.interview_time || ''}</span>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white">${i.company_name}</h4>
+                  <p class="text-xs text-gray-300">${i.job_title}</p>
+                </div>
+                ${i.notes ? `<p class="text-[11px] text-gray-400 bg-gray-950 p-2 rounded border border-gray-800"><b>Notes:</b> ${i.notes}</p>` : ''}
+                <div class="flex items-center justify-between pt-1">
+                  ${i.meeting_link ? `<a href="${i.meeting_link}" target="_blank" class="text-xs font-semibold text-blue-400 hover:underline flex items-center space-x-1"><i class="fa-solid fa-video text-[10px]"></i><span>Join Meeting</span></a>` : '<span class="text-[10px] text-gray-500">No video link provided</span>'}
+                  <button onclick="openInterviewModal('${(i.job_url || i.job_id || '').replace(/'/g, "\\'")}', '${(i.company_name || '').replace(/'/g, "\\'")}', '${(i.job_title || '').replace(/'/g, "\\'")}', '${i.status || ''}', '${i.interview_date || ''}', '${i.interview_time || ''}', '${(i.interview_round || '').replace(/'/g, "\\'")}', '${(i.notes || '').replace(/'/g, "\\'")}')" class="text-xs text-gray-400 hover:text-white underline">Edit</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>`;
+      } catch (err) {
+        container.innerHTML = `<div class="p-4 text-center text-red-400 text-xs">Error loading interviews: ${err.message}</div>`;
+      }
+    }
+
+    // ==========================================
+    // CUSTOM JD TAILORING & INSTANT APPLY
+    // ==========================================
+    let activeCustomDraftId = '';
+    async function runCustomJDTailor() {
+      const title = document.getElementById('custom-jd-title').value.trim();
+      const company = document.getElementById('custom-jd-company').value.trim();
+      const loc = document.getElementById('custom-jd-location').value.trim();
+      const url = document.getElementById('custom-jd-url').value.trim();
+      const jdText = document.getElementById('custom-jd-text').value.trim();
+
+      if (!title || !company) {
+        showToast("Please enter both the Job Title and Company Name.", "warning");
+        return;
+      }
+      if (!jdText || jdText.length < 15) {
+        showToast("Please paste the Job Description text (at least 15 characters).", "warning");
+        return;
+      }
+
+      const btn = document.getElementById('btn-custom-tailor');
+      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-1"></i> Tailoring Resume (STAR alignment)...`;
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/cv/tailor-custom-jd', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            job_title: title,
+            company_name: company,
+            location: loc,
+            job_url: url,
+            jd_text: jdText
+          })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || "Tailoring failed");
+        }
+
+        const r = data.result;
+        activeCustomDraftId = r.draft_id;
+
+        document.getElementById('custom-res-score').innerText = `${r.match_score}%`;
+        document.getElementById('custom-res-title').innerText = r.job_title;
+        document.getElementById('custom-res-company').innerText = `${r.company_name} • Grounded ATS Variant Ready`;
+
+        // Matched Skills Tags
+        const skillsContainer = document.getElementById('custom-res-matched-skills');
+        skillsContainer.innerHTML = (r.matched_skills || []).map(s => 
+          `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-950/60 text-emerald-300 border border-emerald-500/30">${s}</span>`
+        ).join('') + (r.missing_skills || []).map(s => 
+          `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-gray-800/60 text-gray-400 border border-gray-700">${s} (secondary)</span>`
+        ).join('');
+
+        // Headline & Summary
+        document.getElementById('custom-res-headline').innerText = r.tailored_headline || '';
+        document.getElementById('custom-res-summary').innerText = r.tailored_summary || '';
+
+        // Cover Letter
+        document.getElementById('custom-res-cover-letter').value = r.cover_letter || '';
+
+        // Diffs
+        const diffsContainer = document.getElementById('custom-res-diffs');
+        diffsContainer.innerHTML = (r.bullet_diffs || []).map(d => `
+          <div class="p-3.5 rounded-xl bg-gray-900 border border-gray-800 space-y-1.5 text-xs">
+            <div class="font-bold text-gray-300">${d.section}</div>
+            <div class="text-gray-400 line-through text-[11px]">${d.original}</div>
+            <div class="text-emerald-400 font-medium">${d.tailored}</div>
+            <div class="text-[10px] text-gray-500 italic">Rationale: ${d.rationale}</div>
+          </div>
+        `).join('');
+
+        // Download link
+        document.getElementById('custom-res-download-btn').href = r.download_pdf_url;
+
+        // Show Results section
+        document.getElementById('custom-jd-results').classList.remove('hidden');
+        showToast("Resume tailored successfully with 0 hallucination! Ready to apply.", "success");
+      } catch (err) {
+        showToast("Error tailoring: " + err.message, "error");
+      } finally {
+        btn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> <span>Tailor Resume for this JD</span>`;
+        btn.disabled = false;
+      }
+    }
+
+    async function submitCustomJD(isLive) {
+      if (!activeCustomDraftId) {
+        showToast("Please tailor a resume first before submitting.", "warning");
+        return;
+      }
+
+      const url = document.getElementById('custom-jd-url').value.trim();
+      const btnId = isLive ? 'btn-custom-live' : 'btn-custom-dryrun';
+      const btn = document.getElementById(btnId);
+      const originalHtml = btn.innerHTML;
+      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Submitting...`;
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/cv/apply-custom-jd', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            draft_id: activeCustomDraftId,
+            job_url: url,
+            dry_run: !isLive
+          })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          const modeStr = isLive ? "Live submitted to ATS" : "Staged in dry-run mode";
+          showToast(`Application successfully ${modeStr}! Confirmation ID: ${data.result.confirmation_id}`, "success");
+          loadLedgerData();
+        } else {
+          showToast(data.detail || "Application failed", "error");
+        }
+      } catch (err) {
+        showToast("Submission error: " + err.message, "error");
+      } finally {
+        btn.innerHTML = originalHtml;
+        btn.disabled = false;
+      }
+    }
+
+    function copyCustomCoverLetter() {
+      const text = document.getElementById('custom-res-cover-letter').value;
+      navigator.clipboard.writeText(text);
+      showToast("Cover letter copied to clipboard!", "success");
     }
 
     // Profile & Resume
@@ -1323,6 +2065,8 @@
         switchTab('jobs');
       }
       loadProfileData();
+      loadLedgerData();
+      loadJobFeed();
     };
   </script>
 </body>

@@ -77,17 +77,125 @@ class ApplicationLedger:
         self._save_data(data)
         return entry
 
-    def update_status(self, job_url: str, new_status: str, notes: str = ""):
-        """Update status e.g. INTERVIEW_SCHEDULED, REJECTED, OFFER."""
+    @staticmethod
+    def classify_entry(app: Dict) -> Dict:
+        """Accurately classifies delivery status between live ATS delivery, dry-run staging, and interview states."""
+        status = str(app.get("status", "")).upper()
+        conf_id = str(app.get("confirmation_id", "")).upper()
+
+        if status in ("INTERVIEW_SCHEDULED", "INTERVIEWING"):
+            tier = "INTERVIEW"
+            label = "INTERVIEW SCHEDULED"
+            badge = "badge-interview"
+        elif status in ("OFFER", "OFFER_RECEIVED"):
+            tier = "OFFER"
+            label = "OFFER RECEIVED"
+            badge = "badge-offer"
+        elif status == "FOLLOW_UP_SENT":
+            tier = "FOLLOW_UP"
+            label = "FOLLOW-UP SENT"
+            badge = "badge-followup"
+        elif status == "REJECTED":
+            tier = "REJECTED"
+            label = "REJECTED"
+            badge = "badge-rejected"
+        elif "PAUSED" in status or "HITL" in status or "QUESTION" in status:
+            tier = "PAUSED"
+            label = "PAUSED (Screening Questions)"
+            badge = "badge-paused"
+        elif status == "FAILED":
+            tier = "FAILED"
+            label = "FAILED (Blocked by ATS)"
+            badge = "badge-failed"
+        elif "DRYRUN" in conf_id or "ASSERTION" in conf_id or status in ("QUEUED", "STAGED", "DRY_RUN"):
+            tier = "DRY_RUN"
+            label = "STAGED (Pre-flight Dry-Run)"
+            badge = "badge-staged"
+        elif status in ("SUBMITTED", "APPLIED") or "CONF-" in conf_id or "ATS-" in conf_id:
+            tier = "LIVE"
+            label = "DELIVERED (Live to ATS)"
+            badge = "badge-delivered"
+        else:
+            tier = "OTHER"
+            label = status or "UNKNOWN"
+            badge = "badge-staged"
+
+        return {
+            "tier": tier,
+            "label": label,
+            "badge": badge,
+            "is_live": tier == "LIVE",
+            "is_staged": tier == "DRY_RUN",
+            "is_interview": tier == "INTERVIEW",
+            "is_paused": tier == "PAUSED",
+            "is_followup": tier == "FOLLOW_UP",
+        }
+
+    def update_application(
+        self,
+        job_url_or_id: str,
+        new_status: str,
+        notes: str = "",
+        interview_date: str = "",
+        interview_time: str = "",
+        interview_round: str = "",
+        meeting_link: str = ""
+    ) -> Optional[Dict]:
+        """Update application status, interview schedules, and recruiter notes."""
         data = self._load_data()
+        updated_entry = None
+        now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+
         for app in data.get("applications", []):
-            if app.get("job_url") == job_url:
+            if app.get("job_url") == job_url_or_id or app.get("job_id") == job_url_or_id:
                 app["status"] = new_status
-                app["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+                app["last_updated"] = now_iso
                 if notes:
                     app["notes"] = notes
+                if interview_date:
+                    app["interview_date"] = interview_date
+                if interview_time:
+                    app["interview_time"] = interview_time
+                if interview_round:
+                    app["interview_round"] = interview_round
+                if meeting_link:
+                    app["meeting_link"] = meeting_link
+                updated_entry = app
                 break
-        self._save_data(data)
+
+        if updated_entry:
+            self._save_data(data)
+        return updated_entry
+
+    def record_followup(self, job_url_or_id: str, cadence: str, notes: str = "") -> Optional[Dict]:
+        """Record a follow-up action sent to a recruiter."""
+        data = self._load_data()
+        now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        updated_entry = None
+
+        for app in data.get("applications", []):
+            if app.get("job_url") == job_url_or_id or app.get("job_id") == job_url_or_id:
+                app["status"] = "FOLLOW_UP_SENT"
+                app["last_updated"] = now_iso
+                app["last_followup_at"] = now_iso
+                app["last_followup_cadence"] = cadence
+                history = app.get("followup_history", [])
+                history.append({
+                    "timestamp": now_iso,
+                    "cadence": cadence,
+                    "notes": notes
+                })
+                app["followup_history"] = history
+                updated_entry = app
+                break
+
+        if updated_entry:
+            self._save_data(data)
+        return updated_entry
+
+    def update_status(self, job_url: str, new_status: str, notes: str = ""):
+        """Update status e.g. INTERVIEW_SCHEDULED, REJECTED, OFFER."""
+        return self.update_application(job_url, new_status, notes=notes)
 
     def list_all(self) -> List[Dict]:
         return self._load_data().get("applications", [])

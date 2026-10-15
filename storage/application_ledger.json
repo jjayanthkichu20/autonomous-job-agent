@@ -423,9 +423,9 @@
       "job_url": "http://127.0.0.1:8769/greenhouse/job/101",
       "relevance_score": 0.969,
       "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_B874A257_1791782314",
+      "confirmation_id": "DRYRUN-SUB_45BD501A_1792039318",
       "applied_date": "2026-10-09 04:20:39 UTC",
-      "last_updated": "2026-10-12 05:18:34 UTC",
+      "last_updated": "2026-10-15 04:41:58 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a2b54dfa_daa8524a\\resume_tailored.md"
     },
@@ -701,6 +701,100 @@
       "last_updated": "2026-10-12 05:22:40 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_ff211bec_3f25e9c2\\resume_tailored.md"
+    },
+    {
+      "job_id": "bd695e88-9b8e-49bb-b615-234a773ae5c0",
+      "company_name": "Target Company",
+      "job_title": "Senior Talent Brand Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8753656002",
+      "relevance_score": 0.76,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_BD695E88_1791866838",
+      "applied_date": "2026-10-13 04:47:18 UTC",
+      "last_updated": "2026-10-13 04:47:18 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_bd695e88_1549e17c\\resume_tailored.md"
+    },
+    {
+      "job_id": "ae65b82c-d83f-4214-92ee-0e22d6ae4cad",
+      "company_name": "Target Company",
+      "job_title": "Staff Engineer, People Technology",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8638295002",
+      "relevance_score": 0.509,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_AE65B82C_1791866842",
+      "applied_date": "2026-10-13 04:47:22 UTC",
+      "last_updated": "2026-10-13 04:47:22 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_ae65b82c_def086aa\\resume_tailored.md"
+    },
+    {
+      "job_id": "193f4ea1-14a3-4b16-9b42-a447f430b61c",
+      "company_name": "Target Company",
+      "job_title": "Talent Brand Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8753664002",
+      "relevance_score": 0.76,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_193F4EA1_1791866847",
+      "applied_date": "2026-10-13 04:47:27 UTC",
+      "last_updated": "2026-10-13 04:47:27 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_193f4ea1_8fd61609\\resume_tailored.md"
+    },
+    {
+      "job_id": "test_job_001",
+      "company_name": "Test Corp",
+      "job_title": "HR Specialist",
+      "job_url": "https://test-company.local/jobs/hr-specialist",
+      "relevance_score": 0.95,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "CONF-TEST-123",
+      "applied_date": "2026-10-15 04:40:49 UTC",
+      "last_updated": "2026-10-15 04:41:59 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "",
+      "notes": "Hiring manager screening scheduled",
+      "interview_date": "2026-10-20",
+      "interview_time": "14:30",
+      "interview_round": "Round 1 Screening",
+      "meeting_link": "https://meet.google.com/test-abc-xyz",
+      "last_followup_at": "2026-10-15 04:41:59 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-15 04:40:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-15 04:41:39 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-15 04:41:59 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        }
+      ]
+    },
+    {
+      "job_id": "8cb91e55-a30e-4597-bb8c-5b27f78de60e",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_8331e49296",
+      "relevance_score": 0.911,
+      "status": "INTERVIEW_SCHEDULED",
+      "confirmation_id": "DRYRUN-SUB_31E49296_1792039319",
+      "applied_date": "2026-10-15 04:41:59 UTC",
+      "last_updated": "2026-10-15 04:44:18 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\custom_jd_8331e49296\\resume_tailored.md",
+      "notes": "Recruiter impressed with employee lifecycle and onboarding background.",
+      "interview_date": "2026-10-22",
+      "interview_time": "15:00 IST",
+      "interview_round": "Round 1 - People Ops Screening",
+      "meeting_link": "https://meet.google.com/xyz-swiggy-hr"
     }
   ]
 }

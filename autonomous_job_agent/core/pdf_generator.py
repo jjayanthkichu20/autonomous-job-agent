@@ -8,7 +8,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 
-from autonomous_job_agent.core.models import CandidateMasterProfile
+from autonomous_job_agent.core.models import CandidateMasterProfile, ApplicationVariant
 
 
 def generate_candidate_pdf(profile: CandidateMasterProfile) -> bytes:
@@ -142,3 +142,149 @@ def generate_candidate_pdf(profile: CandidateMasterProfile) -> bytes:
 
     doc.build(story)
     return buffer.getvalue()
+
+
+def generate_tailored_pdf(
+    profile: CandidateMasterProfile,
+    variant: ApplicationVariant,
+    job_title: str = "",
+    company_name: str = ""
+) -> bytes:
+    """Generates an ATS-compliant PDF resume tailored specifically to a target job description."""
+    buffer = io.BytesIO()
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=letter,
+        rightMargin=0.5 * inch,
+        leftMargin=0.5 * inch,
+        topMargin=0.5 * inch,
+        bottomMargin=0.5 * inch
+    )
+
+    styles = getSampleStyleSheet()
+
+    title_style = ParagraphStyle(
+        'TailoredCandidateTitle',
+        parent=styles['Heading1'],
+        fontName='Helvetica-Bold',
+        fontSize=18,
+        leading=22,
+        textColor=colors.HexColor('#0f172a'),
+        alignment=1
+    )
+
+    contact_style = ParagraphStyle(
+        'TailoredContactInfo',
+        parent=styles['Normal'],
+        fontName='Helvetica',
+        fontSize=8.5,
+        leading=11.5,
+        textColor=colors.HexColor('#475569'),
+        alignment=1
+    )
+
+    headline_style = ParagraphStyle(
+        'TailoredHeadlineStyle',
+        parent=styles['Normal'],
+        fontName='Helvetica-Bold',
+        fontSize=10,
+        leading=13.5,
+        textColor=colors.HexColor('#1d4ed8'),
+        alignment=1
+    )
+
+    section_header = ParagraphStyle(
+        'TailoredSectionHeader',
+        parent=styles['Heading2'],
+        fontName='Helvetica-Bold',
+        fontSize=10.5,
+        leading=14,
+        textColor=colors.HexColor('#1e40af'),
+        spaceBefore=6,
+        spaceAfter=3
+    )
+
+    role_style = ParagraphStyle(
+        'TailoredRoleTitle',
+        parent=styles['Normal'],
+        fontName='Helvetica-Bold',
+        fontSize=9.5,
+        leading=13,
+        textColor=colors.HexColor('#1e293b')
+    )
+
+    body_style = ParagraphStyle(
+        'TailoredBodyText',
+        parent=styles['Normal'],
+        fontName='Helvetica',
+        fontSize=8.5,
+        leading=11.5,
+        textColor=colors.HexColor('#334155')
+    )
+
+    bullet_style = ParagraphStyle(
+        'TailoredBullet',
+        parent=styles['Normal'],
+        fontName='Helvetica',
+        fontSize=8.5,
+        leading=11.5,
+        textColor=colors.HexColor('#334155'),
+        leftIndent=10
+    )
+
+    story = []
+
+    # 1. Header (Name, Contact & Tailored Headline)
+    story.append(Paragraph(f"{profile.first_name} {profile.last_name}", title_style))
+    contact_line = f"{profile.email} | {profile.phone} | {profile.location}"
+    if profile.linkedin_url:
+        contact_line += f" | {profile.linkedin_url}"
+    story.append(Paragraph(contact_line, contact_style))
+
+    if variant.tailored_headline:
+        story.append(Spacer(1, 2))
+        story.append(Paragraph(variant.tailored_headline, headline_style))
+
+    story.append(Spacer(1, 4))
+    story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor('#cbd5e1'), spaceBefore=2, spaceAfter=5))
+
+    # 2. Executive Summary (Tailored for this role)
+    if variant.tailored_summary:
+        story.append(Paragraph("PROFESSIONAL SUMMARY", section_header))
+        summary_clean = variant.tailored_summary.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        story.append(Paragraph(summary_clean, body_style))
+        story.append(Spacer(1, 3))
+
+    # 3. Core Competencies & Keywords
+    if profile.verified_skills:
+        story.append(Paragraph("CORE COMPETENCIES & KEYWORDS", section_header))
+        skills_text = ", ".join(profile.verified_skills)
+        story.append(Paragraph(skills_text, body_style))
+        story.append(Spacer(1, 3))
+
+    # 4. Professional Experience (Using grounded tailored bullets)
+    if variant.customized_experiences:
+        story.append(Paragraph("PROFESSIONAL EXPERIENCE", section_header))
+        for exp in variant.customized_experiences:
+            dates = f"{exp.get('start_date', '')} – {exp.get('end_date') or 'Present'}"
+            exp_header = f"<b>{exp.get('role', '')}</b> | {exp.get('company', '')}"
+            story.append(Paragraph(f"{exp_header} <font color='#64748b' size='8'>[{dates}]</font>", role_style))
+            story.append(Spacer(1, 1.5))
+
+            for bullet in exp.get("bullets", []):
+                bullet_clean = bullet.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                story.append(Paragraph(f"• {bullet_clean}", bullet_style))
+                story.append(Spacer(1, 1.5))
+            story.append(Spacer(1, 3))
+
+    # 5. Education
+    if profile.education:
+        story.append(Paragraph("EDUCATION & QUALIFICATIONS", section_header))
+        for edu in profile.education:
+            edu_text = f"<b>{edu.degree} in {edu.field_of_study}</b> — {edu.institution} ({edu.graduation_year})"
+            story.append(Paragraph(edu_text, body_style))
+            story.append(Spacer(1, 1.5))
+
+    doc.build(story)
+    return buffer.getvalue()
+
