@@ -252,3 +252,20 @@ def test_custom_jd_service_tailoring_and_apply(sample_profile):
     assert applied["delivery_status"] == "STAGED"
     assert applied["confirmation_id"].startswith("DRYRUN-")
 
+
+def test_multi_ats_evaluation_engine(sample_profile):
+    from autonomous_job_agent.core.multi_ats_evaluator import MultiATSEvaluator
+    evaluator = MultiATSEvaluator()
+    res = evaluator.evaluate_profile(sample_profile)
+
+    assert "overall_composite_score" in res
+    assert res["overall_composite_score"] >= 70.0
+    assert "methodologies" in res
+    assert "workday" in res["methodologies"]
+    assert "greenhouse" in res["methodologies"]
+    assert "taleo" in res["methodologies"]
+    assert "lever" in res["methodologies"]
+    assert "icims_sovren" in res["methodologies"]
+    assert len(res["company_benchmarks"]) >= 5
+    assert len(res["dimensions"]) == 5
+

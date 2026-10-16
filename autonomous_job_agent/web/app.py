@@ -28,6 +28,7 @@ from autonomous_job_agent.core.pdf_parser import extract_text_from_pdf, parse_re
 from autonomous_job_agent.core.pdf_generator import generate_candidate_pdf, generate_tailored_pdf
 from autonomous_job_agent.agents.agent2_customizer.custom_jd_service import custom_jd_service
 from autonomous_job_agent.orchestration.recurring_scheduler import recurring_hunter
+from autonomous_job_agent.core.multi_ats_evaluator import MultiATSEvaluator
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("arya_platform")
@@ -323,6 +324,27 @@ def download_resume_pdf():
         media_type="application/pdf",
         headers={"Content-Disposition": f'attachment; filename="{filename}"'}
     )
+
+
+ats_evaluator = MultiATSEvaluator()
+
+
+@app.get("/api/ats/multi-score")
+def get_multi_ats_score():
+    """Evaluates candidate resume across 5 distinct ATS methodologies and top employers."""
+    profile = load_current_profile()
+    return ats_evaluator.evaluate_profile(profile)
+
+
+class CustomJDEvalRequest(BaseModel):
+    jd_text: str = ""
+
+
+@app.post("/api/ats/evaluate-custom")
+def evaluate_custom_jd_ats(req: CustomJDEvalRequest):
+    """Evaluates candidate resume against custom Job Description text across all ATS engines."""
+    profile = load_current_profile()
+    return ats_evaluator.evaluate_profile(profile, custom_jd_text=req.jd_text)
 
 
 @app.get("/api/jobs/feed")

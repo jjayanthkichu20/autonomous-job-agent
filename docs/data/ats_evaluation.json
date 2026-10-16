@@ -1,0 +1,241 @@
+{
+  "overall_composite_score": 94.9,
+  "readiness_verdict": "Tier-1 Interview Ready (High ATS Pass Rate)",
+  "methodologies": {
+    "workday": {
+      "name": "Workday Enterprise Parser",
+      "score": 100.0,
+      "focus": "Exact Keyword Density, Chronological Timeline & Contact Metadata",
+      "status": "Optimal",
+      "breakdown": {
+        "keyword_match_pct": 100.0,
+        "structure_validity_pct": 100
+      }
+    },
+    "greenhouse": {
+      "name": "Greenhouse Competency Scorecard",
+      "score": 83.3,
+      "focus": "Competency Mapping, Departmental Role Fit & Hard Skills",
+      "status": "Good",
+      "competencies": {
+        "employee onboarding": true,
+        "hr systems (hris/hrms)": true,
+        "statutory & regulatory compliance": true,
+        "payroll input & processing": false,
+        "talent acquisition & screening": true,
+        "reporting & data analytics": true
+      }
+    },
+    "taleo": {
+      "name": "Taleo / Oracle Traditional ATS",
+      "score": 91.2,
+      "focus": "Mandatory Knock-Out Questions & Skill Density Thresholds",
+      "status": "Passed",
+      "knockout_passed": true,
+      "density_ratio_pct": 87.5
+    },
+    "lever": {
+      "name": "Lever Recruiter Impact Index",
+      "score": 100.0,
+      "focus": "Measurable Metrics, Numbers (%), and Strong Action Verbs",
+      "status": "Exceptional",
+      "metric_bullet_ratio_pct": 100.0,
+      "action_verb_ratio_pct": 100.0
+    },
+    "icims_sovren": {
+      "name": "iCIMS / Sovren Semantic & Format Audit",
+      "score": 100.0,
+      "focus": "Standard Section Header Hygiene, Clean Typography & Parse Integrity",
+      "status": "100% Parsable",
+      "audit_checklist": {
+        "Standard Experience Section": true,
+        "Standard Education Section": true,
+        "Explicit Technical Skills List": true,
+        "Contact Phone with Country Code": true,
+        "Valid Deliverable Email": true,
+        "Target Location Anchor": true
+      }
+    }
+  },
+  "dimensions": [
+    {
+      "dimension": "Keyword Density & Exact Match",
+      "score": 100.0,
+      "weight": "25%"
+    },
+    {
+      "dimension": "Semantic Competency Alignment",
+      "score": 83.3,
+      "weight": "20%"
+    },
+    {
+      "dimension": "Quantifiable Metrics & Impact",
+      "score": 100.0,
+      "weight": "20%"
+    },
+    {
+      "dimension": "Format & Structural Hygiene",
+      "score": 100.0,
+      "weight": "20%"
+    },
+    {
+      "dimension": "Knockout Compliance & Education",
+      "score": 100.0,
+      "weight": "15%"
+    }
+  ],
+  "company_benchmarks": [
+    {
+      "company": "Infosys",
+      "engine": "Workday",
+      "score": 87.5,
+      "verdict": "Interview Ready",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance",
+        "Excel"
+      ],
+      "missing_keywords": [
+        "MIS"
+      ]
+    },
+    {
+      "company": "HP Inc.",
+      "engine": "Workday",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "Compliance"
+      ],
+      "missing_keywords": [
+        "Payroll Input Support",
+        "HRMS",
+        "Vendor Management"
+      ]
+    },
+    {
+      "company": "Dell Technologies",
+      "engine": "Taleo",
+      "score": 99.0,
+      "verdict": "Interview Ready",
+      "matched_keywords": [
+        "HR Operations",
+        "Recruitment",
+        "Compliance",
+        "HRIS",
+        "Documentation"
+      ],
+      "missing_keywords": []
+    },
+    {
+      "company": "TCS",
+      "engine": "Enterprise ATS",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding",
+        "Excel"
+      ],
+      "missing_keywords": [
+        "Statutory Compliance",
+        "Attendance Management"
+      ]
+    },
+    {
+      "company": "Genpact",
+      "engine": "Taleo",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "Compliance",
+        "Employee Documentation"
+      ],
+      "missing_keywords": [
+        "Payroll Input Support",
+        "HRMS",
+        "Audit"
+      ]
+    },
+    {
+      "company": "Accenture",
+      "engine": "Workday",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "HRIS",
+        "Onboarding"
+      ],
+      "missing_keywords": [
+        "Process Improvement",
+        "Stakeholder Management"
+      ]
+    },
+    {
+      "company": "Quest Global",
+      "engine": "Lever",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "Talent Acquisition",
+        "HR Operations"
+      ],
+      "missing_keywords": [
+        "Technical Sourcing",
+        "Interview Coordination"
+      ]
+    },
+    {
+      "company": "Sutherland",
+      "engine": "iCIMS",
+      "score": 81.2,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "Recruitment & Talent Acquisition",
+        "Documentation",
+        "Compliance"
+      ],
+      "missing_keywords": [
+        "HR Executive"
+      ]
+    },
+    {
+      "company": "Concentrix",
+      "engine": "Greenhouse",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding"
+      ],
+      "missing_keywords": [
+        "Candidate Screening",
+        "HRMS"
+      ]
+    },
+    {
+      "company": "Swiggy Technologies",
+      "engine": "Greenhouse",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HRIS"
+      ],
+      "missing_keywords": [
+        "HR Operations Executive",
+        "Employee Lifecycle",
+        "Payroll Support"
+      ]
+    }
+  ],
+  "custom_jd_result": null,
+  "key_recommendations": [
+    "Include 'Statutory Compliance (PF/ESI)' explicitly in every tailored variant for Indian enterprise ATS portals.",
+    "Maintain quantifiable impact metrics (e.g., '100% compliance across employee records') to score top marks in Lever & Greenhouse.",
+    "Keep standard section headers ('Professional Experience', 'Education', 'Technical Skills') to ensure 100% parsability in Workday and iCIMS."
+  ]
+}

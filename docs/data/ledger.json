@@ -547,9 +547,9 @@
       "job_url": "http://127.0.0.1:8769/greenhouse/job/101",
       "relevance_score": 0.969,
       "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_2A297298_1792145450",
+      "confirmation_id": "DRYRUN-SUB_AE836510_1792147454",
       "applied_date": "2026-10-09 04:20:39 UTC",
-      "last_updated": "2026-10-16 10:10:50 UTC",
+      "last_updated": "2026-10-16 10:44:14 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a2b54dfa_daa8524a\\resume_tailored.md"
     },
@@ -879,7 +879,7 @@
       "status": "FOLLOW_UP_SENT",
       "confirmation_id": "CONF-TEST-123",
       "applied_date": "2026-10-15 04:40:49 UTC",
-      "last_updated": "2026-10-16 10:10:51 UTC",
+      "last_updated": "2026-10-16 10:44:15 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "",
       "notes": "Hiring manager screening scheduled",
@@ -887,7 +887,7 @@
       "interview_time": "14:30",
       "interview_round": "Round 1 Screening",
       "meeting_link": "https://meet.google.com/test-abc-xyz",
-      "last_followup_at": "2026-10-16 10:10:51 UTC",
+      "last_followup_at": "2026-10-16 10:44:15 UTC",
       "last_followup_cadence": "T+7",
       "followup_history": [
         {
@@ -937,6 +937,21 @@
         },
         {
           "timestamp": "2026-10-16 10:10:51 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-16 10:42:56 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-16 10:43:42 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-16 10:44:15 UTC",
           "cadence": "T+7",
           "notes": "Polite check-in sent"
         }
@@ -2659,6 +2674,45 @@
       "last_updated": "2026-10-16 10:10:51 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_fc9bb6060f\\resume_tailored.md"
+    },
+    {
+      "job_id": "e5c751da-c4fc-46b8-99e3-66d560868430",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_9781e6a17d",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_81E6A17D_1792147377",
+      "applied_date": "2026-10-16 10:42:57 UTC",
+      "last_updated": "2026-10-16 10:42:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_9781e6a17d\\resume_tailored.md"
+    },
+    {
+      "job_id": "7aaa260c-07c8-4e5c-9c10-b49c21556820",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_7d26452771",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_26452771_1792147422",
+      "applied_date": "2026-10-16 10:43:42 UTC",
+      "last_updated": "2026-10-16 10:43:42 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_7d26452771\\resume_tailored.md"
+    },
+    {
+      "job_id": "faedd60a-7830-4a9d-ae4e-a0dcc5f806d5",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_8094313e15",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_94313E15_1792147455",
+      "applied_date": "2026-10-16 10:44:15 UTC",
+      "last_updated": "2026-10-16 10:44:15 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_8094313e15\\resume_tailored.md"
     }
   ]
 }
