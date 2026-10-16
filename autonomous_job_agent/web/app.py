@@ -330,10 +330,47 @@ ats_evaluator = MultiATSEvaluator()
 
 
 @app.get("/api/ats/multi-score")
-def get_multi_ats_score():
-    """Evaluates candidate resume across 5 distinct ATS methodologies and top employers."""
+def get_multi_ats_score(role: Optional[str] = None):
+    """Evaluates candidate resume across 5 distinct ATS methodologies, target roles, and top employers."""
     profile = load_current_profile()
-    return ats_evaluator.evaluate_profile(profile)
+    return ats_evaluator.evaluate_profile(profile, selected_role=role)
+
+
+class SetTargetRoleRequest(BaseModel):
+    role: str
+
+
+@app.post("/api/profile/set-target-role")
+def set_target_role(req: SetTargetRoleRequest):
+    """Updates candidate master profile primary target role."""
+    profile = load_current_profile()
+    new_role = req.role.strip()
+    if not new_role:
+        raise HTTPException(status_code=400, detail="Target role cannot be empty")
+    
+    current_roles = list(profile.target_roles or [])
+    if new_role in current_roles:
+        current_roles.remove(new_role)
+    current_roles.insert(0, new_role)
+    
+    profile.target_roles = current_roles
+    
+    path = BASE_DIR / "my_profile.json"
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(profile.model_dump(), f, indent=2)
+
+    docs_profile = BASE_DIR / "docs" / "data" / "profile.json"
+    if docs_profile.parent.exists():
+        with open(docs_profile, "w", encoding="utf-8") as f:
+            json.dump(profile.model_dump(), f, indent=2)
+
+    return {
+        "status": "success",
+        "message": f"Active target role set to '{new_role}'",
+        "active_role": new_role,
+        "target_roles": current_roles,
+        "ats_evaluation": ats_evaluator.evaluate_profile(profile, selected_role=new_role)
+    }
 
 
 class CustomJDEvalRequest(BaseModel):

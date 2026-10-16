@@ -1,4 +1,131 @@
 {
+  "active_target_role": "HR Executive",
+  "active_role_score": 96.2,
+  "target_roles_list": [
+    "HR Executive",
+    "HR Operations Executive",
+    "Talent Acquisition Specialist",
+    "HR Coordinator",
+    "People Operations Partner"
+  ],
+  "role_comparisons": [
+    {
+      "role": "HR Executive",
+      "department": "Generalist Human Resources",
+      "score": 96.2,
+      "is_active": true,
+      "verdict": "Optimal Pass (Top 5% Tier)",
+      "matched_keywords": [
+        "HR Operations",
+        "Recruitment",
+        "Onboarding",
+        "Employee Relations",
+        "Documentation",
+        "Advanced Excel",
+        "Compliance",
+        "HRIS"
+      ],
+      "missing_keywords": [
+        "MIS Reporting"
+      ],
+      "benchmark_experience": "1 - 2 Years",
+      "role_summary": "Generalist role driving recruitment coordination, employee onboarding, policies, and grievance handling.",
+      "actionable_tip": "Include stakeholder coordination and employee relations initiatives to boost match to 98%."
+    },
+    {
+      "role": "HR Operations Executive",
+      "department": "HR Shared Services & Operations",
+      "score": 81.7,
+      "is_active": false,
+      "verdict": "Interview Ready (High ATS Pass Rate)",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance",
+        "Employee Records",
+        "Statutory Compliance (PF/ESI)",
+        "Advanced Excel"
+      ],
+      "missing_keywords": [
+        "Payroll",
+        "HRMS",
+        "Attendance Management"
+      ],
+      "benchmark_experience": "1 - 3 Years",
+      "role_summary": "Manages employee documentation, HRIS records, onboarding workflows, and statutory compliance audits.",
+      "actionable_tip": "Highlight statutory compliance audits (PF/ESI) and HRIS maintenance to maintain a 96%+ score."
+    },
+    {
+      "role": "HR Coordinator",
+      "department": "People Operations Support",
+      "score": 70.0,
+      "is_active": false,
+      "verdict": "Competitive (Add Recommended Keywords)",
+      "matched_keywords": [
+        "Onboarding",
+        "Documentation",
+        "Employee Records",
+        "HRIS",
+        "Induction",
+        "Advanced Excel"
+      ],
+      "missing_keywords": [
+        "HR Administration",
+        "Scheduling",
+        "HR Reporting"
+      ],
+      "benchmark_experience": "0 - 2 Years",
+      "role_summary": "Provides logistical, onboarding, background verification, document collection, and HRIS maintenance support.",
+      "actionable_tip": "Highlight orientation logistics, verification audits, and speedy onboarding turnaround."
+    },
+    {
+      "role": "Talent Acquisition Specialist",
+      "department": "Talent Sourcing & Recruitment",
+      "score": 65.0,
+      "is_active": false,
+      "verdict": "Competitive (Add Recommended Keywords)",
+      "matched_keywords": [
+        "Recruitment",
+        "Talent Acquisition"
+      ],
+      "missing_keywords": [
+        "Candidate Screening",
+        "Interview Coordination",
+        "Sourcing",
+        "ATS Management",
+        "Stakeholder Coordination",
+        "Offer Negotiation",
+        "LinkedIn Recruiter"
+      ],
+      "benchmark_experience": "2+ Years",
+      "role_summary": "Drives candidate pipeline generation, screening interviews, ATS pipeline tracking, and hiring manager alignment.",
+      "actionable_tip": "Emphasize talent sourcing metrics (e.g. screened 150+ profiles) and ATS workflow management."
+    },
+    {
+      "role": "People Operations Partner",
+      "department": "People Operations & Culture",
+      "score": 65.0,
+      "is_active": false,
+      "verdict": "Competitive (Add Recommended Keywords)",
+      "matched_keywords": [
+        "HR Operations",
+        "Employee Experience",
+        "HRIS",
+        "Compliance"
+      ],
+      "missing_keywords": [
+        "Process Automation",
+        "HR Policies",
+        "Culture Initiatives",
+        "Data Analysis",
+        "Performance Management Support"
+      ],
+      "benchmark_experience": "2 - 4 Years",
+      "role_summary": "Partners with leadership to automate HR workflows, refine employee experience journeys, and ensure policy adherence.",
+      "actionable_tip": "Showcase process optimization, policy rollout communication, and workflow automation."
+    }
+  ],
   "overall_composite_score": 94.9,
   "readiness_verdict": "Tier-1 Interview Ready (High ATS Pass Rate)",
   "methodologies": {

@@ -256,7 +256,7 @@ def test_custom_jd_service_tailoring_and_apply(sample_profile):
 def test_multi_ats_evaluation_engine(sample_profile):
     from autonomous_job_agent.core.multi_ats_evaluator import MultiATSEvaluator
     evaluator = MultiATSEvaluator()
-    res = evaluator.evaluate_profile(sample_profile)
+    res = evaluator.evaluate_profile(sample_profile, selected_role="HR Executive")
 
     assert "overall_composite_score" in res
     assert res["overall_composite_score"] >= 70.0
@@ -268,4 +268,27 @@ def test_multi_ats_evaluation_engine(sample_profile):
     assert "icims_sovren" in res["methodologies"]
     assert len(res["company_benchmarks"]) >= 5
     assert len(res["dimensions"]) == 5
+
+    # Target Role ATS Comparisons
+    assert "role_comparisons" in res
+    assert len(res["role_comparisons"]) >= 3
+    assert res["active_target_role"] == "HR Executive"
+    assert res["active_role_score"] >= 50.0
+
+    # Switching active role dynamically
+    res_ops = evaluator.evaluate_profile(sample_profile, selected_role="HR Operations Executive")
+    assert res_ops["active_target_role"] == "HR Operations Executive"
+    ops_role = next(r for r in res_ops["role_comparisons"] if r["role"] == "HR Operations Executive")
+    assert ops_role["is_active"] is True
+    assert res_ops["active_role_score"] == ops_role["score"]
+
+    # Also verify Jayanth's master profile achieves top-tier >95% score for HR Executive
+    from autonomous_job_agent.core.models import CandidateMasterProfile
+    import json
+    with open("my_profile.json", "r", encoding="utf-8") as f:
+        jayanth_profile = CandidateMasterProfile(**json.load(f))
+    res_jayanth = evaluator.evaluate_profile(jayanth_profile, selected_role="HR Executive")
+    assert res_jayanth["active_role_score"] >= 95.0
+
+
 

@@ -95,8 +95,51 @@ class MultiATSEvaluator:
         }
     }
 
-    def evaluate_profile(self, profile: CandidateMasterProfile, custom_jd_text: Optional[str] = None) -> Dict[str, Any]:
-        """Runs multi-way evaluation of candidate master profile."""
+    ROLE_BENCHMARKS = {
+        "HR Operations Executive": {
+            "department": "HR Shared Services & Operations",
+            "required_keywords": ["HR Operations", "Onboarding", "HRIS", "Compliance", "Payroll", "Employee Records"],
+            "recommended_keywords": ["Statutory Compliance (PF/ESI)", "HRMS", "Attendance Management", "Advanced Excel"],
+            "benchmark_experience": "1 - 3 Years",
+            "role_summary": "Manages employee documentation, HRIS records, onboarding workflows, and statutory compliance audits.",
+            "actionable_tip": "Highlight statutory compliance audits (PF/ESI) and HRIS maintenance to maintain a 96%+ score."
+        },
+        "HR Executive": {
+            "department": "Generalist Human Resources",
+            "required_keywords": ["HR Operations", "Recruitment", "Onboarding", "Employee Relations", "Documentation"],
+            "recommended_keywords": ["Advanced Excel", "MIS Reporting", "Compliance", "HRIS"],
+            "benchmark_experience": "1 - 2 Years",
+            "role_summary": "Generalist role driving recruitment coordination, employee onboarding, policies, and grievance handling.",
+            "actionable_tip": "Include stakeholder coordination and employee relations initiatives to boost match to 98%."
+        },
+        "Talent Acquisition Specialist": {
+            "department": "Talent Sourcing & Recruitment",
+            "required_keywords": ["Recruitment", "Talent Acquisition", "Candidate Screening", "Interview Coordination", "Sourcing"],
+            "recommended_keywords": ["ATS Management", "Stakeholder Coordination", "Offer Negotiation", "LinkedIn Recruiter"],
+            "benchmark_experience": "2+ Years",
+            "role_summary": "Drives candidate pipeline generation, screening interviews, ATS pipeline tracking, and hiring manager alignment.",
+            "actionable_tip": "Emphasize talent sourcing metrics (e.g. screened 150+ profiles) and ATS workflow management."
+        },
+        "HR Coordinator": {
+            "department": "People Operations Support",
+            "required_keywords": ["Onboarding", "Documentation", "HR Administration", "Scheduling", "Employee Records"],
+            "recommended_keywords": ["HRIS", "Induction", "HR Reporting", "Advanced Excel"],
+            "benchmark_experience": "0 - 2 Years",
+            "role_summary": "Provides logistical, onboarding, background verification, document collection, and HRIS maintenance support.",
+            "actionable_tip": "Highlight orientation logistics, verification audits, and speedy onboarding turnaround."
+        },
+        "People Operations Partner": {
+            "department": "People Operations & Culture",
+            "required_keywords": ["HR Operations", "Employee Experience", "Process Automation", "HR Policies", "HRIS"],
+            "recommended_keywords": ["Culture Initiatives", "Data Analysis", "Performance Management Support", "Compliance"],
+            "benchmark_experience": "2 - 4 Years",
+            "role_summary": "Partners with leadership to automate HR workflows, refine employee experience journeys, and ensure policy adherence.",
+            "actionable_tip": "Showcase process optimization, policy rollout communication, and workflow automation."
+        }
+    }
+
+    def evaluate_profile(self, profile: CandidateMasterProfile, selected_role: Optional[str] = None, custom_jd_text: Optional[str] = None) -> Dict[str, Any]:
+        """Runs multi-way evaluation of candidate master profile calibrated by target role."""
         
         # 1. Compile profile textual corpus
         skills_pool = [s.lower().strip() for s in (profile.verified_skills or [])]
@@ -267,7 +310,90 @@ class MultiATSEvaluator:
                 "verdict": "High ATS Screen Pass" if custom_score >= 80 else "Requires Keyword Tailoring"
             }
 
+        # ----------------------------------------------------
+        # Target Role ATS Score Comparison & Calibration
+        # ----------------------------------------------------
+        candidate_target_roles = list(profile.target_roles or [])
+        if not candidate_target_roles:
+            candidate_target_roles = ["HR Operations Executive", "HR Executive", "Talent Acquisition Specialist"]
+
+        all_target_roles = list(dict.fromkeys(candidate_target_roles + list(self.ROLE_BENCHMARKS.keys())))
+        
+        # If user explicitly selected a role, use it; otherwise default to candidate's first target role
+        active_role = selected_role if (selected_role and any(selected_role.lower() == r.lower() for r in all_target_roles)) else candidate_target_roles[0]
+
+        role_scores = []
+        for role_name in all_target_roles:
+            meta = self.ROLE_BENCHMARKS.get(role_name, {
+                "department": "Target Career Discipline",
+                "required_keywords": [s for s in skills_pool[:5]],
+                "recommended_keywords": [s for s in skills_pool[5:8]],
+                "benchmark_experience": "1 - 3 Years",
+                "role_summary": f"Target role aligned with {role_name} responsibilities.",
+                "actionable_tip": f"Optimize keywords around {role_name} core competencies."
+            })
+
+            req_kws = meta.get("required_keywords", [])
+            rec_kws = meta.get("recommended_keywords", [])
+            
+            def is_keyword_matched(k_str):
+                k_clean = re.sub(r"[\(\)/]", " ", k_str.lower()).strip()
+                k_words = [w for w in k_clean.split() if len(w) > 3]
+                for item in skills_pool + achievements_text:
+                    if k_clean in item or item in k_clean:
+                        return True
+                    if k_words and any(w in item for w in k_words):
+                        return True
+                return False
+
+            matched_req = [k for k in req_kws if is_keyword_matched(k)]
+            missing_req = [k for k in req_kws if k not in matched_req]
+            
+            matched_rec = [k for k in rec_kws if is_keyword_matched(k)]
+            missing_rec = [k for k in rec_kws if k not in matched_rec]
+
+            title_match = any(role_name.lower() in tr.lower() or tr.lower() in role_name.lower() for tr in target_roles)
+            exp_title_match = any(role_name.lower() in exp.role.lower() or exp.role.lower() in role_name.lower() for exp in profile.experiences)
+            
+            title_score = 100.0 if (title_match and exp_title_match) else (90.0 if (title_match or exp_title_match) else 75.0)
+            req_score = (len(matched_req) / max(1, len(req_kws))) * 100.0 if req_kws else 90.0
+            rec_score = (len(matched_rec) / max(1, len(rec_kws))) * 100.0 if rec_kws else 90.0
+            
+            # Composite role score (50% Required Keywords, 25% Title Match, 15% Recommended Keywords, 10% Impact)
+            r_score = round(0.50 * req_score + 0.25 * title_score + 0.15 * rec_score + 0.10 * (lever_score), 1)
+            r_score = min(99.0, max(65.0, r_score))
+
+            if r_score >= 90:
+                r_verdict = "Optimal Pass (Top 5% Tier)"
+            elif r_score >= 80:
+                r_verdict = "Interview Ready (High ATS Pass Rate)"
+            else:
+                r_verdict = "Competitive (Add Recommended Keywords)"
+
+            is_active = (role_name.lower() == active_role.lower())
+
+            role_scores.append({
+                "role": role_name,
+                "department": meta.get("department", "HR"),
+                "score": r_score,
+                "is_active": is_active,
+                "verdict": r_verdict,
+                "matched_keywords": matched_req + matched_rec,
+                "missing_keywords": missing_req + missing_rec,
+                "benchmark_experience": meta.get("benchmark_experience", "1 - 3 Years"),
+                "role_summary": meta.get("role_summary", ""),
+                "actionable_tip": meta.get("actionable_tip", "")
+            })
+
+        # Sort so active role is first, then by score descending
+        role_scores.sort(key=lambda x: (not x["is_active"], -x["score"]))
+        active_role_entry = next((r for r in role_scores if r["is_active"]), role_scores[0])
+
         return {
+            "active_target_role": active_role_entry["role"],
+            "active_role_score": active_role_entry["score"],
+            "target_roles_list": all_target_roles,
+            "role_comparisons": role_scores,
             "overall_composite_score": composite_score,
             "readiness_verdict": "Tier-1 Interview Ready (High ATS Pass Rate)" if composite_score >= 88 else "Ready for Submission",
             "methodologies": {
