@@ -390,7 +390,7 @@
           <!-- Search Bar -->
           <div class="relative">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400 text-sm"></i>
-            <input type="text" id="job-search-input" oninput="filterJobsList()" placeholder="Search by job title, skill, or company (e.g. HR Executive, Recruitment, Bangalore)..." class="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm bg-gray-900/60 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+            <input type="text" id="job-search-input" aria-label="Search by job title, skill, or company" oninput="filterJobsList()" placeholder="Search by job title, skill, or company (e.g. HR Executive, Recruitment, Bangalore)..." class="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm bg-gray-900/60 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
           </div>
 
           <!-- Location & Filter Chips -->
@@ -413,7 +413,7 @@
             </button>
 
             <!-- Mode Selector -->
-            <select id="mode-filter-select" onchange="filterJobsList()" class="text-xs bg-gray-900 border border-gray-700 rounded-lg px-2.5 py-1 text-gray-300 focus:outline-none focus:border-blue-500">
+            <select id="mode-filter-select" aria-label="Filter jobs by work mode" onchange="filterJobsList()" class="text-xs bg-gray-900 border border-gray-700 rounded-lg px-2.5 py-1 text-gray-300 focus:outline-none focus:border-blue-500">
               <option value="ALL">All Work Modes</option>
               <option value="REMOTE">Remote Only</option>
               <option value="HYBRID">Hybrid</option>
@@ -458,26 +458,26 @@
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label class="block text-xs font-medium text-gray-300 mb-1">Target Job Title *</label>
+              <label for="custom-jd-title" class="block text-xs font-medium text-gray-300 mb-1">Target Job Title *</label>
               <input type="text" id="custom-jd-title" placeholder="e.g. HR Executive / HR Operations Specialist" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
             </div>
             <div>
-              <label class="block text-xs font-medium text-gray-300 mb-1">Company / Organization *</label>
+              <label for="custom-jd-company" class="block text-xs font-medium text-gray-300 mb-1">Company / Organization *</label>
               <input type="text" id="custom-jd-company" placeholder="e.g. Swiggy, InMobi, TalentPulse" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
             </div>
             <div>
-              <label class="block text-xs font-medium text-gray-300 mb-1">Target Location</label>
+              <label for="custom-jd-location" class="block text-xs font-medium text-gray-300 mb-1">Target Location</label>
               <input type="text" id="custom-jd-location" value="Bangalore, India / Remote" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-gray-300 mb-1">Target Application Web URL (Optional - for direct ATS submission)</label>
+            <label for="custom-jd-url" class="block text-xs font-medium text-gray-300 mb-1">Target Application Web URL (Optional - for direct ATS submission)</label>
             <input type="url" id="custom-jd-url" placeholder="https://job-boards.greenhouse.io/... or company careers page link" class="w-full text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-gray-300 mb-1">Paste Job Description (JD) *</label>
+            <label for="custom-jd-text" class="block text-xs font-medium text-gray-300 mb-1">Paste Job Description (JD) *</label>
             <textarea id="custom-jd-text" rows="7" placeholder="Paste the full job description, responsibilities, and required qualifications here..." class="w-full text-xs p-3.5 rounded-xl bg-gray-900 border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-blue-500"></textarea>
           </div>
 
@@ -553,7 +553,7 @@
                   <i class="fa-solid fa-copy"></i> Copy
                 </button>
               </div>
-              <textarea id="custom-res-cover-letter" rows="6" readonly class="w-full text-xs p-3 rounded-xl bg-gray-900/60 border border-gray-800 text-gray-300 font-mono"></textarea>
+              <textarea id="custom-res-cover-letter" rows="6" readonly aria-label="AI-Synthesized Cover Letter" class="w-full text-xs p-3 rounded-xl bg-gray-900/60 border border-gray-800 text-gray-300 font-mono"></textarea>
             </div>
           </div>
 
@@ -649,7 +649,7 @@
               <p class="text-xs text-gray-400" style="color: var(--text-muted);">Real-time audit trail of all applications with delivery receipts, interview stages, and follow-ups.</p>
             </div>
             <div class="flex items-center space-x-2">
-              <input type="text" id="tracker-search-input" oninput="filterTrackerTable()" placeholder="Search company or title..." class="text-xs bg-gray-900 border border-gray-700 px-3 py-1.5 rounded-lg text-white">
+              <input type="text" id="tracker-search-input" aria-label="Search applications by company or title" oninput="filterTrackerTable()" placeholder="Search company or title..." class="text-xs bg-gray-900 border border-gray-700 px-3 py-1.5 rounded-lg text-white">
               <button onclick="loadLedgerData()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-1.5 rounded-lg border border-gray-700">
                 <i class="fa-solid fa-arrows-rotate"></i>
               </button>
@@ -744,15 +744,15 @@
 
             <div class="space-y-3">
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1">Company Name</label>
+                <label for="input-recruiter-company" class="block text-xs font-medium text-gray-400 mb-1">Company Name</label>
                 <input type="text" id="input-recruiter-company" value="TalentPulse Technologies" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
               </div>
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1">Email Subject</label>
+                <label for="input-recruiter-subject" class="block text-xs font-medium text-gray-400 mb-1">Email Subject</label>
                 <input type="text" id="input-recruiter-subject" value="Interview Invitation: HR Executive Role" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
               </div>
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1">Email Body Text</label>
+                <label for="input-recruiter-body" class="block text-xs font-medium text-gray-400 mb-1">Email Body Text</label>
                 <textarea id="input-recruiter-body" rows="3" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">Hi Jayanth, We reviewed your profile and experience in onboarding and HR operations. We would love to schedule a 30-minute introductory discussion this week. Please pick a slot here: https://calendly.com/talentpulse-hr/jayanth-interview</textarea>
               </div>
 
@@ -783,7 +783,7 @@
                     <i class="fa-solid fa-copy"></i> Copy Draft
                   </button>
                 </div>
-                <textarea id="res-draft-body" rows="3" readonly class="w-full text-[11px] font-mono p-2 rounded bg-gray-950 border border-gray-800 text-gray-300"></textarea>
+                <textarea id="res-draft-body" rows="3" readonly aria-label="Suggested recruiter response draft" class="w-full text-[11px] font-mono p-2 rounded bg-gray-950 border border-gray-800 text-gray-300"></textarea>
               </div>
             </div>
           </div>
@@ -874,7 +874,7 @@
           <div class="lg:col-span-2 glass-card p-6 rounded-2xl space-y-4">
             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Upload New CV (.PDF or .TXT)</h3>
             <div id="drop-zone" onclick="document.getElementById('cv-file-input').click()" ondragover="event.preventDefault(); this.classList.add('border-blue-500', 'bg-blue-950/20');" ondragleave="this.classList.remove('border-blue-500', 'bg-blue-950/20');" ondrop="event.preventDefault(); this.classList.remove('border-blue-500', 'bg-blue-950/20'); handleFileDrop(event);" class="border-2 border-dashed border-gray-700 hover:border-blue-500 rounded-xl p-8 text-center cursor-pointer transition-all bg-gray-900/30 group">
-              <input type="file" id="cv-file-input" class="hidden" accept=".pdf,.txt,.docx,.doc" onchange="handleFileUpload(event)">
+              <input type="file" id="cv-file-input" aria-label="Upload CV file (.pdf, .txt, .docx)" class="hidden" accept=".pdf,.txt,.docx,.doc" onchange="handleFileUpload(event)">
               <div id="drop-zone-content">
                 <i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
                 <h4 class="text-sm font-bold text-white mb-1">Drag & Drop CV or Click to Browse</h4>
@@ -932,7 +932,7 @@
                 </div>
               </div>
               <div class="flex items-center space-x-2 shrink-0">
-                <input type="text" id="new-target-role-input" placeholder="Add custom role..." class="text-xs px-3 py-1.5 rounded-lg bg-gray-950 border border-gray-700 text-white outline-none focus:border-blue-500">
+                <input type="text" id="new-target-role-input" aria-label="Add custom target role" placeholder="Add custom role..." class="text-xs px-3 py-1.5 rounded-lg bg-gray-950 border border-gray-700 text-white outline-none focus:border-blue-500">
                 <button type="button" onclick="addNewTargetRole()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition-all shadow-md shadow-blue-600/30">
                   <i class="fa-solid fa-plus mr-1"></i>Add
                 </button>
@@ -1039,7 +1039,7 @@
           <!-- View 4: Live Custom JD Auditor -->
           <div id="ats-view-custom" class="space-y-4 hidden">
             <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-3">
-              <label class="block text-xs font-semibold text-gray-300">Paste any Job Description or Job Posting Text to Check ATS Score in Different Ways:</label>
+              <label for="custom-ats-jd-input" class="block text-xs font-semibold text-gray-300">Paste any Job Description or Job Posting Text to Check ATS Score in Different Ways:</label>
               <textarea id="custom-ats-jd-input" rows="4" class="w-full text-xs px-3 py-2 rounded-xl bg-gray-950 border border-gray-700 text-white font-mono focus:border-blue-500 outline-none" placeholder="Paste full Job Description from LinkedIn, Indeed, Glassdoor, or Company Career Portal (e.g., Infosys, Dell, HP, TCS)..."></textarea>
               <div class="flex justify-end">
                 <button type="button" onclick="runCustomJDAtsAudit()" id="btn-run-ats-audit" class="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
@@ -1077,59 +1077,59 @@
         <div class="glass-card p-6 rounded-2xl space-y-4 max-w-3xl">
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">First Name</label>
+              <label for="prof-first-name" class="block text-xs font-semibold text-gray-400 mb-1">First Name</label>
               <input type="text" id="prof-first-name" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="First Name">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">Last Name</label>
+              <label for="prof-last-name" class="block text-xs font-semibold text-gray-400 mb-1">Last Name</label>
               <input type="text" id="prof-last-name" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="Last Name">
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">Email Address</label>
+              <label for="prof-email" class="block text-xs font-semibold text-gray-400 mb-1">Email Address</label>
               <input type="email" id="prof-email" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="email@example.com">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">Mobile Number</label>
+              <label for="prof-phone" class="block text-xs font-semibold text-gray-400 mb-1">Mobile Number</label>
               <input type="text" id="prof-phone" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="+91 ...">
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">Current Base Location</label>
+              <label for="prof-curr-location" class="block text-xs font-semibold text-gray-400 mb-1">Current Base Location</label>
               <input type="text" id="prof-curr-location" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="e.g. Kottayam, Kerala, India">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">LinkedIn Profile URL</label>
+              <label for="prof-linkedin" class="block text-xs font-semibold text-gray-400 mb-1">LinkedIn Profile URL</label>
               <input type="url" id="prof-linkedin" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="https://linkedin.com/in/username">
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-400 mb-1">Preferred Job Locations (Comma-separated)</label>
+            <label for="prof-locations" class="block text-xs font-semibold text-gray-400 mb-1">Preferred Job Locations (Comma-separated)</label>
             <input type="text" id="prof-locations" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="Bangalore, Kochi, Hyderabad, Trivandrum, Remote, UAE">
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-400 mb-1">Target Job Roles (Comma-separated)</label>
+            <label for="prof-roles" class="block text-xs font-semibold text-gray-400 mb-1">Target Job Roles (Comma-separated)</label>
             <input type="text" id="prof-roles" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="HR Executive, Talent Acquisition Specialist, HR Operations">
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-400 mb-1">Verified Core Skills (Comma-separated)</label>
+            <label for="prof-skills-input" class="block text-xs font-semibold text-gray-400 mb-1">Verified Core Skills (Comma-separated)</label>
             <input type="text" id="prof-skills-input" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="Recruitment & Talent Acquisition, Onboarding, HR Operations, HRIS, Compliance">
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">Minimum Monthly Salary (INR)</label>
+              <label for="prof-min-salary" class="block text-xs font-semibold text-gray-400 mb-1">Minimum Monthly Salary (INR)</label>
               <input type="number" id="prof-min-salary" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-400 mb-1">Years of Experience</label>
+              <label for="prof-years-exp" class="block text-xs font-semibold text-gray-400 mb-1">Years of Experience</label>
               <input type="text" id="prof-years-exp" value="2+ Years" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
             </div>
           </div>
@@ -1156,7 +1156,7 @@
               Give your friends 10 free AI-powered applications, and earn 10 bonus application credits when they join.
             </p>
             <div class="flex items-center space-x-2">
-              <input type="text" id="referral-link-input" readonly value="https://arya.mentoria.com/join?ref=JAYANTH-HR" class="text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white w-full max-w-sm">
+              <input type="text" id="referral-link-input" readonly aria-label="Candidate referral link" value="https://arya.mentoria.com/join?ref=JAYANTH-HR" class="text-xs px-3 py-2.5 rounded-xl bg-gray-900 border border-gray-700 text-white w-full max-w-sm">
               <button onclick="copyReferralLink()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shrink-0">
                 <i class="fa-solid fa-copy mr-1"></i> Copy Link
               </button>
@@ -1224,7 +1224,7 @@
         </div>
 
         <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 pt-2">AI-Synthesized Cover Letter</h4>
-        <textarea id="modal-draft-letter" rows="5" class="w-full text-xs p-3 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 font-mono"></textarea>
+        <textarea id="modal-draft-letter" rows="5" aria-label="Synthesized Cover Letter Draft" class="w-full text-xs p-3 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 font-mono"></textarea>
       </div>
 
       <div class="flex items-center justify-end space-x-3 pt-3 border-t border-gray-800">
@@ -1253,7 +1253,7 @@
 
       <div class="space-y-3 text-xs">
         <div>
-          <label class="block font-medium text-gray-300 mb-1">Application Status</label>
+          <label for="modal-interview-status" class="block font-medium text-gray-300 mb-1">Application Status</label>
           <select id="modal-interview-status" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
             <option value="INTERVIEW_SCHEDULED">📅 Interview Scheduled</option>
             <option value="SUBMITTED">✅ Delivered (Live to ATS)</option>
@@ -1265,27 +1265,27 @@
 
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-medium text-gray-300 mb-1">Interview Date</label>
+            <label for="modal-interview-date" class="block font-medium text-gray-300 mb-1">Interview Date</label>
             <input type="date" id="modal-interview-date" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
           </div>
           <div>
-            <label class="block font-medium text-gray-300 mb-1">Interview Time</label>
+            <label for="modal-interview-time" class="block font-medium text-gray-300 mb-1">Interview Time</label>
             <input type="time" id="modal-interview-time" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
           </div>
         </div>
 
         <div>
-          <label class="block font-medium text-gray-300 mb-1">Interview Round / Stage</label>
+          <label for="modal-interview-round" class="block font-medium text-gray-300 mb-1">Interview Round / Stage</label>
           <input type="text" id="modal-interview-round" placeholder="e.g. Round 1 HR Screening, Hiring Manager, Technical" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
         </div>
 
         <div>
-          <label class="block font-medium text-gray-300 mb-1">Meeting Link (Zoom / Teams / Google Meet)</label>
+          <label for="modal-interview-link" class="block font-medium text-gray-300 mb-1">Meeting Link (Zoom / Teams / Google Meet)</label>
           <input type="url" id="modal-interview-link" placeholder="https://meet.google.com/... or https://teams.microsoft.com/..." class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
         </div>
 
         <div>
-          <label class="block font-medium text-gray-300 mb-1">Recruiter Notes / Instructions</label>
+          <label for="modal-interview-notes" class="block font-medium text-gray-300 mb-1">Recruiter Notes / Instructions</label>
           <textarea id="modal-interview-notes" rows="3" placeholder="Add recruiter feedback, interview topics, or instructions..." class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500"></textarea>
         </div>
       </div>
@@ -1317,7 +1317,7 @@
 
       <div class="space-y-3 text-xs">
         <div>
-          <label class="block font-medium text-gray-300 mb-1">Follow-up Cadence Stage</label>
+          <span class="block font-medium text-gray-300 mb-1">Follow-up Cadence Stage</span>
           <div class="flex space-x-2">
             <button type="button" onclick="changeFollowupCadence('T+3')" id="btn-cadence-T3" class="cadence-btn px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-900 text-gray-300 font-semibold hover:border-blue-500">T+3 (3-Day Check-in)</button>
             <button type="button" onclick="changeFollowupCadence('T+7')" id="btn-cadence-T7" class="cadence-btn active px-3 py-1.5 rounded-lg border border-blue-500 bg-blue-900/30 text-blue-300 font-semibold">T+7 (1-Week Value-Add)</button>
@@ -1326,13 +1326,13 @@
         </div>
 
         <div>
-          <label class="block font-medium text-gray-300 mb-1">Recipient</label>
+          <label for="modal-followup-recipient" class="block font-medium text-gray-300 mb-1">Recipient</label>
           <input type="text" id="modal-followup-recipient" readonly class="w-full px-3 py-1.5 rounded-lg bg-gray-950 border border-gray-800 text-gray-400 font-mono">
         </div>
 
         <div>
           <div class="flex items-center justify-between mb-1">
-            <label class="font-medium text-gray-300">Generated Follow-Up Email</label>
+            <label for="modal-followup-body" class="font-medium text-gray-300">Generated Follow-Up Email</label>
             <button type="button" onclick="copyFollowupDraft()" class="text-blue-400 hover:underline text-[11px]">
               <i class="fa-solid fa-copy mr-1"></i> Copy to Clipboard
             </button>
