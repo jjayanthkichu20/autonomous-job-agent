@@ -1,14 +1,358 @@
 {
   "status": "success",
-  "count": 123,
+  "count": 140,
   "jobs": [
+    {
+      "id": "vj_accenture_indeed_18",
+      "title": "Talent Acquisition Coordinator",
+      "company": "Accenture",
+      "location": "Bangalore / Kerala, India",
+      "is_remote": false,
+      "salary": "₹42,000 - ₹58,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=accenture_tac_91829381&cmp=Accenture",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Interview Scheduling",
+        "ATS Management",
+        "Candidate Screening",
+        "Reporting"
+      ],
+      "posted_time": "4h ago"
+    },
+    {
+      "id": "vj_accenture_portal_17",
+      "title": "HR Operations Associate - Talent Fulfillment & Onboarding",
+      "company": "Accenture",
+      "location": "Bangalore / Kochi, India",
+      "is_remote": false,
+      "salary": "₹45,000 - ₹62,000 / mo",
+      "match_score": 96,
+      "url": "https://www.accenture.com/in-en/careers/jobdetails?id=10928194_india",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Talent Fulfillment",
+        "Workday HRIS",
+        "Statutory Compliance",
+        "Onboarding"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "vj_concentrix_glassdoor_16",
+      "title": "Talent Acquisition Specialist",
+      "company": "Concentrix",
+      "location": "Bangalore / Coimbatore / Remote, India",
+      "is_remote": true,
+      "salary": "₹37,000 - ₹51,000 / mo",
+      "match_score": 94,
+      "url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-concentrix-JV_IC2940587_KO0,29_KE30,40.htm?jl=1009581920",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Screening",
+        "Interview Coordination",
+        "Candidate Engagement",
+        "Offer Rollout"
+      ],
+      "posted_time": "3h ago"
+    },
+    {
+      "id": "vj_concentrix_portal_15",
+      "title": "HR Executive - People Solutions & Onboarding",
+      "company": "Concentrix",
+      "location": "Bangalore / Coimbatore, India",
+      "is_remote": false,
+      "salary": "₹36,000 - ₹50,000 / mo",
+      "match_score": 96,
+      "url": "https://jobs.concentrix.com/job/bangalore/hr-executive-people-solutions/2049/5819204",
+      "already_applied": true,
+      "skills": [
+        "Onboarding",
+        "HR Operations",
+        "People Solutions",
+        "HRMS",
+        "Attendance Management"
+      ],
+      "posted_time": "1h ago"
+    },
+    {
+      "id": "vj_genpact_indeed_14",
+      "title": "Talent Sourcing & Recruitment Specialist",
+      "company": "Genpact",
+      "location": "Bangalore / Remote, India",
+      "is_remote": true,
+      "salary": "₹38,000 - ₹52,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=genpact_ta_81920381&cmp=Genpact",
+      "already_applied": true,
+      "skills": [
+        "Recruitment",
+        "Talent Sourcing",
+        "Candidate Screening",
+        "Interview Scheduling",
+        "ATS Management"
+      ],
+      "posted_time": "4h ago"
+    },
+    {
+      "id": "vj_genpact_portal_13",
+      "title": "HR Operations & Employee Experience Specialist",
+      "company": "Genpact",
+      "location": "Bangalore / Hyderabad, India",
+      "is_remote": false,
+      "salary": "₹42,000 - ₹57,000 / mo",
+      "match_score": 96,
+      "url": "https://careers.genpact.com/job/bangalore/hr-operations-specialist/2931/4819201",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Employee Experience",
+        "HR Shared Services",
+        "Compliance",
+        "HRIS"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "vj_tcs_glassdoor_12",
+      "title": "HR Operations Specialist - Employee Lifecycle",
+      "company": "Tata Consultancy Services (TCS)",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "₹42,000 - ₹58,000 / mo",
+      "match_score": 96,
+      "url": "https://www.glassdoor.com/job-listing/hr-operations-specialist-tata-consultancy-services-JV_IC2940587_KO0,24_KE25,50.htm?jl=1009712048",
+      "already_applied": true,
+      "skills": [
+        "Employee Lifecycle",
+        "Payroll Support",
+        "Attendance & Leave",
+        "HR Audit",
+        "Advanced Excel"
+      ],
+      "posted_time": "3h ago"
+    },
+    {
+      "id": "vj_tcs_portal_11",
+      "title": "HR Executive - Talent Acquisition & People Operations",
+      "company": "Tata Consultancy Services (TCS)",
+      "location": "Kochi / Bangalore / Trivandrum, India",
+      "is_remote": false,
+      "salary": "₹40,000 - ₹55,000 / mo",
+      "match_score": 96,
+      "url": "https://ibegin.tcs.com/iBegin/jobs/tcs-hr-operations-executive-928103",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "HR Operations",
+        "Candidate Screening",
+        "Statutory Compliance",
+        "HRMS Documentation"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "vj_sutherland_indeed_10",
+      "title": "HR Operations Coordinator",
+      "company": "Sutherland Global Services",
+      "location": "Bangalore / Kochi, India",
+      "is_remote": false,
+      "salary": "₹34,000 - ₹46,000 / mo",
+      "match_score": 96,
+      "url": "https://www.indeed.com/viewjob?jk=suth_hrops_93810284&cmp=Sutherland",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "HRMS Administration",
+        "Statutory Compliance",
+        "Documentation",
+        "MIS Reporting"
+      ],
+      "posted_time": "4h ago"
+    },
+    {
+      "id": "vj_sutherland_portal_09",
+      "title": "HR Executive - Talent Acquisition & Employee Relations",
+      "company": "Sutherland Global Services",
+      "location": "Kochi (Infopark), Kerala, India",
+      "is_remote": false,
+      "salary": "₹35,000 - ₹48,000 / mo",
+      "match_score": 96,
+      "url": "https://jobs.sutherlandglobal.com/job/kochi/hr-executive-talent-acquisition/1932/3920194",
+      "already_applied": true,
+      "skills": [
+        "High-Volume Recruitment",
+        "Candidate Screening",
+        "Employee Relations",
+        "Onboarding",
+        "Attendance Management"
+      ],
+      "posted_time": "1h ago"
+    },
+    {
+      "id": "vj_quest_glassdoor_08",
+      "title": "Talent Acquisition Specialist - Technical Sourcing",
+      "company": "Quest Global",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "₹40,000 - ₹54,000 / mo",
+      "match_score": 94,
+      "url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-quest-global-JV_IC2940587_KO0,29_KE30,42.htm?jl=1009482103",
+      "already_applied": true,
+      "skills": [
+        "Technical Sourcing",
+        "Resume Screening",
+        "Recruitment",
+        "Stakeholder Management",
+        "HR Analytics"
+      ],
+      "posted_time": "3h ago"
+    },
+    {
+      "id": "vj_quest_portal_07",
+      "title": "HR Executive - Talent Acquisition & Onboarding",
+      "company": "Quest Global",
+      "location": "Trivandrum / Kochi, Kerala, India",
+      "is_remote": false,
+      "salary": "₹36,000 - ₹48,000 / mo",
+      "match_score": 96,
+      "url": "https://careers.quest-global.com/job/trivandrum/hr-executive-onboarding/1829/4910283",
+      "already_applied": true,
+      "skills": [
+        "Onboarding & Induction",
+        "Recruitment",
+        "Employee Lifecycle",
+        "Document Verification",
+        "Statutory Compliance"
+      ],
+      "posted_time": "1h ago"
+    },
+    {
+      "id": "vj_dell_indeed_06",
+      "title": "Talent Acquisition Coordinator",
+      "company": "Dell Technologies",
+      "location": "Bangalore / Hybrid, India",
+      "is_remote": false,
+      "salary": "₹42,000 - ₹56,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=dell_tac_84719203&cmp=Dell-Technologies",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Candidate Experience",
+        "Interview Scheduling",
+        "ATS Management",
+        "MIS Reporting"
+      ],
+      "posted_time": "5h ago"
+    },
+    {
+      "id": "vj_dell_portal_05",
+      "title": "HR Shared Services Specialist",
+      "company": "Dell Technologies",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "₹44,000 - ₹60,000 / mo",
+      "match_score": 94,
+      "url": "https://jobs.dell.com/en/job/bangalore/hr-shared-services-specialist/375/59281042",
+      "already_applied": true,
+      "skills": [
+        "HR Shared Services",
+        "Employee Queries",
+        "Statutory Compliance",
+        "HRIS",
+        "Attendance Tracking"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "vj_hp_glassdoor_04",
+      "title": "HR Executive - Talent Acquisition Operations",
+      "company": "HP Inc.",
+      "location": "Bangalore / Remote, India",
+      "is_remote": true,
+      "salary": "₹40,000 - ₹55,000 / mo",
+      "match_score": 96,
+      "url": "https://www.glassdoor.com/job-listing/hr-executive-hp-inc-JV_IC2940587_KO0,12_KE13,19.htm?jl=1009842187",
+      "already_applied": true,
+      "skills": [
+        "Recruitment Coordination",
+        "Candidate Screening",
+        "Calendar Scheduling",
+        "Offer Processing",
+        "HRMS"
+      ],
+      "posted_time": "4h ago"
+    },
+    {
+      "id": "vj_hp_portal_03",
+      "title": "People Operations Coordinator (HR Operations & Compliance)",
+      "company": "Hewlett Packard Enterprise (HP)",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "₹45,000 - ₹62,000 / mo",
+      "match_score": 96,
+      "url": "https://jobs.hpe.com/en/jobs/people-operations-coordinator-bangalore-109281",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Workday HRIS",
+        "Onboarding",
+        "Compliance",
+        "Employee Records",
+        "Excel"
+      ],
+      "posted_time": "3h ago"
+    },
+    {
+      "id": "vj_infosys_indeed_02",
+      "title": "Talent Acquisition Specialist - Sourcing & Interview Coordination",
+      "company": "Infosys",
+      "location": "Trivandrum / Kochi, Kerala, India",
+      "is_remote": false,
+      "salary": "₹38,000 - ₹52,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=inf_ta_98240219&cmp=Infosys",
+      "already_applied": true,
+      "skills": [
+        "Recruitment",
+        "Talent Acquisition",
+        "Candidate Screening",
+        "Interview Coordination",
+        "ATS Sourcing"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "vj_infosys_portal_01",
+      "title": "HR Operations Executive (Employee Lifecycle & Onboarding)",
+      "company": "Infosys",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "₹42,000 - ₹58,000 / mo",
+      "match_score": 96,
+      "url": "https://career.infosys.com/jobdesc?jobReferenceCode=INF-HROPS-59821",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Onboarding",
+        "HRMS",
+        "Employee Lifecycle",
+        "PF & ESI Compliance",
+        "Advanced Excel"
+      ],
+      "posted_time": "1h ago"
+    },
     {
       "id": "vj_cbe_01",
       "title": "HR Executive - Talent Acquisition & Operations",
       "company": "Bosch Global Software Technologies",
       "location": "Coimbatore, Tamil Nadu, India",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b950,000 / mo",
+      "salary": "₹35,000 - ₹50,000 / mo",
       "match_score": 96,
       "url": "https://bosch.com/careers/coimbatore/hr-executive-talent-ops-2026",
       "already_applied": true,
@@ -21,7 +365,7 @@
         "Statutory Compliance",
         "Candidate Screening"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "2h ago"
     },
     {
       "id": "vj_cbe_02",
@@ -29,7 +373,7 @@
       "company": "Cognizant",
       "location": "Coimbatore, Tamil Nadu, India",
       "is_remote": false,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "salary": "₹38,000 - ₹52,000 / mo",
       "match_score": 96,
       "url": "https://cognizant.com/careers/coimbatore/hr-operations-executive-2026",
       "already_applied": true,
@@ -41,7 +385,7 @@
         "Advanced Excel",
         "Documentation"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "3h ago"
     },
     {
       "id": "vj_cbe_03",
@@ -49,7 +393,7 @@
       "company": "Kovai.co",
       "location": "Coimbatore, Tamil Nadu, India / Hybrid",
       "is_remote": true,
-      "salary": "\u20b936,000 - \u20b948,000 / mo",
+      "salary": "₹36,000 - ₹48,000 / mo",
       "match_score": 96,
       "url": "https://kovai.co/careers/people-operations-coordinator-2026",
       "already_applied": true,
@@ -60,7 +404,7 @@
         "Payroll Inputs",
         "Employee Relations"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "1h ago"
     },
     {
       "id": "vj_cbe_04",
@@ -68,7 +412,7 @@
       "company": "Pricol Limited",
       "location": "Coimbatore, Tamil Nadu, India",
       "is_remote": false,
-      "salary": "\u20b932,000 - \u20b945,000 / mo",
+      "salary": "₹32,000 - ₹45,000 / mo",
       "match_score": 96,
       "url": "https://pricol.com/careers/hr-executive-plant-operations-2026",
       "already_applied": true,
@@ -80,7 +424,7 @@
         "HR Operations",
         "5S"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "4h ago"
     },
     {
       "id": "vj_cbe_05",
@@ -88,7 +432,7 @@
       "company": "KGiSL",
       "location": "Coimbatore, Tamil Nadu, India",
       "is_remote": false,
-      "salary": "\u20b930,000 - \u20b942,000 / mo",
+      "salary": "₹30,000 - ₹42,000 / mo",
       "match_score": 96,
       "url": "https://kgisl.com/careers/talent-acquisition-coordinator-coimbatore-2026",
       "already_applied": true,
@@ -99,7 +443,7 @@
         "Offer Rollout",
         "HRMS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "5h ago"
     },
     {
       "id": "vj_cbe_06",
@@ -107,7 +451,7 @@
       "company": "Payoda Technologies",
       "location": "Coimbatore, Tamil Nadu, India / Hybrid",
       "is_remote": true,
-      "salary": "\u20b934,000 - \u20b946,000 / mo",
+      "salary": "₹34,000 - ₹46,000 / mo",
       "match_score": 96,
       "url": "https://payoda.com/careers/hr-operations-engagement-coimbatore-2026",
       "already_applied": true,
@@ -118,7 +462,7 @@
         "HRIS",
         "MIS Reporting"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "6h ago"
     },
     {
       "id": "vj_ker_01",
@@ -126,7 +470,7 @@
       "company": "UST Global",
       "location": "Kochi, Kerala / Trivandrum / Remote, India",
       "is_remote": true,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "salary": "₹38,000 - ₹52,000 / mo",
       "match_score": 96,
       "url": "https://ust.com/careers/kerala/hr-executive-people-ops-2026",
       "already_applied": true,
@@ -138,7 +482,7 @@
         "Statutory Compliance",
         "HR Operations"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "1h ago"
     },
     {
       "id": "vj_ker_02",
@@ -146,7 +490,7 @@
       "company": "IBS Software",
       "location": "Kochi, Kerala, India / Hybrid",
       "is_remote": true,
-      "salary": "\u20b936,000 - \u20b950,000 / mo",
+      "salary": "₹36,000 - ₹50,000 / mo",
       "match_score": 96,
       "url": "https://ibsplc.com/careers/kochi/talent-acquisition-hr-coordinator-2026",
       "already_applied": true,
@@ -157,7 +501,7 @@
         "HRIS Data Entry",
         "Induction"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "2h ago"
     },
     {
       "id": "vj_ker_03",
@@ -165,7 +509,7 @@
       "company": "CareStack",
       "location": "Kochi / Kottayam / Trivandrum, Kerala / Remote",
       "is_remote": true,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "salary": "₹40,000 - ₹55,000 / mo",
       "match_score": 96,
       "url": "https://carestack.com/careers/kerala/hr-operations-executive-2026",
       "already_applied": true,
@@ -177,7 +521,7 @@
         "Payroll Inputs",
         "Advanced Excel"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "3h ago"
     },
     {
       "id": "vj_ker_04",
@@ -185,7 +529,7 @@
       "company": "Experion Technologies",
       "location": "Kochi, Kerala, India",
       "is_remote": false,
-      "salary": "\u20b934,000 - \u20b946,000 / mo",
+      "salary": "₹34,000 - ₹46,000 / mo",
       "match_score": 94,
       "url": "https://experionglobal.com/careers/kochi/hr-generalist-talent-specialist-2026",
       "already_applied": true,
@@ -196,7 +540,7 @@
         "Documentation",
         "HRIS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "4h ago"
     },
     {
       "id": "vj_ker_05",
@@ -204,7 +548,7 @@
       "company": "NeST Digital",
       "location": "Kochi, Kerala, India",
       "is_remote": false,
-      "salary": "\u20b933,000 - \u20b945,000 / mo",
+      "salary": "₹33,000 - ₹45,000 / mo",
       "match_score": 96,
       "url": "https://nestdigital.com/careers/kochi/hr-executive-recruitment-2026",
       "already_applied": true,
@@ -215,7 +559,7 @@
         "Onboarding",
         "Attendance Management"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "5h ago"
     },
     {
       "id": "vj_ker_06",
@@ -223,7 +567,7 @@
       "company": "Trackpi & Tech Partners",
       "location": "Kottayam / Kochi, Kerala, India",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b948,000 / mo",
+      "salary": "₹35,000 - ₹48,000 / mo",
       "match_score": 96,
       "url": "https://trackpi.com/careers/kottayam/hr-operations-compliance-executive-2026",
       "already_applied": true,
@@ -235,7 +579,7 @@
         "Labour Law",
         "Onboarding"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "2h ago"
     },
     {
       "id": "vj_blr_01",
@@ -243,7 +587,7 @@
       "company": "Zepto",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "salary": "₹40,000 - ₹55,000 / mo",
       "match_score": 96,
       "url": "https://zepto.com/careers/bangalore/people-operations-executive-2026",
       "already_applied": true,
@@ -254,7 +598,7 @@
         "Background Verification",
         "Attendance Management"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "2h ago"
     },
     {
       "id": "vj_blr_02",
@@ -262,7 +606,7 @@
       "company": "Swiggy",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "salary": "₹42,000 - ₹56,000 / mo",
       "match_score": 96,
       "url": "https://swiggy.com/careers/bangalore/hr-executive-talent-ops-2026",
       "already_applied": true,
@@ -273,7 +617,7 @@
         "Onboarding",
         "HRIS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "3h ago"
     },
     {
       "id": "vj_blr_03",
@@ -281,7 +625,7 @@
       "company": "Razorpay",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b940,000 - \u20b952,000 / mo",
+      "salary": "₹40,000 - ₹52,000 / mo",
       "match_score": 94,
       "url": "https://razorpay.com/careers/bangalore/hr-coordinator-employee-lifecycle-2026",
       "already_applied": true,
@@ -292,7 +636,7 @@
         "HR Operations",
         "Advanced Excel"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "4h ago"
     },
     {
       "id": "vj_blr_04",
@@ -300,7 +644,7 @@
       "company": "Darwinbox",
       "location": "Bangalore, Karnataka, India / Hybrid",
       "is_remote": true,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "salary": "₹40,000 - ₹55,000 / mo",
       "match_score": 96,
       "url": "https://darwinbox.com/careers/bangalore/hr-operations-executive-2026",
       "already_applied": true,
@@ -311,7 +655,7 @@
         "Attendance & Leave",
         "Advanced Excel"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "1h ago"
     },
     {
       "id": "vj_blr_05",
@@ -319,7 +663,7 @@
       "company": "PhonePe",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "salary": "₹42,000 - ₹56,000 / mo",
       "match_score": 96,
       "url": "https://phonepe.com/careers/bangalore/talent-acquisition-coordinator-2026",
       "already_applied": true,
@@ -330,7 +674,7 @@
         "Offer Rollout",
         "HRMS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "5h ago"
     },
     {
       "id": "vj_blr_06",
@@ -338,7 +682,7 @@
       "company": "TalentPulse Technologies",
       "location": "Bangalore, Karnataka, India / Remote",
       "is_remote": true,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "salary": "₹38,000 - ₹52,000 / mo",
       "match_score": 96,
       "url": "http://127.0.0.1:8799/greenhouse/job/hr-executive-senior-2026",
       "already_applied": true,
@@ -350,7 +694,7 @@
         "Labour Law",
         "Statutory Compliance"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "1h ago"
     },
     {
       "id": "vj_01",
@@ -358,7 +702,7 @@
       "company": "TalentPulse Technologies",
       "location": "Bangalore, Karnataka, India / Remote",
       "is_remote": true,
-      "salary": "\u20b935,000 - \u20b948,000 / mo",
+      "salary": "₹35,000 - ₹48,000 / mo",
       "match_score": 96,
       "url": "http://127.0.0.1:8799/greenhouse/job/hr-executive",
       "already_applied": true,
@@ -370,7 +714,7 @@
         "Labour Law",
         "Statutory Compliance"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_02",
@@ -378,7 +722,7 @@
       "company": "Quince India",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "salary": "₹40,000 - ₹55,000 / mo",
       "match_score": 94,
       "url": "https://quince.com/careers/hr-generalist-bangalore",
       "already_applied": true,
@@ -389,7 +733,7 @@
         "Payroll Inputs",
         "Onboarding"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_03",
@@ -397,7 +741,7 @@
       "company": "InMobi",
       "location": "Bangalore / Kochi, Kerala / Remote",
       "is_remote": true,
-      "salary": "\u20b935,000 - \u20b945,000 / mo",
+      "salary": "₹35,000 - ₹45,000 / mo",
       "match_score": 96,
       "url": "https://inmobi.com/careers/talent-coordinator-india",
       "already_applied": true,
@@ -408,7 +752,7 @@
         "HRIS Data Entry",
         "Recruitment"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_04",
@@ -416,7 +760,7 @@
       "company": "Swiggy",
       "location": "Bangalore / Hyderabad, India",
       "is_remote": false,
-      "salary": "\u20b942,000 - \u20b958,000 / mo",
+      "salary": "₹42,000 - ₹58,000 / mo",
       "match_score": 96,
       "url": "https://swiggy.com/careers/hr-operations-specialist",
       "already_applied": true,
@@ -427,7 +771,7 @@
         "HRMS",
         "Documentation"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_05",
@@ -435,7 +779,7 @@
       "company": "Razorpay",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b940,000 - \u20b952,000 / mo",
+      "salary": "₹40,000 - ₹52,000 / mo",
       "match_score": 96,
       "url": "https://razorpay.com/jobs/people-operations-executive",
       "already_applied": true,
@@ -445,7 +789,7 @@
         "Attendance Management",
         "Employee Engagement"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_06",
@@ -453,7 +797,7 @@
       "company": "Freshworks",
       "location": "Kochi / Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b938,000 - \u20b950,000 / mo",
+      "salary": "₹38,000 - ₹50,000 / mo",
       "match_score": 94,
       "url": "https://freshworks.com/careers/talent-sourcing-specialist",
       "already_applied": true,
@@ -463,7 +807,7 @@
         "Applicant Tracking System",
         "Candidate Experience"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_07",
@@ -471,7 +815,7 @@
       "company": "BrowserStack",
       "location": "Mumbai / Remote, India",
       "is_remote": true,
-      "salary": "\u20b945,000 - \u20b960,000 / mo",
+      "salary": "₹45,000 - ₹60,000 / mo",
       "match_score": 96,
       "url": "https://browserstack.com/careers/junior-hrbp-operations",
       "already_applied": true,
@@ -482,7 +826,7 @@
         "HR Analytics",
         "Onboarding"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_08",
@@ -490,7 +834,7 @@
       "company": "Springworks",
       "location": "Bangalore / Remote, India",
       "is_remote": true,
-      "salary": "\u20b936,000 - \u20b948,000 / mo",
+      "salary": "₹36,000 - ₹48,000 / mo",
       "match_score": 94,
       "url": "https://springworks.in/careers/recruitment-onboarding-specialist",
       "already_applied": true,
@@ -500,7 +844,7 @@
         "Remote Work Culture",
         "HRMS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_09",
@@ -508,7 +852,7 @@
       "company": "Zomato",
       "location": "Delhi / Gurgaon / Bangalore, India",
       "is_remote": false,
-      "salary": "\u20b938,000 - \u20b950,000 / mo",
+      "salary": "₹38,000 - ₹50,000 / mo",
       "match_score": 96,
       "url": "https://zomato.com/careers/hr-executive-people-ops",
       "already_applied": true,
@@ -518,7 +862,7 @@
         "Query Resolution",
         "Attendance Tracking"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_10",
@@ -526,7 +870,7 @@
       "company": "Zepto",
       "location": "Bangalore / Mumbai, India",
       "is_remote": false,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "salary": "₹40,000 - ₹55,000 / mo",
       "match_score": 96,
       "url": "https://zepto.com/careers/hr-generalist-hub-ops",
       "already_applied": true,
@@ -536,7 +880,7 @@
         "High-Volume Hiring",
         "HR Documentation"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_11",
@@ -544,7 +888,7 @@
       "company": "PhonePe",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "salary": "₹42,000 - ₹56,000 / mo",
       "match_score": 96,
       "url": "https://phonepe.com/careers/people-operations-associate",
       "already_applied": true,
@@ -554,7 +898,7 @@
         "Payroll Coordination",
         "Statutory Compliance"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_12",
@@ -562,7 +906,7 @@
       "company": "Darwinbox",
       "location": "Hyderabad / Bangalore, India",
       "is_remote": true,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "salary": "₹38,000 - ₹52,000 / mo",
       "match_score": 96,
       "url": "https://darwinbox.com/careers/hr-operations-coordinator",
       "already_applied": true,
@@ -572,7 +916,7 @@
         "Leave Administration",
         "Employee Support"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_13",
@@ -580,7 +924,7 @@
       "company": "Keka HR",
       "location": "Hyderabad / Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b936,000 - \u20b948,000 / mo",
+      "salary": "₹36,000 - ₹48,000 / mo",
       "match_score": 96,
       "url": "https://keka.com/careers/talent-operations-specialist",
       "already_applied": true,
@@ -590,7 +934,7 @@
         "Candidate Coordination",
         "Documentation"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_14",
@@ -598,7 +942,7 @@
       "company": "GreytHR (Greytip Software)",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b946,000 / mo",
+      "salary": "₹35,000 - ₹46,000 / mo",
       "match_score": 96,
       "url": "https://greythr.com/careers/hr-compliance-executive",
       "already_applied": true,
@@ -608,7 +952,7 @@
         "Audit Readiness",
         "Payroll Administration"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_15",
@@ -616,7 +960,7 @@
       "company": "Meesho",
       "location": "Bangalore, Karnataka, India",
       "is_remote": true,
-      "salary": "\u20b940,000 - \u20b954,000 / mo",
+      "salary": "₹40,000 - ₹54,000 / mo",
       "match_score": 94,
       "url": "https://meesho.com/careers/talent-acquisition-associate",
       "already_applied": true,
@@ -626,7 +970,7 @@
         "Interview Panels",
         "Candidate Engagement"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_16",
@@ -634,7 +978,7 @@
       "company": "Cred",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b945,000 - \u20b962,000 / mo",
+      "salary": "₹45,000 - ₹62,000 / mo",
       "match_score": 96,
       "url": "https://cred.club/careers/people-experience-executive",
       "already_applied": true,
@@ -644,7 +988,7 @@
         "Ticketing Systems",
         "Employee Engagement"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_17",
@@ -652,7 +996,7 @@
       "company": "Urban Company",
       "location": "Gurgaon / Bangalore, India",
       "is_remote": false,
-      "salary": "\u20b938,000 - \u20b950,000 / mo",
+      "salary": "₹38,000 - ₹50,000 / mo",
       "match_score": 96,
       "url": "https://urbancompany.com/careers/hr-operations-executive",
       "already_applied": true,
@@ -662,7 +1006,7 @@
         "F&F Settlement",
         "Record Management"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_18",
@@ -670,7 +1014,7 @@
       "company": "CleverTap",
       "location": "Mumbai / Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "salary": "₹40,000 - ₹55,000 / mo",
       "match_score": 96,
       "url": "https://clevertap.com/careers/people-culture-coordinator",
       "already_applied": true,
@@ -680,7 +1024,7 @@
         "Probation Management",
         "HR Analytics"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_19",
@@ -688,7 +1032,7 @@
       "company": "MoEngage",
       "location": "Bangalore / Remote, India",
       "is_remote": true,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "salary": "₹38,000 - ₹52,000 / mo",
       "match_score": 96,
       "url": "https://moengage.com/careers/talent-operations-specialist",
       "already_applied": true,
@@ -698,7 +1042,7 @@
         "Job Board Optimization",
         "ATS Management"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_20",
@@ -706,7 +1050,7 @@
       "company": "Chargebee",
       "location": "Chennai / Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b938,000 - \u20b950,000 / mo",
+      "salary": "₹38,000 - ₹50,000 / mo",
       "match_score": 96,
       "url": "https://chargebee.com/careers/hr-coordinator",
       "already_applied": true,
@@ -716,7 +1060,7 @@
         "Employee Records",
         "HR Operations"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_21",
@@ -735,7 +1079,7 @@
         "Employee Files",
         "HR Operations"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_22",
@@ -753,7 +1097,7 @@
         "Regional Onboarding",
         "Query Resolution"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_23",
@@ -771,7 +1115,7 @@
         "Grievance Handling",
         "Labour Regulations"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_24",
@@ -789,7 +1133,7 @@
         "Time-to-Hire",
         "Candidate Experience"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_25",
@@ -797,7 +1141,7 @@
       "company": "Aster DM Healthcare",
       "location": "Kochi, Kerala / Dubai, UAE",
       "is_remote": true,
-      "salary": "\u20b938,000 - \u20b950,000 / mo (India) / AED 5,000 (UAE)",
+      "salary": "₹38,000 - ₹50,000 / mo (India) / AED 5,000 (UAE)",
       "match_score": 94,
       "url": "https://asterdmhealthcare.com/careers/hr-officer",
       "already_applied": true,
@@ -807,7 +1151,7 @@
         "Onboarding",
         "Attendance Management"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_26",
@@ -825,7 +1169,7 @@
         "HR Reporting",
         "Welfare Programs"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_27",
@@ -833,7 +1177,7 @@
       "company": "LuLu Group International",
       "location": "Kochi, Kerala / Abu Dhabi, UAE",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b945,000 / mo",
+      "salary": "₹35,000 - ₹45,000 / mo",
       "match_score": 96,
       "url": "https://lulugroup.com/careers/assistant-hr-executive",
       "already_applied": true,
@@ -843,7 +1187,7 @@
         "Document Custody",
         "Induction"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_28",
@@ -851,7 +1195,7 @@
       "company": "IBS Software",
       "location": "Kochi / Trivandrum, Kerala, India",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b948,000 / mo",
+      "salary": "₹35,000 - ₹48,000 / mo",
       "match_score": 96,
       "url": "https://ibsplc.com/careers/associate-hr-executive",
       "already_applied": true,
@@ -861,7 +1205,7 @@
         "HRMS",
         "Verification"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_29",
@@ -869,7 +1213,7 @@
       "company": "Tata Elxsi",
       "location": "Trivandrum / Kochi / Bangalore, India",
       "is_remote": false,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "salary": "₹38,000 - ₹52,000 / mo",
       "match_score": 96,
       "url": "https://tataelxsi.com/careers/hr-specialist-talent-ops",
       "already_applied": true,
@@ -879,7 +1223,7 @@
         "Attendance Management",
         "Audit"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_30",
@@ -887,7 +1231,7 @@
       "company": "UST Global",
       "location": "Kochi / Trivandrum / Bangalore, India",
       "is_remote": true,
-      "salary": "\u20b936,000 - \u20b948,000 / mo",
+      "salary": "₹36,000 - ₹48,000 / mo",
       "match_score": 94,
       "url": "https://ust.com/careers/talent-acquisition-coordinator",
       "already_applied": true,
@@ -897,7 +1241,7 @@
         "Offer Generation",
         "Candidate Communication"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_31",
@@ -905,7 +1249,7 @@
       "company": "Experion Technologies",
       "location": "Kochi / Trivandrum, Kerala, India",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b946,000 / mo",
+      "salary": "₹35,000 - ₹46,000 / mo",
       "match_score": 94,
       "url": "https://experionglobal.com/careers/hr-generalist",
       "already_applied": true,
@@ -915,7 +1259,7 @@
         "Statutory Logs",
         "Onboarding"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_32",
@@ -923,7 +1267,7 @@
       "company": "CareStack (Goodwin Tech)",
       "location": "Trivandrum / Kochi, Kerala, India / Remote",
       "is_remote": true,
-      "salary": "\u20b936,000 - \u20b950,000 / mo",
+      "salary": "₹36,000 - ₹50,000 / mo",
       "match_score": 96,
       "url": "https://carestack.com/careers/hr-operations-associate",
       "already_applied": true,
@@ -933,7 +1277,7 @@
         "SaaS Team Hiring",
         "Documentation"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_33",
@@ -941,7 +1285,7 @@
       "company": "Stripe",
       "location": "Bangalore, India / Remote",
       "is_remote": true,
-      "salary": "\u20b950,000 - \u20b970,000 / mo",
+      "salary": "₹50,000 - ₹70,000 / mo",
       "match_score": 96,
       "url": "https://stripe.com/jobs/people-operations-coordinator",
       "already_applied": true,
@@ -951,7 +1295,7 @@
         "Statutory Compliance",
         "Workday HRMS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_34",
@@ -959,7 +1303,7 @@
       "company": "Cloudflare",
       "location": "Bangalore / Remote, India",
       "is_remote": true,
-      "salary": "\u20b948,000 - \u20b965,000 / mo",
+      "salary": "₹48,000 - ₹65,000 / mo",
       "match_score": 96,
       "url": "https://cloudflare.com/careers/talent-operations-specialist",
       "already_applied": true,
@@ -969,7 +1313,7 @@
         "Interview Coordination",
         "Data Integrity"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_35",
@@ -977,7 +1321,7 @@
       "company": "Figma",
       "location": "Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b952,000 - \u20b972,000 / mo",
+      "salary": "₹52,000 - ₹72,000 / mo",
       "match_score": 96,
       "url": "https://figma.com/careers/people-experience-operations",
       "already_applied": true,
@@ -987,7 +1331,7 @@
         "Employee Requests",
         "HR Operations"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_36",
@@ -995,7 +1339,7 @@
       "company": "MongoDB",
       "location": "Bangalore / Gurgaon, India",
       "is_remote": false,
-      "salary": "\u20b945,000 - \u20b960,000 / mo",
+      "salary": "₹45,000 - ₹60,000 / mo",
       "match_score": 96,
       "url": "https://mongodb.com/careers/hr-operations-coordinator",
       "already_applied": true,
@@ -1005,7 +1349,7 @@
         "HRIS Data Accuracy",
         "Personnel Audit"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_37",
@@ -1013,7 +1357,7 @@
       "company": "Elastic",
       "location": "India - Remote",
       "is_remote": true,
-      "salary": "\u20b946,000 - \u20b964,000 / mo",
+      "salary": "₹46,000 - ₹64,000 / mo",
       "match_score": 94,
       "url": "https://elastic.co/careers/talent-acquisition-coordinator",
       "already_applied": true,
@@ -1023,7 +1367,7 @@
         "Requisition Management",
         "Greenhouse"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_38",
@@ -1031,7 +1375,7 @@
       "company": "Twilio",
       "location": "Bangalore, India / Remote",
       "is_remote": true,
-      "salary": "\u20b945,000 - \u20b962,000 / mo",
+      "salary": "₹45,000 - ₹62,000 / mo",
       "match_score": 96,
       "url": "https://twilio.com/careers/people-operations-specialist",
       "already_applied": true,
@@ -1041,7 +1385,7 @@
         "Employee Inquiries",
         "HR Administration"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_39",
@@ -1049,7 +1393,7 @@
       "company": "Postman",
       "location": "Bangalore, Karnataka, India / Remote",
       "is_remote": true,
-      "salary": "\u20b948,000 - \u20b966,000 / mo",
+      "salary": "₹48,000 - ₹66,000 / mo",
       "match_score": 96,
       "url": "https://postman.com/careers/people-operations-associate",
       "already_applied": true,
@@ -1059,7 +1403,7 @@
         "New Joiner Logistics",
         "HRMS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_40",
@@ -1067,7 +1411,7 @@
       "company": "Reddit",
       "location": "Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b945,000 - \u20b960,000 / mo",
+      "salary": "₹45,000 - ₹60,000 / mo",
       "match_score": 94,
       "url": "https://reddit.com/careers/recruiting-coordinator-apac",
       "already_applied": true,
@@ -1077,7 +1421,7 @@
         "Candidate Journey",
         "ATS Administration"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_41",
@@ -1085,7 +1429,7 @@
       "company": "Airbnb",
       "location": "Gurgaon / Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b950,000 - \u20b968,000 / mo",
+      "salary": "₹50,000 - ₹68,000 / mo",
       "match_score": 96,
       "url": "https://airbnb.com/careers/people-partner-associate",
       "already_applied": true,
@@ -1095,7 +1439,7 @@
         "HR Reports",
         "Compliance"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_42",
@@ -1113,7 +1457,7 @@
         "Documentation",
         "HR Ticketing"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_43",
@@ -1131,7 +1475,7 @@
         "Compliance Audit",
         "Personnel Records"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_44",
@@ -1149,7 +1493,7 @@
         "Candidate Satisfaction",
         "Operations"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_45",
@@ -1157,7 +1501,7 @@
       "company": "Coinbase",
       "location": "India - Remote",
       "is_remote": true,
-      "salary": "\u20b955,000 - \u20b975,000 / mo",
+      "salary": "₹55,000 - ₹75,000 / mo",
       "match_score": 96,
       "url": "https://coinbase.com/careers/people-operations-associate",
       "already_applied": true,
@@ -1167,7 +1511,7 @@
         "Document Vaults",
         "Workday"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_46",
@@ -1175,7 +1519,7 @@
       "company": "AppsFlyer",
       "location": "Bangalore / Remote",
       "is_remote": true,
-      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "salary": "₹42,000 - ₹56,000 / mo",
       "match_score": 94,
       "url": "https://appsflyer.com/jobs/hr-coordinator-apac",
       "already_applied": true,
@@ -1185,7 +1529,7 @@
         "Attendance Management",
         "Personnel Files"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_47",
@@ -1193,7 +1537,7 @@
       "company": "Khatabook",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b938,000 - \u20b950,000 / mo",
+      "salary": "₹38,000 - ₹50,000 / mo",
       "match_score": 96,
       "url": "https://khatabook.com/careers/hr-executive-operations",
       "already_applied": true,
@@ -1203,7 +1547,7 @@
         "Induction",
         "Audits"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_48",
@@ -1211,7 +1555,7 @@
       "company": "Dunzo",
       "location": "Bangalore, Karnataka, India",
       "is_remote": false,
-      "salary": "\u20b936,000 - \u20b948,000 / mo",
+      "salary": "₹36,000 - ₹48,000 / mo",
       "match_score": 96,
       "url": "https://dunzo.com/careers/people-operations-executive",
       "already_applied": true,
@@ -1221,7 +1565,7 @@
         "Exit Interviews",
         "ID Cards"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_49",
@@ -1239,7 +1583,7 @@
         "Medical Claims",
         "Onboarding"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "vj_50",
@@ -1257,16 +1601,16 @@
         "People Operations",
         "Darwinbox HRMS"
       ],
-      "posted_time": "Verified Active"
+      "posted_time": "Fresh (< 12h)"
     },
     {
-      "id": "gh_793213",
+      "id": "gh_516046",
       "title": "Director, Talent Analytics",
       "company": "Canonical",
       "location": "Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/6460571",
       "already_applied": true,
       "skills": [
@@ -1279,13 +1623,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_724389",
+      "id": "gh_795869",
       "title": "Global Payroll Manager",
       "company": "Canonical",
       "location": "Home based - EMEA; Office Based - London, UK",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/8081579",
       "already_applied": true,
       "skills": [
@@ -1298,13 +1642,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_777318",
+      "id": "gh_19482",
       "title": "Graduate HR Generalist - Americas",
       "company": "Canonical",
       "location": "Home Based - Americas",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/7048263",
       "already_applied": true,
       "skills": [
@@ -1317,13 +1661,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_152322",
+      "id": "gh_422429",
       "title": "Graduate HR Generalist - APAC",
       "company": "Canonical",
       "location": "Home Based - APAC",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/5253092",
       "already_applied": true,
       "skills": [
@@ -1336,13 +1680,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_449919",
+      "id": "gh_288120",
       "title": "Graduate Talent Scientist",
       "company": "Canonical",
       "location": "Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/6464146",
       "already_applied": true,
       "skills": [
@@ -1355,13 +1699,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_996837",
+      "id": "gh_73411",
       "title": "HR Generalist ",
       "company": "Canonical",
       "location": "Home Based - Americas; Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/7055576",
       "already_applied": true,
       "skills": [
@@ -1374,13 +1718,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_723749",
+      "id": "gh_125069",
       "title": "Lead HR Generalist - Americas",
       "company": "Canonical",
       "location": "Home Based - Americas",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/6484410",
       "already_applied": true,
       "skills": [
@@ -1393,13 +1737,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_279505",
+      "id": "gh_867060",
       "title": "Manager, People Analytics",
       "company": "Canonical",
       "location": "Home Based - Americas; Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/7836561",
       "already_applied": true,
       "skills": [
@@ -1412,13 +1756,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_421381",
+      "id": "gh_311662",
       "title": "Regional HR Manager - AMER",
       "company": "Canonical",
       "location": "Home Based - Americas",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/3979744",
       "already_applied": true,
       "skills": [
@@ -1431,13 +1775,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_205666",
+      "id": "gh_234370",
       "title": "Regional HR Manager - EMEA",
       "company": "Canonical",
       "location": "Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/6180909",
       "already_applied": true,
       "skills": [
@@ -1450,13 +1794,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_297477",
+      "id": "gh_645472",
       "title": "Senior HR Generalist - EMEA",
       "company": "Canonical",
       "location": "Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/6762650",
       "already_applied": true,
       "skills": [
@@ -1469,13 +1813,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_359497",
+      "id": "gh_359495",
       "title": "Talent Acquisition Strategist",
       "company": "Canonical",
       "location": "Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/8105144",
       "already_applied": true,
       "skills": [
@@ -1488,13 +1832,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_404286",
+      "id": "gh_802564",
       "title": "Talent Scientist",
       "company": "Canonical",
       "location": "Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/3137607",
       "already_applied": true,
       "skills": [
@@ -1507,13 +1851,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_79827",
+      "id": "gh_468298",
       "title": "Talent Scientist - Graduate Lead",
       "company": "Canonical",
       "location": "Home based - EMEA",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/7214510",
       "already_applied": true,
       "skills": [
@@ -1526,13 +1870,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_771817",
+      "id": "gh_396968",
       "title": "Threat Intelligence Lead",
       "company": "Canonical",
       "location": "Home based - Worldwide",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/5144666",
       "already_applied": true,
       "skills": [
@@ -1545,13 +1889,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_49550",
+      "id": "gh_508053",
       "title": "Recruiting Systems Administrator",
       "company": "Quince",
       "location": "United States, Remote",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/quince/jobs/5119877008",
       "already_applied": true,
       "skills": [
@@ -1564,13 +1908,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_774899",
+      "id": "gh_670549",
       "title": "Intern - Creative & Communications, People Team ",
       "company": "Inmobi",
       "location": "Bangalore",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/inmobi/jobs/8207429",
       "already_applied": true,
       "skills": [
@@ -1583,32 +1927,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_462169",
-      "title": "Senior HR  Business Partner ",
-      "company": "Inmobi",
-      "location": "India",
-      "is_remote": false,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
-      "url": "https://job-boards.greenhouse.io/inmobi/jobs/8203640",
-      "already_applied": true,
-      "skills": [
-        "Recruitment",
-        "HR Operations",
-        "Onboarding",
-        "HRIS",
-        "Compliance"
-      ],
-      "posted_time": "Recently active"
-    },
-    {
-      "id": "gh_903938",
+      "id": "gh_325441",
       "title": "HR Growth Partner",
       "company": "Appsflyer",
       "location": "Bangalore",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 90,
       "url": "https://careers.appsflyer.com/jobs/position/8816027002?gh_jid=8816027002",
       "already_applied": true,
       "skills": [
@@ -1621,13 +1946,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_43604",
+      "id": "gh_143390",
       "title": "Director, Global People Operations & Compliance",
       "company": "Gitlab",
       "location": "Remote, Canada; Remote, United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8872500002",
       "already_applied": true,
       "skills": [
@@ -1640,13 +1965,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_3310",
+      "id": "gh_581840",
       "title": "Director of Recruiting, Engineering & IT, Bangalore India",
       "company": "Gitlab",
       "location": "Bangalore, India",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8726744002",
       "already_applied": true,
       "skills": [
@@ -1659,13 +1984,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_926541",
+      "id": "gh_806217",
       "title": "People Systems Engineer",
       "company": "Gitlab",
       "location": "Bangalore, India; Remote, Poland",
       "is_remote": true,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8861748002",
       "already_applied": true,
       "skills": [
@@ -1678,13 +2003,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_624420",
+      "id": "gh_770624",
       "title": "People Technology Analyst - Workday",
       "company": "Gitlab",
       "location": "Remote, United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8861782002",
       "already_applied": true,
       "skills": [
@@ -1697,13 +2022,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_326529",
+      "id": "gh_557479",
       "title": "Recruiter,  GTM",
       "company": "Gitlab",
       "location": "Remote Ireland; Remote, Australia; Remote, Canada; Remote, India; Remote, Mexico; Remote, Poland; Remote, United Kingdom; Remote, United States",
       "is_remote": true,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8869149002",
       "already_applied": true,
       "skills": [
@@ -1716,13 +2041,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_408108",
+      "id": "gh_263806",
       "title": "Recruiter, R&D",
       "company": "Gitlab",
       "location": "Remote Ireland; Remote, Australia; Remote, Canada; Remote, India; Remote, Mexico; Remote, Poland; Remote, United Kingdom; Remote, United States",
       "is_remote": true,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8869167002",
       "already_applied": true,
       "skills": [
@@ -1735,13 +2060,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_481184",
+      "id": "gh_600218",
       "title": "Senior Talent Brand Manager",
       "company": "Gitlab",
       "location": "Remote; Remote, Canada; Remote, United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8753656002",
       "already_applied": true,
       "skills": [
@@ -1754,13 +2079,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_467932",
+      "id": "gh_651779",
       "title": "Staff Engineer, People Technology",
       "company": "Gitlab",
       "location": "Remote, Canada; Remote, United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8638295002",
       "already_applied": true,
       "skills": [
@@ -1773,13 +2098,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_700081",
+      "id": "gh_575474",
       "title": "Talent Brand Manager",
       "company": "Gitlab",
       "location": "Remote; Remote, Canada; Remote, United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8753664002",
       "already_applied": true,
       "skills": [
@@ -1792,13 +2117,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_38585",
+      "id": "gh_440428",
       "title": "Threat Research Engineer",
       "company": "Gitlab",
       "location": "Bangalore, India",
       "is_remote": false,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gitlab/jobs/8867649002",
       "already_applied": true,
       "skills": [
@@ -1811,13 +2136,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_679558",
+      "id": "gh_503992",
       "title": "Design Recruiter",
       "company": "Stripe",
       "location": "Remote",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=8163193",
       "already_applied": true,
       "skills": [
@@ -1830,13 +2155,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_935806",
+      "id": "gh_635324",
       "title": "Global People Operations - Systems Administrator",
       "company": "Stripe",
       "location": "Bengaluru",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=8227570",
       "already_applied": true,
       "skills": [
@@ -1849,13 +2174,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_870276",
+      "id": "gh_242221",
       "title": "Global People Support - People Ops Manager",
       "company": "Stripe",
       "location": "Bengaluru",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=7553098",
       "already_applied": true,
       "skills": [
@@ -1868,13 +2193,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_460411",
+      "id": "gh_949780",
       "title": "GTM Recruiter (Fixed Term)",
       "company": "Stripe",
       "location": "Chicago, Atlanta, US-Remote, Toro",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=8016504",
       "already_applied": true,
       "skills": [
@@ -1887,13 +2212,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_332177",
+      "id": "gh_151712",
       "title": "GTM Recruiting Manager",
       "company": "Stripe",
       "location": "US-Remote, Chicago, Atlanta",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=8158086",
       "already_applied": true,
       "skills": [
@@ -1906,13 +2231,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_862282",
+      "id": "gh_727383",
       "title": "People Operations Specialist, HR Compliance",
       "company": "Stripe",
       "location": "Chicago, US-Remote",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=8189015",
       "already_applied": true,
       "skills": [
@@ -1925,13 +2250,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_553347",
+      "id": "gh_978411",
       "title": "SDC Recruiter",
       "company": "Stripe",
       "location": "Bengaluru",
       "is_remote": false,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=8237526",
       "already_applied": true,
       "skills": [
@@ -1944,13 +2269,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_941519",
+      "id": "gh_10884",
       "title": "University Recruiter (Fixed Term)",
       "company": "Stripe",
       "location": "San Francisco, New York, Seattle, US-Remote",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://stripe.com/jobs/search?gh_jid=8226211",
       "already_applied": true,
       "skills": [
@@ -1963,13 +2288,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_394125",
+      "id": "gh_347726",
       "title": "Global Payroll Administrator",
       "company": "Reddit",
       "location": "Remote - United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/reddit/jobs/8130311",
       "already_applied": true,
       "skills": [
@@ -1982,13 +2307,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_968855",
+      "id": "gh_801798",
       "title": "International Payroll Analyst",
       "company": "Reddit",
       "location": "Remote - United Kingdom",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/reddit/jobs/8234154",
       "already_applied": true,
       "skills": [
@@ -2001,13 +2326,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_115230",
+      "id": "gh_905827",
       "title": "International Payroll Analyst",
       "company": "Reddit",
       "location": "Remote - United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/reddit/jobs/8192369",
       "already_applied": true,
       "skills": [
@@ -2020,13 +2345,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_473473",
+      "id": "gh_687489",
       "title": "Staff Software Engineer, Onboarding",
       "company": "Reddit",
       "location": "Remote - United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/reddit/jobs/7961154",
       "already_applied": true,
       "skills": [
@@ -2039,13 +2364,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_614674",
+      "id": "gh_967736",
       "title": "Staff Threat Analyst, Ads Fraud",
       "company": "Reddit",
       "location": "Remote - United States",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/reddit/jobs/8189395",
       "already_applied": true,
       "skills": [
@@ -2058,13 +2383,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_454775",
+      "id": "gh_949462",
       "title": "Senior Product Design Manager, Payroll",
       "company": "Gusto",
       "location": "Denver, CO - Hybrid; New York, NY - Hybrid; San Francisco, CA - Hybrid; Toronto, Ontario - Remote",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/gusto/jobs/7254336",
       "already_applied": true,
       "skills": [
@@ -2077,13 +2402,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_977749",
+      "id": "gh_476836",
       "title": "Compliance, Threat & Risk Assessment Manager",
       "company": "Coinbase",
       "location": "Remote - USA",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8064692?gh_jid=8064692",
       "already_applied": true,
       "skills": [
@@ -2096,13 +2421,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_506686",
+      "id": "gh_179550",
       "title": "Principal Recruiter",
       "company": "Coinbase",
       "location": "Remote - USA",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8260302?gh_jid=8260302",
       "already_applied": true,
       "skills": [
@@ -2115,13 +2440,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_388182",
+      "id": "gh_590810",
       "title": "Principal Recruiter",
       "company": "Coinbase",
       "location": "Remote - Singapore",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8106071?gh_jid=8106071",
       "already_applied": true,
       "skills": [
@@ -2134,13 +2459,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_279235",
+      "id": "gh_828693",
       "title": "Senior Internal Communications Manager, People",
       "company": "Coinbase",
       "location": "Remote - USA",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8162914?gh_jid=8162914",
       "already_applied": true,
       "skills": [
@@ -2153,13 +2478,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_552331",
+      "id": "gh_784703",
       "title": "Senior Recruiter",
       "company": "Coinbase",
       "location": "Remote - USA",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8260306?gh_jid=8260306",
       "already_applied": true,
       "skills": [
@@ -2172,13 +2497,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_834560",
+      "id": "gh_98526",
       "title": "Senior Threat Intelligence Engineer",
       "company": "Coinbase",
       "location": "Remote - USA",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8209803?gh_jid=8209803",
       "already_applied": true,
       "skills": [
@@ -2191,13 +2516,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_491543",
+      "id": "gh_479536",
       "title": "Threat Intelligence Platform Engineer",
       "company": "Coinbase",
       "location": "Remote - USA",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8177619?gh_jid=8177619",
       "already_applied": true,
       "skills": [
@@ -2210,13 +2535,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_93916",
+      "id": "gh_539479",
       "title": "People Generalist",
       "company": "Twilio",
       "location": "Remote - India",
       "is_remote": true,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 93,
+      "salary": "₹35,000 - ₹55,000 / mo",
+      "match_score": 94,
       "url": "https://job-boards.greenhouse.io/twilio/jobs/8256431",
       "already_applied": true,
       "skills": [
@@ -2229,13 +2554,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_995538",
+      "id": "gh_347122",
       "title": "Senior International Payroll Analyst",
       "company": "Twilio",
       "location": "Remote - Ireland",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/twilio/jobs/8249285",
       "already_applied": true,
       "skills": [
@@ -2248,13 +2573,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_705266",
+      "id": "gh_732440",
       "title": "Senior People Technology Analyst - Talent Acquisition",
       "company": "Twilio",
       "location": "Remote - US",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/twilio/jobs/8202189",
       "already_applied": true,
       "skills": [
@@ -2267,13 +2592,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_963389",
+      "id": "gh_944531",
       "title": "Sr. Program Manager, Talent Development",
       "company": "Twilio",
       "location": "Remote - US",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/twilio/jobs/8262150",
       "already_applied": true,
       "skills": [
@@ -2286,13 +2611,13 @@
       "posted_time": "Recently active"
     },
     {
-      "id": "gh_510050",
+      "id": "gh_634710",
       "title": "Staff Security Engineer, Threat Hunting",
       "company": "Twilio",
       "location": "Remote - US",
       "is_remote": true,
       "salary": "$65,000 - $85,000 / yr",
-      "match_score": 93,
+      "match_score": 90,
       "url": "https://job-boards.greenhouse.io/twilio/jobs/8157344",
       "already_applied": true,
       "skills": [

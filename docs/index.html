@@ -189,7 +189,14 @@
   </script>
 
   <script>
-    // GitHub Pages Smart API Adapter
+    // GitHub Pages Smart API Adapter & Absolute Base Resolver
+    function getAppBaseUrl() {
+      if (window.location.hostname.includes('github.io')) {
+        return '/autonomous-job-agent/';
+      }
+      return './';
+    }
+
     window.API_BASE_URL = window.location.origin.includes('github.io') ? '' : '';
     const originalFetch = window.fetch;
     window.fetch = async function(url, options = {}) {
@@ -197,6 +204,7 @@
         const isGithubPages = window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
         if (isGithubPages) {
           const method = (options.method || 'GET').toUpperCase();
+          const base = getAppBaseUrl();
 
           // 1. Candidate Profile
           if (url === '/api/profile' || url.endsWith('/api/profile')) {
@@ -225,7 +233,8 @@
               if (cached) {
                 return new Response(cached, { status: 200, headers: { 'Content-Type': 'application/json' } });
               }
-              const res = await originalFetch('./data/profile.json');
+              let res = await originalFetch(base + 'data/profile.json');
+              if (!res.ok) res = await originalFetch('./data/profile.json');
               const data = await res.json();
               localStorage.setItem('arya_profile_cache', JSON.stringify(data));
               return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
@@ -241,12 +250,13 @@
           }
 
           if (url === '/api/profile/download-pdf' || url.endsWith('/api/profile/download-pdf')) {
-            return originalFetch('./data/Jayanth_J_Resume.pdf');
+            return originalFetch(base + 'data/Jayanth_J_Resume.pdf');
           }
 
           // 2. Jobs Feed
           if (url === '/api/jobs/feed' || url.endsWith('/api/jobs/feed')) {
-            const res = await originalFetch('./data/jobs.json');
+            let res = await originalFetch(base + 'data/jobs.json');
+            if (!res.ok) res = await originalFetch('./data/jobs.json');
             const data = await res.json();
             try {
               const appliedUrls = JSON.parse(localStorage.getItem('arya_applied_urls') || '[]');
@@ -265,7 +275,8 @@
             if (cachedLedger) {
               return new Response(cachedLedger, { status: 200, headers: { 'Content-Type': 'application/json' } });
             }
-            const res = await originalFetch('./data/ledger.json');
+            let res = await originalFetch(base + 'data/ledger.json');
+            if (!res.ok) res = await originalFetch('./data/ledger.json');
             const data = await res.json();
             localStorage.setItem('arya_ledger_cache', JSON.stringify(data));
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
@@ -277,7 +288,8 @@
             if (cachedInterviews) {
               return new Response(cachedInterviews, { status: 200, headers: { 'Content-Type': 'application/json' } });
             }
-            const res = await originalFetch('./data/interviews.json');
+            let res = await originalFetch(base + 'data/interviews.json');
+            if (!res.ok) res = await originalFetch('./data/interviews.json');
             const data = await res.json();
             localStorage.setItem('arya_interviews_cache', JSON.stringify(data));
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
@@ -285,7 +297,9 @@
 
           // 5. Drafts
           if (url === '/api/drafts' || url.endsWith('/api/drafts')) {
-            return originalFetch('./data/drafts.json');
+            let res = await originalFetch(base + 'data/drafts.json');
+            if (!res.ok) res = await originalFetch('./data/drafts.json');
+            return res;
           }
 
           // 6. Job Applications & Batch Apply
@@ -1518,8 +1532,10 @@
       };
       document.getElementById('breadcrumb-title').innerText = titleMap[tabId] || 'Apply Jobs';
 
-      // Update URL without page refresh
-      if (window.history.pushState) {
+      // Update URL safely without mangling GitHub Pages repo path
+      if (window.location.hostname.includes('github.io')) {
+        window.location.hash = tabId;
+      } else if (window.history.pushState) {
         window.history.pushState(null, null, `/${tabId}`);
       }
 
@@ -1565,34 +1581,55 @@
     let allJobs = [];
     let selectedCity = 'ALL';
 
-    async function loadJobFeed(retries = 1) {
+    async function loadJobFeed(retries = 2) {
       const container = document.getElementById('job-feed-container');
       if (!container) return;
       container.innerHTML = `
         <div class="p-12 text-center text-gray-400">
           <i class="fa-solid fa-spinner animate-spin text-2xl mb-3 text-blue-500"></i>
-          <p>Scanning 40+ career boards for HR roles...</p>
+          <p>Scanning verified enterprise career boards for HR roles...</p>
         </div>`;
 
       try {
         const res = await fetch('/api/jobs/feed');
         if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
-        const data = await res.json();
+        const text = await res.text();
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch (jsonErr) {
+          const base = typeof getAppBaseUrl === 'function' ? getAppBaseUrl() : './';
+          let fallbackRes = await originalFetch(base + 'data/jobs.json');
+          if (!fallbackRes.ok) fallbackRes = await originalFetch('./data/jobs.json');
+          data = await fallbackRes.json();
+        }
         allJobs = data.jobs || [];
         const badge = document.getElementById('badge-jobs-count');
         if (badge) badge.innerText = allJobs.length;
         renderJobs(allJobs);
       } catch (err) {
         if (retries > 0) {
-          setTimeout(() => loadJobFeed(retries - 1), 1200);
+          setTimeout(() => loadJobFeed(retries - 1), 800);
           return;
         }
+        try {
+          const base = typeof getAppBaseUrl === 'function' ? getAppBaseUrl() : './';
+          let directRes = await originalFetch(base + 'data/jobs.json');
+          if (!directRes.ok) directRes = await originalFetch('./data/jobs.json');
+          const data = await directRes.json();
+          allJobs = data.jobs || [];
+          if (allJobs.length) {
+            renderJobs(allJobs);
+            return;
+          }
+        } catch (e) {}
+
         container.innerHTML = `
           <div class="glass-card p-8 text-center text-gray-400 rounded-2xl space-y-3 border border-red-500/20">
             <i class="fa-solid fa-circle-exclamation text-amber-400 text-2xl mb-1"></i>
             <h4 class="text-sm font-bold text-white">Connection momentarily paused</h4>
             <p class="text-xs text-gray-400">Could not refresh jobs feed (${err.message}).</p>
-            <button onclick="loadJobFeed()" class="mt-2 inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
+            <button onclick="loadJobFeed(2)" class="mt-2 inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
               <i class="fa-solid fa-rotate-right"></i>
               <span>Refresh Feed</span>
             </button>

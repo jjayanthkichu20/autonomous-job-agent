@@ -1247,13 +1247,13 @@
     let allJobs = [];
     let selectedCity = 'ALL';
 
-    async function loadJobFeed(retries = 1) {
+    async function loadJobFeed(retries = 2) {
       const container = document.getElementById('job-feed-container');
       if (!container) return;
       container.innerHTML = `
         <div class="p-12 text-center text-gray-400">
           <i class="fa-solid fa-spinner animate-spin text-2xl mb-3 text-blue-500"></i>
-          <p>Scanning 40+ career boards for HR roles...</p>
+          <p>Scanning verified enterprise career boards for HR roles...</p>
         </div>`;
 
       try {
@@ -1266,7 +1266,7 @@
         renderJobs(allJobs);
       } catch (err) {
         if (retries > 0) {
-          setTimeout(() => loadJobFeed(retries - 1), 1200);
+          setTimeout(() => loadJobFeed(retries - 1), 800);
           return;
         }
         container.innerHTML = `
@@ -1274,7 +1274,7 @@
             <i class="fa-solid fa-circle-exclamation text-amber-400 text-2xl mb-1"></i>
             <h4 class="text-sm font-bold text-white">Connection momentarily paused</h4>
             <p class="text-xs text-gray-400">Could not refresh jobs feed (${err.message}).</p>
-            <button onclick="loadJobFeed()" class="mt-2 inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
+            <button onclick="loadJobFeed(2)" class="mt-2 inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
               <i class="fa-solid fa-rotate-right"></i>
               <span>Refresh Feed</span>
             </button>
