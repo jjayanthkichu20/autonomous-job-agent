@@ -1,0 +1,86 @@
+{
+  "status": "success",
+  "count": 10,
+  "drafts": [
+    {
+      "draft_id": "draft_e8dc846a-050f-4cf1-b58e-2f52b4058448",
+      "company_name": "127",
+      "job_title": "Senior Distributed Systems Engineer",
+      "job_url": "http://127.0.0.1:8899/greenhouse/job/gh-78901",
+      "relevance_score": 0.3,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_3f4d9447-f48f-4c1c-bdc8-a4e097ae672c",
+      "company_name": "Canonical",
+      "job_title": "Head of Security Operations",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/4209375",
+      "relevance_score": 0.4,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_251194a7-d835-4131-9b69-6708fa7bb4c0",
+      "company_name": "Canonical",
+      "job_title": "Sales Operations Analyst",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5924435",
+      "relevance_score": 0.8,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_89accd1c-4be9-4c9e-9327-0e01b32b35e6",
+      "company_name": "Canonical",
+      "job_title": "Senior Sales Operations Analyst",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/4122239",
+      "relevance_score": 0.8,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_caecd3b4-3e21-4679-94f1-bfbee77bfb54",
+      "company_name": "Canonical",
+      "job_title": "Senior Security Operations Engineer",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5391149",
+      "relevance_score": 0.4,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_64d6dcc0-e280-4312-834d-f13041420cb5",
+      "company_name": "Canonical",
+      "job_title": "Staff Security Operations Engineer",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/6485081",
+      "relevance_score": 0.68,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_5becf9a6-2849-4dfb-8766-33be48a688b6",
+      "company_name": "Canonical",
+      "job_title": "Sustaining Operations Engineer",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/3737190",
+      "relevance_score": 0.444,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_503fe519-a2c8-4c8a-8658-7c0fb0072a51",
+      "company_name": "Canonical",
+      "job_title": "Travel Operations Specialist",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5075146",
+      "relevance_score": 0.68,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_6dd21935-f73a-43e3-83c4-9610258a555f",
+      "company_name": "Target Company",
+      "job_title": "Senior Data Scientist ( Data Scientist III : Supply Chain Operations Research)",
+      "job_url": "https://job-boards.greenhouse.io/quince/jobs/5381607008",
+      "relevance_score": 0.8,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    },
+    {
+      "draft_id": "draft_a98a3aad-9da4-47e5-80c0-b207ebd9c027",
+      "company_name": "Target Company",
+      "job_title": "Director - Global Revenue Operations",
+      "job_url": "https://job-boards.greenhouse.io/inmobi/jobs/7974670",
+      "relevance_score": 0.5,
+      "bullet_preview": "Spearheaded managed end-to-end employee documentation and compliance records."
+    }
+  ]
+}
