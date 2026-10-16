@@ -41,7 +41,10 @@ DEFAULT_TARGET_BOARDS = [
     "duolingo",
     "twilio",
     "elastic",
-    "mongodb"
+    "mongodb",
+    "groww",
+    "thoughtworks",
+    "slice"
 ]
 
 
@@ -56,7 +59,7 @@ class AutoScoutEngine:
         """Queries public Greenhouse API for active postings with resilient fast timeout."""
         api_url = f"https://boards-api.greenhouse.io/v1/boards/{board_name}/jobs"
         try:
-            resp = requests.get(api_url, timeout=3.5)
+            resp = requests.get(api_url, timeout=5.0)
             if resp.status_code == 200:
                 data = resp.json()
                 return data.get("jobs", [])

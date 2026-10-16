@@ -3,9 +3,9 @@
   "live_submit": true,
   "interval_seconds": 7200,
   "interval_hours": 2.0,
-  "last_run": "2026-10-16T04:54:39.334329+00:00",
-  "next_run": "2026-10-16T06:54:39.334329+00:00",
-  "total_scans": 639,
+  "last_run": "2026-10-16T05:56:49.031774+00:00",
+  "next_run": "2026-10-16T07:56:49.031774+00:00",
+  "total_scans": 843,
   "total_applied": 22,
   "recent_logs": [
     {
@@ -340,7 +340,28 @@
       "applied": 0,
       "staged_drafts": 0,
       "details": []
+    },
+    {
+      "timestamp": "2026-10-16T05:03:08.361170+00:00",
+      "scanned": 68,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-16T05:03:55.039066+00:00",
+      "scanned": 68,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-16T05:56:49.031774+00:00",
+      "scanned": 68,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
     }
   ],
-  "updated_at": "2026-10-16T04:54:39.334600+00:00"
+  "updated_at": "2026-10-16T05:56:49.032049+00:00"
 }

@@ -32,6 +32,8 @@ class RecurringJobHunter:
         self.max_apps_per_cycle = 5
         self.min_auto_apply_score = 0.70
         self.min_stage_draft_score = 0.55
+        self.target_locations = ["Bangalore", "Kerala", "Coimbatore"]
+        self.target_max_age_hours = 12
         self.pipeline = AutonomousJobApplicationPipeline()
         self.scout = AutoScoutEngine()
         self._bg_task: Optional[asyncio.Task] = None
@@ -108,11 +110,12 @@ class RecurringJobHunter:
 
         try:
             profile = self.get_profile()
-            locs = location_filters or getattr(profile, "preferred_locations", [])
+            locs = location_filters or getattr(self, "target_locations", ["Bangalore", "Kerala", "Coimbatore"])
+            age_filter = max_age_hours if max_age_hours is not None else getattr(self, "target_max_age_hours", 12)
             discovered = self.scout.search_and_filter_jobs(
                 profile=profile,
                 location_filters=locs,
-                max_age_hours=max_age_hours
+                max_age_hours=age_filter
             )
             scanned_count = len(discovered)
             
