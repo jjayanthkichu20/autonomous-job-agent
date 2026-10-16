@@ -861,11 +861,17 @@
           <!-- Drag and Drop Upload Card -->
           <div class="lg:col-span-2 glass-card p-6 rounded-2xl space-y-4">
             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Upload New CV (.PDF or .TXT)</h3>
-            <div id="drop-zone" class="border-2 border-dashed border-gray-700 hover:border-blue-500 rounded-xl p-8 text-center cursor-pointer transition-all bg-gray-900/30">
-              <input type="file" id="cv-file-input" class="hidden" accept=".pdf,.txt" onchange="handleFileUpload(event)">
-              <i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-400 mb-2"></i>
-              <h4 class="text-sm font-bold text-white mb-1">Drag & Drop CV or Click to Browse</h4>
-              <p class="text-xs text-gray-400">NLP engine automatically parses skills, experience, and certifications into your truth store.</p>
+            <div id="drop-zone" onclick="document.getElementById('cv-file-input').click()" ondragover="event.preventDefault(); this.classList.add('border-blue-500', 'bg-blue-950/20');" ondragleave="this.classList.remove('border-blue-500', 'bg-blue-950/20');" ondrop="event.preventDefault(); this.classList.remove('border-blue-500', 'bg-blue-950/20'); handleFileDrop(event);" class="border-2 border-dashed border-gray-700 hover:border-blue-500 rounded-xl p-8 text-center cursor-pointer transition-all bg-gray-900/30 group">
+              <input type="file" id="cv-file-input" class="hidden" accept=".pdf,.txt,.docx,.doc" onchange="handleFileUpload(event)">
+              <div id="drop-zone-content">
+                <i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                <h4 class="text-sm font-bold text-white mb-1">Drag & Drop CV or Click to Browse</h4>
+                <p class="text-xs text-gray-400 mb-3">NLP engine automatically parses skills, experience, and certifications into your truth store.</p>
+                <button type="button" onclick="event.stopPropagation(); document.getElementById('cv-file-input').click();" class="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
+                  <i class="fa-solid fa-folder-open"></i>
+                  <span>Browse CV File</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2151,28 +2157,78 @@
       }
     }
 
-    async function handleFileUpload(event) {
-      const file = event.target.files[0];
+    function handleFileDrop(event) {
+      const dt = event.dataTransfer;
+      if (dt && dt.files && dt.files.length > 0) {
+        processUploadedResume(dt.files[0]);
+      }
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (file) {
+        processUploadedResume(file);
+      }
+    }
+
+    async function processUploadedResume(file) {
       if (!file) return;
 
-      const formData = new FormData();
-      formData.append('file', file);
+      const dzContent = document.getElementById('drop-zone-content');
+      if (dzContent) {
+        dzContent.innerHTML = `
+          <i class="fa-solid fa-spinner fa-spin text-3xl text-blue-400 mb-2"></i>
+          <h4 class="text-sm font-bold text-white mb-1">Analyzing '${file.name}' with NLP...</h4>
+          <p class="text-xs text-blue-400">Extracting verified competencies, contact details & ATS keywords</p>
+        `;
+      }
       showToast(`Uploading and analyzing '${file.name}' with NLP...`, 'info');
 
       try {
+        const formData = new FormData();
+        formData.append('file', file);
+
         const res = await fetch('/api/profile/upload-pdf', {
           method: 'POST',
           body: formData
         });
         const data = await res.json();
         if (res.ok) {
-          showToast(data.message, 'success');
+          if (dzContent) {
+            dzContent.innerHTML = `
+              <i class="fa-solid fa-circle-check text-3xl text-emerald-400 mb-2"></i>
+              <h4 class="text-sm font-bold text-white mb-1">Uploaded: ${file.name}</h4>
+              <p class="text-xs text-emerald-400 font-medium mb-3">${data.message || 'Saved to candidate truth store!'}</p>
+              <button type="button" onclick="event.stopPropagation(); document.getElementById('cv-file-input').click();" class="inline-flex items-center space-x-1.5 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs px-3 py-1.5 rounded-lg border border-gray-700">
+                <i class="fa-solid fa-upload"></i>
+                <span>Upload Another CV</span>
+              </button>
+            `;
+          }
+          showToast(data.message || "Resume successfully parsed and saved!", 'success');
           loadProfileData();
         } else {
           showToast(data.detail || 'Upload failed', 'error');
+          resetDropZone();
         }
       } catch (err) {
         showToast("Upload error: " + err.message, 'error');
+        resetDropZone();
+      }
+    }
+
+    function resetDropZone() {
+      const dzContent = document.getElementById('drop-zone-content');
+      if (dzContent) {
+        dzContent.innerHTML = `
+          <i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-400 mb-2"></i>
+          <h4 class="text-sm font-bold text-white mb-1">Drag & Drop CV or Click to Browse</h4>
+          <p class="text-xs text-gray-400 mb-3">NLP engine automatically parses skills, experience, and certifications into your truth store.</p>
+          <button type="button" onclick="event.stopPropagation(); document.getElementById('cv-file-input').click();" class="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Browse CV File</span>
+          </button>
+        `;
       }
     }
 

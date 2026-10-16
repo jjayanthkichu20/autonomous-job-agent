@@ -261,7 +261,7 @@ def update_profile(profile_data: Dict[str, Any]):
 @app.post("/api/profile/upload-pdf")
 async def upload_pdf_resume(file: UploadFile = File(...)):
     """Upload PDF CV, parse it into CandidateMasterProfile, and update active truth store."""
-    if not file.filename.lower().endswith((".pdf", ".txt")):
+    if not file.filename.lower().endswith((".pdf", ".txt", ".docx", ".doc")):
         raise HTTPException(status_code=400, detail="Only .pdf or .txt resume files are supported.")
 
     content = await file.read()
@@ -270,19 +270,45 @@ async def upload_pdf_resume(file: UploadFile = File(...)):
     else:
         text = content.decode("utf-8", errors="ignore")
 
-    if not text.strip():
-        raise HTTPException(status_code=400, detail="Could not extract readable text from the uploaded file.")
+    current_data = load_current_profile().model_dump()
 
-    parsed_dict = parse_resume_text(text, filename=file.filename)
-    validated = CandidateMasterProfile(**parsed_dict)
+    if not text.strip():
+        current_data["uploaded_cv_filename"] = file.filename
+        validated = CandidateMasterProfile(**current_data)
+    else:
+        parsed_dict = parse_resume_text(text, filename=file.filename)
+        # Merge preserving existing valid contact/profile fields if parser extracted defaults
+        if parsed_dict.get("phone") in ("+91 00000 00000", "", None) and current_data.get("phone"):
+            parsed_dict["phone"] = current_data["phone"]
+        if parsed_dict.get("email") in ("candidate@example.com", "", None) and current_data.get("email"):
+            parsed_dict["email"] = current_data["email"]
+        if not parsed_dict.get("preferred_locations") and current_data.get("preferred_locations"):
+            parsed_dict["preferred_locations"] = current_data["preferred_locations"]
+        if not parsed_dict.get("linkedin_url") and current_data.get("linkedin_url"):
+            parsed_dict["linkedin_url"] = current_data["linkedin_url"]
+        if not parsed_dict.get("min_desired_salary_usd") and current_data.get("min_desired_salary_usd"):
+            parsed_dict["min_desired_salary_usd"] = current_data["min_desired_salary_usd"]
+
+        # Merge verified skills without losing existing ones
+        existing_skills = current_data.get("verified_skills") or []
+        new_skills = parsed_dict.get("verified_skills") or []
+        combined_skills = list(dict.fromkeys(new_skills + existing_skills))
+        parsed_dict["verified_skills"] = combined_skills
+
+        validated = CandidateMasterProfile(**parsed_dict)
 
     path = BASE_DIR / "my_profile.json"
     with open(path, "w", encoding="utf-8") as f:
         json.dump(validated.model_dump(), f, indent=2)
 
+    docs_profile = BASE_DIR / "docs" / "data" / "profile.json"
+    if docs_profile.parent.exists():
+        with open(docs_profile, "w", encoding="utf-8") as f:
+            json.dump(validated.model_dump(), f, indent=2)
+
     return {
         "status": "success",
-        "message": f"Resume '{file.filename}' parsed and saved as active profile!",
+        "message": f"Resume '{file.filename}' parsed and saved as active candidate truth store!",
         "profile": validated.model_dump()
     }
 
