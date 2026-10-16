@@ -894,33 +894,49 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold text-gray-400 mb-1">First Name</label>
-              <input type="text" id="prof-first-name" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
+              <input type="text" id="prof-first-name" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="First Name">
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-400 mb-1">Last Name</label>
-              <input type="text" id="prof-last-name" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
+              <input type="text" id="prof-last-name" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="Last Name">
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold text-gray-400 mb-1">Email Address</label>
-              <input type="email" id="prof-email" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
+              <input type="email" id="prof-email" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="email@example.com">
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-400 mb-1">Mobile Number</label>
-              <input type="text" id="prof-phone" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">
+              <input type="text" id="prof-phone" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="+91 ...">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 mb-1">Current Base Location</label>
+              <input type="text" id="prof-curr-location" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="e.g. Kottayam, Kerala, India">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 mb-1">LinkedIn Profile URL</label>
+              <input type="url" id="prof-linkedin" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="https://linkedin.com/in/username">
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-400 mb-1">Preferred Locations (Comma-separated)</label>
+            <label class="block text-xs font-semibold text-gray-400 mb-1">Preferred Job Locations (Comma-separated)</label>
             <input type="text" id="prof-locations" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="Bangalore, Kochi, Hyderabad, Trivandrum, Remote, UAE">
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-gray-400 mb-1">Target Job Roles (Comma-separated)</label>
             <input type="text" id="prof-roles" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="HR Executive, Talent Acquisition Specialist, HR Operations">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-400 mb-1">Verified Core Skills (Comma-separated)</label>
+            <input type="text" id="prof-skills-input" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white" placeholder="Recruitment & Talent Acquisition, Onboarding, HR Operations, HRIS, Compliance">
           </div>
 
           <div class="grid grid-cols-2 gap-4">
@@ -934,9 +950,14 @@
             </div>
           </div>
 
-          <button onclick="saveCandidateProfileForm()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-6 py-2.5 rounded-xl transition-all shadow-md shadow-blue-600/30">
-            <i class="fa-solid fa-floppy-disk mr-2"></i> Save Profile Truth Store
-          </button>
+          <div class="flex items-center space-x-3 pt-2">
+            <button onclick="saveCandidateProfileForm()" id="btn-save-profile" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-6 py-2.5 rounded-xl transition-all shadow-md shadow-blue-600/30 flex items-center">
+              <i class="fa-solid fa-floppy-disk mr-2"></i> Save Profile Truth Store
+            </button>
+            <span id="prof-save-status" class="text-xs text-emerald-400 font-medium hidden">
+              <i class="fa-solid fa-check mr-1"></i> Profile saved successfully!
+            </span>
+          </div>
         </div>
       </section>
 
@@ -2052,14 +2073,20 @@
         const res = await fetch('/api/profile');
         const p = await res.json();
 
-        document.getElementById('user-display-name').innerText = `${p.first_name} ${p.last_name}`;
-        document.getElementById('prof-first-name').value = p.first_name;
-        document.getElementById('prof-last-name').value = p.last_name;
-        document.getElementById('prof-email').value = p.email;
-        document.getElementById('prof-phone').value = p.phone;
-        document.getElementById('prof-locations').value = (p.preferred_locations || []).join(', ');
-        document.getElementById('prof-roles').value = (p.target_roles || []).join(', ');
-        document.getElementById('prof-min-salary').value = p.min_base_salary || 25000;
+        if (document.getElementById('user-display-name')) {
+          document.getElementById('user-display-name').innerText = `${p.first_name || ''} ${p.last_name || ''}`.trim() || 'Candidate';
+        }
+        if (document.getElementById('prof-first-name')) document.getElementById('prof-first-name').value = p.first_name || '';
+        if (document.getElementById('prof-last-name')) document.getElementById('prof-last-name').value = p.last_name || '';
+        if (document.getElementById('prof-email')) document.getElementById('prof-email').value = p.email || '';
+        if (document.getElementById('prof-phone')) document.getElementById('prof-phone').value = p.phone || '';
+        if (document.getElementById('prof-curr-location')) document.getElementById('prof-curr-location').value = p.location || '';
+        if (document.getElementById('prof-linkedin')) document.getElementById('prof-linkedin').value = p.linkedin_url || '';
+        if (document.getElementById('prof-locations')) document.getElementById('prof-locations').value = (p.preferred_locations || []).join(', ');
+        if (document.getElementById('prof-roles')) document.getElementById('prof-roles').value = (p.target_roles || []).join(', ');
+        if (document.getElementById('prof-skills-input')) document.getElementById('prof-skills-input').value = (p.verified_skills || []).join(', ');
+        if (document.getElementById('prof-min-salary')) document.getElementById('prof-min-salary').value = p.min_base_salary || p.min_desired_salary_usd || 25000;
+        if (document.getElementById('prof-years-exp') && p.years_experience) document.getElementById('prof-years-exp').value = p.years_experience;
 
         const skillsDiv = document.getElementById('p-skills');
         if (skillsDiv) {
@@ -2068,23 +2095,33 @@
           ).join('');
         }
       } catch (err) {
-        console.error(err);
+        console.error("Error loading profile:", err);
       }
     }
 
     async function saveCandidateProfileForm() {
+      const saveBtn = document.getElementById('btn-save-profile');
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Saving...';
+      }
       try {
-        const locs = document.getElementById('prof-locations').value.split(',').map(s => s.trim()).filter(Boolean);
-        const roles = document.getElementById('prof-roles').value.split(',').map(s => s.trim()).filter(Boolean);
+        const locs = document.getElementById('prof-locations') ? document.getElementById('prof-locations').value.split(',').map(s => s.trim()).filter(Boolean) : [];
+        const roles = document.getElementById('prof-roles') ? document.getElementById('prof-roles').value.split(',').map(s => s.trim()).filter(Boolean) : [];
+        const skills = document.getElementById('prof-skills-input') ? document.getElementById('prof-skills-input').value.split(',').map(s => s.trim()).filter(Boolean) : [];
 
         const updated = {
-          first_name: document.getElementById('prof-first-name').value,
-          last_name: document.getElementById('prof-last-name').value,
-          email: document.getElementById('prof-email').value,
-          phone: document.getElementById('prof-phone').value,
+          first_name: document.getElementById('prof-first-name') ? document.getElementById('prof-first-name').value.trim() : '',
+          last_name: document.getElementById('prof-last-name') ? document.getElementById('prof-last-name').value.trim() : '',
+          email: document.getElementById('prof-email') ? document.getElementById('prof-email').value.trim() : '',
+          phone: document.getElementById('prof-phone') ? document.getElementById('prof-phone').value.trim() : '',
+          location: document.getElementById('prof-curr-location') ? document.getElementById('prof-curr-location').value.trim() : '',
+          linkedin_url: document.getElementById('prof-linkedin') ? document.getElementById('prof-linkedin').value.trim() : '',
           preferred_locations: locs,
           target_roles: roles,
-          min_base_salary: parseInt(document.getElementById('prof-min-salary').value) || 25000
+          verified_skills: skills.length > 0 ? skills : undefined,
+          min_base_salary: parseInt(document.getElementById('prof-min-salary') ? document.getElementById('prof-min-salary').value : '25000') || 25000,
+          years_experience: document.getElementById('prof-years-exp') ? document.getElementById('prof-years-exp').value.trim() : '2+ Years'
         };
 
         const res = await fetch('/api/profile', {
@@ -2095,12 +2132,22 @@
         const data = await res.json();
         if (res.ok) {
           showToast("Profile truth store successfully saved!", 'success');
+          const statusSpan = document.getElementById('prof-save-status');
+          if (statusSpan) {
+            statusSpan.classList.remove('hidden');
+            setTimeout(() => statusSpan.classList.add('hidden'), 4000);
+          }
           loadProfileData();
         } else {
           showToast(data.detail || "Validation failed", 'error');
         }
       } catch (err) {
         showToast("Error saving profile: " + err.message, 'error');
+      } finally {
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = '<i class="fa-solid fa-floppy-disk mr-2"></i> Save Profile Truth Store';
+        }
       }
     }
 

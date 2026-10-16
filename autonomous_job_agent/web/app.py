@@ -215,17 +215,46 @@ def get_profile():
 def update_profile(profile_data: Dict[str, Any]):
     try:
         current = load_current_profile().model_dump()
-        current.update(profile_data)
+        # Map frontend form fields
+        if "min_base_salary" in profile_data and profile_data["min_base_salary"] is not None:
+            try:
+                current["min_desired_salary_usd"] = float(profile_data["min_base_salary"])
+            except (ValueError, TypeError):
+                pass
+        if "location" in profile_data and profile_data["location"]:
+            current["location"] = str(profile_data["location"]).strip()
+        if "linkedin_url" in profile_data:
+            current["linkedin_url"] = str(profile_data["linkedin_url"]).strip() or None
+        if "preferred_locations" in profile_data and isinstance(profile_data["preferred_locations"], list):
+            current["preferred_locations"] = [str(x).strip() for x in profile_data["preferred_locations"] if str(x).strip()]
+        if "target_roles" in profile_data and isinstance(profile_data["target_roles"], list):
+            current["target_roles"] = [str(x).strip() for x in profile_data["target_roles"] if str(x).strip()]
+        if "verified_skills" in profile_data and isinstance(profile_data["verified_skills"], list):
+            current["verified_skills"] = [str(x).strip() for x in profile_data["verified_skills"] if str(x).strip()]
+        
+        # Merge basic string attributes
+        for field in ["first_name", "last_name", "email", "phone"]:
+            if field in profile_data and profile_data[field]:
+                current[field] = str(profile_data[field]).strip()
+
         validated = CandidateMasterProfile(**current)
         path = BASE_DIR / "my_profile.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(validated.model_dump(), f, indent=2)
+
+        # Sync docs/data/profile.json for GitHub Pages
+        docs_profile = BASE_DIR / "docs" / "data" / "profile.json"
+        if docs_profile.parent.exists():
+            with open(docs_profile, "w", encoding="utf-8") as f:
+                json.dump(validated.model_dump(), f, indent=2)
+
         return {
             "status": "success",
             "message": "Candidate master profile updated successfully",
             "profile": validated.model_dump()
         }
     except Exception as e:
+        logger.exception("Profile update validation error")
         raise HTTPException(status_code=400, detail=f"Validation failed: {str(e)}")
 
 
