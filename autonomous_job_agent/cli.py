@@ -67,6 +67,9 @@ def main():
     rec_parser.add_argument("--interval", type=float, default=2.0, help="Interval in hours (default: 2.0)")
     rec_parser.add_argument("--live-submit", action="store_true", help="Execute live applications instead of dry-run")
     rec_parser.add_argument("--once", action="store_true", help="Execute a single cycle and exit (for cron/scheduled tasks)")
+    rec_parser.add_argument("--locations", nargs="+", default=None, help="Specific location filters (e.g. Bangalore Kerala Coimbatore)")
+    rec_parser.add_argument("--max-age", type=int, default=None, help="Filter jobs posted within max hours (e.g. 12)")
+    rec_parser.add_argument("--max-apps", type=int, default=None, help="Max applications to process in this cycle")
 
     args = parser.parse_args()
 
@@ -148,7 +151,15 @@ def main():
         recurring_hunter.live_submit = args.live_submit
         if args.once:
             console.print(f"[bold cyan]Executing single 2-hour job hunt cycle (Live: {args.live_submit})...[/bold cyan]")
-            res = recurring_hunter.run_cycle()
+            if args.locations:
+                console.print(f"Target Locations: [green]{', '.join(args.locations)}[/green]")
+            if args.max_age:
+                console.print(f"Freshness Filter: [yellow]Posted in last {args.max_age} hours[/yellow]")
+            res = recurring_hunter.run_cycle(
+                max_applications=args.max_apps,
+                location_filters=args.locations,
+                max_age_hours=args.max_age
+            )
             console.print(f"[bold green]Cycle complete. Scanned: {res.get('scanned', 0)}, Applied: {res.get('applied', 0)}, Staged: {res.get('staged_drafts', 0)}[/bold green]")
         else:
             console.print(Panel.fit(f"[bold green]2-Hour Autonomous Job Hunter Daemon[/bold green]\nScanning and auto-applying every {args.interval} hours (Live Submit: {args.live_submit})"))

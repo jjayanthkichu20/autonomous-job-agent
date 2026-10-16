@@ -1,102 +1,1245 @@
 [
   {
+    "id": "vj_cbe_01",
+    "company": "Bosch Global Software Technologies",
+    "board": "Bosch",
+    "title": "HR Executive - Talent Acquisition & Operations",
+    "location": "Coimbatore, Tamil Nadu, India",
+    "is_remote": false,
+    "salary": "\u20b935,000 - \u20b950,000 / mo",
+    "url": "https://bosch.com/careers/coimbatore/hr-executive-talent-ops-2026",
+    "posted_time": "2h ago",
+    "first_published": "2026-10-16T02:15:00+00:00",
+    "updated_at": "2026-10-16T02:15:00+00:00",
+    "raw_description": "Bosch Coimbatore campus is hiring an HR Executive to drive candidate sourcing, interview scheduling, employee onboarding, background check verification, attendance tracking, and HRMS documentation. Requirements: Hands-on experience in recruitment operations, HRMS, and statutory compliance.",
+    "skills": [
+      "Recruitment",
+      "Onboarding",
+      "Attendance Management",
+      "HRMS",
+      "Labour Law",
+      "Statutory Compliance",
+      "Candidate Screening"
+    ]
+  },
+  {
+    "id": "vj_cbe_02",
+    "company": "Cognizant",
+    "board": "Cognizant",
+    "title": "HR Operations Executive (Employee Documentation & Compliance)",
+    "location": "Coimbatore, Tamil Nadu, India",
+    "is_remote": false,
+    "salary": "\u20b938,000 - \u20b952,000 / mo",
+    "url": "https://cognizant.com/careers/coimbatore/hr-operations-executive-2026",
+    "posted_time": "3h ago",
+    "first_published": "2026-10-16T01:30:00+00:00",
+    "updated_at": "2026-10-16T01:30:00+00:00",
+    "raw_description": "Cognizant Coimbatore delivery center is looking for an HR Operations Executive. Responsibilities include managing new employee files, induction, leave and attendance administration, PF/ESI statutory compliance queries, and HR ticketing. Requirements: 1-3 years HR operations experience, proficiency in Advanced Excel.",
+    "skills": [
+      "HR Operations",
+      "Employee Lifecycle",
+      "PF / ESI Compliance",
+      "Attendance",
+      "Advanced Excel",
+      "Documentation"
+    ]
+  },
+  {
+    "id": "vj_cbe_03",
+    "company": "Kovai.co",
+    "board": "Kovai.co",
+    "title": "People Operations Coordinator (HR Executive)",
+    "location": "Coimbatore, Tamil Nadu, India / Hybrid",
+    "is_remote": true,
+    "salary": "\u20b936,000 - \u20b948,000 / mo",
+    "url": "https://kovai.co/careers/people-operations-coordinator-2026",
+    "posted_time": "1h ago",
+    "first_published": "2026-10-16T03:20:00+00:00",
+    "updated_at": "2026-10-16T03:20:00+00:00",
+    "raw_description": "Join Kovai.co People and Culture team in Coimbatore! You will coordinate recruitment pipelines, conduct HR orientation for new joiners, maintain employee personnel records on Darwinbox, and support payroll input reconciliation.",
+    "skills": [
+      "Recruitment Coordination",
+      "Onboarding",
+      "HRMS Data Entry",
+      "Payroll Inputs",
+      "Employee Relations"
+    ]
+  },
+  {
+    "id": "vj_cbe_04",
+    "company": "Pricol Limited",
+    "board": "Pricol",
+    "title": "HR Executive (Plant HR & Statutory Compliance)",
+    "location": "Coimbatore, Tamil Nadu, India",
+    "is_remote": false,
+    "salary": "\u20b932,000 - \u20b945,000 / mo",
+    "url": "https://pricol.com/careers/hr-executive-plant-operations-2026",
+    "posted_time": "4h ago",
+    "first_published": "2026-10-16T00:15:00+00:00",
+    "updated_at": "2026-10-16T00:15:00+00:00",
+    "raw_description": "Pricol is hiring an HR Executive for corporate and plant operations in Coimbatore. Scope includes shop-floor employee records, contract labour statutory compliance (PF, ESI, Factory Act), attendance regularization, and new hire documentation.",
+    "skills": [
+      "Statutory Compliance",
+      "Labour Law",
+      "Attendance Management",
+      "Onboarding",
+      "HR Operations",
+      "5S"
+    ]
+  },
+  {
+    "id": "vj_cbe_05",
+    "company": "KGiSL",
+    "board": "KGiSL",
+    "title": "Talent Acquisition Coordinator & HR Executive",
+    "location": "Coimbatore, Tamil Nadu, India",
+    "is_remote": false,
+    "salary": "\u20b930,000 - \u20b942,000 / mo",
+    "url": "https://kgisl.com/careers/talent-acquisition-coordinator-coimbatore-2026",
+    "posted_time": "5h ago",
+    "first_published": "2026-10-15T23:30:00+00:00",
+    "updated_at": "2026-10-15T23:30:00+00:00",
+    "raw_description": "KGiSL is seeking a Talent Acquisition & HR Coordinator in Coimbatore. Manage end-to-end recruitment pipelines, coordinate technical panels, issue offer letters, and handle induction formalities.",
+    "skills": [
+      "Talent Acquisition",
+      "Candidate Screening",
+      "Interview Coordination",
+      "Offer Rollout",
+      "HRMS"
+    ]
+  },
+  {
+    "id": "vj_cbe_06",
+    "company": "Payoda Technologies",
+    "board": "Payoda",
+    "title": "HR Operations & Employee Engagement Executive",
+    "location": "Coimbatore, Tamil Nadu, India / Hybrid",
+    "is_remote": true,
+    "salary": "\u20b934,000 - \u20b946,000 / mo",
+    "url": "https://payoda.com/careers/hr-operations-engagement-coimbatore-2026",
+    "posted_time": "6h ago",
+    "first_published": "2026-10-15T22:45:00+00:00",
+    "updated_at": "2026-10-15T22:45:00+00:00",
+    "raw_description": "Payoda is looking for an enthusiastic HR Executive to handle employee onboarding, background check verification, HRMS records, and employee grievance tracking.",
+    "skills": [
+      "HR Operations",
+      "Background Verification",
+      "Employee Onboarding",
+      "HRIS",
+      "MIS Reporting"
+    ]
+  },
+  {
+    "id": "vj_ker_01",
+    "company": "UST Global",
+    "board": "UST",
+    "title": "HR Executive (People Operations & Employee Onboarding)",
+    "location": "Kochi, Kerala / Trivandrum / Remote, India",
+    "is_remote": true,
+    "salary": "\u20b938,000 - \u20b952,000 / mo",
+    "url": "https://ust.com/careers/kerala/hr-executive-people-ops-2026",
+    "posted_time": "1h ago",
+    "first_published": "2026-10-16T03:10:00+00:00",
+    "updated_at": "2026-10-16T03:10:00+00:00",
+    "raw_description": "UST Global is hiring an HR Executive for Kochi Infopark campus. Drive end-to-end employee onboarding, personal file documentation, background verification tracking, and statutory compliance assistance across offshore delivery units.",
+    "skills": [
+      "Onboarding",
+      "Employee Lifecycle",
+      "HRMS",
+      "Background Verification",
+      "Statutory Compliance",
+      "HR Operations"
+    ]
+  },
+  {
+    "id": "vj_ker_02",
+    "company": "IBS Software",
+    "board": "IBS",
+    "title": "Talent Acquisition & HR Operations Coordinator",
+    "location": "Kochi, Kerala, India / Hybrid",
+    "is_remote": true,
+    "salary": "\u20b936,000 - \u20b950,000 / mo",
+    "url": "https://ibsplc.com/careers/kochi/talent-acquisition-hr-coordinator-2026",
+    "posted_time": "2h ago",
+    "first_published": "2026-10-16T02:00:00+00:00",
+    "updated_at": "2026-10-16T02:00:00+00:00",
+    "raw_description": "IBS Software is expanding its People team at Infopark Kochi. Support talent sourcing, candidate screening, interview coordination, offer rollout, and new joiner induction.",
+    "skills": [
+      "Talent Sourcing",
+      "Interview Coordination",
+      "Candidate Screening",
+      "HRIS Data Entry",
+      "Induction"
+    ]
+  },
+  {
+    "id": "vj_ker_03",
+    "company": "CareStack",
+    "board": "CareStack",
+    "title": "HR Operations Executive (HRMS & Compliance)",
+    "location": "Kochi / Kottayam / Trivandrum, Kerala / Remote",
+    "is_remote": true,
+    "salary": "\u20b940,000 - \u20b955,000 / mo",
+    "url": "https://carestack.com/careers/kerala/hr-operations-executive-2026",
+    "posted_time": "3h ago",
+    "first_published": "2026-10-16T01:15:00+00:00",
+    "updated_at": "2026-10-16T01:15:00+00:00",
+    "raw_description": "CareStack is hiring an HR Operations Executive. Oversee employee documentation, leave administration, payroll inputs, and statutory compliance (PF, ESI) in our fast-growing SaaS environment.",
+    "skills": [
+      "HR Operations",
+      "HRMS",
+      "Leave Administration",
+      "PF / ESI Compliance",
+      "Payroll Inputs",
+      "Advanced Excel"
+    ]
+  },
+  {
+    "id": "vj_ker_04",
+    "company": "Experion Technologies",
+    "board": "Experion",
+    "title": "HR Generalist & Talent Specialist",
+    "location": "Kochi, Kerala, India",
+    "is_remote": false,
+    "salary": "\u20b934,000 - \u20b946,000 / mo",
+    "url": "https://experionglobal.com/careers/kochi/hr-generalist-talent-specialist-2026",
+    "posted_time": "4h ago",
+    "first_published": "2026-10-16T00:30:00+00:00",
+    "updated_at": "2026-10-16T00:30:00+00:00",
+    "raw_description": "Experion Technologies Kochi is seeking an HR Generalist to manage recruitment workflows, onboarding logistics, employee documentation, and employee lifecycle engagements.",
+    "skills": [
+      "Employee Relations",
+      "Recruitment",
+      "Onboarding",
+      "Documentation",
+      "HRIS"
+    ]
+  },
+  {
+    "id": "vj_ker_05",
+    "company": "NeST Digital",
+    "board": "NeST",
+    "title": "HR Executive - Recruitment & People Services",
+    "location": "Kochi, Kerala, India",
+    "is_remote": false,
+    "salary": "\u20b933,000 - \u20b945,000 / mo",
+    "url": "https://nestdigital.com/careers/kochi/hr-executive-recruitment-2026",
+    "posted_time": "5h ago",
+    "first_published": "2026-10-15T23:15:00+00:00",
+    "updated_at": "2026-10-15T23:15:00+00:00",
+    "raw_description": "NeST Digital is hiring an HR Executive to support candidate screening, interview coordination, onboarding compliance, and employee personnel record keeping.",
+    "skills": [
+      "Recruitment",
+      "Candidate Screening",
+      "HR Operations",
+      "Onboarding",
+      "Attendance Management"
+    ]
+  },
+  {
+    "id": "vj_ker_06",
+    "company": "Trackpi & Tech Partners",
+    "board": "Trackpi",
+    "title": "HR Operations & Statutory Compliance Executive",
+    "location": "Kottayam / Kochi, Kerala, India",
+    "is_remote": false,
+    "salary": "\u20b935,000 - \u20b948,000 / mo",
+    "url": "https://trackpi.com/careers/kottayam/hr-operations-compliance-executive-2026",
+    "posted_time": "2h ago",
+    "first_published": "2026-10-16T02:45:00+00:00",
+    "updated_at": "2026-10-16T02:45:00+00:00",
+    "raw_description": "Join our expanding operations in Kottayam/Kochi. Oversee employee file audits, statutory filings (PF, ESI, Labour Law), attendance regularization, and new hire induction.",
+    "skills": [
+      "HR Operations",
+      "Statutory Compliance",
+      "PF / ESI",
+      "Employee Documentation",
+      "Labour Law",
+      "Onboarding"
+    ]
+  },
+  {
+    "id": "vj_blr_01",
+    "company": "Zepto",
+    "board": "Zepto",
+    "title": "People Operations Executive (HR Operations)",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b940,000 - \u20b955,000 / mo",
+    "url": "https://zepto.com/careers/bangalore/people-operations-executive-2026",
+    "posted_time": "2h ago",
+    "first_published": "2026-10-16T02:20:00+00:00",
+    "updated_at": "2026-10-16T02:20:00+00:00",
+    "raw_description": "Zepto is hiring a People Operations Executive in Bangalore. Responsible for new hire onboarding, background check verification, attendance tracking, and HRMS data maintenance.",
+    "skills": [
+      "People Operations",
+      "Onboarding",
+      "HRMS",
+      "Background Verification",
+      "Attendance Management"
+    ]
+  },
+  {
+    "id": "vj_blr_02",
+    "company": "Swiggy",
+    "board": "Swiggy",
+    "title": "HR Executive - Talent Sourcing & Operations",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b942,000 - \u20b956,000 / mo",
+    "url": "https://swiggy.com/careers/bangalore/hr-executive-talent-ops-2026",
+    "posted_time": "3h ago",
+    "first_published": "2026-10-16T01:45:00+00:00",
+    "updated_at": "2026-10-16T01:45:00+00:00",
+    "raw_description": "Swiggy is seeking an HR Executive in Bangalore to coordinate talent acquisition pipelines, conduct preliminary candidate screening, and support onboarding operations.",
+    "skills": [
+      "Talent Sourcing",
+      "Candidate Screening",
+      "Interview Coordination",
+      "Onboarding",
+      "HRIS"
+    ]
+  },
+  {
+    "id": "vj_blr_03",
+    "company": "Razorpay",
+    "board": "Razorpay",
+    "title": "HR Coordinator (Employee Lifecycle & Compliance)",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b940,000 - \u20b952,000 / mo",
+    "url": "https://razorpay.com/careers/bangalore/hr-coordinator-employee-lifecycle-2026",
+    "posted_time": "4h ago",
+    "first_published": "2026-10-16T00:50:00+00:00",
+    "updated_at": "2026-10-16T00:50:00+00:00",
+    "raw_description": "Razorpay is hiring an HR Coordinator to handle employee documentation, leave administration, statutory compliance checks (PF, ESI), and ticketing resolution.",
+    "skills": [
+      "Employee Lifecycle",
+      "Documentation",
+      "Statutory Compliance",
+      "HR Operations",
+      "Advanced Excel"
+    ]
+  },
+  {
+    "id": "vj_blr_04",
+    "company": "Darwinbox",
+    "board": "Darwinbox",
+    "title": "HR Operations Executive (HRMS Implementation Support)",
+    "location": "Bangalore, Karnataka, India / Hybrid",
+    "is_remote": true,
+    "salary": "\u20b940,000 - \u20b955,000 / mo",
+    "url": "https://darwinbox.com/careers/bangalore/hr-operations-executive-2026",
+    "posted_time": "1h ago",
+    "first_published": "2026-10-16T03:30:00+00:00",
+    "updated_at": "2026-10-16T03:30:00+00:00",
+    "raw_description": "Darwinbox is hiring an HR Operations Executive. Oversee employee master data management, attendance/leave configuration, and HR workflow audits.",
+    "skills": [
+      "HRMS",
+      "HR Operations",
+      "Master Data Management",
+      "Attendance & Leave",
+      "Advanced Excel"
+    ]
+  },
+  {
+    "id": "vj_blr_05",
+    "company": "PhonePe",
+    "board": "PhonePe",
+    "title": "Talent Acquisition Coordinator (HR Executive)",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b942,000 - \u20b956,000 / mo",
+    "url": "https://phonepe.com/careers/bangalore/talent-acquisition-coordinator-2026",
+    "posted_time": "5h ago",
+    "first_published": "2026-10-15T23:45:00+00:00",
+    "updated_at": "2026-10-15T23:45:00+00:00",
+    "raw_description": "PhonePe is looking for a Talent Acquisition Coordinator in Bangalore to manage interview scheduling, candidate communication, offer rollout, and pre-onboarding checks.",
+    "skills": [
+      "Talent Acquisition",
+      "Interview Scheduling",
+      "Candidate Communication",
+      "Offer Rollout",
+      "HRMS"
+    ]
+  },
+  {
+    "id": "vj_blr_06",
+    "company": "TalentPulse Technologies",
+    "board": "TalentPulse",
+    "title": "Senior HR Executive (Recruitment & People Operations)",
+    "location": "Bangalore, Karnataka, India / Remote",
+    "is_remote": true,
+    "salary": "\u20b938,000 - \u20b952,000 / mo",
+    "url": "http://127.0.0.1:8799/greenhouse/job/hr-executive-senior-2026",
+    "posted_time": "1h ago",
+    "first_published": "2026-10-16T03:40:00+00:00",
+    "updated_at": "2026-10-16T03:40:00+00:00",
+    "raw_description": "TalentPulse is hiring an HR Executive to drive end-to-end recruitment, employee onboarding, personal file documentation, HRMS database management, and statutory compliance (PF, ESI, Labour Law).",
+    "skills": [
+      "Recruitment",
+      "Onboarding",
+      "Attendance Management",
+      "HRMS",
+      "Labour Law",
+      "Statutory Compliance"
+    ]
+  },
+  {
+    "id": "vj_01",
+    "company": "TalentPulse Technologies",
     "board": "TalentPulse",
     "title": "HR Executive (HR Operations & Talent Acquisition)",
     "location": "Bangalore, Karnataka, India / Remote",
     "is_remote": true,
-    "salary": "₹35,000 - ₹48,000 / mo",
+    "salary": "\u20b935,000 - \u20b948,000 / mo",
     "url": "http://127.0.0.1:8799/greenhouse/job/hr-executive",
-    "raw_description": "We are seeking an HR Executive to drive end-to-end recruitment, employee onboarding, personal file documentation, HRMS database management, and statutory compliance (PF, ESI, Labour Law). Requirements: 1-3 years experience in HR operations, recruitment, and onboarding. Excellent communication skills.",
-    "skills": ["Recruitment", "Onboarding", "Attendance Management", "HRMS", "Labour Law", "Statutory Compliance"]
+    "raw_description": "We are seeking an HR Executive to drive end-to-end recruitment, employee onboarding, personal file documentation, HRMS database management, and statutory compliance (PF, ESI, Labour Law).",
+    "skills": [
+      "Recruitment",
+      "Onboarding",
+      "Attendance Management",
+      "HRMS",
+      "Labour Law",
+      "Statutory Compliance"
+    ]
   },
   {
+    "id": "vj_02",
+    "company": "Quince India",
     "board": "Quince",
     "title": "HR Generalist (Employee Lifecycle & Compliance)",
     "location": "Bangalore, Karnataka, India",
     "is_remote": false,
-    "salary": "₹40,000 - ₹55,000 / mo",
+    "salary": "\u20b940,000 - \u20b955,000 / mo",
     "url": "https://quince.com/careers/hr-generalist-bangalore",
-    "raw_description": "Join Quince India as an HR Generalist managing employee documentation, onboarding workflows, leave tracking, statutory compliance, and payroll input verification. Requirements: Experience with HRIS tools, candidate screening, and compliance records.",
-    "skills": ["Employee Relations", "Documentation", "PF / ESI Compliance", "Payroll Inputs", "HRIS"]
+    "raw_description": "Handle day-to-day HR operations, induction, background verification, leave administration, and statutory filings across engineering and business teams.",
+    "skills": [
+      "Employee Relations",
+      "Documentation",
+      "PF / ESI Compliance",
+      "Payroll Inputs",
+      "Onboarding"
+    ]
   },
   {
+    "id": "vj_03",
+    "company": "InMobi",
     "board": "InMobi",
     "title": "Talent Acquisition & People Operations Coordinator",
     "location": "Bangalore / Kochi, Kerala / Remote",
     "is_remote": true,
-    "salary": "₹32,000 - ₹45,000 / mo",
+    "salary": "\u20b935,000 - \u20b945,000 / mo",
     "url": "https://inmobi.com/careers/talent-coordinator-india",
-    "raw_description": "InMobi is hiring a People Operations Coordinator to manage candidate screening, interview scheduling, offer letter generation, and new hire induction. Requirements: Hands-on experience in sourcing, interview coordination, and HR databases.",
-    "skills": ["Candidate Screening", "Interview Scheduling", "HR Analytics", "HRIS Data Entry", "Induction"]
+    "raw_description": "Coordinate candidate screening, interview pipelines, onboarding logistics, and maintain employee records in Darwinbox HRMS.",
+    "skills": [
+      "Candidate Screening",
+      "Interview Scheduling",
+      "HR Analytics",
+      "HRIS Data Entry",
+      "Recruitment"
+    ]
   },
   {
-    "board": "Al-Futtaim",
-    "title": "HR Operations Specialist (UAE & Gulf Hub)",
-    "location": "Dubai, UAE / Remote",
-    "is_remote": true,
-    "salary": "AED 5,000 - 7,000 / mo",
-    "url": "https://alfuttaim.com/careers/hr-operations-specialist",
-    "raw_description": "Al-Futtaim People Services is seeking an HR Operations Specialist to manage employee records, onboarding, visa processing assistance, and HR correspondence. Requirements: Prior experience in UAE or multinational corporate environment, fluency in English, proficiency in HR software.",
-    "skills": ["Visa Processing", "Employee Records", "Labour Compliance", "HR Operations", "English & Hindi Correspondence"]
-  },
-  {
+    "id": "vj_04",
+    "company": "Swiggy",
     "board": "Swiggy",
-    "title": "Associate HR Manager (People & Culture)",
+    "title": "HR Operations Specialist (Employee Lifecycle)",
     "location": "Bangalore / Hyderabad, India",
     "is_remote": false,
-    "salary": "₹38,000 - ₹52,000 / mo",
-    "url": "https://swiggy.com/careers/associate-hr-manager",
-    "raw_description": "Swiggy is hiring an Associate HR Manager to oversee talent sourcing, induction and onboarding, attendance tracking, and employee grievance management across south regional offices. Requirements: BBA/MBA in HR, 2+ years of HR operations experience.",
-    "skills": ["Talent Sourcing", "Induction & Onboarding", "Exit Formalities", "HRIS", "Attendance Tracking"]
+    "salary": "\u20b942,000 - \u20b958,000 / mo",
+    "url": "https://swiggy.com/careers/hr-operations-specialist",
+    "raw_description": "Manage employee onboarding, lifecycle operations, grievance handling, and compliance reports across business units.",
+    "skills": [
+      "HR Operations",
+      "Onboarding",
+      "Grievance Redressal",
+      "HRMS",
+      "Documentation"
+    ]
   },
   {
+    "id": "vj_05",
+    "company": "Razorpay",
     "board": "Razorpay",
     "title": "People Operations Executive",
     "location": "Bangalore, Karnataka, India",
     "is_remote": false,
-    "salary": "₹36,000 - ₹50,000 / mo",
+    "salary": "\u20b940,000 - \u20b952,000 / mo",
     "url": "https://razorpay.com/jobs/people-operations-executive",
-    "raw_description": "Razorpay is seeking a People Operations Executive to manage background verification, employee documentation, leave administration, and HR ticketing. Requirements: Strong attention to detail, proficiency in Excel/Google Sheets, knowledge of Indian labour compliance.",
-    "skills": ["Background Verification", "Employee Documentation", "Leave Administration", "HR Ticketing", "Compliance"]
+    "raw_description": "Drive new hire orientation, attendance regularization, payroll input reconciliation, and employee personnel files.",
+    "skills": [
+      "People Operations",
+      "Payroll Inputs",
+      "Attendance Management",
+      "Employee Engagement"
+    ]
   },
   {
+    "id": "vj_06",
+    "company": "Freshworks",
     "board": "Freshworks",
-    "title": "Talent Sourcing Specialist",
+    "title": "Talent Sourcing & HR Coordinator",
     "location": "Kochi / Bangalore / Remote",
     "is_remote": true,
-    "salary": "₹34,000 - ₹46,000 / mo",
+    "salary": "\u20b938,000 - \u20b950,000 / mo",
     "url": "https://freshworks.com/careers/talent-sourcing-specialist",
-    "raw_description": "Freshworks is looking for a Talent Sourcing Specialist to identify and engage top candidates across recruitment channels, conduct preliminary screening calls, and maintain the recruitment pipeline. Requirements: Experience with LinkedIn Recruiter and ATS systems.",
-    "skills": ["Talent Sourcing", "Candidate Screening", "Pipeline Management", "Recruitment Coordination", "ATS"]
+    "raw_description": "Source high-potential talent across campus and lateral channels, manage candidate database, and support induction programs.",
+    "skills": [
+      "Talent Sourcing",
+      "Screening",
+      "Applicant Tracking System",
+      "Candidate Experience"
+    ]
   },
   {
-    "board": "AppsFlyer",
-    "title": "HR Coordinator (India & APAC Hub)",
-    "location": "Bangalore / Remote",
-    "is_remote": true,
-    "salary": "₹35,000 - ₹48,000 / mo",
-    "url": "https://appsflyer.com/jobs/hr-coordinator-apac",
-    "raw_description": "AppsFlyer is hiring an HR Coordinator to handle employee lifecycle support, orientation sessions, HR data integrity, and compliance reporting. Requirements: 1-3 years in human resources, customer-first attitude, organizational skills.",
-    "skills": ["Employee Lifecycle", "Orientation", "HR Data Integrity", "Compliance Reporting", "HR Operations"]
-  },
-  {
+    "id": "vj_07",
+    "company": "BrowserStack",
     "board": "BrowserStack",
     "title": "Junior HR Business Partner (Operations)",
     "location": "Mumbai / Remote, India",
     "is_remote": true,
-    "salary": "₹38,000 - ₹50,000 / mo",
+    "salary": "\u20b945,000 - \u20b960,000 / mo",
     "url": "https://browserstack.com/careers/junior-hrbp-operations",
-    "raw_description": "BrowserStack is seeking a Junior HRBP to partner with business managers on employee onboarding, performance management tracking, employee documentation, and statutory compliance. Requirements: BBA or MBA in Human Resources, analytical mindset.",
-    "skills": ["HRBP Support", "Performance Tracking", "Employee Documentation", "Statutory Compliance", "Onboarding"]
+    "raw_description": "Support business unit heads with performance management tracking, onboarding reviews, employee queries, and policy enforcement.",
+    "skills": [
+      "HRBP",
+      "Performance Review",
+      "Employee Queries",
+      "HR Analytics",
+      "Onboarding"
+    ]
   },
   {
+    "id": "vj_08",
+    "company": "Springworks",
     "board": "Springworks",
     "title": "Recruitment & Onboarding Specialist",
     "location": "Bangalore / Remote, India",
     "is_remote": true,
-    "salary": "₹30,000 - ₹42,000 / mo",
+    "salary": "\u20b936,000 - \u20b948,000 / mo",
     "url": "https://springworks.in/careers/recruitment-onboarding-specialist",
-    "raw_description": "Springworks is hiring a remote Recruitment & Onboarding Specialist to manage candidate pipelines, run background checks, handle offer rollouts, and ensure smooth new hire transitions. Requirements: Proven HR/recruitment experience.",
-    "skills": ["Candidate Pipelines", "Background Checks", "Offer Rollouts", "New Hire Transition", "HRMS"]
+    "raw_description": "Spearhead remote onboarding workflows, document verification, background checks, and culture immersion sessions.",
+    "skills": [
+      "Onboarding",
+      "Background Verification",
+      "Remote Work Culture",
+      "HRMS"
+    ]
+  },
+  {
+    "id": "vj_09",
+    "company": "Zomato",
+    "board": "Zomato",
+    "title": "HR Executive (People & Culture Operations)",
+    "location": "Delhi / Gurgaon / Bangalore, India",
+    "is_remote": false,
+    "salary": "\u20b938,000 - \u20b950,000 / mo",
+    "url": "https://zomato.com/careers/hr-executive-people-ops",
+    "raw_description": "Oversee personnel file audit, employee query desk, onboarding packs distribution, and attendance management.",
+    "skills": [
+      "People Operations",
+      "Documentation",
+      "Query Resolution",
+      "Attendance Tracking"
+    ]
+  },
+  {
+    "id": "vj_10",
+    "company": "Zepto",
+    "board": "Zepto",
+    "title": "HR Generalist (Hub Operations)",
+    "location": "Bangalore / Mumbai, India",
+    "is_remote": false,
+    "salary": "\u20b940,000 - \u20b955,000 / mo",
+    "url": "https://zepto.com/careers/hr-generalist-hub-ops",
+    "raw_description": "Support fast-paced hiring, attendance audits, labour compliance documentation, and employee welfare initiatives.",
+    "skills": [
+      "Hub Operations",
+      "Labour Law Compliance",
+      "High-Volume Hiring",
+      "HR Documentation"
+    ]
+  },
+  {
+    "id": "vj_11",
+    "company": "PhonePe",
+    "board": "PhonePe",
+    "title": "People Operations Associate",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b942,000 - \u20b956,000 / mo",
+    "url": "https://phonepe.com/careers/people-operations-associate",
+    "raw_description": "Manage employee lifecycle workflows, HRMS record maintenance, employee verification, and payroll support.",
+    "skills": [
+      "HRMS",
+      "Employee Lifecycle",
+      "Payroll Coordination",
+      "Statutory Compliance"
+    ]
+  },
+  {
+    "id": "vj_12",
+    "company": "Darwinbox",
+    "board": "Darwinbox",
+    "title": "HR Operations & Implementation Coordinator",
+    "location": "Hyderabad / Bangalore, India",
+    "is_remote": true,
+    "salary": "\u20b938,000 - \u20b952,000 / mo",
+    "url": "https://darwinbox.com/careers/hr-operations-coordinator",
+    "raw_description": "Utilize HRMS expertise to streamline internal HR workflows, manage employee data governance, and run leave administration.",
+    "skills": [
+      "Darwinbox HRMS",
+      "Data Governance",
+      "Leave Administration",
+      "Employee Support"
+    ]
+  },
+  {
+    "id": "vj_13",
+    "company": "Keka HR",
+    "board": "Keka",
+    "title": "Talent Operations & HR Specialist",
+    "location": "Hyderabad / Bangalore / Remote",
+    "is_remote": true,
+    "salary": "\u20b936,000 - \u20b948,000 / mo",
+    "url": "https://keka.com/careers/talent-operations-specialist",
+    "raw_description": "Coordinate candidate interview schedules, offer release documentation, and employee onboarding.",
+    "skills": [
+      "Keka HRMS",
+      "Offer Management",
+      "Candidate Coordination",
+      "Documentation"
+    ]
+  },
+  {
+    "id": "vj_14",
+    "company": "GreytHR (Greytip Software)",
+    "board": "Greytip",
+    "title": "HR Compliance & Payroll Executive",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b935,000 - \u20b946,000 / mo",
+    "url": "https://greythr.com/careers/hr-compliance-executive",
+    "raw_description": "Handle PF/ESI/PT filings, contract labor compliance, attendance registers, and audit readiness.",
+    "skills": [
+      "PF & ESI Compliance",
+      "Labour Law",
+      "Audit Readiness",
+      "Payroll Administration"
+    ]
+  },
+  {
+    "id": "vj_15",
+    "company": "Meesho",
+    "board": "Meesho",
+    "title": "Talent Acquisition Associate",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": true,
+    "salary": "\u20b940,000 - \u20b954,000 / mo",
+    "url": "https://meesho.com/careers/talent-acquisition-associate",
+    "raw_description": "Source qualified candidates across business functions, coordinate multi-stage interview panels, and drive offer acceptance.",
+    "skills": [
+      "Talent Acquisition",
+      "Headhunting",
+      "Interview Panels",
+      "Candidate Engagement"
+    ]
+  },
+  {
+    "id": "vj_16",
+    "company": "Cred",
+    "board": "Cred",
+    "title": "People Experience Executive",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b945,000 - \u20b962,000 / mo",
+    "url": "https://cred.club/careers/people-experience-executive",
+    "raw_description": "Champion employee delight programs, oversee seamless joining day logistics, and manage HR ticketing systems.",
+    "skills": [
+      "People Experience",
+      "Onboarding",
+      "Ticketing Systems",
+      "Employee Engagement"
+    ]
+  },
+  {
+    "id": "vj_17",
+    "company": "Urban Company",
+    "board": "Urban Company",
+    "title": "HR Operations Executive",
+    "location": "Gurgaon / Bangalore, India",
+    "is_remote": false,
+    "salary": "\u20b938,000 - \u20b950,000 / mo",
+    "url": "https://urbancompany.com/careers/hr-operations-executive",
+    "raw_description": "Handle offboarding formalities, exit interviews, full & final settlement coordination, and record archiving.",
+    "skills": [
+      "Offboarding",
+      "Exit Interviews",
+      "F&F Settlement",
+      "Record Management"
+    ]
+  },
+  {
+    "id": "vj_18",
+    "company": "CleverTap",
+    "board": "CleverTap",
+    "title": "People & Culture Operations Coordinator",
+    "location": "Mumbai / Bangalore / Remote",
+    "is_remote": true,
+    "salary": "\u20b940,000 - \u20b955,000 / mo",
+    "url": "https://clevertap.com/careers/people-culture-coordinator",
+    "raw_description": "Coordinate APAC people operations, manage new hire orientations, and track probationary milestones.",
+    "skills": [
+      "Culture Operations",
+      "Orientation",
+      "Probation Management",
+      "HR Analytics"
+    ]
+  },
+  {
+    "id": "vj_19",
+    "company": "MoEngage",
+    "board": "MoEngage",
+    "title": "Talent Operations Specialist",
+    "location": "Bangalore / Remote, India",
+    "is_remote": true,
+    "salary": "\u20b938,000 - \u20b952,000 / mo",
+    "url": "https://moengage.com/careers/talent-operations-specialist",
+    "raw_description": "Manage recruiter schedules, candidate communication, job board management, and recruitment metrics.",
+    "skills": [
+      "Talent Operations",
+      "Recruitment Metrics",
+      "Job Board Optimization",
+      "ATS Management"
+    ]
+  },
+  {
+    "id": "vj_20",
+    "company": "Chargebee",
+    "board": "Chargebee",
+    "title": "HR Coordinator (People Operations)",
+    "location": "Chennai / Bangalore / Remote",
+    "is_remote": true,
+    "salary": "\u20b938,000 - \u20b950,000 / mo",
+    "url": "https://chargebee.com/careers/hr-coordinator",
+    "raw_description": "Support people team with employee records, compliance audits, benefits administration, and HR documentation.",
+    "skills": [
+      "Benefits Administration",
+      "Compliance Audit",
+      "Employee Records",
+      "HR Operations"
+    ]
+  },
+  {
+    "id": "vj_21",
+    "company": "Al-Futtaim Group",
+    "board": "Al-Futtaim",
+    "title": "HR Operations Specialist (UAE & Gulf Hub)",
+    "location": "Dubai, UAE / Remote",
+    "is_remote": true,
+    "salary": "AED 5,000 - 7,200 / mo",
+    "url": "https://alfuttaim.com/careers/hr-operations-specialist",
+    "raw_description": "Oversee UAE labour law compliance, visa processing coordination, employee lifecycle documentation, and medical insurance administration.",
+    "skills": [
+      "Visa Processing",
+      "UAE Labour Law",
+      "Medical Insurance",
+      "Employee Files",
+      "HR Operations"
+    ]
+  },
+  {
+    "id": "vj_22",
+    "company": "Careem (Uber Subsidiary)",
+    "board": "Careem",
+    "title": "People Operations Coordinator (MENA Hub)",
+    "location": "Dubai, UAE / Remote",
+    "is_remote": true,
+    "salary": "AED 5,500 - 8,000 / mo",
+    "url": "https://careem.com/careers/people-ops-coordinator-mena",
+    "raw_description": "Deliver frictionless onboarding for regional hires, handle employee queries across Gulf markets, and update Workday records.",
+    "skills": [
+      "People Operations",
+      "Workday HRIS",
+      "Regional Onboarding",
+      "Query Resolution"
+    ]
+  },
+  {
+    "id": "vj_23",
+    "company": "Noon.com",
+    "board": "Noon",
+    "title": "HR Generalist (E-Commerce Logistics)",
+    "location": "Dubai / Abu Dhabi, UAE",
+    "is_remote": false,
+    "salary": "AED 6,000 - 8,500 / mo",
+    "url": "https://noon.com/careers/hr-generalist-uae",
+    "raw_description": "Manage attendance tracking, leave schedules, shift allocation, and employee grievance procedures for fulfillment hubs.",
+    "skills": [
+      "Shift Management",
+      "Attendance Tracking",
+      "Grievance Handling",
+      "Labour Regulations"
+    ]
+  },
+  {
+    "id": "vj_24",
+    "company": "Majid Al Futtaim",
+    "board": "MAF",
+    "title": "Talent Acquisition Coordinator",
+    "location": "Dubai, UAE",
+    "is_remote": false,
+    "salary": "AED 5,200 - 7,500 / mo",
+    "url": "https://majidalfuttaim.com/careers/ta-coordinator-dubai",
+    "raw_description": "Coordinate interviews across retail and corporate divisions, manage offer documentation, and track time-to-hire metrics.",
+    "skills": [
+      "Talent Acquisition",
+      "Interview Scheduling",
+      "Time-to-Hire",
+      "Candidate Experience"
+    ]
+  },
+  {
+    "id": "vj_25",
+    "company": "Aster DM Healthcare",
+    "board": "Aster",
+    "title": "HR Officer (Personnel & Compliance)",
+    "location": "Kochi, Kerala / Dubai, UAE",
+    "is_remote": true,
+    "salary": "\u20b938,000 - \u20b950,000 / mo (India) / AED 5,000 (UAE)",
+    "url": "https://asterdmhealthcare.com/careers/hr-officer",
+    "raw_description": "Coordinate healthcare personnel licensing verification, onboarding, attendance registers, and compliance filings.",
+    "skills": [
+      "Personnel Records",
+      "Compliance Verification",
+      "Onboarding",
+      "Attendance Management"
+    ]
+  },
+  {
+    "id": "vj_26",
+    "company": "Landmark Group",
+    "board": "Landmark",
+    "title": "HR Executive (Retail Operations)",
+    "location": "Dubai, UAE / Bangalore, India",
+    "is_remote": false,
+    "salary": "AED 5,000 - 6,800 / mo",
+    "url": "https://landmarkgroup.com/careers/hr-executive-operations",
+    "raw_description": "Maintain staff roster databases, handle employee welfare programs, process separation clearances, and run HR reports.",
+    "skills": [
+      "Staff Records",
+      "Clearance Processing",
+      "HR Reporting",
+      "Welfare Programs"
+    ]
+  },
+  {
+    "id": "vj_27",
+    "company": "LuLu Group International",
+    "board": "LuLu",
+    "title": "Assistant HR Executive (Recruitment & Documentation)",
+    "location": "Kochi, Kerala / Abu Dhabi, UAE",
+    "is_remote": false,
+    "salary": "\u20b935,000 - \u20b945,000 / mo",
+    "url": "https://lulugroup.com/careers/assistant-hr-executive",
+    "raw_description": "Manage recruitment advertising, resume shortlisting, candidate interview calls, and passport/visa file custody.",
+    "skills": [
+      "Resume Shortlisting",
+      "Candidate Outreach",
+      "Document Custody",
+      "Induction"
+    ]
+  },
+  {
+    "id": "vj_28",
+    "company": "IBS Software",
+    "board": "IBS",
+    "title": "Associate HR Executive (People Operations)",
+    "location": "Kochi / Trivandrum, Kerala, India",
+    "is_remote": false,
+    "salary": "\u20b935,000 - \u20b948,000 / mo",
+    "url": "https://ibsplc.com/careers/associate-hr-executive",
+    "raw_description": "Manage Infopark/Technopark campus hiring drives, new recruit onboarding, background check verification, and HRMS updates.",
+    "skills": [
+      "Campus Recruitment",
+      "Infopark Operations",
+      "HRMS",
+      "Verification"
+    ]
+  },
+  {
+    "id": "vj_29",
+    "company": "Tata Elxsi",
+    "board": "Tata Elxsi",
+    "title": "HR Specialist (Talent Operations)",
+    "location": "Trivandrum / Kochi / Bangalore, India",
+    "is_remote": false,
+    "salary": "\u20b938,000 - \u20b952,000 / mo",
+    "url": "https://tataelxsi.com/careers/hr-specialist-talent-ops",
+    "raw_description": "Handle project allocation paperwork, contractor compliance, leave regularization, and personnel file management.",
+    "skills": [
+      "Contractor Compliance",
+      "Personnel Documentation",
+      "Attendance Management",
+      "Audit"
+    ]
+  },
+  {
+    "id": "vj_30",
+    "company": "UST Global",
+    "board": "UST",
+    "title": "Talent Acquisition Coordinator",
+    "location": "Kochi / Trivandrum / Bangalore, India",
+    "is_remote": true,
+    "salary": "\u20b936,000 - \u20b948,000 / mo",
+    "url": "https://ust.com/careers/talent-acquisition-coordinator",
+    "raw_description": "Manage recruitment workflow in SmartRecruiters, coordinate tech assessment tests, schedule candidate interviews, and issue offer letters.",
+    "skills": [
+      "SmartRecruiters ATS",
+      "Assessment Scheduling",
+      "Offer Generation",
+      "Candidate Communication"
+    ]
+  },
+  {
+    "id": "vj_31",
+    "company": "Experion Technologies",
+    "board": "Experion",
+    "title": "HR Generalist (People & Culture)",
+    "location": "Kochi / Trivandrum, Kerala, India",
+    "is_remote": false,
+    "salary": "\u20b935,000 - \u20b946,000 / mo",
+    "url": "https://experionglobal.com/careers/hr-generalist",
+    "raw_description": "Champion employee welfare, coordinate performance appraisal cycles, manage onboarding sessions, and maintain statutory logs.",
+    "skills": [
+      "Employee Welfare",
+      "Appraisal Coordination",
+      "Statutory Logs",
+      "Onboarding"
+    ]
+  },
+  {
+    "id": "vj_32",
+    "company": "CareStack (Goodwin Tech)",
+    "board": "CareStack",
+    "title": "HR Operations Associate",
+    "location": "Trivandrum / Kochi, Kerala, India / Remote",
+    "is_remote": true,
+    "salary": "\u20b936,000 - \u20b950,000 / mo",
+    "url": "https://carestack.com/careers/hr-operations-associate",
+    "raw_description": "Manage SaaS product team hiring, onboarding kits delivery, leave and attendance policies, and internal HR ticketing.",
+    "skills": [
+      "HR Ticketing",
+      "Leave Management",
+      "SaaS Team Hiring",
+      "Documentation"
+    ]
+  },
+  {
+    "id": "vj_33",
+    "company": "Stripe",
+    "board": "Stripe",
+    "title": "People Operations Coordinator (India & APAC)",
+    "location": "Bangalore, India / Remote",
+    "is_remote": true,
+    "salary": "\u20b950,000 - \u20b970,000 / mo",
+    "url": "https://stripe.com/jobs/people-operations-coordinator",
+    "raw_description": "Support APAC team with employment contract issuance, benefits enrollment, statutory compliance documentation, and employee onboarding.",
+    "skills": [
+      "Benefits Enrollment",
+      "Contract Issuance",
+      "Statutory Compliance",
+      "Workday HRMS"
+    ]
+  },
+  {
+    "id": "vj_34",
+    "company": "Cloudflare",
+    "board": "Cloudflare",
+    "title": "Talent Acquisition Operations Specialist",
+    "location": "Bangalore / Remote, India",
+    "is_remote": true,
+    "salary": "\u20b948,000 - \u20b965,000 / mo",
+    "url": "https://cloudflare.com/careers/talent-operations-specialist",
+    "raw_description": "Optimize Greenhouse ATS workflows, track recruiting funnel metrics, coordinate international candidate interviews, and ensure data integrity.",
+    "skills": [
+      "Greenhouse ATS",
+      "Funnel Analytics",
+      "Interview Coordination",
+      "Data Integrity"
+    ]
+  },
+  {
+    "id": "vj_35",
+    "company": "Figma",
+    "board": "Figma",
+    "title": "People Experience & Operations Associate",
+    "location": "Bangalore / Remote",
+    "is_remote": true,
+    "salary": "\u20b952,000 - \u20b972,000 / mo",
+    "url": "https://figma.com/careers/people-experience-operations",
+    "raw_description": "Deliver a world-class onboarding journey, manage global team perks, oversee employee documentation, and answer day-to-day HR requests.",
+    "skills": [
+      "People Experience",
+      "Global Onboarding",
+      "Employee Requests",
+      "HR Operations"
+    ]
+  },
+  {
+    "id": "vj_36",
+    "company": "MongoDB",
+    "board": "MongoDB",
+    "title": "HR Operations Coordinator",
+    "location": "Bangalore / Gurgaon, India",
+    "is_remote": false,
+    "salary": "\u20b945,000 - \u20b960,000 / mo",
+    "url": "https://mongodb.com/careers/hr-operations-coordinator",
+    "raw_description": "Drive statutory compliance verification, PF/ESI audit support, probation confirmation cycles, and HRIS data accuracy.",
+    "skills": [
+      "Compliance Verification",
+      "Probation Tracking",
+      "HRIS Data Accuracy",
+      "Personnel Audit"
+    ]
+  },
+  {
+    "id": "vj_37",
+    "company": "Elastic",
+    "board": "Elastic",
+    "title": "Talent Acquisition Coordinator (Distributed / Remote)",
+    "location": "India - Remote",
+    "is_remote": true,
+    "salary": "\u20b946,000 - \u20b964,000 / mo",
+    "url": "https://elastic.co/careers/talent-acquisition-coordinator",
+    "raw_description": "Partner with global recruiters to schedule high-volume interviews, prepare candidate dossier packets, and manage Greenhouse job requisitions.",
+    "skills": [
+      "Remote Interview Scheduling",
+      "Candidate Packets",
+      "Requisition Management",
+      "Greenhouse"
+    ]
+  },
+  {
+    "id": "vj_38",
+    "company": "Twilio",
+    "board": "Twilio",
+    "title": "People Operations Specialist",
+    "location": "Bangalore, India / Remote",
+    "is_remote": true,
+    "salary": "\u20b945,000 - \u20b962,000 / mo",
+    "url": "https://twilio.com/careers/people-operations-specialist",
+    "raw_description": "Manage employee inquiries, oversee letter generation (experience letters, verification letters), and support onboarding cohorts.",
+    "skills": [
+      "Letter Generation",
+      "Cohort Onboarding",
+      "Employee Inquiries",
+      "HR Administration"
+    ]
+  },
+  {
+    "id": "vj_39",
+    "company": "Postman",
+    "board": "Postman",
+    "title": "People Operations Associate",
+    "location": "Bangalore, Karnataka, India / Remote",
+    "is_remote": true,
+    "salary": "\u20b948,000 - \u20b966,000 / mo",
+    "url": "https://postman.com/careers/people-operations-associate",
+    "raw_description": "Coordinate new joiner hardware dispatch tracking, background verification follow-ups, and quarterly leave reconciliation.",
+    "skills": [
+      "Background Verification",
+      "Leave Reconciliation",
+      "New Joiner Logistics",
+      "HRMS"
+    ]
+  },
+  {
+    "id": "vj_40",
+    "company": "Reddit",
+    "board": "Reddit",
+    "title": "Recruiting Coordinator (APAC)",
+    "location": "Bangalore / Remote",
+    "is_remote": true,
+    "salary": "\u20b945,000 - \u20b960,000 / mo",
+    "url": "https://reddit.com/careers/recruiting-coordinator-apac",
+    "raw_description": "Drive candidate interview schedules across time zones, oversee interview feedback collection, and ensure exceptional candidate journeys.",
+    "skills": [
+      "Interview Scheduling",
+      "Feedback Tracking",
+      "Candidate Journey",
+      "ATS Administration"
+    ]
+  },
+  {
+    "id": "vj_41",
+    "company": "Airbnb",
+    "board": "Airbnb",
+    "title": "People Partner Operations Associate",
+    "location": "Gurgaon / Bangalore / Remote",
+    "is_remote": true,
+    "salary": "\u20b950,000 - \u20b968,000 / mo",
+    "url": "https://airbnb.com/careers/people-partner-associate",
+    "raw_description": "Support people partner teams with employee change requests, performance documentation, and compliance reports.",
+    "skills": [
+      "Change Requests",
+      "Performance Documentation",
+      "HR Reports",
+      "Compliance"
+    ]
+  },
+  {
+    "id": "vj_42",
+    "company": "Duolingo",
+    "board": "Duolingo",
+    "title": "People Operations Coordinator",
+    "location": "Remote / Anywhere",
+    "is_remote": true,
+    "salary": "$55,000 - $70,000 / yr",
+    "url": "https://duolingo.com/careers/people-ops-coordinator",
+    "raw_description": "Support remote global team with onboarding logistics, employee documentation, perks administration, and HR ticketing.",
+    "skills": [
+      "Global Onboarding",
+      "Perks Administration",
+      "Documentation",
+      "HR Ticketing"
+    ]
+  },
+  {
+    "id": "vj_43",
+    "company": "Gusto",
+    "board": "Gusto",
+    "title": "People Operations & Compliance Specialist",
+    "location": "Remote / Anywhere",
+    "is_remote": true,
+    "salary": "$58,000 - $74,000 / yr",
+    "url": "https://gusto.com/careers/people-compliance-specialist",
+    "raw_description": "Oversee personnel file compliance, state and central labor regulation documentation, and HR record retention policies.",
+    "skills": [
+      "Record Retention",
+      "Labor Regulations",
+      "Compliance Audit",
+      "Personnel Records"
+    ]
+  },
+  {
+    "id": "vj_44",
+    "company": "Brex",
+    "board": "Brex",
+    "title": "Talent Operations Specialist",
+    "location": "Remote / Worldwide",
+    "is_remote": true,
+    "salary": "$60,000 - $75,000 / yr",
+    "url": "https://brex.com/careers/talent-operations-specialist",
+    "raw_description": "Streamline interview scheduling across global engineering and product groups, manage ATS pipelines, and analyze candidate satisfaction.",
+    "skills": [
+      "Global Scheduling",
+      "ATS Pipelines",
+      "Candidate Satisfaction",
+      "Operations"
+    ]
+  },
+  {
+    "id": "vj_45",
+    "company": "Coinbase",
+    "board": "Coinbase",
+    "title": "People Operations Associate (India Hub)",
+    "location": "India - Remote",
+    "is_remote": true,
+    "salary": "\u20b955,000 - \u20b975,000 / mo",
+    "url": "https://coinbase.com/careers/people-operations-associate",
+    "raw_description": "Ensure seamless remote employee lifecycle experience, handle offboarding logistics, and maintain employee document vaults.",
+    "skills": [
+      "Remote Lifecycle",
+      "Offboarding Logistics",
+      "Document Vaults",
+      "Workday"
+    ]
+  },
+  {
+    "id": "vj_46",
+    "company": "AppsFlyer",
+    "board": "AppsFlyer",
+    "title": "HR Coordinator (India & APAC Hub)",
+    "location": "Bangalore / Remote",
+    "is_remote": true,
+    "salary": "\u20b942,000 - \u20b956,000 / mo",
+    "url": "https://appsflyer.com/jobs/hr-coordinator-apac",
+    "raw_description": "Support employee onboarding, team culture rituals, attendance management, and personnel files compliance.",
+    "skills": [
+      "Onboarding",
+      "Culture Rituals",
+      "Attendance Management",
+      "Personnel Files"
+    ]
+  },
+  {
+    "id": "vj_47",
+    "company": "Khatabook",
+    "board": "Khatabook",
+    "title": "HR Executive (Operations & Payroll Support)",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b938,000 - \u20b950,000 / mo",
+    "url": "https://khatabook.com/careers/hr-executive-operations",
+    "raw_description": "Manage attendance inputs, employee benefits enrollment, personnel file audits, and new joiner induction.",
+    "skills": [
+      "Attendance Inputs",
+      "Benefits Enrollment",
+      "Induction",
+      "Audits"
+    ]
+  },
+  {
+    "id": "vj_48",
+    "company": "Dunzo",
+    "board": "Dunzo",
+    "title": "People Operations Executive",
+    "location": "Bangalore, Karnataka, India",
+    "is_remote": false,
+    "salary": "\u20b936,000 - \u20b948,000 / mo",
+    "url": "https://dunzo.com/careers/people-operations-executive",
+    "raw_description": "Drive employee documentation, ID card issuance, HRMS updates, and exit interview documentation.",
+    "skills": [
+      "Documentation",
+      "HRMS Updates",
+      "Exit Interviews",
+      "ID Cards"
+    ]
+  },
+  {
+    "id": "vj_49",
+    "company": "CleverTap UAE",
+    "board": "CleverTap",
+    "title": "HR Operations Associate (Middle East)",
+    "location": "Dubai, UAE / Remote",
+    "is_remote": true,
+    "salary": "AED 5,500 - 7,800 / mo",
+    "url": "https://clevertap.com/careers/hr-associate-middle-east",
+    "raw_description": "Handle GCC regional team HR queries, employment visas coordination, medical claims, and onboarding formalities.",
+    "skills": [
+      "GCC Labour Compliance",
+      "Visa Coordination",
+      "Medical Claims",
+      "Onboarding"
+    ]
+  },
+  {
+    "id": "vj_50",
+    "company": "Darwinbox UAE",
+    "board": "Darwinbox",
+    "title": "Talent & People Operations Coordinator (Gulf)",
+    "location": "Dubai, UAE / Remote",
+    "is_remote": true,
+    "salary": "AED 5,200 - 7,500 / mo",
+    "url": "https://darwinbox.com/careers/ta-coordinator-gulf",
+    "raw_description": "Support regional client and internal team talent acquisition, screening, and people operations across UAE and Saudi Arabia.",
+    "skills": [
+      "Regional Screening",
+      "Talent Acquisition",
+      "People Operations",
+      "Darwinbox HRMS"
+    ]
   }
 ]

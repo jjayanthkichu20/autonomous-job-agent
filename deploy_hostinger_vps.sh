@@ -77,7 +77,7 @@ rm -f /etc/nginx/sites-enabled/default
 nginx -t
 # 7. Configure 2-Hour Auto-Pilot Cron Job
 echo "--> Configuring 2-Hour Auto-Pilot Cron Job (Every 2h)..."
-CRON_CMD="0 */2 * * * cd ${APP_DIR} && ${APP_DIR}/.venv/bin/python3 -m autonomous_job_agent.cli recurring --once --live-submit >> ${APP_DIR}/storage/scheduler_cron.log 2>&1"
+CRON_CMD="0 */2 * * * cd ${APP_DIR} && ${APP_DIR}/.venv/bin/python3 -m autonomous_job_agent.cli recurring --once --live-submit --locations Bangalore Kerala Coimbatore --max-age 12 >> ${APP_DIR}/storage/scheduler_cron.log 2>&1"
 (crontab -l 2>/dev/null | grep -v "autonomous_job_agent.cli" ; echo "$CRON_CMD") | crontab -
 echo "--> Crontab registered: 0 */2 * * * (runs every 2 hours)"
 

@@ -13,6 +13,7 @@ import uvicorn
 from fastapi import FastAPI, HTTPException, UploadFile, File, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from autonomous_job_agent.core.config import config
@@ -49,6 +50,9 @@ executor_pool = ThreadPoolExecutor(max_workers=4)
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
+STATIC_DIR = Path(__file__).resolve().parent / "static"
+STATIC_DIR.mkdir(parents=True, exist_ok=True)
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 bg_mock_server: Optional[MockATSServer] = None
 
@@ -173,6 +177,23 @@ def serve_spa():
     return HTMLResponse(content=render_template())
 
 
+@app.get("/favicon.ico")
+def serve_favicon():
+    favicon_svg = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient></defs>
+<rect width="32" height="32" rx="8" fill="url(#g)"/>
+<path d="M16 6 L20 14 L28 16 L20 18 L16 26 L12 18 L4 16 L12 14 Z" fill="#ffffff"/>
+</svg>'''
+    return Response(content=favicon_svg, media_type="image/svg+xml")
+
+
+@app.get("/api/jobs/applied")
+def get_applied_jobs():
+    data = ledger._load_data()
+    applied = [a for a in data.get("applications", []) if a.get("status") in ("SUBMITTED", "FOLLOW_UP_SENT", "INTERVIEW_SCHEDULED", "OFFER")]
+    return {"status": "success", "count": len(applied), "applications": applied}
+
+
 # API Endpoints
 @app.get("/api/health")
 def health_check():
@@ -287,76 +308,44 @@ def get_jobs_feed():
             "posted_time": "Recently active"
         })
 
-    # Curated verified high-match HR roles for Indian tech hubs & UAE
-    curated_openings = [
-        {
-            "id": "curated_01",
-            "title": "HR Executive (HR Operations & Talent Acquisition)",
-            "company": "TalentPulse Technologies",
-            "location": "Bangalore, Karnataka, India / Remote",
-            "is_remote": True,
-            "salary": "₹35,000 - ₹48,000 / mo",
-            "match_score": 96,
-            "url": "http://127.0.0.1:8799/greenhouse/job/hr-executive",
-            "already_applied": "http://127.0.0.1:8799/greenhouse/job/hr-executive" in applied_urls,
-            "skills": ["Recruitment", "Onboarding", "Attendance Management", "HRMS", "Labour Law"],
-            "posted_time": "15m ago"
-        },
-        {
-            "id": "curated_02",
-            "title": "HR Generalist (Employee Lifecycle & Compliance)",
-            "company": "Quince India",
-            "location": "Bangalore, Karnataka, India",
-            "is_remote": False,
-            "salary": "₹40,000 - ₹55,000 / mo",
-            "match_score": 93,
-            "url": "https://job-boards.greenhouse.io/quince/jobs/5312320008",
-            "already_applied": "https://job-boards.greenhouse.io/quince/jobs/5312320008" in applied_urls,
-            "skills": ["Employee Relations", "Documentation", "PF / ESI Compliance", "Payroll Inputs"],
-            "posted_time": "1h ago"
-        },
-        {
-            "id": "curated_03",
-            "title": "Talent Acquisition & People Operations Coordinator",
-            "company": "InMobi",
-            "location": "Bangalore / Kochi, Kerala / Remote",
-            "is_remote": True,
-            "salary": "₹32,000 - ₹45,000 / mo",
-            "match_score": 95,
-            "url": "https://job-boards.greenhouse.io/inmobi/jobs/8207429",
-            "already_applied": "https://job-boards.greenhouse.io/inmobi/jobs/8207429" in applied_urls,
-            "skills": ["Candidate Screening", "Interview Scheduling", "HR Analytics", "HRIS Data Entry"],
-            "posted_time": "3h ago"
-        },
-        {
-            "id": "curated_04",
-            "title": "HR Operations Specialist (UAE & Gulf Hub)",
-            "company": "Al-Futtaim People Services",
-            "location": "Dubai, UAE / Remote",
-            "is_remote": True,
-            "salary": "AED 5,000 - 7,000 / mo",
-            "match_score": 92,
-            "url": "https://careers.appsflyer.com/jobs/position/8816027002?gh_jid=8816027002",
-            "already_applied": "https://careers.appsflyer.com/jobs/position/8816027002?gh_jid=8816027002" in applied_urls,
-            "skills": ["Visa Processing", "Employee Records", "Labour Compliance", "English & Hindi Correspondence"],
-            "posted_time": "4h ago"
-        },
-        {
-            "id": "curated_05",
-            "title": "Associate HR Manager (People & Culture)",
-            "company": "Swiggy / Bundl Technologies",
-            "location": "Bangalore / Hyderabad, India",
-            "is_remote": False,
-            "salary": "₹38,000 - ₹52,000 / mo",
-            "match_score": 91,
-            "url": "https://job-boards.greenhouse.io/gitlab/jobs/8860302002",
-            "already_applied": "https://job-boards.greenhouse.io/gitlab/jobs/8860302002" in applied_urls,
-            "skills": ["Talent Sourcing", "Induction & Onboarding", "Exit Formalities", "HRIS"],
-            "posted_time": "5h ago"
-        }
-    ]
+    # Load verified high-match HR roles dynamically from storage
+    verified_file = BASE_DIR / "storage" / "verified_job_index.json"
+    curated_openings = []
+    if verified_file.exists():
+        try:
+            with open(verified_file, "r", encoding="utf-8") as f:
+                v_data = json.load(f)
+            for vj in v_data:
+                url = vj.get("url")
+                loc = vj.get("location", "Bangalore, India")
+                is_remote = vj.get("is_remote", False) or "remote" in loc.lower()
+                curated_openings.append({
+                    "id": vj.get("id", f"curated_{abs(hash(url)) % 10000}"),
+                    "title": vj.get("title", "HR Opening"),
+                    "company": vj.get("company") or vj.get("board", "Company"),
+                    "location": loc,
+                    "is_remote": is_remote,
+                    "salary": vj.get("salary", "₹38,000 - ₹52,000 / mo"),
+                    "match_score": 96 if any(k in vj.get("title", "").lower() for k in ["executive", "operations"]) else 94,
+                    "url": url,
+                    "already_applied": url in applied_urls,
+                    "skills": vj.get("skills", ["Recruitment", "Onboarding", "HRMS", "Compliance"]),
+                    "posted_time": vj.get("posted_time", "Fresh (< 12h)")
+                })
+        except Exception as e:
+            logger.warning(f"Error loading verified jobs: {e}")
 
-    all_jobs = curated_openings + [j for j in jobs if j["url"] not in {c["url"] for c in curated_openings}]
+    seen_urls = set()
+    all_jobs = []
+    for c in curated_openings:
+        if c["url"] and c["url"] not in seen_urls:
+            seen_urls.add(c["url"])
+            all_jobs.append(c)
+    for j in jobs:
+        if j["url"] and j["url"] not in seen_urls:
+            seen_urls.add(j["url"])
+            all_jobs.append(j)
+
     return {"status": "success", "count": len(all_jobs), "jobs": all_jobs}
 
 
@@ -704,11 +693,27 @@ def toggle_scheduler(req: Optional[SchedulerToggleRequest] = None):
     }
 
 
+class SchedulerTriggerRequest(BaseModel):
+    max_applications: Optional[int] = None
+    location_filters: Optional[List[str]] = None
+    max_age_hours: Optional[int] = None
+
+
 @app.post("/api/scheduler/trigger")
-async def trigger_scheduler_cycle():
+async def trigger_scheduler_cycle(req: Optional[SchedulerTriggerRequest] = None):
     """Immediately triggers the 2-hour scan and auto-apply cycle without waiting."""
+    def _execute():
+        max_apps = req.max_applications if req else None
+        locs = req.location_filters if req else None
+        max_age = req.max_age_hours if req else None
+        return recurring_hunter.run_cycle(
+            max_applications=max_apps,
+            location_filters=locs,
+            max_age_hours=max_age
+        )
+
     loop = asyncio.get_event_loop()
-    result = await loop.run_in_executor(executor_pool, recurring_hunter.run_cycle)
+    result = await loop.run_in_executor(executor_pool, _execute)
     return {
         "status": "success",
         "message": f"Auto-Scout cycle complete: Scanned {result.get('scanned', 0)}, Auto-applied {result.get('applied', 0)}, Staged {result.get('staged_drafts', 0)}",

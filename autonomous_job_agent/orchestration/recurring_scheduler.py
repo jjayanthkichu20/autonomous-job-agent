@@ -86,7 +86,12 @@ class RecurringJobHunter:
         with open(target, "r", encoding="utf-8") as f:
             return CandidateMasterProfile(**json.load(f))
 
-    def run_cycle(self) -> Dict[str, Any]:
+    def run_cycle(
+        self,
+        max_applications: Optional[int] = None,
+        location_filters: Optional[List[str]] = None,
+        max_age_hours: Optional[int] = None
+    ) -> Dict[str, Any]:
         """Executes a single 2-hour scan, evaluation, auto-apply, and draft staging cycle."""
         if self.is_running_cycle:
             return {"status": "skipped", "message": "Cycle already in progress"}
@@ -99,10 +104,16 @@ class RecurringJobHunter:
         applied_count = 0
         staged_drafts_count = 0
         cycle_details = []
+        app_limit = max_applications if max_applications is not None else self.max_apps_per_cycle
 
         try:
             profile = self.get_profile()
-            discovered = self.scout.search_and_filter_jobs(profile=profile)
+            locs = location_filters or getattr(profile, "preferred_locations", [])
+            discovered = self.scout.search_and_filter_jobs(
+                profile=profile,
+                location_filters=locs,
+                max_age_hours=max_age_hours
+            )
             scanned_count = len(discovered)
             
             # Filter already applied
@@ -110,7 +121,7 @@ class RecurringJobHunter:
             unapplied = [j for j in discovered if j.get("url") not in already_applied_urls]
 
             for item in unapplied:
-                if applied_count >= self.max_apps_per_cycle:
+                if applied_count >= app_limit:
                     break
 
                 url = item.get("url")

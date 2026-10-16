@@ -3,10 +3,10 @@
   "live_submit": true,
   "interval_seconds": 7200,
   "interval_hours": 2.0,
-  "last_run": "2026-10-15T06:53:17.135645+00:00",
-  "next_run": "2026-10-15T08:53:17.135645+00:00",
-  "total_scans": 107,
-  "total_applied": 1,
+  "last_run": "2026-10-16T04:35:28.071021+00:00",
+  "next_run": "2026-10-16T06:35:28.071021+00:00",
+  "total_scans": 435,
+  "total_applied": 22,
   "recent_logs": [
     {
       "timestamp": "2026-10-15T06:03:04.046979+00:00",
@@ -107,7 +107,219 @@
           "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_84406edc_d5eb6a6b\\resume_tailored.md"
         }
       ]
+    },
+    {
+      "timestamp": "2026-10-15T08:53:26.225414+00:00",
+      "scanned": 39,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-15T10:53:51.633140+00:00",
+      "scanned": 39,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-15T11:16:35.747994+00:00",
+      "scanned": 39,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-16T03:47:54.943984+00:00",
+      "scanned": 39,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-16T03:49:48.168801+00:00",
+      "scanned": 39,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-16T03:55:46.271698+00:00",
+      "scanned": 65,
+      "applied": 5,
+      "staged_drafts": 0,
+      "details": [
+        {
+          "title": "Design Recruiter",
+          "company": "Stripe",
+          "score": "70.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "Global People Operations - Systems Administrator",
+          "company": "Stripe",
+          "score": "70.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "Global People Support - People Ops Manager",
+          "company": "Stripe",
+          "score": "70.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "People Operations Specialist, HR Compliance",
+          "company": "Stripe",
+          "score": "74.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "SDC Recruiter",
+          "company": "Stripe",
+          "score": "70.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-16T04:35:28.071021+00:00",
+      "scanned": 68,
+      "applied": 16,
+      "staged_drafts": 2,
+      "details": [
+        {
+          "title": "HR Executive - Talent Acquisition & Operations",
+          "company": "Bosch",
+          "score": "94.3%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Operations Executive (Employee Documentation & Compliance)",
+          "company": "Cognizant",
+          "score": "86.7%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "People Operations Coordinator (HR Executive)",
+          "company": "Kovai.Co",
+          "score": "76.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Executive (Plant HR & Statutory Compliance)",
+          "company": "Pricol",
+          "score": "86.7%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "Talent Acquisition Coordinator & HR Executive",
+          "company": "Kgisl",
+          "score": "92.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Operations & Employee Engagement Executive",
+          "company": "Payoda",
+          "score": "76.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "CONF-1792125305"
+        },
+        {
+          "title": "HR Executive (People Operations & Employee Onboarding)",
+          "company": "Ust",
+          "score": "86.7%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "Talent Acquisition & HR Operations Coordinator",
+          "company": "Ibs",
+          "score": "84.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Operations Executive (HRMS & Compliance)",
+          "company": "Carestack",
+          "score": "80.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Generalist & Talent Specialist",
+          "company": "Experion",
+          "score": "85.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Executive - Recruitment & People Services",
+          "company": "Nest",
+          "score": "92.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Operations & Statutory Compliance Executive",
+          "company": "Trackpi",
+          "score": "86.7%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "People Operations Executive (HR Operations)",
+          "company": "Zepto",
+          "score": "66.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_80911c22_2debd89c\\resume_tailored.md"
+        },
+        {
+          "title": "HR Executive - Talent Sourcing & Operations",
+          "company": "Swiggy",
+          "score": "92.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Coordinator (Employee Lifecycle & Compliance)",
+          "company": "Razorpay",
+          "score": "92.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "HR Operations Executive (HRMS Implementation Support)",
+          "company": "Darwinbox",
+          "score": "84.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": null
+        },
+        {
+          "title": "Talent Acquisition Coordinator (HR Executive)",
+          "company": "Phonepe",
+          "score": "64.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_520b0e01_57180bc3\\resume_tailored.md"
+        },
+        {
+          "title": "Senior HR Executive (Recruitment & People Operations)",
+          "company": "Talentpulse",
+          "score": "93.3%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-CONF-LIVE-1792125327"
+        }
+      ]
     }
   ],
-  "updated_at": "2026-10-15T06:53:17.136162+00:00"
+  "updated_at": "2026-10-16T04:35:28.071588+00:00"
 }

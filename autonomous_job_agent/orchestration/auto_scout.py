@@ -1,6 +1,7 @@
 """Auto-Scout Engine: Resilient discovery across career boards, location-aware matching, and auto-apply."""
 
 import concurrent.futures
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
@@ -26,8 +27,21 @@ DEFAULT_TARGET_BOARDS = [
     "razorpay",
     "swiggy",
     "chargebee",
-    "airmeet",
-    "freshworks"
+    "freshworks",
+    "stripe",
+    "cloudflare",
+    "figma",
+    "reddit",
+    "gusto",
+    "brex",
+    "coinbase",
+    "dropbox",
+    "airbnb",
+    "robinhood",
+    "duolingo",
+    "twilio",
+    "elastic",
+    "mongodb"
 ]
 
 
@@ -50,6 +64,39 @@ class AutoScoutEngine:
             self.console.print(f"[dim red]Error querying board '{board_name}': {e}[/dim red]")
         return []
 
+    def is_within_max_age(self, job_dict: Dict, max_age_hours: Optional[int]) -> bool:
+        """Determines if a job posting was published or updated within max_age_hours."""
+        if not max_age_hours:
+            return True
+
+        # Check posted_time string (e.g. '1h ago', '3h ago', '1d ago')
+        pt = (job_dict.get("posted_time") or "").lower().strip()
+        if pt:
+            if any(term in pt for term in ["m ago", "min", "just now", "fresh"]):
+                return True
+            if "h ago" in pt or "hr" in pt:
+                try:
+                    num_match = re.search(r"(\d+)\s*(?:h|hr)", pt)
+                    if num_match:
+                        return int(num_match.group(1)) <= max_age_hours
+                except Exception:
+                    pass
+            if any(old in pt for old in ["d ago", "day", "w ago", "week", "mo ago", "month", "yr", "year"]):
+                return False
+
+        # Check first_published or updated_at ISO timestamp
+        pub_str = job_dict.get("first_published") or job_dict.get("updated_at")
+        if pub_str:
+            try:
+                dt = datetime.fromisoformat(pub_str.replace("Z", "+00:00"))
+                now = datetime.now(timezone.utc)
+                age_hours = (now - dt).total_seconds() / 3600.0
+                return age_hours <= max_age_hours
+            except Exception:
+                pass
+
+        return True
+
     def is_location_match(self, job_location: str, allowed_locations: List[str]) -> bool:
         """Checks if a job location satisfies the target location preferences or is remote."""
         if not allowed_locations:
@@ -65,14 +112,20 @@ class AutoScoutEngine:
                 continue
             if clean_loc in j_loc:
                 return True
-            # Synonyms
-            if clean_loc in ("bangalore", "bengaluru") and any(b in j_loc for b in ["bangalore", "bengaluru"]):
+            # Coimbatore Synonyms
+            if clean_loc in ("coimbatore", "kovai", "tamil nadu", "tamilnadu") and any(c in j_loc for c in ["coimbatore", "kovai", "tamil nadu", "tamilnadu", "saravanampatti", "peelamedu", "tidel"]):
                 return True
-            if clean_loc in ("kerala", "kottayam", "cochin", "kochi", "trivandrum") and any(k in j_loc for k in ["kerala", "kottayam", "cochin", "kochi", "trivandrum"]):
+            # Bangalore Synonyms
+            if clean_loc in ("bangalore", "bengaluru") and any(b in j_loc for b in ["bangalore", "bengaluru", "whitefield", "koramangala", "bellandur", "electronic city", "hsr"]):
                 return True
+            # Kerala Synonyms
+            if clean_loc in ("kerala", "kottayam", "cochin", "kochi", "trivandrum", "thiruvananthapuram", "calicut", "kozhikode") and any(k in j_loc for k in ["kerala", "kottayam", "cochin", "kochi", "trivandrum", "thiruvananthapuram", "calicut", "kozhikode", "infopark", "smartcity", "technopark", "kakkanad"]):
+                return True
+            # Gulf / UAE Synonyms
             if clean_loc in ("uae", "dubai", "abu dhabi") and any(u in j_loc for u in ["uae", "dubai", "abu dhabi", "emirates"]):
                 return True
-            if clean_loc == "india" and any(ind in j_loc for ind in ["india", "bangalore", "bengaluru", "mumbai", "delhi", "gurgaon", "noida", "hyderabad", "chennai", "pune", "kerala"]):
+            # India Wide
+            if clean_loc == "india" and any(ind in j_loc for ind in ["india", "bangalore", "bengaluru", "mumbai", "delhi", "gurgaon", "noida", "hyderabad", "chennai", "pune", "kerala", "coimbatore"]):
                 return True
         return False
 
@@ -81,7 +134,8 @@ class AutoScoutEngine:
         profile: CandidateMasterProfile,
         target_boards: Optional[List[str]] = None,
         location_filters: Optional[List[str]] = None,
-        keyword_filter: Optional[str] = None
+        keyword_filter: Optional[str] = None,
+        max_age_hours: Optional[int] = None
     ) -> List[Dict]:
         """Searches across career boards and returns ranked, location-verified job openings."""
         boards = target_boards or DEFAULT_TARGET_BOARDS
@@ -115,6 +169,10 @@ class AutoScoutEngine:
                 loc_name = j.get("location", {}).get("name", "Remote/Unspecified")
                 job_url = j.get("absolute_url")
 
+                # Freshness check
+                if max_age_hours and not self.is_within_max_age(j, max_age_hours):
+                    continue
+
                 # Keyword match
                 if is_hr_profile:
                     # Require explicit HR/People/Talent indicator
@@ -136,6 +194,8 @@ class AutoScoutEngine:
                     "title": title,
                     "location": loc_name,
                     "url": job_url,
+                    "posted_time": j.get("posted_time", "Fresh (< 12h)"),
+                    "first_published": j.get("first_published"),
                     "already_applied": already_applied,
                     "is_remote": any(r in loc_name.lower() for r in ["remote", "anywhere", "worldwide"]),
                     "location_matched": loc_matched
@@ -151,6 +211,10 @@ class AutoScoutEngine:
                 for vj in v_jobs:
                     job_url = vj.get("url")
                     if job_url in existing_urls:
+                        continue
+
+                    # Freshness check
+                    if max_age_hours and not self.is_within_max_age(vj, max_age_hours):
                         continue
 
                     title = vj.get("title", "")
@@ -177,6 +241,9 @@ class AutoScoutEngine:
                         "title": title,
                         "location": loc_name,
                         "url": job_url,
+                        "posted_time": vj.get("posted_time", "Fresh (< 12h)"),
+                        "first_published": vj.get("first_published"),
+                        "salary": vj.get("salary"),
                         "already_applied": already_applied,
                         "is_remote": vj.get("is_remote", False),
                         "location_matched": loc_matched
@@ -192,18 +259,22 @@ class AutoScoutEngine:
         target_boards: Optional[List[str]] = None,
         location_filters: Optional[List[str]] = None,
         live_submit: bool = False,
-        max_applications_per_cycle: int = 5
+        max_applications_per_cycle: int = 5,
+        max_age_hours: Optional[int] = None
     ) -> List[Dict]:
         """Executes full discovery and location-filtered application cycle."""
         self.console.print(f"\n[bold green]=== Starting Location-Aware Auto-Scout Cycle ===[/bold green]")
         locs = location_filters or getattr(profile, "preferred_locations", [])
         self.console.print(f"Target Locations: [cyan]{', '.join(locs) if locs else 'Any'}[/cyan]")
+        if max_age_hours:
+            self.console.print(f"Freshness Filter: [cyan]Jobs posted in last {max_age_hours} hours[/cyan]")
         self.console.print(f"Mode: {'[bold red]LIVE SUBMISSION[/bold red]' if live_submit else '[bold cyan]SAFE DRY-RUN STAGING[/bold cyan]'}\n")
 
         candidates = self.search_and_filter_jobs(
             profile=profile,
             target_boards=target_boards,
-            location_filters=locs
+            location_filters=locs,
+            max_age_hours=max_age_hours
         )
 
         unapplied = [c for c in candidates if not c.get("already_applied")]

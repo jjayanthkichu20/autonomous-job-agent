@@ -4,8 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apply Jobs · Arya by Mentoria</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico">
+  <script>
+    // Suppress CDN warning in production console
+    (function() {
+      const origWarn = console.warn;
+      console.warn = function(...args) {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+        origWarn.apply(console, args);
+      };
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/static/fontawesome/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -245,7 +256,7 @@
         <button onclick="switchTab('jobs')" id="nav-jobs" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors active text-gray-400 hover:text-white hover:bg-gray-800/40">
           <i class="fa-solid fa-magnifying-glass w-4 text-center"></i>
           <span>Apply Jobs</span>
-          <span id="badge-jobs-count" class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">31</span>
+          <span id="badge-jobs-count" class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">105</span>
         </button>
 
         <button onclick="switchTab('custom-jd')" id="nav-custom-jd" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors text-gray-400 hover:text-white hover:bg-gray-800/40">
@@ -388,14 +399,21 @@
             <button onclick="filterCity('ALL')" class="city-filter-btn active px-3 py-1 rounded-full text-xs font-medium bg-blue-600 text-white border border-blue-500/30 transition-colors">All</button>
             <button onclick="filterCity('Bangalore')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Bangalore</button>
             <button onclick="filterCity('Kochi')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Kochi / Kerala</button>
+            <button onclick="filterCity('Coimbatore')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Coimbatore</button>
             <button onclick="filterCity('Hyderabad')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Hyderabad</button>
             <button onclick="filterCity('Mumbai')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Mumbai</button>
             <button onclick="filterCity('Delhi')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Delhi/NCR</button>
             <button onclick="filterCity('UAE')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">UAE / Dubai</button>
             <button onclick="filterCity('Remote')" class="city-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Remote</button>
 
+            <!-- Freshness Filter -->
+            <button onclick="toggleFreshOnly()" id="btn-fresh-filter" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all flex items-center gap-1.5 ml-auto">
+              <i class="fa-solid fa-fire text-[10px]"></i>
+              <span>Posted &lt; 12h</span>
+            </button>
+
             <!-- Mode Selector -->
-            <select id="mode-filter-select" onchange="filterJobsList()" class="ml-auto text-xs bg-gray-900 border border-gray-700 rounded-lg px-2.5 py-1 text-gray-300 focus:outline-none focus:border-blue-500">
+            <select id="mode-filter-select" onchange="filterJobsList()" class="text-xs bg-gray-900 border border-gray-700 rounded-lg px-2.5 py-1 text-gray-300 focus:outline-none focus:border-blue-500">
               <option value="ALL">All Work Modes</option>
               <option value="REMOTE">Remote Only</option>
               <option value="HYBRID">Hybrid</option>
@@ -946,26 +964,38 @@
   </div>
 
   <!-- Mobile Bottom Navigation -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 glass-header px-4 py-2 flex items-center justify-around z-50 border-t border-gray-800">
-    <button onclick="switchTab('jobs')" class="flex flex-col items-center text-xs text-blue-400">
-      <i class="fa-solid fa-magnifying-glass text-base"></i>
-      <span class="text-[10px] mt-1">Jobs</span>
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 glass-header px-2 py-2 flex items-center justify-between overflow-x-auto z-50 border-t border-gray-800 space-x-1">
+    <button onclick="switchTab('jobs')" class="flex flex-col items-center min-w-[50px] text-xs text-blue-400">
+      <i class="fa-solid fa-magnifying-glass text-sm"></i>
+      <span class="text-[9px] mt-0.5">Jobs</span>
     </button>
-    <button onclick="switchTab('drafts')" class="flex flex-col items-center text-xs text-gray-400">
-      <i class="fa-solid fa-paper-plane text-base"></i>
-      <span class="text-[10px] mt-1">Drafts</span>
+    <button onclick="switchTab('custom-jd')" class="flex flex-col items-center min-w-[50px] text-xs text-purple-400">
+      <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+      <span class="text-[9px] mt-0.5">Tailor JD</span>
     </button>
-    <button onclick="switchTab('applications')" class="flex flex-col items-center text-xs text-gray-400">
-      <i class="fa-solid fa-table-list text-base"></i>
-      <span class="text-[10px] mt-1">Applied</span>
+    <button onclick="switchTab('drafts')" class="flex flex-col items-center min-w-[50px] text-xs text-gray-400">
+      <i class="fa-solid fa-paper-plane text-sm"></i>
+      <span class="text-[9px] mt-0.5">Drafts</span>
     </button>
-    <button onclick="switchTab('resume')" class="flex flex-col items-center text-xs text-gray-400">
-      <i class="fa-solid fa-file-lines text-base"></i>
-      <span class="text-[10px] mt-1">Resume</span>
+    <button onclick="switchTab('applications')" class="flex flex-col items-center min-w-[50px] text-xs text-gray-400">
+      <i class="fa-solid fa-table-list text-sm"></i>
+      <span class="text-[9px] mt-0.5">Applied</span>
     </button>
-    <button onclick="switchTab('profile')" class="flex flex-col items-center text-xs text-gray-400">
-      <i class="fa-solid fa-id-card text-base"></i>
-      <span class="text-[10px] mt-1">Profile</span>
+    <button onclick="switchTab('conversations')" class="flex flex-col items-center min-w-[50px] text-xs text-gray-400">
+      <i class="fa-solid fa-comments text-sm"></i>
+      <span class="text-[9px] mt-0.5">Chats</span>
+    </button>
+    <button onclick="switchTab('resume')" class="flex flex-col items-center min-w-[50px] text-xs text-gray-400">
+      <i class="fa-solid fa-file-lines text-sm"></i>
+      <span class="text-[9px] mt-0.5">Resume</span>
+    </button>
+    <button onclick="switchTab('profile')" class="flex flex-col items-center min-w-[50px] text-xs text-gray-400">
+      <i class="fa-solid fa-id-card text-sm"></i>
+      <span class="text-[9px] mt-0.5">Profile</span>
+    </button>
+    <button onclick="switchTab('referrals')" class="flex flex-col items-center min-w-[50px] text-xs text-gray-400">
+      <i class="fa-solid fa-gift text-sm text-amber-400"></i>
+      <span class="text-[9px] mt-0.5">Referrals</span>
     </button>
   </nav>
 
@@ -1196,8 +1226,9 @@
     let allJobs = [];
     let selectedCity = 'ALL';
 
-    async function loadJobFeed() {
+    async function loadJobFeed(retries = 1) {
       const container = document.getElementById('job-feed-container');
+      if (!container) return;
       container.innerHTML = `
         <div class="p-12 text-center text-gray-400">
           <i class="fa-solid fa-spinner animate-spin text-2xl mb-3 text-blue-500"></i>
@@ -1206,12 +1237,27 @@
 
       try {
         const res = await fetch('/api/jobs/feed');
+        if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
         const data = await res.json();
         allJobs = data.jobs || [];
-        document.getElementById('badge-jobs-count').innerText = allJobs.length;
+        const badge = document.getElementById('badge-jobs-count');
+        if (badge) badge.innerText = allJobs.length;
         renderJobs(allJobs);
       } catch (err) {
-        container.innerHTML = `<div class="p-8 text-center text-red-400">Failed to load jobs: ${err.message}</div>`;
+        if (retries > 0) {
+          setTimeout(() => loadJobFeed(retries - 1), 1200);
+          return;
+        }
+        container.innerHTML = `
+          <div class="glass-card p-8 text-center text-gray-400 rounded-2xl space-y-3 border border-red-500/20">
+            <i class="fa-solid fa-circle-exclamation text-amber-400 text-2xl mb-1"></i>
+            <h4 class="text-sm font-bold text-white">Connection momentarily paused</h4>
+            <p class="text-xs text-gray-400">Could not refresh jobs feed (${err.message}).</p>
+            <button onclick="loadJobFeed()" class="mt-2 inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Refresh Feed</span>
+            </button>
+          </div>`;
       }
     }
 
@@ -1298,6 +1344,19 @@
       }).join('');
     }
 
+    let freshOnly = false;
+    function toggleFreshOnly() {
+      freshOnly = !freshOnly;
+      const btn = document.getElementById('btn-fresh-filter');
+      if (freshOnly) {
+        btn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500 text-gray-950 border border-amber-400 shadow-md shadow-amber-500/30 transition-all flex items-center gap-1.5 ml-auto';
+        showToast("Filtering jobs posted within the last 12 hours", "info");
+      } else {
+        btn.className = 'px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all flex items-center gap-1.5 ml-auto';
+      }
+      filterJobsList();
+    }
+
     function filterCity(city) {
       selectedCity = city;
       document.querySelectorAll('.city-filter-btn').forEach(btn => {
@@ -1316,9 +1375,31 @@
 
       const filtered = allJobs.filter(j => {
         const textMatch = !q || j.title.toLowerCase().includes(q) || (j.company && j.company.toLowerCase().includes(q)) || j.location.toLowerCase().includes(q);
-        const cityMatch = selectedCity === 'ALL' || j.location.toLowerCase().includes(selectedCity.toLowerCase()) || (selectedCity === 'Remote' && (j.location.toLowerCase().includes('remote') || j.is_remote));
+        
+        let cityMatch = false;
+        if (selectedCity === 'ALL') {
+          cityMatch = true;
+        } else if (selectedCity === 'Kochi') {
+          cityMatch = j.location.toLowerCase().includes('kochi') || j.location.toLowerCase().includes('kerala') || j.location.toLowerCase().includes('kottayam') || j.location.toLowerCase().includes('trivandrum');
+        } else if (selectedCity === 'Bangalore') {
+          cityMatch = j.location.toLowerCase().includes('bangalore') || j.location.toLowerCase().includes('bengaluru');
+        } else if (selectedCity === 'Coimbatore') {
+          cityMatch = j.location.toLowerCase().includes('coimbatore') || j.location.toLowerCase().includes('kovai') || j.location.toLowerCase().includes('tamil nadu');
+        } else if (selectedCity === 'Remote') {
+          cityMatch = j.location.toLowerCase().includes('remote') || j.is_remote;
+        } else {
+          cityMatch = j.location.toLowerCase().includes(selectedCity.toLowerCase());
+        }
+
         const modeMatch = mode === 'ALL' || (mode === 'REMOTE' && (j.location.toLowerCase().includes('remote') || j.is_remote));
-        return textMatch && cityMatch && modeMatch;
+        
+        let freshMatch = true;
+        if (freshOnly) {
+          const pt = (j.posted_time || '').toLowerCase();
+          freshMatch = pt.includes('12h') || pt.includes('fresh') || pt.includes('just now') || (pt.includes('h ago') && parseInt(pt.split('h')[0]) <= 12) || pt.includes('min') || pt.includes('m ago');
+        }
+
+        return textMatch && cityMatch && modeMatch && freshMatch;
       });
 
       renderJobs(filtered);
@@ -1397,15 +1478,18 @@
     }
 
     // Application Drafts Tab
-    async function loadDrafts() {
+    async function loadDrafts(retries = 1) {
       const container = document.getElementById('drafts-feed-container');
+      if (!container) return;
       container.innerHTML = `<div class="p-8 text-center text-gray-400"><i class="fa-solid fa-spinner animate-spin text-xl mb-2"></i><p>Loading generated drafts...</p></div>`;
 
       try {
         const res = await fetch('/api/drafts');
+        if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
         const data = await res.json();
         const drafts = data.drafts || [];
-        document.getElementById('badge-drafts-count').innerText = drafts.length;
+        const badge = document.getElementById('badge-drafts-count');
+        if (badge) badge.innerText = drafts.length;
 
         if (drafts.length === 0) {
           container.innerHTML = `
@@ -1440,7 +1524,20 @@
           </div>
         `).join('');
       } catch (err) {
-        container.innerHTML = `<div class="p-4 text-center text-red-400">Failed to load drafts: ${err.message}</div>`;
+        if (retries > 0) {
+          setTimeout(() => loadDrafts(retries - 1), 1200);
+          return;
+        }
+        container.innerHTML = `
+          <div class="glass-card p-8 text-center text-gray-400 rounded-2xl space-y-3 border border-red-500/20">
+            <i class="fa-solid fa-circle-exclamation text-amber-400 text-2xl mb-1"></i>
+            <h4 class="text-sm font-bold text-white">Connection momentarily paused</h4>
+            <p class="text-xs text-gray-400">Could not reach the staging queue (${err.message}).</p>
+            <button onclick="loadDrafts()" class="mt-2 inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-blue-600/30">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Refresh Queue</span>
+            </button>
+          </div>`;
       }
     }
 
@@ -1559,14 +1656,7 @@
           interviewSnippet = `<div class="text-[10px] text-amber-300 font-bold mt-0.5"><i class="fa-solid fa-calendar-day mr-1"></i>${a.interview_date} ${a.interview_time || ''}</div>`;
         }
 
-        const compEsc = (a.company_name || '').replace(/'/g, "\\'");
-        const titleEsc = (a.job_title || '').replace(/'/g, "\\'");
-        const urlEsc = (a.job_url || a.job_id || '').replace(/'/g, "\\'");
-        const statusEsc = (a.status || '').replace(/'/g, "\\'");
-        const dateEsc = (a.interview_date || '').replace(/'/g, "\\'");
-        const timeEsc = (a.interview_time || '').replace(/'/g, "\\'");
-        const roundEsc = (a.interview_round || '').replace(/'/g, "\\'");
-        const notesEsc = (a.notes || '').replace(/'/g, "\\'").replace(/\n/g, " ");
+        const appIdEsc = (a.job_id || a.job_url || '').replace(/'/g, "\\'");
 
         html += `
           <tr class="border-b border-gray-800/60 hover:bg-gray-800/20 transition-colors">
@@ -1587,10 +1677,10 @@
               ${interviewSnippet}
             </td>
             <td class="py-3 text-right space-x-1.5 whitespace-nowrap">
-              <button onclick="openInterviewModal('${urlEsc}', '${compEsc}', '${titleEsc}', '${statusEsc}', '${dateEsc}', '${timeEsc}', '${roundEsc}', '${notesEsc}')" class="px-2.5 py-1 rounded-lg bg-blue-900/40 hover:bg-blue-800 text-blue-300 border border-blue-700/50 text-[11px] font-semibold transition-colors" title="Log Interview / Update Status">
+              <button onclick="openInterviewModalById('${appIdEsc}')" class="px-2.5 py-1 rounded-lg bg-blue-900/40 hover:bg-blue-800 text-blue-300 border border-blue-700/50 text-[11px] font-semibold transition-colors" title="Log Interview / Update Status">
                 <i class="fa-solid fa-calendar-plus mr-1"></i><span>Log Interview</span>
               </button>
-              <button onclick="openFollowupModal('${urlEsc}', '${compEsc}', '${titleEsc}')" class="px-2.5 py-1 rounded-lg bg-indigo-900/40 hover:bg-indigo-800 text-indigo-300 border border-indigo-700/50 text-[11px] font-semibold transition-colors" title="Generate Recruiter Follow-up Email">
+              <button onclick="openFollowupModalById('${appIdEsc}')" class="px-2.5 py-1 rounded-lg bg-indigo-900/40 hover:bg-indigo-800 text-indigo-300 border border-indigo-700/50 text-[11px] font-semibold transition-colors" title="Generate Recruiter Follow-up Email">
                 <i class="fa-solid fa-envelope mr-1"></i><span>Follow-up</span>
               </button>
             </td>
@@ -1599,6 +1689,18 @@
 
       html += `</tbody></table>`;
       container.innerHTML = html;
+    }
+
+    function openInterviewModalById(appId) {
+      const a = allApplications.find(app => (app.job_id === appId || app.job_url === appId));
+      if (!a) return;
+      openInterviewModal(a.job_url || a.job_id, a.company_name || 'Company', a.job_title || 'Position', a.status, a.interview_date, a.interview_time, a.interview_round, a.notes);
+    }
+
+    function openFollowupModalById(appId) {
+      const a = allApplications.find(app => (app.job_id === appId || app.job_url === appId));
+      if (!a) return;
+      openFollowupModal(a.job_url || a.job_id, a.company_name || 'Company', a.job_title || 'Position');
     }
 
     function filterTrackerTable() {
