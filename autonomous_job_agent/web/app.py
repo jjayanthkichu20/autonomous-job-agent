@@ -29,6 +29,7 @@ from autonomous_job_agent.core.pdf_generator import generate_candidate_pdf, gene
 from autonomous_job_agent.agents.agent2_customizer.custom_jd_service import custom_jd_service
 from autonomous_job_agent.orchestration.recurring_scheduler import recurring_hunter
 from autonomous_job_agent.core.multi_ats_evaluator import MultiATSEvaluator
+from autonomous_job_agent.core.role_matcher import is_target_role_match
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("arya_platform")
@@ -385,13 +386,18 @@ def evaluate_custom_jd_ats(req: CustomJDEvalRequest):
 
 
 @app.get("/api/jobs/feed")
-def get_jobs_feed():
-    """Returns real-time and curated high-match HR openings with location filters."""
+def get_jobs_feed(role: Optional[str] = None):
+    """Returns real-time and curated high-match HR openings with strict title and role filters."""
     profile = load_current_profile()
     scout = AutoScoutEngine()
 
+    selected_role_category = (role or "ALL").strip()
+
     try:
-        discovered = scout.search_and_filter_jobs(profile=profile)
+        discovered = scout.search_and_filter_jobs(
+            profile=profile,
+            keyword_filter=selected_role_category if selected_role_category != "ALL" else None
+        )
     except Exception:
         discovered = []
 
@@ -401,6 +407,11 @@ def get_jobs_feed():
     jobs = []
     for item in discovered:
         title = item.get("title", "HR Opening")
+        # Strict validation against non-matching titles and selected role category
+        matched, _ = is_target_role_match(title, profile.target_roles, selected_category=selected_role_category)
+        if not matched:
+            continue
+
         board = item.get("board", "Enterprise")
         loc = item.get("location", "Bangalore, India")
         url = item.get("url")
@@ -430,17 +441,22 @@ def get_jobs_feed():
             with open(verified_file, "r", encoding="utf-8") as f:
                 v_data = json.load(f)
             for vj in v_data:
+                title = vj.get("title", "HR Opening")
+                matched, _ = is_target_role_match(title, profile.target_roles, selected_category=selected_role_category)
+                if not matched:
+                    continue
+
                 url = vj.get("url")
                 loc = vj.get("location", "Bangalore, India")
                 is_remote = vj.get("is_remote", False) or "remote" in loc.lower()
                 curated_openings.append({
                     "id": vj.get("id", f"curated_{abs(hash(url)) % 10000}"),
-                    "title": vj.get("title", "HR Opening"),
+                    "title": title,
                     "company": vj.get("company") or vj.get("board", "Company"),
                     "location": loc,
                     "is_remote": is_remote,
                     "salary": vj.get("salary", "₹38,000 - ₹52,000 / mo"),
-                    "match_score": 96 if any(k in vj.get("title", "").lower() for k in ["executive", "operations"]) else 94,
+                    "match_score": 96 if any(k in title.lower() for k in ["executive", "operations"]) else 94,
                     "url": url,
                     "already_applied": url in applied_urls,
                     "skills": vj.get("skills", ["Recruitment", "Onboarding", "HRMS", "Compliance"]),
@@ -460,7 +476,12 @@ def get_jobs_feed():
             seen_urls.add(j["url"])
             all_jobs.append(j)
 
-    return {"status": "success", "count": len(all_jobs), "jobs": all_jobs}
+    return {
+        "status": "success",
+        "count": len(all_jobs),
+        "selected_role": selected_role_category,
+        "jobs": all_jobs
+    }
 
 
 @app.post("/api/jobs/apply")

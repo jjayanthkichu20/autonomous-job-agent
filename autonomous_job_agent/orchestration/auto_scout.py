@@ -12,6 +12,7 @@ from rich.console import Console
 
 from autonomous_job_agent.core.ledger import ledger
 from autonomous_job_agent.core.models import CandidateMasterProfile
+from autonomous_job_agent.core.role_matcher import is_target_role_match
 from autonomous_job_agent.orchestration.pipeline import AutonomousJobApplicationPipeline
 
 
@@ -48,6 +49,10 @@ DEFAULT_TARGET_BOARDS = [
 ]
 
 
+_BOARD_CACHE: Dict[str, List[Dict]] = {}
+_BOARD_CACHE_TIME: Dict[str, float] = {}
+
+
 class AutoScoutEngine:
     """Discovers openings across company career boards, filters by location, and triggers the application pipeline."""
 
@@ -56,16 +61,23 @@ class AutoScoutEngine:
         self.pipeline = AutonomousJobApplicationPipeline()
 
     def discover_jobs_on_greenhouse(self, board_name: str) -> List[Dict]:
-        """Queries public Greenhouse API for active postings with resilient fast timeout."""
+        """Queries public Greenhouse API for active postings with resilient fast timeout & in-memory cache."""
+        now = time.time()
+        if board_name in _BOARD_CACHE and (now - _BOARD_CACHE_TIME.get(board_name, 0)) < 120.0:
+            return _BOARD_CACHE[board_name]
+
         api_url = f"https://boards-api.greenhouse.io/v1/boards/{board_name}/jobs"
         try:
-            resp = requests.get(api_url, timeout=5.0)
+            resp = requests.get(api_url, timeout=3.0)
             if resp.status_code == 200:
                 data = resp.json()
-                return data.get("jobs", [])
+                jobs = data.get("jobs", [])
+                _BOARD_CACHE[board_name] = jobs
+                _BOARD_CACHE_TIME[board_name] = now
+                return jobs
         except Exception as e:
             self.console.print(f"[dim red]Error querying board '{board_name}': {e}[/dim red]")
-        return []
+        return _BOARD_CACHE.get(board_name, [])
 
     def is_within_max_age(self, job_dict: Dict, max_age_hours: Optional[int]) -> bool:
         """Determines if a job posting was published or updated within max_age_hours."""
@@ -176,13 +188,13 @@ class AutoScoutEngine:
                 if max_age_hours and not self.is_within_max_age(j, max_age_hours):
                     continue
 
-                # Keyword match
-                if is_hr_profile:
-                    # Require explicit HR/People/Talent indicator
-                    hr_keywords = ["hr", "people", "talent", "recruit", "onboarding", "human resources", "hrms", "payroll", "personnel"]
-                    if not any(k in title_lower for k in hr_keywords):
-                        continue
-                elif target_role_terms and not any(term in title_lower for term in target_role_terms):
+                # Strict Role and Title match check
+                role_matched, _ = is_target_role_match(
+                    job_title=title,
+                    target_roles=profile.target_roles,
+                    selected_category=keyword_filter or "ALL"
+                )
+                if not role_matched:
                     continue
 
                 # Location match
@@ -224,12 +236,13 @@ class AutoScoutEngine:
                     title_lower = title.lower()
                     loc_name = vj.get("location", "Remote")
 
-                    # Keyword match
-                    if is_hr_profile:
-                        hr_keywords = ["hr", "people", "talent", "recruit", "onboarding", "human resources", "hrms", "payroll", "personnel"]
-                        if not any(k in title_lower for k in hr_keywords):
-                            continue
-                    elif target_role_terms and not any(term in title_lower for term in target_role_terms):
+                    # Strict Role and Title match check
+                    role_matched, _ = is_target_role_match(
+                        job_title=title,
+                        target_roles=profile.target_roles,
+                        selected_category=keyword_filter or "ALL"
+                    )
+                    if not role_matched:
                         continue
 
                     # Location match
