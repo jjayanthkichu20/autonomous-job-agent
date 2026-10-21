@@ -48,6 +48,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.middleware("http")
+async def add_no_cache_headers(request, call_next):
+    """Enforces fresh responses on every request so visitors never receive stale cached data."""
+    response = await call_next(request)
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
 executor_pool = ThreadPoolExecutor(max_workers=4)
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -205,6 +215,23 @@ def health_check():
         "version": "3.0.0",
         "timestamp": datetime.now(timezone.utc).isoformat()
     }
+
+
+@app.post("/api/system/reset-clean")
+def reset_system_clean():
+    """Clears runtime scout cache and returns fresh baseline confirmation."""
+    try:
+        from autonomous_job_agent.orchestration.auto_scout import _BOARD_CACHE, _BOARD_CACHE_TIME
+        _BOARD_CACHE.clear()
+        _BOARD_CACHE_TIME.clear()
+        return {
+            "status": "success",
+            "message": "System runtime cache cleared and fresh updates loaded.",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    except Exception as e:
+        logger.exception("Error resetting system cache")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/api/profile")

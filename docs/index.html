@@ -206,8 +206,23 @@
           const method = (options.method || 'GET').toUpperCase();
           const base = getAppBaseUrl();
 
+          // 0. System Runtime Reset & Fresh Cache Purge
+          if (url.includes('/api/system/reset-clean')) {
+            try {
+              localStorage.removeItem('arya_ledger_cache');
+              localStorage.removeItem('arya_interviews_cache');
+              localStorage.removeItem('arya_profile_cache');
+              localStorage.removeItem('arya_applied_urls');
+            } catch(e) {}
+            return new Response(JSON.stringify({
+              status: "success",
+              message: "System runtime cache cleared and fresh updates loaded.",
+              timestamp: new Date().toISOString()
+            }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+          }
+
           // 1. Candidate Profile
-          if (url === '/api/profile' || url.endsWith('/api/profile')) {
+          if (url === '/api/profile' || url.endsWith('/api/profile') || url.includes('/api/profile')) {
             if (method === 'POST') {
               try {
                 const body = typeof options.body === 'string' ? JSON.parse(options.body) : (options.body || {});
@@ -228,16 +243,25 @@
                 return new Response(JSON.stringify({ detail: "Validation failed: " + e.message }), { status: 400, headers: { 'Content-Type': 'application/json' } });
               }
             } else {
-              // GET profile
-              const cached = localStorage.getItem('arya_profile_cache');
-              if (cached) {
-                return new Response(cached, { status: 200, headers: { 'Content-Type': 'application/json' } });
+              // GET profile - always fetch fresh JSON from truth store with cache busting
+              try {
+                let res = await originalFetch(base + 'data/profile.json?_t=' + Date.now(), { cache: 'no-store' });
+                if (!res.ok) res = await originalFetch('./data/profile.json?_t=' + Date.now(), { cache: 'no-store' });
+                const data = await res.json();
+                const cached = localStorage.getItem('arya_profile_cache');
+                if (cached) {
+                  try {
+                    const cachedObj = JSON.parse(cached);
+                    const merged = Object.assign({}, data, cachedObj);
+                    return new Response(JSON.stringify(merged), { status: 200, headers: { 'Content-Type': 'application/json' } });
+                  } catch(e) {}
+                }
+                return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
+              } catch(e) {
+                const cached = localStorage.getItem('arya_profile_cache');
+                if (cached) return new Response(cached, { status: 200, headers: { 'Content-Type': 'application/json' } });
+                throw e;
               }
-              let res = await originalFetch(base + 'data/profile.json');
-              if (!res.ok) res = await originalFetch('./data/profile.json');
-              const data = await res.json();
-              localStorage.setItem('arya_profile_cache', JSON.stringify(data));
-              return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
             }
           }
 
@@ -277,8 +301,8 @@
           }
 
           if (url.startsWith('/api/ats/multi-score') || url.includes('/api/ats/multi-score')) {
-            let res = await originalFetch(base + 'data/ats_evaluation.json');
-            if (!res.ok) res = await originalFetch('./data/ats_evaluation.json');
+            let res = await originalFetch(base + 'data/ats_evaluation.json?_t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) res = await originalFetch('./data/ats_evaluation.json?_t=' + Date.now(), { cache: 'no-store' });
             const data = await res.json();
             let targetRole = null;
             if (url.includes('?role=')) {
@@ -322,17 +346,17 @@
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
-          if (url === '/api/ats/evaluate-custom' || url.endsWith('/api/ats/evaluate-custom')) {
-            let res = await originalFetch(base + 'data/ats_evaluation.json');
-            if (!res.ok) res = await originalFetch('./data/ats_evaluation.json');
+          if (url === '/api/ats/evaluate-custom' || url.endsWith('/api/ats/evaluate-custom') || url.includes('/api/ats/evaluate-custom')) {
+            let res = await originalFetch(base + 'data/ats_evaluation.json?_t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) res = await originalFetch('./data/ats_evaluation.json?_t=' + Date.now(), { cache: 'no-store' });
             const data = await res.json();
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
-          // 2. Jobs Feed
-          if (url === '/api/jobs/feed' || url.endsWith('/api/jobs/feed')) {
-            let res = await originalFetch(base + 'data/jobs.json');
-            if (!res.ok) res = await originalFetch('./data/jobs.json');
+          // 2. Jobs Feed - always fetch fresh JSON with cache busting
+          if (url === '/api/jobs/feed' || url.endsWith('/api/jobs/feed') || url.includes('/api/jobs/feed')) {
+            let res = await originalFetch(base + 'data/jobs.json?_t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) res = await originalFetch('./data/jobs.json?_t=' + Date.now(), { cache: 'no-store' });
             const data = await res.json();
             try {
               const appliedUrls = JSON.parse(localStorage.getItem('arya_applied_urls') || '[]');
@@ -345,36 +369,44 @@
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
-          // 3. Application Ledger
-          if (url === '/api/ledger' || url.endsWith('/api/ledger')) {
+          // 3. Application Ledger - always fetch fresh JSON from truth store
+          if (url === '/api/ledger' || url.endsWith('/api/ledger') || url.includes('/api/ledger')) {
+            let res = await originalFetch(base + 'data/ledger.json?_t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) res = await originalFetch('./data/ledger.json?_t=' + Date.now(), { cache: 'no-store' });
+            const data = await res.json();
             const cachedLedger = localStorage.getItem('arya_ledger_cache');
             if (cachedLedger) {
-              return new Response(cachedLedger, { status: 200, headers: { 'Content-Type': 'application/json' } });
+              try {
+                const parsed = JSON.parse(cachedLedger);
+                if (parsed && parsed.applications && parsed.applications.length > (data.applications || []).length) {
+                  return new Response(cachedLedger, { status: 200, headers: { 'Content-Type': 'application/json' } });
+                }
+              } catch(e) {}
             }
-            let res = await originalFetch(base + 'data/ledger.json');
-            if (!res.ok) res = await originalFetch('./data/ledger.json');
-            const data = await res.json();
-            localStorage.setItem('arya_ledger_cache', JSON.stringify(data));
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
-          // 4. Interviews
-          if (url === '/api/interviews' || url.endsWith('/api/interviews')) {
+          // 4. Interviews - always fetch fresh JSON from truth store
+          if (url === '/api/interviews' || url.endsWith('/api/interviews') || url.includes('/api/interviews')) {
+            let res = await originalFetch(base + 'data/interviews.json?_t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) res = await originalFetch('./data/interviews.json?_t=' + Date.now(), { cache: 'no-store' });
+            const data = await res.json();
             const cachedInterviews = localStorage.getItem('arya_interviews_cache');
             if (cachedInterviews) {
-              return new Response(cachedInterviews, { status: 200, headers: { 'Content-Type': 'application/json' } });
+              try {
+                const parsed = JSON.parse(cachedInterviews);
+                if (parsed && parsed.interviews && parsed.interviews.length > (data.interviews || []).length) {
+                  return new Response(cachedInterviews, { status: 200, headers: { 'Content-Type': 'application/json' } });
+                }
+              } catch(e) {}
             }
-            let res = await originalFetch(base + 'data/interviews.json');
-            if (!res.ok) res = await originalFetch('./data/interviews.json');
-            const data = await res.json();
-            localStorage.setItem('arya_interviews_cache', JSON.stringify(data));
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
           // 5. Drafts
-          if (url === '/api/drafts' || url.endsWith('/api/drafts')) {
-            let res = await originalFetch(base + 'data/drafts.json');
-            if (!res.ok) res = await originalFetch('./data/drafts.json');
+          if (url === '/api/drafts' || url.endsWith('/api/drafts') || url.includes('/api/drafts')) {
+            let res = await originalFetch(base + 'data/drafts.json?_t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) res = await originalFetch('./data/drafts.json?_t=' + Date.now(), { cache: 'no-store' });
             return res;
           }
 
@@ -625,6 +657,12 @@
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span id="header-credits-text">50 Applications Today · Active</span>
       </div>
+
+      <!-- Fresh Sync / Clean Reset -->
+      <button onclick="cleanAndRefreshAllData()" id="btn-fresh-sync" title="Clear stale runtime caches and fetch brand new live updates" aria-label="Fresh Sync and Clear Cache" class="bg-gray-800/90 hover:bg-blue-600 text-gray-200 hover:text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-700/80 hover:border-blue-500 transition-all flex items-center space-x-2 shadow-sm">
+        <i id="fresh-sync-icon" class="fa-solid fa-arrows-rotate text-blue-400 text-xs transition-transform duration-500"></i>
+        <span id="fresh-sync-label">Fresh Sync</span>
+      </button>
 
       
       <!-- GitHub Pages Live Badge -->
@@ -1071,7 +1109,7 @@
             </div>
             <div class="flex items-center space-x-2">
               <input type="text" id="tracker-search-input" aria-label="Search applications by company or title" oninput="filterTrackerTable()" placeholder="Search company or title..." class="text-xs bg-gray-900 border border-gray-700 px-3 py-1.5 rounded-lg text-white">
-              <button onclick="loadLedgerData()" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-1.5 rounded-lg border border-gray-700">
+              <button onclick="loadLedgerData()" aria-label="Refresh application ledger" title="Refresh application ledger" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-1.5 rounded-lg border border-gray-700">
                 <i class="fa-solid fa-arrows-rotate"></i>
               </button>
             </div>
@@ -1633,7 +1671,7 @@
           <h3 id="modal-draft-title" class="text-base font-bold text-white">HR Executive - Pre-Flight Review</h3>
           <p id="modal-draft-company" class="text-xs text-gray-400">Target Company • 96% Match</p>
         </div>
-        <button onclick="closeDraftModal()" class="text-gray-400 hover:text-white text-sm">
+        <button onclick="closeDraftModal()" aria-label="Close Draft Modal" title="Close" class="text-gray-400 hover:text-white text-sm">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -1665,7 +1703,7 @@
           <h3 id="modal-interview-heading" class="text-base font-bold text-white">Log Interview / Update Status</h3>
           <p id="modal-interview-subheading" class="text-xs text-gray-400">Target Company • Job Title</p>
         </div>
-        <button onclick="closeInterviewModal()" class="text-gray-400 hover:text-white text-sm">
+        <button onclick="closeInterviewModal()" aria-label="Close Interview Modal" title="Close" class="text-gray-400 hover:text-white text-sm">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -1728,7 +1766,7 @@
           <h3 id="modal-followup-heading" class="text-base font-bold text-white">Recruiter Follow-Up Outreach</h3>
           <p id="modal-followup-subheading" class="text-xs text-gray-400">Target Company • Job Title</p>
         </div>
-        <button onclick="closeFollowupModal()" class="text-gray-400 hover:text-white text-sm">
+        <button onclick="closeFollowupModal()" aria-label="Close Follow-up Modal" title="Close" class="text-gray-400 hover:text-white text-sm">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -1919,7 +1957,7 @@
         </div>`;
 
       try {
-        const res = await fetch('/api/jobs/feed');
+        const res = await fetch('/api/jobs/feed?_t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
         const text = await res.text();
         let data;
@@ -1927,8 +1965,8 @@
           data = JSON.parse(text);
         } catch (jsonErr) {
           const base = typeof getAppBaseUrl === 'function' ? getAppBaseUrl() : './';
-          let fallbackRes = await originalFetch(base + 'data/jobs.json');
-          if (!fallbackRes.ok) fallbackRes = await originalFetch('./data/jobs.json');
+          let fallbackRes = await originalFetch(base + 'data/jobs.json?_t=' + Date.now(), { cache: 'no-store' });
+          if (!fallbackRes.ok) fallbackRes = await originalFetch('./data/jobs.json?_t=' + Date.now(), { cache: 'no-store' });
           data = await fallbackRes.json();
         }
         allJobs = data.jobs || [];
@@ -2206,7 +2244,7 @@
       container.innerHTML = `<div class="p-8 text-center text-gray-400"><i class="fa-solid fa-spinner animate-spin text-xl mb-2"></i><p>Loading generated drafts...</p></div>`;
 
       try {
-        const res = await fetch('/api/drafts');
+        const res = await fetch('/api/drafts?_t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
         const data = await res.json();
         const drafts = data.drafts || [];
@@ -2288,7 +2326,7 @@
 
     async function loadLedgerData() {
       try {
-        const res = await fetch('/api/ledger');
+        const res = await fetch('/api/ledger?_t=' + Date.now(), { cache: 'no-store' });
         const data = await res.json();
         const summary = data.summary || {};
         allApplications = data.applications || [];
@@ -2596,7 +2634,7 @@
       if (!container) return;
 
       try {
-        const res = await fetch('/api/interviews');
+        const res = await fetch('/api/interviews?_t=' + Date.now(), { cache: 'no-store' });
         const data = await res.json();
         const interviews = data.interviews || [];
 
@@ -2771,7 +2809,7 @@
     // Profile & Resume
     async function loadProfileData() {
       try {
-        const res = await fetch('/api/profile');
+        const res = await fetch('/api/profile?_t=' + Date.now(), { cache: 'no-store' });
         const p = await res.json();
 
         if (document.getElementById('user-display-name')) {
@@ -2969,7 +3007,8 @@
         if (targetRole) {
           url += `?role=${encodeURIComponent(targetRole)}`;
         }
-        const res = await fetch(url);
+        url += (url.includes('?') ? '&' : '?') + '_t=' + Date.now();
+        const res = await fetch(url, { cache: 'no-store' });
         if (!res.ok) return;
         const data = await res.json();
         currentAtsData = data;
@@ -3356,7 +3395,7 @@
 
     async function loadSchedulerStatus() {
       try {
-        const res = await fetch('/api/scheduler/status');
+        const res = await fetch('/api/scheduler/status?_t=' + Date.now(), { cache: 'no-store' });
         const data = await res.json();
         if (data.status === 'success') {
           const isActive = data.is_active;
@@ -3455,8 +3494,64 @@
       }
     }
 
+    async function cleanAndRefreshAllData() {
+      const icon = document.getElementById('fresh-sync-icon');
+      const label = document.getElementById('fresh-sync-label');
+      if (icon) icon.classList.add('fa-spin');
+      if (label) label.innerText = 'Syncing...';
+      showToast('Clearing runtime caches and pulling live updates...', 'info');
+
+      try {
+        try {
+          localStorage.removeItem('arya_ledger_cache');
+          localStorage.removeItem('arya_interviews_cache');
+          localStorage.removeItem('arya_profile_cache');
+          localStorage.removeItem('arya_applied_urls');
+        } catch(e) {}
+
+        try {
+          await fetch('/api/system/reset-clean?_t=' + Date.now(), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            cache: 'no-store'
+          });
+        } catch(e) {
+          console.warn('Backend reset call:', e);
+        }
+
+        await Promise.allSettled([
+          loadProfileData(),
+          loadAtsEvaluationData(),
+          loadLedgerData(),
+          loadJobFeed(2),
+          loadDrafts(),
+          loadSchedulerStatus()
+        ]);
+
+        showToast('System refreshed: Clean backend state & live updates loaded!', 'success');
+      } catch (err) {
+        console.error('Fresh sync error:', err);
+        showToast('Fresh sync warning: ' + err.message, 'warning');
+      } finally {
+        if (icon) icon.classList.remove('fa-spin');
+        if (label) label.innerText = 'Fresh Sync';
+      }
+    }
+
+    const ARYA_SYSTEM_VERSION = "2026.10.21_v4_live_clean";
+
     // Auto-detect route from URL path on load
     window.onload = () => {
+      try {
+        if (localStorage.getItem('arya_system_version') !== ARYA_SYSTEM_VERSION) {
+          localStorage.removeItem('arya_ledger_cache');
+          localStorage.removeItem('arya_interviews_cache');
+          localStorage.removeItem('arya_profile_cache');
+          localStorage.removeItem('arya_applied_urls');
+          localStorage.setItem('arya_system_version', ARYA_SYSTEM_VERSION);
+          console.log('[Arya] Version updated to ' + ARYA_SYSTEM_VERSION + ' - stale local caches cleared.');
+        }
+      } catch(e) {}
       const path = window.location.pathname.replace('/', '') || 'jobs';
       if (tabs.includes(path)) {
         switchTab(path);
