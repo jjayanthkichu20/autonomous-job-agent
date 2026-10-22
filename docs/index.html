@@ -3,23 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arya by Mentoria is an autonomous AI job hunting platform that continuously scouts enterprise career boards, tailors fact-grounded CVs, executes ATS applications, and coordinates interview outreach.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jjayanthkichu20.github.io/autonomous-job-agent/">
+  <link rel="llms-txt" type="text/markdown" href="./llms.txt">
   <title>Apply Jobs · Arya by Mentoria</title>
   <link rel="icon" type="image/svg+xml" href="./static/favicon.svg">
-  <script>
-    // Suppress CDN warning in production console
-    (function() {
-      const origWarn = console.warn;
-      console.warn = function(...args) {
-        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
-        origWarn.apply(console, args);
-      };
-    })();
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./static/css/tailwind.min.css">
   <link rel="stylesheet" href="./static/fontawesome/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -748,7 +742,7 @@
         </div>
         <div>
           <div class="flex items-center space-x-2">
-            <span class="text-lg font-extrabold tracking-tight text-white dark:text-white" style="color: var(--text-main);">Arya</span>
+            <h1 class="text-lg font-extrabold tracking-tight text-white dark:text-white inline-block m-0" style="color: var(--text-main);">Arya</h1>
             <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-blue-600/20 text-blue-400 border border-blue-500/30">AI Job Hunter</span>
           </div>
           <p class="text-[10px] text-gray-400" style="color: var(--text-muted);">by Mentoria • Multi-Agent Automation</p>
@@ -778,7 +772,7 @@
 
       
       <!-- GitHub Pages Live Badge -->
-      <a href="https://github.com/jjayanthkichu20/autonomous-job-agent" target="_blank" class="hidden lg:flex items-center space-x-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-gray-800/80 hover:bg-gray-700 text-gray-200 border border-gray-700 transition-colors">
+      <a href="https://github.com/jjayanthkichu20/autonomous-job-agent" target="_blank" rel="noopener noreferrer" class="hidden lg:flex items-center space-x-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-gray-800/80 hover:bg-gray-700 text-gray-200 border border-gray-700 transition-colors">
         <i class="fa-brands fa-github text-sm"></i>
         <span>GitHub Live</span>
       </a>
@@ -865,7 +859,7 @@
             JJ
           </div>
           <div class="flex-1 min-w-0">
-            <h4 id="user-display-name" class="text-xs font-bold truncate">Jayanth J</h4>
+            <p id="user-display-name" class="text-xs font-bold truncate">Jayanth J</p>
             <p id="user-display-role" class="text-[10px] text-gray-400 truncate">HR Executive</p>
           </div>
           <button onclick="switchTab('profile')" class="text-gray-400 hover:text-white text-xs p-1" title="Edit Profile">
@@ -1098,7 +1092,7 @@
 
               <!-- Action Buttons -->
               <div class="flex flex-wrap items-center gap-2">
-                <a id="custom-res-download-btn" href="#" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs px-4 py-2.5 rounded-xl border border-gray-700 flex items-center space-x-1.5 transition-all">
+                <a id="custom-res-download-btn" href="#" target="_blank" rel="noopener noreferrer" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs px-4 py-2.5 rounded-xl border border-gray-700 flex items-center space-x-1.5 transition-all">
                   <i class="fa-solid fa-file-arrow-down text-blue-400"></i>
                   <span>Download Tailored PDF</span>
                 </a>
@@ -1364,7 +1358,7 @@
               </div>
               <div class="text-xs">
                 <span class="text-gray-400 block mb-1">Extracted Booking Link:</span>
-                <a id="res-sched-link" href="#" target="_blank" class="text-blue-400 underline truncate block font-mono text-[11px]">https://calendly.com/...</a>
+                <a id="res-sched-link" href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline truncate block font-mono text-[11px]">https://calendly.com/...</a>
               </div>
               <div>
                 <div class="flex items-center justify-between text-xs text-gray-400 mb-1">
@@ -2811,7 +2805,7 @@
                 </div>
                 ${i.notes ? `<p class="text-[11px] text-gray-400 bg-gray-950 p-2 rounded border border-gray-800"><b>Notes:</b> ${i.notes}</p>` : ''}
                 <div class="flex items-center justify-between pt-1">
-                  ${i.meeting_link ? `<a href="${i.meeting_link}" target="_blank" class="text-xs font-semibold text-blue-400 hover:underline flex items-center space-x-1"><i class="fa-solid fa-video text-[10px]"></i><span>Join Meeting</span></a>` : '<span class="text-[10px] text-gray-500">No video link provided</span>'}
+                  ${i.meeting_link ? `<a href="${i.meeting_link}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-blue-400 hover:underline flex items-center space-x-1"><i class="fa-solid fa-video text-[10px]"></i><span>Join Meeting</span></a>` : '<span class="text-[10px] text-gray-500">No video link provided</span>'}
                   <button onclick="openInterviewModal('${(i.job_url || i.job_id || '').replace(/'/g, "\\'")}', '${(i.company_name || '').replace(/'/g, "\\'")}', '${(i.job_title || '').replace(/'/g, "\\'")}', '${i.status || ''}', '${i.interview_date || ''}', '${i.interview_time || ''}', '${(i.interview_round || '').replace(/'/g, "\\'")}', '${(i.notes || '').replace(/'/g, "\\'")}')" class="text-xs text-gray-400 hover:text-white underline">Edit</button>
                 </div>
               </div>

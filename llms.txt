@@ -1,0 +1,28 @@
+# Arya by Mentoria · Autonomous AI Job Hunter
+
+> An enterprise-grade autonomous job hunting and recruiting automation platform.
+
+## Overview
+Arya by Mentoria is an autonomous multi-agent job application system designed to discover verified job postings, generate fact-grounded candidate resumes and cover letters, execute live ATS submissions, and coordinate recruiter communications.
+
+## Candidate Information
+- **Name**: Jayanth J
+- **Primary Target Roles**: HR Executive, HR Operations Specialist, Talent Acquisition Coordinator, People Operations Associate
+- **Core Competencies**: Talent Acquisition, Employee Onboarding, Statutory Compliance (PF, ESI, Labor Laws), HRMS Administration, Applicant Tracking Systems (Workday, Greenhouse, Lever, SAP SuccessFactors)
+- **Email**: jjayanthheven20@gmail.com
+- **Phone**: +91 97783 91171
+- **Location**: Bangalore, India
+
+## System Architecture & Endpoints
+- **Job Feed**: `/api/jobs/feed` - Live aggregated and verified HR job postings.
+- **Application Ledger**: `/api/ledger` - Comprehensive ledger of all submitted, staged, and tracked applications.
+- **Interviews**: `/api/interviews` - Scheduled recruiter interviews and meeting links.
+- **Profile**: `/api/profile` - Grounded candidate master profile and verified experience facts.
+- **ATS Evaluation**: `/api/ats/multi-score` - Multi-engine ATS scoring across Workday, Greenhouse, Lever, and enterprise heuristics.
+- **System Reset Baseline**: `/api/system/reset-clean` - Clears runtime caches and pulls fresh state.
+
+## WebMCP Tools & Actions
+- **browse_jobs**: Query verified career postings matching target role requirements.
+- **tailor_resume**: Ground candidate achievements to JD specifications with verified facts.
+- **submit_application**: Execute automated application filing to company ATS queues.
+- **track_status**: Record candidate correspondence, scheduled interviews, and next actions.
