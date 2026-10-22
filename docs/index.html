@@ -56,11 +56,123 @@
       --header-bg: rgba(255, 255, 255, 0.9);
     }
 
+    /* ========================================================= */
+    /* CRITICAL LAYOUT STABILITY & ZERO CUMULATIVE LAYOUT SHIFT  */
+    /* ========================================================= */
+    *, ::before, ::after {
+      box-sizing: border-box;
+    }
+
+    /* Prevent FOUC: hide non-active tabs and modals immediately before Tailwind compiles */
+    .hidden, [hidden] {
+      display: none !important;
+    }
+
+    /* Pre-reserve app shell layout dimensions */
+    .app-shell-layout {
+      display: flex;
+      width: 100%;
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+
+    header.glass-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      padding: 0.75rem 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      aside.sidebar {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 16rem !important;
+        min-width: 16rem !important;
+        max-width: 16rem !important;
+        flex-shrink: 0 !important;
+        position: sticky !important;
+        top: 5rem !important;
+        height: calc(100vh - 6rem) !important;
+      }
+      .md\:flex {
+        display: flex !important;
+      }
+      .md\:hidden {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      aside.sidebar {
+        display: none !important;
+      }
+      .md\:flex {
+        display: none !important;
+      }
+      .md\:hidden {
+        display: flex !important;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .sm\:flex {
+        display: flex !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:flex {
+        display: flex !important;
+      }
+    }
+
+    main.app-main-content {
+      flex: 1 1 0%;
+      min-width: 0;
+    }
+
+    /* Dynamic container min-height & containment to eliminate shift */
+    #job-feed-container {
+      min-height: 520px;
+      contain: layout style;
+    }
+
+    /* Tabular numeric data to prevent clock and counter jitter */
+    #scheduler-countdown,
+    #scheduler-total-scans,
+    #scheduler-total-applied,
+    .font-mono {
+      font-variant-numeric: tabular-nums;
+      display: inline-block;
+    }
+
+    #scheduler-countdown {
+      min-width: 4.8rem;
+    }
+
+    @font-face {
+      font-family: 'Plus Jakarta Sans Fallback';
+      src: local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial');
+      ascent-override: 95%;
+      descent-override: 25%;
+      line-gap-override: 0%;
+      size-adjust: 100%;
+    }
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: var(--bg-main);
       color: var(--text-main);
       transition: background-color 0.2s ease, color 0.2s ease;
+      font-variant-numeric: tabular-nums;
     }
 
     .glass-card {
@@ -690,7 +802,7 @@
   </header>
 
   <!-- App Body Layout -->
-  <div class="flex-1 flex max-w-7xl w-full mx-auto p-4 sm:p-6 gap-6">
+  <div class="app-shell-layout flex-1 flex max-w-7xl w-full mx-auto p-4 sm:p-6 gap-6">
 
     <!-- Sidebar Navigation -->
     <aside class="sidebar w-64 hidden md:flex flex-col justify-between p-4 rounded-2xl glass-card h-[calc(100vh-6rem)] sticky top-20">
@@ -764,7 +876,7 @@
     </aside>
 
     <!-- Content Workspace -->
-    <main class="flex-1 space-y-6 min-w-0 pb-16 md:pb-0">
+    <main class="app-main-content flex-1 space-y-6 min-w-0 pb-16 md:pb-0">
 
       <!-- ========================================== -->
       <!-- TAB 1: APPLY JOBS (/jobs)                  -->
@@ -791,6 +903,7 @@
           <div class="absolute right-4 -bottom-6 opacity-10 text-9xl pointer-events-none text-blue-500">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
+        </div>
         <!-- 2-Hour Autonomous Auto-Pilot Control Card -->
         <div class="glass-card p-5 rounded-2xl border-l-4 border-l-emerald-500 relative overflow-hidden">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -882,10 +995,28 @@
         </div>
 
         <!-- Job Grid Container -->
-        <div id="job-feed-container" class="space-y-4">
-          <div class="p-12 text-center text-gray-400">
-            <i class="fa-solid fa-spinner animate-spin text-2xl mb-3 text-blue-500"></i>
-            <p>Scanning career boards for high-match openings...</p>
+        <div id="job-feed-container" class="space-y-4 min-h-[520px]">
+          <div class="space-y-4" id="feed-skeleton-loader">
+            <div class="glass-card p-5 rounded-2xl animate-pulse space-y-3">
+              <div class="flex justify-between items-start">
+                <div class="space-y-2 w-2/3">
+                  <div class="h-5 bg-gray-800 rounded w-1/2"></div>
+                  <div class="h-4 bg-gray-800/60 rounded w-1/3"></div>
+                </div>
+                <div class="h-6 w-16 bg-emerald-950/40 rounded-full"></div>
+              </div>
+              <div class="h-4 bg-gray-800/40 rounded w-full"></div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl animate-pulse space-y-3">
+              <div class="flex justify-between items-start">
+                <div class="space-y-2 w-2/3">
+                  <div class="h-5 bg-gray-800 rounded w-1/2"></div>
+                  <div class="h-4 bg-gray-800/60 rounded w-1/3"></div>
+                </div>
+                <div class="h-6 w-16 bg-emerald-950/40 rounded-full"></div>
+              </div>
+              <div class="h-4 bg-gray-800/40 rounded w-full"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -1951,9 +2082,27 @@
       const container = document.getElementById('job-feed-container');
       if (!container) return;
       container.innerHTML = `
-        <div class="p-12 text-center text-gray-400">
-          <i class="fa-solid fa-spinner animate-spin text-2xl mb-3 text-blue-500"></i>
-          <p>Scanning verified enterprise career boards for HR roles...</p>
+        <div class="space-y-4">
+          <div class="glass-card p-5 rounded-2xl animate-pulse space-y-3">
+            <div class="flex justify-between items-start">
+              <div class="space-y-2 w-2/3">
+                <div class="h-5 bg-gray-800 rounded w-1/2"></div>
+                <div class="h-4 bg-gray-800/60 rounded w-1/3"></div>
+              </div>
+              <div class="h-6 w-16 bg-emerald-950/40 rounded-full"></div>
+            </div>
+            <div class="h-4 bg-gray-800/40 rounded w-full"></div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl animate-pulse space-y-3">
+            <div class="flex justify-between items-start">
+              <div class="space-y-2 w-2/3">
+                <div class="h-5 bg-gray-800 rounded w-1/2"></div>
+                <div class="h-4 bg-gray-800/60 rounded w-1/3"></div>
+              </div>
+              <div class="h-6 w-16 bg-emerald-950/40 rounded-full"></div>
+            </div>
+            <div class="h-4 bg-gray-800/40 rounded w-full"></div>
+          </div>
         </div>`;
 
       try {

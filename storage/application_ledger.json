@@ -2105,9 +2105,9 @@
       "job_url": "http://127.0.0.1:8769/greenhouse/job/101",
       "relevance_score": 0.969,
       "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_4D4BC25D_1792587250",
+      "confirmation_id": "DRYRUN-SUB_303C5824_1792634926",
       "applied_date": "2026-10-21 11:11:59 UTC",
-      "last_updated": "2026-10-21 12:54:10 UTC",
+      "last_updated": "2026-10-22 02:08:46 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\job_70688bc2_412b3912\\resume_tailored.md"
     },
@@ -2120,7 +2120,7 @@
       "status": "FOLLOW_UP_SENT",
       "confirmation_id": "CONF-TEST-123",
       "applied_date": "2026-10-21 11:12:00 UTC",
-      "last_updated": "2026-10-21 12:54:10 UTC",
+      "last_updated": "2026-10-22 02:08:46 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "",
       "notes": "Hiring manager screening scheduled",
@@ -2128,7 +2128,7 @@
       "interview_time": "14:30",
       "interview_round": "Round 1 Screening",
       "meeting_link": "https://meet.google.com/test-abc-xyz",
-      "last_followup_at": "2026-10-21 12:54:10 UTC",
+      "last_followup_at": "2026-10-22 02:08:46 UTC",
       "last_followup_cadence": "T+7",
       "followup_history": [
         {
@@ -2138,6 +2138,11 @@
         },
         {
           "timestamp": "2026-10-21 12:54:10 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-22 02:08:46 UTC",
           "cadence": "T+7",
           "notes": "Polite check-in sent"
         }
@@ -2168,6 +2173,19 @@
       "last_updated": "2026-10-21 12:54:11 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_e4e29707a4\\resume_tailored.md"
+    },
+    {
+      "job_id": "fe1ae656-4b49-4068-9eb1-88e7b25feee7",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_fc55602e67",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_55602E67_1792634926",
+      "applied_date": "2026-10-22 02:08:46 UTC",
+      "last_updated": "2026-10-22 02:08:46 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_fc55602e67\\resume_tailored.md"
     }
   ]
 }
