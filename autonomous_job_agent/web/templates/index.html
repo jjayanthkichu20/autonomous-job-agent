@@ -1858,6 +1858,7 @@
           showToast(`Application successfully processed! Receipt: ${data.confirmation_id || 'OK'}`, 'success');
           loadJobFeed();
           loadLedgerData();
+          loadSchedulerStatus();
         } else {
           showToast(data.detail || 'Application failed', 'error');
         }
@@ -1882,6 +1883,7 @@
         showToast(`Auto-applied to top ${data.processed} openings with verified ATS variants!`, 'success');
         loadJobFeed();
         loadLedgerData();
+        loadSchedulerStatus();
       } catch (err) {
         showToast('Auto-scout error: ' + err.message, 'error');
       } finally {
@@ -2011,7 +2013,10 @@
         const summary = data.summary || {};
         allApplications = data.applications || [];
 
-        // Update 5 funnel stats
+        // Update 5 funnel stats and header counter
+        if (document.getElementById('header-credits-text')) {
+          document.getElementById('header-credits-text').innerText = `${summary.submitted || 0} Applications Today • Active`;
+        }
         if (document.getElementById('stat-total')) document.getElementById('stat-total').innerText = summary.total_tracked || 0;
         if (document.getElementById('stat-submitted')) document.getElementById('stat-submitted').innerText = summary.submitted || 0;
         if (document.getElementById('stat-dryrun')) document.getElementById('stat-dryrun').innerText = summary.dry_run_verified || 0;
@@ -2467,8 +2472,10 @@
         const data = await res.json();
         if (res.ok) {
           const modeStr = isLive ? "Live submitted to ATS" : "Staged in dry-run mode";
-          showToast(`Application successfully ${modeStr}! Confirmation ID: ${data.result.confirmation_id}`, "success");
+          const receipt = data.result?.confirmation_id || data.result?.external_confirmation_id || data.confirmation_id || "CONFIRMED";
+          showToast(`Application successfully ${modeStr}! Confirmation ID: ${receipt}`, "success");
           loadLedgerData();
+          loadSchedulerStatus();
         } else {
           showToast(data.detail || "Application failed", "error");
         }
@@ -3179,9 +3186,14 @@
       try {
         try {
           localStorage.removeItem('arya_ledger_cache');
+          localStorage.removeItem('arya_user_applications');
           localStorage.removeItem('arya_interviews_cache');
           localStorage.removeItem('arya_profile_cache');
           localStorage.removeItem('arya_applied_urls');
+          localStorage.removeItem('arya_scheduler_scans');
+          localStorage.removeItem('arya_scheduler_applied');
+          localStorage.removeItem('arya_scheduler_next_run');
+          localStorage.removeItem('arya_scheduler_last_run');
         } catch(e) {}
 
         try {
