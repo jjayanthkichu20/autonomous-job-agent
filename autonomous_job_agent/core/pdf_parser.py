@@ -13,13 +13,29 @@ from autonomous_job_agent.core.models import (
 
 
 def extract_text_from_pdf(pdf_bytes: bytes) -> str:
-    """Extracts raw text from PDF bytes using pypdf."""
-    reader = pypdf.PdfReader(io.BytesIO(pdf_bytes))
+    """Extracts raw text from PDF bytes using pypdf with robust fallbacks."""
     text_parts = []
-    for page in reader.pages:
-        txt = page.extract_text()
-        if txt:
-            text_parts.append(txt)
+    try:
+        reader = pypdf.PdfReader(io.BytesIO(pdf_bytes))
+        for page in reader.pages:
+            txt = page.extract_text()
+            if txt:
+                text_parts.append(txt)
+    except Exception:
+        pass
+
+    if not text_parts or not any(t.strip() for t in text_parts):
+        try:
+            raw_str = pdf_bytes.decode("latin1", errors="ignore")
+            # Extract parenthesized strings from PDF text streams
+            matches = re.findall(r"\(([^\(\)\\\r\n]{3,})\)", raw_str)
+            if matches:
+                text_parts = matches
+            else:
+                text_parts = [re.sub(r'[\x00-\x1f\x7f-\xff]', ' ', raw_str)]
+        except Exception:
+            pass
+
     return "\n".join(text_parts)
 
 

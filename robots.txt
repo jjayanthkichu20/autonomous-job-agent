@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jjayanthkichu20.github.io/autonomous-job-agent/sitemap.xml

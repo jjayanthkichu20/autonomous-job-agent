@@ -1,270 +1,6 @@
 {
   "applications": [
     {
-      "job_id": "e8dc846a-050f-4cf1-b58e-2f52b4058448",
-      "company_name": "127",
-      "job_title": "Senior Distributed Systems Engineer",
-      "job_url": "http://127.0.0.1:8899/greenhouse/job/gh-78901",
-      "relevance_score": 0.3,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "CONF-1791517525",
-      "applied_date": "2026-10-08 05:39:10 UTC",
-      "last_updated": "2026-10-09 03:45:25 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_e8dc846a_aaddb6ef\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "3f4d9447-f48f-4c1c-bdc8-a4e097ae672c",
-      "company_name": "Canonical",
-      "job_title": "Head of Security Operations",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/4209375",
-      "relevance_score": 0.4,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_3F4D9447_1791438966",
-      "applied_date": "2026-10-08 05:56:06 UTC",
-      "last_updated": "2026-10-08 05:56:06 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_3f4d9447_7bbcdba0\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "251194a7-d835-4131-9b69-6708fa7bb4c0",
-      "company_name": "Canonical",
-      "job_title": "Sales Operations Analyst",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5924435",
-      "relevance_score": 0.8,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_251194A7_1791438970",
-      "applied_date": "2026-10-08 05:56:10 UTC",
-      "last_updated": "2026-10-08 05:56:10 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_251194a7_f80b02d8\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "89accd1c-4be9-4c9e-9327-0e01b32b35e6",
-      "company_name": "Canonical",
-      "job_title": "Senior Sales Operations Analyst",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/4122239",
-      "relevance_score": 0.8,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_89ACCD1C_1791438975",
-      "applied_date": "2026-10-08 05:56:15 UTC",
-      "last_updated": "2026-10-08 05:56:15 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_89accd1c_665bb964\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "caecd3b4-3e21-4679-94f1-bfbee77bfb54",
-      "company_name": "Canonical",
-      "job_title": "Senior Security Operations Engineer",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5391149",
-      "relevance_score": 0.4,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_CAECD3B4_1791438979",
-      "applied_date": "2026-10-08 05:56:19 UTC",
-      "last_updated": "2026-10-08 05:56:19 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_caecd3b4_da8a1215\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "64d6dcc0-e280-4312-834d-f13041420cb5",
-      "company_name": "Canonical",
-      "job_title": "Staff Security Operations Engineer",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/6485081",
-      "relevance_score": 0.68,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_64D6DCC0_1791438984",
-      "applied_date": "2026-10-08 05:56:24 UTC",
-      "last_updated": "2026-10-08 05:56:24 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_64d6dcc0_487c8a25\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "5becf9a6-2849-4dfb-8766-33be48a688b6",
-      "company_name": "Canonical",
-      "job_title": "Sustaining Operations Engineer",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/3737190",
-      "relevance_score": 0.444,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_5BECF9A6_1791438988",
-      "applied_date": "2026-10-08 05:56:28 UTC",
-      "last_updated": "2026-10-08 05:56:28 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_5becf9a6_01b6e307\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "503fe519-a2c8-4c8a-8658-7c0fb0072a51",
-      "company_name": "Canonical",
-      "job_title": "Travel Operations Specialist",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5075146",
-      "relevance_score": 0.68,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_503FE519_1791438992",
-      "applied_date": "2026-10-08 05:56:32 UTC",
-      "last_updated": "2026-10-08 05:56:32 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_503fe519_1de3ae09\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "6dd21935-f73a-43e3-83c4-9610258a555f",
-      "company_name": "Target Company",
-      "job_title": "Senior Data Scientist ( Data Scientist III : Supply Chain Operations Research)",
-      "job_url": "https://job-boards.greenhouse.io/quince/jobs/5381607008",
-      "relevance_score": 0.8,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_6DD21935_1791438996",
-      "applied_date": "2026-10-08 05:56:36 UTC",
-      "last_updated": "2026-10-08 05:56:36 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_6dd21935_3e62eea8\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "a98a3aad-9da4-47e5-80c0-b207ebd9c027",
-      "company_name": "Target Company",
-      "job_title": "Director - Global Revenue Operations",
-      "job_url": "https://job-boards.greenhouse.io/inmobi/jobs/7974670",
-      "relevance_score": 0.5,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_A98A3AAD_1791439001",
-      "applied_date": "2026-10-08 05:56:41 UTC",
-      "last_updated": "2026-10-08 05:56:41 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a98a3aad_f8f2c45a\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "4f296f8b-cb67-4c94-b927-71006ef5ac98",
-      "company_name": "GitLab",
-      "job_title": "Associate Revenue Operations Manager, India",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8859694002",
-      "relevance_score": 0.8,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_4F296F8B_1791439005",
-      "applied_date": "2026-10-08 05:56:45 UTC",
-      "last_updated": "2026-10-08 05:56:45 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_4f296f8b_9fd6ff36\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
-      "job_id": "2c173017-8d13-4a3b-9f03-8863c0e9c464",
-      "company_name": "GitLab",
-      "job_title": "Director, Engineering, Platform Operations & Productivity",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8626772002",
-      "relevance_score": 0.6,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "DRYRUN-SUB_2C173017_1791439009",
-      "applied_date": "2026-10-08 05:56:49 UTC",
-      "last_updated": "2026-10-08 05:56:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_2c173017_379fd4ea\\resume_tailored.md",
-      "last_followup_at": "2026-10-16 04:05:49 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-16 04:05:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite inquiry regarding application screening status sent to HR team."
-        }
-      ]
-    },
-    {
       "job_id": "97577f32-f025-43d2-90a4-94ae29ee4b46",
       "company_name": "GitLab",
       "job_title": "Director, Global People Operations & Compliance",
@@ -276,110 +12,6 @@
       "last_updated": "2026-10-08 05:56:53 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_97577f32_eb46e0e5\\resume_tailored.md"
-    },
-    {
-      "job_id": "781f53c2-c8da-4334-9876-cae481ed84c5",
-      "company_name": "GitLab",
-      "job_title": "Engineering Manager - Git & Gitaly Operations",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8626740002",
-      "relevance_score": 0.56,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_781F53C2_1791439017",
-      "applied_date": "2026-10-08 05:56:57 UTC",
-      "last_updated": "2026-10-08 05:56:57 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_781f53c2_d3de62fc\\resume_tailored.md"
-    },
-    {
-      "job_id": "6494690e-edf7-4a04-8168-487071efe8e5",
-      "company_name": "GitLab",
-      "job_title": "Intermediate Security Analyst, Vulnerability Operations  (North America)",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8821526002",
-      "relevance_score": 0.7,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_6494690E_1791439021",
-      "applied_date": "2026-10-08 05:57:01 UTC",
-      "last_updated": "2026-10-08 05:57:01 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_6494690e_34f0e0e9\\resume_tailored.md"
-    },
-    {
-      "job_id": "a8cc2a67-ff29-4552-b9e0-aee31d5ebcb2",
-      "company_name": "GitLab",
-      "job_title": "Senior Customer Success Operations Manager",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8604996002",
-      "relevance_score": 0.7,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_A8CC2A67_1791439026",
-      "applied_date": "2026-10-08 05:57:06 UTC",
-      "last_updated": "2026-10-08 05:57:06 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a8cc2a67_bc2ef081\\resume_tailored.md"
-    },
-    {
-      "job_id": "cd496958-214f-4ae4-8a84-0ec76e19d0d6",
-      "company_name": "GitLab",
-      "job_title": "Senior Hyperscaler Operations Manager",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8632005002",
-      "relevance_score": 0.6,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_CD496958_1791439030",
-      "applied_date": "2026-10-08 05:57:10 UTC",
-      "last_updated": "2026-10-08 05:57:10 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_cd496958_14d55013\\resume_tailored.md"
-    },
-    {
-      "job_id": "6ec9ec8f-2d6e-488b-a1f9-26806e953e90",
-      "company_name": "GitLab",
-      "job_title": "Senior Renewal Operations Manager",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8645879002",
-      "relevance_score": 0.64,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_6EC9EC8F_1791439034",
-      "applied_date": "2026-10-08 05:57:14 UTC",
-      "last_updated": "2026-10-08 05:57:14 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_6ec9ec8f_08507f8e\\resume_tailored.md"
-    },
-    {
-      "job_id": "7ed6aa28-8c7b-4cdd-86bb-b1baa7a3e237",
-      "company_name": "GitLab",
-      "job_title": "Staff Professional Services Operations Manager",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8691770002",
-      "relevance_score": 0.667,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_7ED6AA28_1791439038",
-      "applied_date": "2026-10-08 05:57:18 UTC",
-      "last_updated": "2026-10-08 05:57:18 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_7ed6aa28_c08fd931\\resume_tailored.md"
-    },
-    {
-      "job_id": "0ee6ede0-a988-4c0e-b273-7822dbf2b60c",
-      "company_name": "GitLab",
-      "job_title": "Staff Renewals Operations Manager",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8868652002",
-      "relevance_score": 0.64,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_0EE6EDE0_1791439043",
-      "applied_date": "2026-10-08 05:57:23 UTC",
-      "last_updated": "2026-10-08 05:57:23 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_0ee6ede0_c9fd1d16\\resume_tailored.md"
-    },
-    {
-      "job_id": "7ca99448-ce6b-4fc4-b9ab-c548558da726",
-      "company_name": "GitLab",
-      "job_title": "Tech Operations Specialist",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8638246002",
-      "relevance_score": 0.8,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_7CA99448_1791439047",
-      "applied_date": "2026-10-08 05:57:27 UTC",
-      "last_updated": "2026-10-08 05:57:27 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_7ca99448_b51d0c57\\resume_tailored.md"
     },
     {
       "job_id": "63eace1a-4a81-4902-8c5a-8455afbad747",
@@ -468,20 +100,6 @@
       "notes": "Screening questionnaire required by enterprise ATS portal (Requires manual screening response input)"
     },
     {
-      "job_id": "f9ec1870-473a-439c-b8bd-70e44ef73728",
-      "company_name": "Canonical",
-      "job_title": "Graduate Talent Scientist",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/6464146",
-      "relevance_score": 0.96,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-DISPATCH-F9EC1870",
-      "applied_date": "2026-10-08 08:53:32 UTC",
-      "last_updated": "2026-10-08 08:53:32 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f9ec1870_7703986c\\resume_tailored.md",
-      "notes": "Screening questionnaire required by enterprise ATS portal (Requires manual screening response input)"
-    },
-    {
       "job_id": "54ad5c83-5dca-43ad-8165-c75371478e99",
       "company_name": "Canonical",
       "job_title": "HR Generalist",
@@ -541,32 +159,6 @@
       "notes": "Hiring manager shortlisted CV for HR Operations & Statutory Compliance expertise."
     },
     {
-      "job_id": "a2b54dfa-14dd-44fa-96b3-1751da1aebee",
-      "company_name": "127",
-      "job_title": "Senior Distributed Systems Engineer",
-      "job_url": "http://127.0.0.1:8769/greenhouse/job/101",
-      "relevance_score": 0.969,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_C5339C9A_1792124397",
-      "applied_date": "2026-10-09 04:20:39 UTC",
-      "last_updated": "2026-10-16 04:19:57 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a2b54dfa_daa8524a\\resume_tailored.md"
-    },
-    {
-      "job_id": "86808041-cf12-468e-a599-53df3253c089",
-      "company_name": "Canonical",
-      "job_title": "Manager, People Analytics",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/7836561",
-      "relevance_score": 0.95,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_86808041_1791521923",
-      "applied_date": "2026-10-09 04:58:43 UTC",
-      "last_updated": "2026-10-09 04:58:43 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_86808041_33af072a\\resume_tailored.md"
-    },
-    {
       "job_id": "543405c7-ab6b-4e02-9818-47a32c1fe8a6",
       "company_name": "Canonical",
       "job_title": "Regional HR Manager - AMER",
@@ -619,45 +211,6 @@
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_07995c0c_2091770c\\resume_tailored.md"
     },
     {
-      "job_id": "67f547bc-b6f9-4a52-b956-84308ce071f5",
-      "company_name": "Canonical",
-      "job_title": "Talent Scientist",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/3137607",
-      "relevance_score": 0.93,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_67F547BC_1791609084",
-      "applied_date": "2026-10-10 05:11:24 UTC",
-      "last_updated": "2026-10-10 05:11:24 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_67f547bc_742b29ee\\resume_tailored.md"
-    },
-    {
-      "job_id": "630ea526-babf-4a7f-9eea-104ed761f9b1",
-      "company_name": "Canonical",
-      "job_title": "Talent Scientist - Graduate Lead",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/7214510",
-      "relevance_score": 0.98,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_630EA526_1791609089",
-      "applied_date": "2026-10-10 05:11:29 UTC",
-      "last_updated": "2026-10-10 05:11:29 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_630ea526_f5130d35\\resume_tailored.md"
-    },
-    {
-      "job_id": "fea15e10-83fe-45f5-8795-473f90ef353f",
-      "company_name": "Canonical",
-      "job_title": "Threat Intelligence Lead",
-      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5144666",
-      "relevance_score": 0.93,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_FEA15E10_1791609093",
-      "applied_date": "2026-10-10 05:11:33 UTC",
-      "last_updated": "2026-10-10 05:11:33 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_fea15e10_79b198b4\\resume_tailored.md"
-    },
-    {
       "job_id": "eaf5ff91-0636-44d5-b2d2-09573c2f3a99",
       "company_name": "Target Company",
       "job_title": "Staff Talent & People Analyst",
@@ -669,24 +222,6 @@
       "last_updated": "2026-10-10 05:11:38 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_eaf5ff91_57ff58cc\\resume_tailored.md"
-    },
-    {
-      "job_id": "c2c81714-22f4-4a28-b4a7-8d233ad7a7b4",
-      "company_name": "InMobi",
-      "job_title": "Intern - Creative & Communications, People Team",
-      "job_url": "https://job-boards.greenhouse.io/inmobi/jobs/8207429",
-      "relevance_score": 0.97,
-      "status": "INTERVIEW_SCHEDULED",
-      "confirmation_id": "DRYRUN-SUB_C2C81714_1791609102",
-      "applied_date": "2026-10-10 05:11:42 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c2c81714_10cdd6c7\\resume_tailored.md",
-      "interview_date": "2026-10-24",
-      "interview_time": "16:30 IST",
-      "interview_round": "Round 2 - People Operations Deep Dive",
-      "meeting_link": "https://meet.google.com/inmobi-people-ops",
-      "notes": "Discussion with Senior People Partner on onboarding automation and HRMS data flow."
     },
     {
       "job_id": "f345b22b-5ef7-4f4c-ae97-3a657648eff5",
@@ -702,19 +237,6 @@
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f345b22b_c0512f47\\resume_tailored.md"
     },
     {
-      "job_id": "bf569f2b-397c-4483-95a5-8f1c08a671cf",
-      "company_name": "Careers",
-      "job_title": "Senior Engineer",
-      "job_url": "https://careers.appsflyer.com/jobs/position/8816027002?gh_jid=8816027002",
-      "relevance_score": 0.96,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_BF569F2B_1791780138",
-      "applied_date": "2026-10-12 04:42:18 UTC",
-      "last_updated": "2026-10-12 04:42:18 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_bf569f2b_716732a6\\resume_tailored.md"
-    },
-    {
       "job_id": "7b3fe1e9-d7db-4749-b694-021a2fa174c9",
       "company_name": "GitLab",
       "job_title": "Contract Talent Acquisition Sourcer, Sales (AMER)",
@@ -726,45 +248,6 @@
       "last_updated": "2026-10-12 04:42:23 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_7b3fe1e9_b91ee7c1\\resume_tailored.md"
-    },
-    {
-      "job_id": "f84cba2f-2863-41fa-9239-39dcdb042e8b",
-      "company_name": "GitLab",
-      "job_title": "Director of Recruiting, Engineering & IT, Bangalore India",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8726744002",
-      "relevance_score": 0.95,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_F84CBA2F_1791780216",
-      "applied_date": "2026-10-12 04:43:36 UTC",
-      "last_updated": "2026-10-12 04:43:36 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f84cba2f_4afba818\\resume_tailored.md"
-    },
-    {
-      "job_id": "4124a9a4-cc31-4023-abb3-9f82ce614ce2",
-      "company_name": "GitLab",
-      "job_title": "People Systems Engineer",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8861748002",
-      "relevance_score": 0.96,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_4124A9A4_1791780221",
-      "applied_date": "2026-10-12 04:43:41 UTC",
-      "last_updated": "2026-10-12 04:43:41 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_4124a9a4_ec4795b3\\resume_tailored.md"
-    },
-    {
-      "job_id": "cbc2eaaf-74f9-4034-bcca-f20777051ef7",
-      "company_name": "GitLab",
-      "job_title": "People Technology Analyst - Workday",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8861782002",
-      "relevance_score": 0.94,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_CBC2EAAF_1791780225",
-      "applied_date": "2026-10-12 04:43:45 UTC",
-      "last_updated": "2026-10-12 04:43:45 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_cbc2eaaf_c9b6e31d\\resume_tailored.md"
     },
     {
       "job_id": "3e8584ab-9206-4eee-b563-98d774d849e6",
@@ -793,32 +276,6 @@
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c85c6b1e_bc4c281c\\resume_tailored.md"
     },
     {
-      "job_id": "cdf2e654-0605-462f-b520-fe8b655d6925",
-      "company_name": "GitLab",
-      "job_title": "Senior Revenue Operations Manager",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8882059002",
-      "relevance_score": 0.64,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_CDF2E654_1791781353",
-      "applied_date": "2026-10-12 05:02:33 UTC",
-      "last_updated": "2026-10-12 05:02:33 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_cdf2e654_7b68a85d\\resume_tailored.md"
-    },
-    {
-      "job_id": "39f07abe-c088-43d3-8daf-3469a8557f0b",
-      "company_name": "GitLab",
-      "job_title": "Senior Solutions Architect Operations Manager",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8770661002",
-      "relevance_score": 0.64,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_39F07ABE_1791781357",
-      "applied_date": "2026-10-12 05:02:37 UTC",
-      "last_updated": "2026-10-12 05:02:37 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_39f07abe_9295bc82\\resume_tailored.md"
-    },
-    {
       "job_id": "ff211bec-5758-42b2-9279-d14359b0d2f9",
       "company_name": "TalentPulse Technologies",
       "job_title": "HR Executive (HR Operations & Talent Acquisition)",
@@ -845,19 +302,6 @@
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_bd695e88_1549e17c\\resume_tailored.md"
     },
     {
-      "job_id": "ae65b82c-d83f-4214-92ee-0e22d6ae4cad",
-      "company_name": "GitLab",
-      "job_title": "Staff Engineer, People Technology",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8638295002",
-      "relevance_score": 0.96,
-      "status": "SUBMITTED",
-      "confirmation_id": "DRYRUN-SUB_AE65B82C_1791866842",
-      "applied_date": "2026-10-13 04:47:22 UTC",
-      "last_updated": "2026-10-13 04:47:22 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_ae65b82c_def086aa\\resume_tailored.md"
-    },
-    {
       "job_id": "193f4ea1-14a3-4b16-9b42-a447f430b61c",
       "company_name": "GitLab",
       "job_title": "Talent Brand Manager",
@@ -869,63 +313,6 @@
       "last_updated": "2026-10-13 04:47:27 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_193f4ea1_8fd61609\\resume_tailored.md"
-    },
-    {
-      "job_id": "test_job_001",
-      "company_name": "Test Corp",
-      "job_title": "HR Specialist",
-      "job_url": "https://test-company.local/jobs/hr-specialist",
-      "relevance_score": 0.95,
-      "status": "FOLLOW_UP_SENT",
-      "confirmation_id": "CONF-TEST-123",
-      "applied_date": "2026-10-15 04:40:49 UTC",
-      "last_updated": "2026-10-16 04:19:57 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "",
-      "notes": "Hiring manager screening scheduled",
-      "interview_date": "2026-10-20",
-      "interview_time": "14:30",
-      "interview_round": "Round 1 Screening",
-      "meeting_link": "https://meet.google.com/test-abc-xyz",
-      "last_followup_at": "2026-10-16 04:19:57 UTC",
-      "last_followup_cadence": "T+7",
-      "followup_history": [
-        {
-          "timestamp": "2026-10-15 04:40:49 UTC",
-          "cadence": "T+7",
-          "notes": "Polite check-in sent"
-        },
-        {
-          "timestamp": "2026-10-15 04:41:39 UTC",
-          "cadence": "T+7",
-          "notes": "Polite check-in sent"
-        },
-        {
-          "timestamp": "2026-10-15 04:41:59 UTC",
-          "cadence": "T+7",
-          "notes": "Polite check-in sent"
-        },
-        {
-          "timestamp": "2026-10-15 08:56:26 UTC",
-          "cadence": "T+7",
-          "notes": "Polite check-in sent"
-        },
-        {
-          "timestamp": "2026-10-15 11:12:39 UTC",
-          "cadence": "T+7",
-          "notes": "Polite check-in sent"
-        },
-        {
-          "timestamp": "2026-10-15 11:25:10 UTC",
-          "cadence": "T+7",
-          "notes": "Polite check-in sent"
-        },
-        {
-          "timestamp": "2026-10-16 04:19:57 UTC",
-          "cadence": "T+7",
-          "notes": "Polite check-in sent"
-        }
-      ]
     },
     {
       "job_id": "8cb91e55-a30e-4597-bb8c-5b27f78de60e",
@@ -1099,19 +486,6 @@
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\custom_jd_8a660b7a55\\resume_tailored.md"
     },
     {
-      "job_id": "faa042a6-2057-4b03-a0d0-160d2201fdbb",
-      "company_name": "Target Company",
-      "job_title": "Account Executive - France",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8860302002",
-      "relevance_score": 0.85,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-DISPATCH-FAA042A6",
-      "applied_date": "2026-10-15 11:37:27 UTC",
-      "last_updated": "2026-10-15 11:37:34 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_faa042a6_93621eaa\\resume_tailored.md"
-    },
-    {
       "job_id": "b0d81895-8d3a-494e-9d3c-bb33afe11587",
       "company_name": "Springworks",
       "job_title": "Recruitment & Onboarding Specialist",
@@ -1188,20 +562,6 @@
       "last_updated": "2026-10-16 03:55:45 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_edc15630_ab2a9906\\resume_tailored.md"
-    },
-    {
-      "job_id": "job_8448131b",
-      "company_name": "GitLab",
-      "job_title": "Threat Research Engineer",
-      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8867649002",
-      "relevance_score": 0.94,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-53868144",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_8448131b\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (94% fit)."
     },
     {
       "job_id": "job_024594df",
@@ -1288,62 +648,6 @@
       "notes": "Live submission delivered with grounded ATS CV (94% fit)."
     },
     {
-      "job_id": "job_b007d06c",
-      "company_name": "Reddit",
-      "job_title": "Staff Software Engineer, Onboarding",
-      "job_url": "https://job-boards.greenhouse.io/reddit/jobs/7961154",
-      "relevance_score": 0.98,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-62632313",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_b007d06c\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (98% fit)."
-    },
-    {
-      "job_id": "job_eeca4996",
-      "company_name": "Reddit",
-      "job_title": "Staff Threat Analyst, Ads Fraud",
-      "job_url": "https://job-boards.greenhouse.io/reddit/jobs/8189395",
-      "relevance_score": 0.93,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-81706036",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_eeca4996\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (93% fit)."
-    },
-    {
-      "job_id": "job_f3309017",
-      "company_name": "Gusto",
-      "job_title": "Senior Product Design Manager, Payroll",
-      "job_url": "https://job-boards.greenhouse.io/gusto/jobs/7254336",
-      "relevance_score": 0.97,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-39572575",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f3309017\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (97% fit)."
-    },
-    {
-      "job_id": "job_31f4c42e",
-      "company_name": "Coinbase",
-      "job_title": "Compliance, Threat & Risk Assessment Manager",
-      "job_url": "https://www.coinbase.com/careers/positions/8064692?gh_jid=8064692",
-      "relevance_score": 0.95,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-53135352",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_31f4c42e\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (95% fit)."
-    },
-    {
       "job_id": "job_379b0a45",
       "company_name": "Coinbase",
       "job_title": "Principal Recruiter",
@@ -1372,20 +676,6 @@
       "notes": "Live submission delivered with grounded ATS CV (93% fit)."
     },
     {
-      "job_id": "job_b352797b",
-      "company_name": "Coinbase",
-      "job_title": "Senior Internal Communications Manager, People",
-      "job_url": "https://www.coinbase.com/careers/positions/8162914?gh_jid=8162914",
-      "relevance_score": 0.93,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-13620401",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_b352797b\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (93% fit)."
-    },
-    {
       "job_id": "job_dd0d7c15",
       "company_name": "Coinbase",
       "job_title": "Senior Recruiter",
@@ -1397,34 +687,6 @@
       "last_updated": "2026-10-16 04:05:49 UTC",
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_dd0d7c15\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (93% fit)."
-    },
-    {
-      "job_id": "job_448b00e6",
-      "company_name": "Coinbase",
-      "job_title": "Senior Threat Intelligence Engineer",
-      "job_url": "https://www.coinbase.com/careers/positions/8209803?gh_jid=8209803",
-      "relevance_score": 0.96,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-43775339",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_448b00e6\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (96% fit)."
-    },
-    {
-      "job_id": "job_56ed899a",
-      "company_name": "Coinbase",
-      "job_title": "Threat Intelligence Platform Engineer",
-      "job_url": "https://www.coinbase.com/careers/positions/8177619?gh_jid=8177619",
-      "relevance_score": 0.93,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-51202915",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_56ed899a\\resume_tailored.md",
       "notes": "Live submission delivered with grounded ATS CV (93% fit)."
     },
     {
@@ -1482,20 +744,6 @@
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_61f9485b\\resume_tailored.md",
       "notes": "Live submission delivered with grounded ATS CV (98% fit)."
-    },
-    {
-      "job_id": "job_12935594",
-      "company_name": "Twilio",
-      "job_title": "Staff Security Engineer, Threat Hunting",
-      "job_url": "https://job-boards.greenhouse.io/twilio/jobs/8157344",
-      "relevance_score": 0.97,
-      "status": "SUBMITTED",
-      "confirmation_id": "ATS-CONF-LIVE-29500589",
-      "applied_date": "2026-10-16 04:05:49 UTC",
-      "last_updated": "2026-10-16 04:05:49 UTC",
-      "followup_t7_date": "",
-      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_12935594\\resume_tailored.md",
-      "notes": "Live submission delivered with grounded ATS CV (97% fit)."
     },
     {
       "job_id": "job_3a1e694e",
@@ -2319,6 +1567,1324 @@
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_e7d6ad1a_929ad862\\resume_tailored.md"
     },
     {
+      "job_id": "c466d5c2-530d-4757-8fb0-e4c4c9347462",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_96fcf34533",
+      "relevance_score": 0.911,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_FCF34533_1792143070",
+      "applied_date": "2026-10-16 09:31:10 UTC",
+      "last_updated": "2026-10-16 09:31:10 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_96fcf34533\\resume_tailored.md"
+    },
+    {
+      "job_id": "ef2cd174-a417-444b-aed0-78bc9df15a6b",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_38030a47fa",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_030A47FA_1792144073",
+      "applied_date": "2026-10-16 09:47:53 UTC",
+      "last_updated": "2026-10-16 09:47:53 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_38030a47fa\\resume_tailored.md"
+    },
+    {
+      "job_id": "vj_infosys_portal_01",
+      "company_name": "Infosys",
+      "job_title": "HR Operations Executive (Employee Lifecycle & Onboarding)",
+      "job_url": "https://career.infosys.com/jobdesc?jobReferenceCode=INF-HROPS-59821",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "INFOSYS-CONF-4A87820E",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_a2f65570b0",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_infosys_indeed_02",
+      "company_name": "Infosys",
+      "job_title": "Talent Acquisition Specialist - Sourcing & Interview Coordination",
+      "job_url": "https://www.indeed.com/viewjob?jk=inf_ta_98240219&cmp=Infosys",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "INFOSYS-CONF-2525B9F8",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_5e041e919c",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_hp_portal_03",
+      "company_name": "Hewlett Packard Enterprise (HP)",
+      "job_title": "People Operations Coordinator (HR Operations & Compliance)",
+      "job_url": "https://jobs.hpe.com/en/jobs/people-operations-coordinator-bangalore-109281",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "HEWLETTP-CONF-A5969AA4",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_091e5c8da0",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_hp_glassdoor_04",
+      "company_name": "HP Inc.",
+      "job_title": "HR Executive - Talent Acquisition Operations",
+      "job_url": "https://www.glassdoor.com/job-listing/hr-executive-hp-inc-JV_IC2940587_KO0,12_KE13,19.htm?jl=1009842187",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "HPINC-CONF-E12E5F9D",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_8053f7537e",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_dell_portal_05",
+      "company_name": "Dell Technologies",
+      "job_title": "HR Shared Services Specialist",
+      "job_url": "https://jobs.dell.com/en/job/bangalore/hr-shared-services-specialist/375/59281042",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "DELLTECH-CONF-BA8E43F7",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_ada1682f26",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_dell_indeed_06",
+      "company_name": "Dell Technologies",
+      "job_title": "Talent Acquisition Coordinator",
+      "job_url": "https://www.indeed.com/viewjob?jk=dell_tac_84719203&cmp=Dell-Technologies",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "DELLTECH-CONF-0A3194A0",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_cf37408b60",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_quest_portal_07",
+      "company_name": "Quest Global",
+      "job_title": "HR Executive - Talent Acquisition & Onboarding",
+      "job_url": "https://careers.quest-global.com/job/trivandrum/hr-executive-onboarding/1829/4910283",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "QUESTGLO-CONF-AAEE4284",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_bd514b0250",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_quest_glassdoor_08",
+      "company_name": "Quest Global",
+      "job_title": "Talent Acquisition Specialist - Technical Sourcing",
+      "job_url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-quest-global-JV_IC2940587_KO0,29_KE30,42.htm?jl=1009482103",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "QUESTGLO-CONF-13541A43",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_c11a1841ac",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_sutherland_portal_09",
+      "company_name": "Sutherland Global Services",
+      "job_title": "HR Executive - Talent Acquisition & Employee Relations",
+      "job_url": "https://jobs.sutherlandglobal.com/job/kochi/hr-executive-talent-acquisition/1932/3920194",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "SUTHERLA-CONF-0C6D62EC",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_84eb01fa72",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_sutherland_indeed_10",
+      "company_name": "Sutherland Global Services",
+      "job_title": "HR Operations Coordinator",
+      "job_url": "https://www.indeed.com/viewjob?jk=suth_hrops_93810284&cmp=Sutherland",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "SUTHERLA-CONF-ECA5CAAD",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_e47248bd07",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_tcs_portal_11",
+      "company_name": "Tata Consultancy Services (TCS)",
+      "job_title": "HR Executive - Talent Acquisition & People Operations",
+      "job_url": "https://ibegin.tcs.com/iBegin/jobs/tcs-hr-operations-executive-928103",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "TATACONS-CONF-9CE0AFFC",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_ab86c568ee",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_tcs_glassdoor_12",
+      "company_name": "Tata Consultancy Services (TCS)",
+      "job_title": "HR Operations Specialist - Employee Lifecycle",
+      "job_url": "https://www.glassdoor.com/job-listing/hr-operations-specialist-tata-consultancy-services-JV_IC2940587_KO0,24_KE25,50.htm?jl=1009712048",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "TATACONS-CONF-06F94C8C",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_4c35b49cf0",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_genpact_portal_13",
+      "company_name": "Genpact",
+      "job_title": "HR Operations & Employee Experience Specialist",
+      "job_url": "https://careers.genpact.com/job/bangalore/hr-operations-specialist/2931/4819201",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "GENPACT-CONF-4D030196",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_d566612ba3",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_genpact_indeed_14",
+      "company_name": "Genpact",
+      "job_title": "Talent Sourcing & Recruitment Specialist",
+      "job_url": "https://www.indeed.com/viewjob?jk=genpact_ta_81920381&cmp=Genpact",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "GENPACT-CONF-A301A064",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_d76c1ed7a7",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_concentrix_portal_15",
+      "company_name": "Concentrix",
+      "job_title": "HR Executive - People Solutions & Onboarding",
+      "job_url": "https://jobs.concentrix.com/job/bangalore/hr-executive-people-solutions/2049/5819204",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "CONCENTR-CONF-9D655F47",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_5c38a083cf",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_concentrix_glassdoor_16",
+      "company_name": "Concentrix",
+      "job_title": "Talent Acquisition Specialist",
+      "job_url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-concentrix-JV_IC2940587_KO0,29_KE30,40.htm?jl=1009581920",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "CONCENTR-CONF-6987B572",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_7809cb0799",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_accenture_portal_17",
+      "company_name": "Accenture",
+      "job_title": "HR Operations Associate - Talent Fulfillment & Onboarding",
+      "job_url": "https://www.accenture.com/in-en/careers/jobdetails?id=10928194_india",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "ACCENTUR-CONF-CE4A1D8B",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_40af064f0f",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "vj_accenture_indeed_18",
+      "company_name": "Accenture",
+      "job_title": "Talent Acquisition Coordinator",
+      "job_url": "https://www.indeed.com/viewjob?jk=accenture_tac_91829381&cmp=Accenture",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "ACCENTUR-CONF-32B53656",
+      "applied_date": "2026-10-16 10:04:57 UTC",
+      "last_updated": "2026-10-16 10:04:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_c53713f167",
+      "last_followup_at": "",
+      "last_followup_cadence": "",
+      "followup_history": []
+    },
+    {
+      "job_id": "b8849d73-53c3-4af6-9de8-0e0ac5e58aa3",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_fc9bb6060f",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_9BB6060F_1792145451",
+      "applied_date": "2026-10-16 10:10:51 UTC",
+      "last_updated": "2026-10-16 10:10:51 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_fc9bb6060f\\resume_tailored.md"
+    },
+    {
+      "job_id": "e5c751da-c4fc-46b8-99e3-66d560868430",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_9781e6a17d",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_81E6A17D_1792147377",
+      "applied_date": "2026-10-16 10:42:57 UTC",
+      "last_updated": "2026-10-16 10:42:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_9781e6a17d\\resume_tailored.md"
+    },
+    {
+      "job_id": "7aaa260c-07c8-4e5c-9c10-b49c21556820",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_7d26452771",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_26452771_1792147422",
+      "applied_date": "2026-10-16 10:43:42 UTC",
+      "last_updated": "2026-10-16 10:43:42 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_7d26452771\\resume_tailored.md"
+    },
+    {
+      "job_id": "faedd60a-7830-4a9d-ae4e-a0dcc5f806d5",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_8094313e15",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_94313E15_1792147455",
+      "applied_date": "2026-10-16 10:44:15 UTC",
+      "last_updated": "2026-10-16 10:44:15 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_8094313e15\\resume_tailored.md"
+    },
+    {
+      "job_id": "a52763d8-a904-4522-b897-726d3cd7757e",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_0319276736",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_19276736_1792150188",
+      "applied_date": "2026-10-16 11:29:48 UTC",
+      "last_updated": "2026-10-16 11:29:48 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_0319276736\\resume_tailored.md"
+    },
+    {
+      "job_id": "9b5315dd-f4de-443d-9f12-401aad60fbf7",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_bdebddf23e",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_EBDDF23E_1792150215",
+      "applied_date": "2026-10-16 11:30:15 UTC",
+      "last_updated": "2026-10-16 11:30:15 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_bdebddf23e\\resume_tailored.md"
+    },
+    {
+      "job_id": "a7b5bdc3-3a66-4097-8a19-69db6a00d0b2",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_a03bcee246",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_3BCEE246_1792150277",
+      "applied_date": "2026-10-16 11:31:17 UTC",
+      "last_updated": "2026-10-16 11:31:17 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_a03bcee246\\resume_tailored.md"
+    },
+    {
+      "job_id": "edff4204-1313-42fb-9eb0-151279e081a2",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_c99fe50093",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_9FE50093_1792150305",
+      "applied_date": "2026-10-16 11:31:45 UTC",
+      "last_updated": "2026-10-16 11:31:45 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_c99fe50093\\resume_tailored.md"
+    },
+    {
+      "job_id": "a8579f17-d669-4ebe-9f39-a7dafd1a7446",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_64c61b87ad",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_C61B87AD_1792163618",
+      "applied_date": "2026-10-16 15:13:38 UTC",
+      "last_updated": "2026-10-16 15:13:38 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_64c61b87ad\\resume_tailored.md"
+    },
+    {
+      "job_id": "b1df082c-69a6-4538-beec-927a3b4aac16",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_8bd9379b95",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_D9379B95_1792214997",
+      "applied_date": "2026-10-17 05:29:57 UTC",
+      "last_updated": "2026-10-17 05:29:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_8bd9379b95\\resume_tailored.md"
+    },
+    {
+      "job_id": "f7ffefca-9934-4082-b722-085688d1bbb0",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_7cb6320c97",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_B6320C97_1792215037",
+      "applied_date": "2026-10-17 05:30:37 UTC",
+      "last_updated": "2026-10-17 05:30:37 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_7cb6320c97\\resume_tailored.md"
+    },
+    {
+      "job_id": "8f14e3b1-6990-4f79-a562-f7a8b7911feb",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_2b9af8363f",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_9AF8363F_1792215769",
+      "applied_date": "2026-10-17 05:42:49 UTC",
+      "last_updated": "2026-10-17 05:42:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_2b9af8363f\\resume_tailored.md"
+    },
+    {
+      "job_id": "08639616-3c15-43e9-b80d-27ef2cff114a",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_9939426e04",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_39426E04_1792216032",
+      "applied_date": "2026-10-17 05:47:12 UTC",
+      "last_updated": "2026-10-17 05:47:12 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_9939426e04\\resume_tailored.md"
+    },
+    {
+      "job_id": "a75dfe12-3dcb-41a0-864b-b8446ec56df6",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_8f1c00258e",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_1C00258E_1792216068",
+      "applied_date": "2026-10-17 05:47:48 UTC",
+      "last_updated": "2026-10-17 05:47:48 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_8f1c00258e\\resume_tailored.md"
+    },
+    {
+      "job_id": "vj_cognizant_04",
+      "company_name": "Cognizant",
+      "job_title": "HR Operations Executive (Employee Documentation & Compliance)",
+      "job_url": "https://careers.cognizant.com/job/hr-operations-executive-coimbatore",
+      "relevance_score": 0.96,
+      "status": "INTERVIEW_SCHEDULED",
+      "confirmation_id": "ATS-CONF-LIVE-77182931",
+      "applied_date": "2026-10-19 06:40:49 UTC",
+      "last_updated": "2026-10-21 04:19:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "",
+      "notes": "Hiring manager screening scheduled for statutory compliance and onboarding.",
+      "interview_date": "2026-10-26",
+      "interview_time": "14:30 IST",
+      "interview_round": "Round 1 - HR Operations Screening",
+      "meeting_link": "https://meet.google.com/cognizant-hr-panel"
+    },
+    {
+      "job_id": "c2c81714-22f4-4a28-b4a7-8d233ad7a7b4",
+      "company_name": "InMobi",
+      "job_title": "Intern - Creative & Communications, People Team",
+      "job_url": "https://job-boards.greenhouse.io/inmobi/jobs/8207429",
+      "relevance_score": 0.97,
+      "status": "INTERVIEW_SCHEDULED",
+      "confirmation_id": "DRYRUN-SUB_C2C81714_1791609102",
+      "applied_date": "2026-10-10 05:11:42 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c2c81714_10cdd6c7\\resume_tailored.md",
+      "interview_date": "2026-10-24",
+      "interview_time": "16:30 IST",
+      "interview_round": "Round 2 - People Operations Deep Dive",
+      "meeting_link": "https://meet.google.com/inmobi-people-ops",
+      "notes": "Discussion with Senior People Partner on onboarding automation and HRMS data flow."
+    },
+    {
+      "job_id": "a2b54dfa-14dd-44fa-96b3-1751da1aebee",
+      "company_name": "127",
+      "job_title": "Senior Distributed Systems Engineer",
+      "job_url": "http://127.0.0.1:8769/greenhouse/job/101",
+      "relevance_score": 0.969,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_C5339C9A_1792124397",
+      "applied_date": "2026-10-09 04:20:39 UTC",
+      "last_updated": "2026-10-16 04:19:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a2b54dfa_daa8524a\\resume_tailored.md"
+    },
+    {
+      "job_id": "test_job_001",
+      "company_name": "Test Corp",
+      "job_title": "HR Specialist",
+      "job_url": "https://test-company.local/jobs/hr-specialist",
+      "relevance_score": 0.95,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "CONF-TEST-123",
+      "applied_date": "2026-10-15 04:40:49 UTC",
+      "last_updated": "2026-10-16 04:19:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "",
+      "notes": "Hiring manager screening scheduled",
+      "interview_date": "2026-10-20",
+      "interview_time": "14:30",
+      "interview_round": "Round 1 Screening",
+      "meeting_link": "https://meet.google.com/test-abc-xyz",
+      "last_followup_at": "2026-10-16 04:19:57 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-15 04:40:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-15 04:41:39 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-15 04:41:59 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-15 08:56:26 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-15 11:12:39 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-15 11:25:10 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        },
+        {
+          "timestamp": "2026-10-16 04:19:57 UTC",
+          "cadence": "T+7",
+          "notes": "Polite check-in sent"
+        }
+      ]
+    },
+    {
+      "job_id": "18ac0281-6d96-4c6f-b14a-ade8c89f54a2",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_f78869fe2c",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_8869FE2C_1792581121",
+      "applied_date": "2026-10-21 11:12:01 UTC",
+      "last_updated": "2026-10-21 11:12:01 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_f78869fe2c\\resume_tailored.md"
+    },
+    {
+      "job_id": "f6266961-6971-4fd0-bf10-08c3ea2bda0f",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_e4e29707a4",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_E29707A4_1792587251",
+      "applied_date": "2026-10-21 12:54:11 UTC",
+      "last_updated": "2026-10-21 12:54:11 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_e4e29707a4\\resume_tailored.md"
+    },
+    {
+      "job_id": "fe1ae656-4b49-4068-9eb1-88e7b25feee7",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_fc55602e67",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_55602E67_1792634926",
+      "applied_date": "2026-10-22 02:08:46 UTC",
+      "last_updated": "2026-10-22 02:08:46 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_fc55602e67\\resume_tailored.md"
+    },
+    {
+      "job_id": "26214b33-1b31-48db-a7e9-896e0159cb14",
+      "company_name": "Swiggy Technologies",
+      "job_title": "HR Operations Executive",
+      "job_url": "https://custom-jd.local/custom_jd_705331108b",
+      "relevance_score": 0.84,
+      "status": "STAGED",
+      "confirmation_id": "DRYRUN-SUB_5331108B_1792638165",
+      "applied_date": "2026-10-22 03:02:45 UTC",
+      "last_updated": "2026-10-22 03:02:45 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\autonomous-job-agent\\storage\\artifacts\\custom_jd_705331108b\\resume_tailored.md"
+    },
+    {
+      "job_id": "e8dc846a-050f-4cf1-b58e-2f52b4058448",
+      "company_name": "127",
+      "job_title": "Senior Distributed Systems Engineer",
+      "job_url": "http://127.0.0.1:8899/greenhouse/job/gh-78901",
+      "relevance_score": 0.3,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "CONF-1791517525",
+      "applied_date": "2026-10-08 05:39:10 UTC",
+      "last_updated": "2026-10-09 03:45:25 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_e8dc846a_aaddb6ef\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "3f4d9447-f48f-4c1c-bdc8-a4e097ae672c",
+      "company_name": "Canonical",
+      "job_title": "Head of Security Operations",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/4209375",
+      "relevance_score": 0.4,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_3F4D9447_1791438966",
+      "applied_date": "2026-10-08 05:56:06 UTC",
+      "last_updated": "2026-10-08 05:56:06 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_3f4d9447_7bbcdba0\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "251194a7-d835-4131-9b69-6708fa7bb4c0",
+      "company_name": "Canonical",
+      "job_title": "Sales Operations Analyst",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5924435",
+      "relevance_score": 0.8,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_251194A7_1791438970",
+      "applied_date": "2026-10-08 05:56:10 UTC",
+      "last_updated": "2026-10-08 05:56:10 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_251194a7_f80b02d8\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "89accd1c-4be9-4c9e-9327-0e01b32b35e6",
+      "company_name": "Canonical",
+      "job_title": "Senior Sales Operations Analyst",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/4122239",
+      "relevance_score": 0.8,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_89ACCD1C_1791438975",
+      "applied_date": "2026-10-08 05:56:15 UTC",
+      "last_updated": "2026-10-08 05:56:15 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_89accd1c_665bb964\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "caecd3b4-3e21-4679-94f1-bfbee77bfb54",
+      "company_name": "Canonical",
+      "job_title": "Senior Security Operations Engineer",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5391149",
+      "relevance_score": 0.4,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_CAECD3B4_1791438979",
+      "applied_date": "2026-10-08 05:56:19 UTC",
+      "last_updated": "2026-10-08 05:56:19 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_caecd3b4_da8a1215\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "64d6dcc0-e280-4312-834d-f13041420cb5",
+      "company_name": "Canonical",
+      "job_title": "Staff Security Operations Engineer",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/6485081",
+      "relevance_score": 0.68,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_64D6DCC0_1791438984",
+      "applied_date": "2026-10-08 05:56:24 UTC",
+      "last_updated": "2026-10-08 05:56:24 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_64d6dcc0_487c8a25\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "5becf9a6-2849-4dfb-8766-33be48a688b6",
+      "company_name": "Canonical",
+      "job_title": "Sustaining Operations Engineer",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/3737190",
+      "relevance_score": 0.444,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_5BECF9A6_1791438988",
+      "applied_date": "2026-10-08 05:56:28 UTC",
+      "last_updated": "2026-10-08 05:56:28 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_5becf9a6_01b6e307\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "503fe519-a2c8-4c8a-8658-7c0fb0072a51",
+      "company_name": "Canonical",
+      "job_title": "Travel Operations Specialist",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5075146",
+      "relevance_score": 0.68,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_503FE519_1791438992",
+      "applied_date": "2026-10-08 05:56:32 UTC",
+      "last_updated": "2026-10-08 05:56:32 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_503fe519_1de3ae09\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "6dd21935-f73a-43e3-83c4-9610258a555f",
+      "company_name": "Target Company",
+      "job_title": "Senior Data Scientist ( Data Scientist III : Supply Chain Operations Research)",
+      "job_url": "https://job-boards.greenhouse.io/quince/jobs/5381607008",
+      "relevance_score": 0.8,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_6DD21935_1791438996",
+      "applied_date": "2026-10-08 05:56:36 UTC",
+      "last_updated": "2026-10-08 05:56:36 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_6dd21935_3e62eea8\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "a98a3aad-9da4-47e5-80c0-b207ebd9c027",
+      "company_name": "Target Company",
+      "job_title": "Director - Global Revenue Operations",
+      "job_url": "https://job-boards.greenhouse.io/inmobi/jobs/7974670",
+      "relevance_score": 0.5,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_A98A3AAD_1791439001",
+      "applied_date": "2026-10-08 05:56:41 UTC",
+      "last_updated": "2026-10-08 05:56:41 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a98a3aad_f8f2c45a\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "4f296f8b-cb67-4c94-b927-71006ef5ac98",
+      "company_name": "GitLab",
+      "job_title": "Associate Revenue Operations Manager, India",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8859694002",
+      "relevance_score": 0.8,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_4F296F8B_1791439005",
+      "applied_date": "2026-10-08 05:56:45 UTC",
+      "last_updated": "2026-10-08 05:56:45 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_4f296f8b_9fd6ff36\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "2c173017-8d13-4a3b-9f03-8863c0e9c464",
+      "company_name": "GitLab",
+      "job_title": "Director, Engineering, Platform Operations & Productivity",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8626772002",
+      "relevance_score": 0.6,
+      "status": "FOLLOW_UP_SENT",
+      "confirmation_id": "DRYRUN-SUB_2C173017_1791439009",
+      "applied_date": "2026-10-08 05:56:49 UTC",
+      "last_updated": "2026-10-08 05:56:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_2c173017_379fd4ea\\resume_tailored.md",
+      "last_followup_at": "2026-10-16 04:05:49 UTC",
+      "last_followup_cadence": "T+7",
+      "followup_history": [
+        {
+          "timestamp": "2026-10-16 04:05:49 UTC",
+          "cadence": "T+7",
+          "notes": "Polite inquiry regarding application screening status sent to HR team."
+        }
+      ]
+    },
+    {
+      "job_id": "781f53c2-c8da-4334-9876-cae481ed84c5",
+      "company_name": "GitLab",
+      "job_title": "Engineering Manager - Git & Gitaly Operations",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8626740002",
+      "relevance_score": 0.56,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_781F53C2_1791439017",
+      "applied_date": "2026-10-08 05:56:57 UTC",
+      "last_updated": "2026-10-08 05:56:57 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_781f53c2_d3de62fc\\resume_tailored.md"
+    },
+    {
+      "job_id": "6494690e-edf7-4a04-8168-487071efe8e5",
+      "company_name": "GitLab",
+      "job_title": "Intermediate Security Analyst, Vulnerability Operations  (North America)",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8821526002",
+      "relevance_score": 0.7,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_6494690E_1791439021",
+      "applied_date": "2026-10-08 05:57:01 UTC",
+      "last_updated": "2026-10-08 05:57:01 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_6494690e_34f0e0e9\\resume_tailored.md"
+    },
+    {
+      "job_id": "a8cc2a67-ff29-4552-b9e0-aee31d5ebcb2",
+      "company_name": "GitLab",
+      "job_title": "Senior Customer Success Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8604996002",
+      "relevance_score": 0.7,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_A8CC2A67_1791439026",
+      "applied_date": "2026-10-08 05:57:06 UTC",
+      "last_updated": "2026-10-08 05:57:06 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_a8cc2a67_bc2ef081\\resume_tailored.md"
+    },
+    {
+      "job_id": "cd496958-214f-4ae4-8a84-0ec76e19d0d6",
+      "company_name": "GitLab",
+      "job_title": "Senior Hyperscaler Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8632005002",
+      "relevance_score": 0.6,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_CD496958_1791439030",
+      "applied_date": "2026-10-08 05:57:10 UTC",
+      "last_updated": "2026-10-08 05:57:10 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_cd496958_14d55013\\resume_tailored.md"
+    },
+    {
+      "job_id": "6ec9ec8f-2d6e-488b-a1f9-26806e953e90",
+      "company_name": "GitLab",
+      "job_title": "Senior Renewal Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8645879002",
+      "relevance_score": 0.64,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_6EC9EC8F_1791439034",
+      "applied_date": "2026-10-08 05:57:14 UTC",
+      "last_updated": "2026-10-08 05:57:14 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_6ec9ec8f_08507f8e\\resume_tailored.md"
+    },
+    {
+      "job_id": "7ed6aa28-8c7b-4cdd-86bb-b1baa7a3e237",
+      "company_name": "GitLab",
+      "job_title": "Staff Professional Services Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8691770002",
+      "relevance_score": 0.667,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_7ED6AA28_1791439038",
+      "applied_date": "2026-10-08 05:57:18 UTC",
+      "last_updated": "2026-10-08 05:57:18 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_7ed6aa28_c08fd931\\resume_tailored.md"
+    },
+    {
+      "job_id": "0ee6ede0-a988-4c0e-b273-7822dbf2b60c",
+      "company_name": "GitLab",
+      "job_title": "Staff Renewals Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8868652002",
+      "relevance_score": 0.64,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_0EE6EDE0_1791439043",
+      "applied_date": "2026-10-08 05:57:23 UTC",
+      "last_updated": "2026-10-08 05:57:23 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_0ee6ede0_c9fd1d16\\resume_tailored.md"
+    },
+    {
+      "job_id": "7ca99448-ce6b-4fc4-b9ab-c548558da726",
+      "company_name": "GitLab",
+      "job_title": "Tech Operations Specialist",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8638246002",
+      "relevance_score": 0.8,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_7CA99448_1791439047",
+      "applied_date": "2026-10-08 05:57:27 UTC",
+      "last_updated": "2026-10-08 05:57:27 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_7ca99448_b51d0c57\\resume_tailored.md"
+    },
+    {
+      "job_id": "f9ec1870-473a-439c-b8bd-70e44ef73728",
+      "company_name": "Canonical",
+      "job_title": "Graduate Talent Scientist",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/6464146",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-DISPATCH-F9EC1870",
+      "applied_date": "2026-10-08 08:53:32 UTC",
+      "last_updated": "2026-10-08 08:53:32 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f9ec1870_7703986c\\resume_tailored.md",
+      "notes": "Screening questionnaire required by enterprise ATS portal (Requires manual screening response input)"
+    },
+    {
+      "job_id": "86808041-cf12-468e-a599-53df3253c089",
+      "company_name": "Canonical",
+      "job_title": "Manager, People Analytics",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/7836561",
+      "relevance_score": 0.95,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_86808041_1791521923",
+      "applied_date": "2026-10-09 04:58:43 UTC",
+      "last_updated": "2026-10-09 04:58:43 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_86808041_33af072a\\resume_tailored.md"
+    },
+    {
+      "job_id": "67f547bc-b6f9-4a52-b956-84308ce071f5",
+      "company_name": "Canonical",
+      "job_title": "Talent Scientist",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/3137607",
+      "relevance_score": 0.93,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_67F547BC_1791609084",
+      "applied_date": "2026-10-10 05:11:24 UTC",
+      "last_updated": "2026-10-10 05:11:24 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_67f547bc_742b29ee\\resume_tailored.md"
+    },
+    {
+      "job_id": "630ea526-babf-4a7f-9eea-104ed761f9b1",
+      "company_name": "Canonical",
+      "job_title": "Talent Scientist - Graduate Lead",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/7214510",
+      "relevance_score": 0.98,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_630EA526_1791609089",
+      "applied_date": "2026-10-10 05:11:29 UTC",
+      "last_updated": "2026-10-10 05:11:29 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_630ea526_f5130d35\\resume_tailored.md"
+    },
+    {
+      "job_id": "fea15e10-83fe-45f5-8795-473f90ef353f",
+      "company_name": "Canonical",
+      "job_title": "Threat Intelligence Lead",
+      "job_url": "https://job-boards.greenhouse.io/canonical/jobs/5144666",
+      "relevance_score": 0.93,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_FEA15E10_1791609093",
+      "applied_date": "2026-10-10 05:11:33 UTC",
+      "last_updated": "2026-10-10 05:11:33 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_fea15e10_79b198b4\\resume_tailored.md"
+    },
+    {
+      "job_id": "bf569f2b-397c-4483-95a5-8f1c08a671cf",
+      "company_name": "Careers",
+      "job_title": "Senior Engineer",
+      "job_url": "https://careers.appsflyer.com/jobs/position/8816027002?gh_jid=8816027002",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_BF569F2B_1791780138",
+      "applied_date": "2026-10-12 04:42:18 UTC",
+      "last_updated": "2026-10-12 04:42:18 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_bf569f2b_716732a6\\resume_tailored.md"
+    },
+    {
+      "job_id": "f84cba2f-2863-41fa-9239-39dcdb042e8b",
+      "company_name": "GitLab",
+      "job_title": "Director of Recruiting, Engineering & IT, Bangalore India",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8726744002",
+      "relevance_score": 0.95,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_F84CBA2F_1791780216",
+      "applied_date": "2026-10-12 04:43:36 UTC",
+      "last_updated": "2026-10-12 04:43:36 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f84cba2f_4afba818\\resume_tailored.md"
+    },
+    {
+      "job_id": "4124a9a4-cc31-4023-abb3-9f82ce614ce2",
+      "company_name": "GitLab",
+      "job_title": "People Systems Engineer",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8861748002",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_4124A9A4_1791780221",
+      "applied_date": "2026-10-12 04:43:41 UTC",
+      "last_updated": "2026-10-12 04:43:41 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_4124a9a4_ec4795b3\\resume_tailored.md"
+    },
+    {
+      "job_id": "cbc2eaaf-74f9-4034-bcca-f20777051ef7",
+      "company_name": "GitLab",
+      "job_title": "People Technology Analyst - Workday",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8861782002",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_CBC2EAAF_1791780225",
+      "applied_date": "2026-10-12 04:43:45 UTC",
+      "last_updated": "2026-10-12 04:43:45 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_cbc2eaaf_c9b6e31d\\resume_tailored.md"
+    },
+    {
+      "job_id": "cdf2e654-0605-462f-b520-fe8b655d6925",
+      "company_name": "GitLab",
+      "job_title": "Senior Revenue Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8882059002",
+      "relevance_score": 0.64,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_CDF2E654_1791781353",
+      "applied_date": "2026-10-12 05:02:33 UTC",
+      "last_updated": "2026-10-12 05:02:33 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_cdf2e654_7b68a85d\\resume_tailored.md"
+    },
+    {
+      "job_id": "39f07abe-c088-43d3-8daf-3469a8557f0b",
+      "company_name": "GitLab",
+      "job_title": "Senior Solutions Architect Operations Manager",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8770661002",
+      "relevance_score": 0.64,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_39F07ABE_1791781357",
+      "applied_date": "2026-10-12 05:02:37 UTC",
+      "last_updated": "2026-10-12 05:02:37 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_39f07abe_9295bc82\\resume_tailored.md"
+    },
+    {
+      "job_id": "ae65b82c-d83f-4214-92ee-0e22d6ae4cad",
+      "company_name": "GitLab",
+      "job_title": "Staff Engineer, People Technology",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8638295002",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "DRYRUN-SUB_AE65B82C_1791866842",
+      "applied_date": "2026-10-13 04:47:22 UTC",
+      "last_updated": "2026-10-13 04:47:22 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_ae65b82c_def086aa\\resume_tailored.md"
+    },
+    {
+      "job_id": "faa042a6-2057-4b03-a0d0-160d2201fdbb",
+      "company_name": "Target Company",
+      "job_title": "Account Executive - France",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8860302002",
+      "relevance_score": 0.85,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-DISPATCH-FAA042A6",
+      "applied_date": "2026-10-15 11:37:27 UTC",
+      "last_updated": "2026-10-15 11:37:34 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_faa042a6_93621eaa\\resume_tailored.md"
+    },
+    {
+      "job_id": "job_8448131b",
+      "company_name": "GitLab",
+      "job_title": "Threat Research Engineer",
+      "job_url": "https://job-boards.greenhouse.io/gitlab/jobs/8867649002",
+      "relevance_score": 0.94,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-53868144",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_8448131b\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (94% fit)."
+    },
+    {
+      "job_id": "job_b007d06c",
+      "company_name": "Reddit",
+      "job_title": "Staff Software Engineer, Onboarding",
+      "job_url": "https://job-boards.greenhouse.io/reddit/jobs/7961154",
+      "relevance_score": 0.98,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-62632313",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_b007d06c\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (98% fit)."
+    },
+    {
+      "job_id": "job_eeca4996",
+      "company_name": "Reddit",
+      "job_title": "Staff Threat Analyst, Ads Fraud",
+      "job_url": "https://job-boards.greenhouse.io/reddit/jobs/8189395",
+      "relevance_score": 0.93,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-81706036",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_eeca4996\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (93% fit)."
+    },
+    {
+      "job_id": "job_f3309017",
+      "company_name": "Gusto",
+      "job_title": "Senior Product Design Manager, Payroll",
+      "job_url": "https://job-boards.greenhouse.io/gusto/jobs/7254336",
+      "relevance_score": 0.97,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-39572575",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f3309017\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (97% fit)."
+    },
+    {
+      "job_id": "job_31f4c42e",
+      "company_name": "Coinbase",
+      "job_title": "Compliance, Threat & Risk Assessment Manager",
+      "job_url": "https://www.coinbase.com/careers/positions/8064692?gh_jid=8064692",
+      "relevance_score": 0.95,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-53135352",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_31f4c42e\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (95% fit)."
+    },
+    {
+      "job_id": "job_b352797b",
+      "company_name": "Coinbase",
+      "job_title": "Senior Internal Communications Manager, People",
+      "job_url": "https://www.coinbase.com/careers/positions/8162914?gh_jid=8162914",
+      "relevance_score": 0.93,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-13620401",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_b352797b\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (93% fit)."
+    },
+    {
+      "job_id": "job_448b00e6",
+      "company_name": "Coinbase",
+      "job_title": "Senior Threat Intelligence Engineer",
+      "job_url": "https://www.coinbase.com/careers/positions/8209803?gh_jid=8209803",
+      "relevance_score": 0.96,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-43775339",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_448b00e6\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (96% fit)."
+    },
+    {
+      "job_id": "job_56ed899a",
+      "company_name": "Coinbase",
+      "job_title": "Threat Intelligence Platform Engineer",
+      "job_url": "https://www.coinbase.com/careers/positions/8177619?gh_jid=8177619",
+      "relevance_score": 0.93,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-51202915",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_56ed899a\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (93% fit)."
+    },
+    {
+      "job_id": "job_12935594",
+      "company_name": "Twilio",
+      "job_title": "Staff Security Engineer, Threat Hunting",
+      "job_url": "https://job-boards.greenhouse.io/twilio/jobs/8157344",
+      "relevance_score": 0.97,
+      "status": "SUBMITTED",
+      "confirmation_id": "ATS-CONF-LIVE-29500589",
+      "applied_date": "2026-10-16 04:05:49 UTC",
+      "last_updated": "2026-10-16 04:05:49 UTC",
+      "followup_t7_date": "",
+      "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_12935594\\resume_tailored.md",
+      "notes": "Live submission delivered with grounded ATS CV (97% fit)."
+    },
+    {
       "job_id": "d5f5c65d-e77f-4148-a393-005423160c32",
       "company_name": "Target Company",
       "job_title": "Senior People Business Partner, Engineering",
@@ -2643,5 +3209,6 @@
       "followup_t7_date": "",
       "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_0cbd0443_fe424c3e\\resume_tailored.md"
     }
-  ]
+  ],
+  "total_applications": 223
 }

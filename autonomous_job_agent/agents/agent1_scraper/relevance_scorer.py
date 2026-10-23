@@ -8,6 +8,7 @@ from autonomous_job_agent.core.models import (
     RelevanceScore,
     RemotePolicy
 )
+from autonomous_job_agent.core.role_matcher import is_target_role_match
 
 
 class RelevanceScorer:
@@ -19,6 +20,12 @@ class RelevanceScorer:
         # 1. Hard Filter Checks
         hard_filter_passed = True
         filter_failures = []
+
+        # Role and Title match check
+        role_matched, role_reason = is_target_role_match(job.job_title, profile.target_roles)
+        if not role_matched:
+            hard_filter_passed = False
+            filter_failures.append(f"Job title does not match candidate target roles: {role_reason}")
 
         # Salary floor check
         if profile.min_desired_salary_usd and job.max_salary_usd:

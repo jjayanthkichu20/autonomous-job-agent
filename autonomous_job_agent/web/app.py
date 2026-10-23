@@ -28,6 +28,8 @@ from autonomous_job_agent.core.pdf_parser import extract_text_from_pdf, parse_re
 from autonomous_job_agent.core.pdf_generator import generate_candidate_pdf, generate_tailored_pdf
 from autonomous_job_agent.agents.agent2_customizer.custom_jd_service import custom_jd_service
 from autonomous_job_agent.orchestration.recurring_scheduler import recurring_hunter
+from autonomous_job_agent.core.multi_ats_evaluator import MultiATSEvaluator
+from autonomous_job_agent.core.role_matcher import is_target_role_match
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("arya_platform")
@@ -45,6 +47,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.middleware("http")
+async def add_no_cache_headers(request, call_next):
+    """Enforces fresh responses on every request so visitors never receive stale cached data."""
+    response = await call_next(request)
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 executor_pool = ThreadPoolExecutor(max_workers=4)
 
@@ -205,6 +217,23 @@ def health_check():
     }
 
 
+@app.post("/api/system/reset-clean")
+def reset_system_clean():
+    """Clears runtime scout cache and returns fresh baseline confirmation."""
+    try:
+        from autonomous_job_agent.orchestration.auto_scout import _BOARD_CACHE, _BOARD_CACHE_TIME
+        _BOARD_CACHE.clear()
+        _BOARD_CACHE_TIME.clear()
+        return {
+            "status": "success",
+            "message": "System runtime cache cleared and fresh updates loaded.",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+    except Exception as e:
+        logger.exception("Error resetting system cache")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/api/profile")
 def get_profile():
     profile = load_current_profile()
@@ -215,24 +244,53 @@ def get_profile():
 def update_profile(profile_data: Dict[str, Any]):
     try:
         current = load_current_profile().model_dump()
-        current.update(profile_data)
+        # Map frontend form fields
+        if "min_base_salary" in profile_data and profile_data["min_base_salary"] is not None:
+            try:
+                current["min_desired_salary_usd"] = float(profile_data["min_base_salary"])
+            except (ValueError, TypeError):
+                pass
+        if "location" in profile_data and profile_data["location"]:
+            current["location"] = str(profile_data["location"]).strip()
+        if "linkedin_url" in profile_data:
+            current["linkedin_url"] = str(profile_data["linkedin_url"]).strip() or None
+        if "preferred_locations" in profile_data and isinstance(profile_data["preferred_locations"], list):
+            current["preferred_locations"] = [str(x).strip() for x in profile_data["preferred_locations"] if str(x).strip()]
+        if "target_roles" in profile_data and isinstance(profile_data["target_roles"], list):
+            current["target_roles"] = [str(x).strip() for x in profile_data["target_roles"] if str(x).strip()]
+        if "verified_skills" in profile_data and isinstance(profile_data["verified_skills"], list):
+            current["verified_skills"] = [str(x).strip() for x in profile_data["verified_skills"] if str(x).strip()]
+        
+        # Merge basic string attributes
+        for field in ["first_name", "last_name", "email", "phone"]:
+            if field in profile_data and profile_data[field]:
+                current[field] = str(profile_data[field]).strip()
+
         validated = CandidateMasterProfile(**current)
         path = BASE_DIR / "my_profile.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(validated.model_dump(), f, indent=2)
+
+        # Sync docs/data/profile.json for GitHub Pages
+        docs_profile = BASE_DIR / "docs" / "data" / "profile.json"
+        if docs_profile.parent.exists():
+            with open(docs_profile, "w", encoding="utf-8") as f:
+                json.dump(validated.model_dump(), f, indent=2)
+
         return {
             "status": "success",
             "message": "Candidate master profile updated successfully",
             "profile": validated.model_dump()
         }
     except Exception as e:
+        logger.exception("Profile update validation error")
         raise HTTPException(status_code=400, detail=f"Validation failed: {str(e)}")
 
 
 @app.post("/api/profile/upload-pdf")
 async def upload_pdf_resume(file: UploadFile = File(...)):
     """Upload PDF CV, parse it into CandidateMasterProfile, and update active truth store."""
-    if not file.filename.lower().endswith((".pdf", ".txt")):
+    if not file.filename.lower().endswith((".pdf", ".txt", ".docx", ".doc")):
         raise HTTPException(status_code=400, detail="Only .pdf or .txt resume files are supported.")
 
     content = await file.read()
@@ -241,19 +299,45 @@ async def upload_pdf_resume(file: UploadFile = File(...)):
     else:
         text = content.decode("utf-8", errors="ignore")
 
-    if not text.strip():
-        raise HTTPException(status_code=400, detail="Could not extract readable text from the uploaded file.")
+    current_data = load_current_profile().model_dump()
 
-    parsed_dict = parse_resume_text(text, filename=file.filename)
-    validated = CandidateMasterProfile(**parsed_dict)
+    if not text.strip():
+        current_data["uploaded_cv_filename"] = file.filename
+        validated = CandidateMasterProfile(**current_data)
+    else:
+        parsed_dict = parse_resume_text(text, filename=file.filename)
+        # Merge preserving existing valid contact/profile fields if parser extracted defaults
+        if parsed_dict.get("phone") in ("+91 00000 00000", "", None) and current_data.get("phone"):
+            parsed_dict["phone"] = current_data["phone"]
+        if parsed_dict.get("email") in ("candidate@example.com", "", None) and current_data.get("email"):
+            parsed_dict["email"] = current_data["email"]
+        if not parsed_dict.get("preferred_locations") and current_data.get("preferred_locations"):
+            parsed_dict["preferred_locations"] = current_data["preferred_locations"]
+        if not parsed_dict.get("linkedin_url") and current_data.get("linkedin_url"):
+            parsed_dict["linkedin_url"] = current_data["linkedin_url"]
+        if not parsed_dict.get("min_desired_salary_usd") and current_data.get("min_desired_salary_usd"):
+            parsed_dict["min_desired_salary_usd"] = current_data["min_desired_salary_usd"]
+
+        # Merge verified skills without losing existing ones
+        existing_skills = current_data.get("verified_skills") or []
+        new_skills = parsed_dict.get("verified_skills") or []
+        combined_skills = list(dict.fromkeys(new_skills + existing_skills))
+        parsed_dict["verified_skills"] = combined_skills
+
+        validated = CandidateMasterProfile(**parsed_dict)
 
     path = BASE_DIR / "my_profile.json"
     with open(path, "w", encoding="utf-8") as f:
         json.dump(validated.model_dump(), f, indent=2)
 
+    docs_profile = BASE_DIR / "docs" / "data" / "profile.json"
+    if docs_profile.parent.exists():
+        with open(docs_profile, "w", encoding="utf-8") as f:
+            json.dump(validated.model_dump(), f, indent=2)
+
     return {
         "status": "success",
-        "message": f"Resume '{file.filename}' parsed and saved as active profile!",
+        "message": f"Resume '{file.filename}' parsed and saved as active candidate truth store!",
         "profile": validated.model_dump()
     }
 
@@ -270,14 +354,77 @@ def download_resume_pdf():
     )
 
 
+ats_evaluator = MultiATSEvaluator()
+
+
+@app.get("/api/ats/multi-score")
+def get_multi_ats_score(role: Optional[str] = None):
+    """Evaluates candidate resume across 5 distinct ATS methodologies, target roles, and top employers."""
+    profile = load_current_profile()
+    return ats_evaluator.evaluate_profile(profile, selected_role=role)
+
+
+class SetTargetRoleRequest(BaseModel):
+    role: str
+
+
+@app.post("/api/profile/set-target-role")
+def set_target_role(req: SetTargetRoleRequest):
+    """Updates candidate master profile primary target role."""
+    profile = load_current_profile()
+    new_role = req.role.strip()
+    if not new_role:
+        raise HTTPException(status_code=400, detail="Target role cannot be empty")
+    
+    current_roles = list(profile.target_roles or [])
+    if new_role in current_roles:
+        current_roles.remove(new_role)
+    current_roles.insert(0, new_role)
+    
+    profile.target_roles = current_roles
+    
+    path = BASE_DIR / "my_profile.json"
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(profile.model_dump(), f, indent=2)
+
+    docs_profile = BASE_DIR / "docs" / "data" / "profile.json"
+    if docs_profile.parent.exists():
+        with open(docs_profile, "w", encoding="utf-8") as f:
+            json.dump(profile.model_dump(), f, indent=2)
+
+    return {
+        "status": "success",
+        "message": f"Active target role set to '{new_role}'",
+        "active_role": new_role,
+        "target_roles": current_roles,
+        "ats_evaluation": ats_evaluator.evaluate_profile(profile, selected_role=new_role)
+    }
+
+
+class CustomJDEvalRequest(BaseModel):
+    jd_text: str = ""
+
+
+@app.post("/api/ats/evaluate-custom")
+def evaluate_custom_jd_ats(req: CustomJDEvalRequest):
+    """Evaluates candidate resume against custom Job Description text across all ATS engines."""
+    profile = load_current_profile()
+    return ats_evaluator.evaluate_profile(profile, custom_jd_text=req.jd_text)
+
+
 @app.get("/api/jobs/feed")
-def get_jobs_feed():
-    """Returns real-time and curated high-match HR openings with location filters."""
+def get_jobs_feed(role: Optional[str] = None):
+    """Returns real-time and curated high-match HR openings with strict title and role filters."""
     profile = load_current_profile()
     scout = AutoScoutEngine()
 
+    selected_role_category = (role or "ALL").strip()
+
     try:
-        discovered = scout.search_and_filter_jobs(profile=profile)
+        discovered = scout.search_and_filter_jobs(
+            profile=profile,
+            keyword_filter=selected_role_category if selected_role_category != "ALL" else None
+        )
     except Exception:
         discovered = []
 
@@ -287,6 +434,11 @@ def get_jobs_feed():
     jobs = []
     for item in discovered:
         title = item.get("title", "HR Opening")
+        # Strict validation against non-matching titles and selected role category
+        matched, _ = is_target_role_match(title, profile.target_roles, selected_category=selected_role_category)
+        if not matched:
+            continue
+
         board = item.get("board", "Enterprise")
         loc = item.get("location", "Bangalore, India")
         url = item.get("url")
@@ -316,17 +468,22 @@ def get_jobs_feed():
             with open(verified_file, "r", encoding="utf-8") as f:
                 v_data = json.load(f)
             for vj in v_data:
+                title = vj.get("title", "HR Opening")
+                matched, _ = is_target_role_match(title, profile.target_roles, selected_category=selected_role_category)
+                if not matched:
+                    continue
+
                 url = vj.get("url")
                 loc = vj.get("location", "Bangalore, India")
                 is_remote = vj.get("is_remote", False) or "remote" in loc.lower()
                 curated_openings.append({
                     "id": vj.get("id", f"curated_{abs(hash(url)) % 10000}"),
-                    "title": vj.get("title", "HR Opening"),
+                    "title": title,
                     "company": vj.get("company") or vj.get("board", "Company"),
                     "location": loc,
                     "is_remote": is_remote,
                     "salary": vj.get("salary", "₹38,000 - ₹52,000 / mo"),
-                    "match_score": 96 if any(k in vj.get("title", "").lower() for k in ["executive", "operations"]) else 94,
+                    "match_score": 96 if any(k in title.lower() for k in ["executive", "operations"]) else 94,
                     "url": url,
                     "already_applied": url in applied_urls,
                     "skills": vj.get("skills", ["Recruitment", "Onboarding", "HRMS", "Compliance"]),
@@ -346,7 +503,12 @@ def get_jobs_feed():
             seen_urls.add(j["url"])
             all_jobs.append(j)
 
-    return {"status": "success", "count": len(all_jobs), "jobs": all_jobs}
+    return {
+        "status": "success",
+        "count": len(all_jobs),
+        "selected_role": selected_role_category,
+        "jobs": all_jobs
+    }
 
 
 @app.post("/api/jobs/apply")

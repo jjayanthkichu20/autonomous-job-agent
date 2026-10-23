@@ -252,3 +252,111 @@ def test_custom_jd_service_tailoring_and_apply(sample_profile):
     assert applied["delivery_status"] == "STAGED"
     assert applied["confirmation_id"].startswith("DRYRUN-")
 
+
+def test_multi_ats_evaluation_engine(sample_profile):
+    from autonomous_job_agent.core.multi_ats_evaluator import MultiATSEvaluator
+    evaluator = MultiATSEvaluator()
+    res = evaluator.evaluate_profile(sample_profile, selected_role="HR Executive")
+
+    assert "overall_composite_score" in res
+    assert res["overall_composite_score"] >= 70.0
+    assert "methodologies" in res
+    assert "workday" in res["methodologies"]
+    assert "greenhouse" in res["methodologies"]
+    assert "taleo" in res["methodologies"]
+    assert "lever" in res["methodologies"]
+    assert "icims_sovren" in res["methodologies"]
+    assert len(res["company_benchmarks"]) >= 5
+    assert len(res["dimensions"]) == 5
+
+    # Target Role ATS Comparisons
+    assert "role_comparisons" in res
+    assert len(res["role_comparisons"]) >= 3
+    assert res["active_target_role"] == "HR Executive"
+    assert res["active_role_score"] >= 50.0
+
+    # Switching active role dynamically
+    res_ops = evaluator.evaluate_profile(sample_profile, selected_role="HR Operations Executive")
+    assert res_ops["active_target_role"] == "HR Operations Executive"
+    ops_role = next(r for r in res_ops["role_comparisons"] if r["role"] == "HR Operations Executive")
+    assert ops_role["is_active"] is True
+    assert res_ops["active_role_score"] == ops_role["score"]
+
+    # Also verify Jayanth's master profile achieves top-tier >95% score for HR Executive
+    from autonomous_job_agent.core.models import CandidateMasterProfile
+    import json
+    with open("my_profile.json", "r", encoding="utf-8") as f:
+        jayanth_profile = CandidateMasterProfile(**json.load(f))
+    res_jayanth = evaluator.evaluate_profile(jayanth_profile, selected_role="HR Executive")
+    assert res_jayanth["active_role_score"] >= 95.0
+
+
+def test_role_matcher_strict_title_matching():
+    from autonomous_job_agent.core.role_matcher import is_target_role_match
+
+    hr_roles = ["HR Executive", "HR Operations Executive", "Talent Acquisition Specialist"]
+
+    # 1. Valid HR titles must match
+    valid_titles = [
+        "Talent Acquisition Coordinator",
+        "HR Operations Associate - Talent Fulfillment & Onboarding",
+        "Talent Acquisition Specialist",
+        "HR Executive - People Solutions & Onboarding",
+        "People Operations Coordinator (HR Operations & Compliance)",
+        "HR Generalist (Employee Lifecycle & Compliance)",
+        "Talent Sourcing & HR Coordinator",
+        "People Experience Executive"
+    ]
+    for vt in valid_titles:
+        matched, reason = is_target_role_match(vt, hr_roles)
+        assert matched is True, f"Expected '{vt}' to match HR roles, failed with: {reason}"
+
+    # 2. Non-matching technical / threat / engineering titles must be strictly rejected
+    invalid_titles = [
+        "Staff Security Engineer, Threat Hunting",
+        "Threat Research Engineer",
+        "Senior Threat Intelligence Engineer",
+        "Staff Software Engineer, Onboarding",
+        "People Systems Engineer",
+        "Staff Engineer, People Technology",
+        "Staff Threat Analyst, Ads Fraud",
+        "Senior Product Design Manager, Payroll",
+        "Intern - Creative & Communications, People Team",
+        "Compliance, Threat & Risk Assessment Manager",
+        "Senior Internal Communications Manager, People"
+    ]
+    for it in invalid_titles:
+        matched, reason = is_target_role_match(it, hr_roles)
+        assert matched is False, f"Expected '{it}' to be rejected, but matched: {reason}"
+
+
+def test_relevance_hard_filter_non_matching_role():
+    from autonomous_job_agent.agents.agent1_scraper.relevance_scorer import RelevanceScorer
+    from autonomous_job_agent.core.models import CandidateMasterProfile, JobPosting
+    import json
+
+    with open("my_profile.json", "r", encoding="utf-8") as f:
+        hr_profile = CandidateMasterProfile(**json.load(f))
+
+    scorer = RelevanceScorer()
+
+    # Create non-matching engineering job with high salary and remote location
+    eng_job = JobPosting(
+        canonical_url="https://test.com/job/eng_1",
+        source_platform="greenhouse",
+        company_name="Cloud Corp",
+        job_title="Staff Security Engineer, Threat Hunting",
+        location="Remote",
+        raw_description="Threat hunting and systems security",
+        cleaned_description="Threat hunting and systems security",
+        max_salary_usd=180000.0,
+        required_skills=["Threat Hunting", "Security", "Python"]
+    )
+
+    score = scorer.evaluate(eng_job, hr_profile)
+    assert score.hard_filter_passed is False, "Engineering job should fail hard filter for HR profile"
+    assert "does not match candidate target roles" in score.rationale
+    assert score.overall_score <= 0.35
+
+
+

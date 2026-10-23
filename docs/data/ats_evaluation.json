@@ -1,0 +1,368 @@
+{
+  "active_target_role": "HR Executive",
+  "active_role_score": 96.2,
+  "target_roles_list": [
+    "HR Executive",
+    "HR Operations Executive",
+    "Talent Acquisition Specialist",
+    "HR Coordinator",
+    "People Operations Partner"
+  ],
+  "role_comparisons": [
+    {
+      "role": "HR Executive",
+      "department": "Generalist Human Resources",
+      "score": 96.2,
+      "is_active": true,
+      "verdict": "Optimal Pass (Top 5% Tier)",
+      "matched_keywords": [
+        "HR Operations",
+        "Recruitment",
+        "Onboarding",
+        "Employee Relations",
+        "Documentation",
+        "Advanced Excel",
+        "Compliance",
+        "HRIS"
+      ],
+      "missing_keywords": [
+        "MIS Reporting"
+      ],
+      "benchmark_experience": "1 - 2 Years",
+      "role_summary": "Generalist role driving recruitment coordination, employee onboarding, policies, and grievance handling.",
+      "actionable_tip": "Include stakeholder coordination and employee relations initiatives to boost match to 98%."
+    },
+    {
+      "role": "HR Operations Executive",
+      "department": "HR Shared Services & Operations",
+      "score": 81.7,
+      "is_active": false,
+      "verdict": "Interview Ready (High ATS Pass Rate)",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance",
+        "Employee Records",
+        "Statutory Compliance (PF/ESI)",
+        "Advanced Excel"
+      ],
+      "missing_keywords": [
+        "Payroll",
+        "HRMS",
+        "Attendance Management"
+      ],
+      "benchmark_experience": "1 - 3 Years",
+      "role_summary": "Manages employee documentation, HRIS records, onboarding workflows, and statutory compliance audits.",
+      "actionable_tip": "Highlight statutory compliance audits (PF/ESI) and HRIS maintenance to maintain a 96%+ score."
+    },
+    {
+      "role": "HR Coordinator",
+      "department": "People Operations Support",
+      "score": 70.0,
+      "is_active": false,
+      "verdict": "Competitive (Add Recommended Keywords)",
+      "matched_keywords": [
+        "Onboarding",
+        "Documentation",
+        "Employee Records",
+        "HRIS",
+        "Induction",
+        "Advanced Excel"
+      ],
+      "missing_keywords": [
+        "HR Administration",
+        "Scheduling",
+        "HR Reporting"
+      ],
+      "benchmark_experience": "0 - 2 Years",
+      "role_summary": "Provides logistical, onboarding, background verification, document collection, and HRIS maintenance support.",
+      "actionable_tip": "Highlight orientation logistics, verification audits, and speedy onboarding turnaround."
+    },
+    {
+      "role": "Talent Acquisition Specialist",
+      "department": "Talent Sourcing & Recruitment",
+      "score": 65.0,
+      "is_active": false,
+      "verdict": "Competitive (Add Recommended Keywords)",
+      "matched_keywords": [
+        "Recruitment",
+        "Talent Acquisition"
+      ],
+      "missing_keywords": [
+        "Candidate Screening",
+        "Interview Coordination",
+        "Sourcing",
+        "ATS Management",
+        "Stakeholder Coordination",
+        "Offer Negotiation",
+        "LinkedIn Recruiter"
+      ],
+      "benchmark_experience": "2+ Years",
+      "role_summary": "Drives candidate pipeline generation, screening interviews, ATS pipeline tracking, and hiring manager alignment.",
+      "actionable_tip": "Emphasize talent sourcing metrics (e.g. screened 150+ profiles) and ATS workflow management."
+    },
+    {
+      "role": "People Operations Partner",
+      "department": "People Operations & Culture",
+      "score": 65.0,
+      "is_active": false,
+      "verdict": "Competitive (Add Recommended Keywords)",
+      "matched_keywords": [
+        "HR Operations",
+        "Employee Experience",
+        "HRIS",
+        "Compliance"
+      ],
+      "missing_keywords": [
+        "Process Automation",
+        "HR Policies",
+        "Culture Initiatives",
+        "Data Analysis",
+        "Performance Management Support"
+      ],
+      "benchmark_experience": "2 - 4 Years",
+      "role_summary": "Partners with leadership to automate HR workflows, refine employee experience journeys, and ensure policy adherence.",
+      "actionable_tip": "Showcase process optimization, policy rollout communication, and workflow automation."
+    }
+  ],
+  "overall_composite_score": 94.9,
+  "readiness_verdict": "Tier-1 Interview Ready (High ATS Pass Rate)",
+  "methodologies": {
+    "workday": {
+      "name": "Workday Enterprise Parser",
+      "score": 100.0,
+      "focus": "Exact Keyword Density, Chronological Timeline & Contact Metadata",
+      "status": "Optimal",
+      "breakdown": {
+        "keyword_match_pct": 100.0,
+        "structure_validity_pct": 100
+      }
+    },
+    "greenhouse": {
+      "name": "Greenhouse Competency Scorecard",
+      "score": 83.3,
+      "focus": "Competency Mapping, Departmental Role Fit & Hard Skills",
+      "status": "Good",
+      "competencies": {
+        "employee onboarding": true,
+        "hr systems (hris/hrms)": true,
+        "statutory & regulatory compliance": true,
+        "payroll input & processing": false,
+        "talent acquisition & screening": true,
+        "reporting & data analytics": true
+      }
+    },
+    "taleo": {
+      "name": "Taleo / Oracle Traditional ATS",
+      "score": 91.2,
+      "focus": "Mandatory Knock-Out Questions & Skill Density Thresholds",
+      "status": "Passed",
+      "knockout_passed": true,
+      "density_ratio_pct": 87.5
+    },
+    "lever": {
+      "name": "Lever Recruiter Impact Index",
+      "score": 100.0,
+      "focus": "Measurable Metrics, Numbers (%), and Strong Action Verbs",
+      "status": "Exceptional",
+      "metric_bullet_ratio_pct": 100.0,
+      "action_verb_ratio_pct": 100.0
+    },
+    "icims_sovren": {
+      "name": "iCIMS / Sovren Semantic & Format Audit",
+      "score": 100.0,
+      "focus": "Standard Section Header Hygiene, Clean Typography & Parse Integrity",
+      "status": "100% Parsable",
+      "audit_checklist": {
+        "Standard Experience Section": true,
+        "Standard Education Section": true,
+        "Explicit Technical Skills List": true,
+        "Contact Phone with Country Code": true,
+        "Valid Deliverable Email": true,
+        "Target Location Anchor": true
+      }
+    }
+  },
+  "dimensions": [
+    {
+      "dimension": "Keyword Density & Exact Match",
+      "score": 100.0,
+      "weight": "25%"
+    },
+    {
+      "dimension": "Semantic Competency Alignment",
+      "score": 83.3,
+      "weight": "20%"
+    },
+    {
+      "dimension": "Quantifiable Metrics & Impact",
+      "score": 100.0,
+      "weight": "20%"
+    },
+    {
+      "dimension": "Format & Structural Hygiene",
+      "score": 100.0,
+      "weight": "20%"
+    },
+    {
+      "dimension": "Knockout Compliance & Education",
+      "score": 100.0,
+      "weight": "15%"
+    }
+  ],
+  "company_benchmarks": [
+    {
+      "company": "Infosys",
+      "engine": "Workday",
+      "score": 87.5,
+      "verdict": "Interview Ready",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance",
+        "Excel"
+      ],
+      "missing_keywords": [
+        "MIS"
+      ]
+    },
+    {
+      "company": "HP Inc.",
+      "engine": "Workday",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "Compliance"
+      ],
+      "missing_keywords": [
+        "Payroll Input Support",
+        "HRMS",
+        "Vendor Management"
+      ]
+    },
+    {
+      "company": "Dell Technologies",
+      "engine": "Taleo",
+      "score": 99.0,
+      "verdict": "Interview Ready",
+      "matched_keywords": [
+        "HR Operations",
+        "Recruitment",
+        "Compliance",
+        "HRIS",
+        "Documentation"
+      ],
+      "missing_keywords": []
+    },
+    {
+      "company": "TCS",
+      "engine": "Enterprise ATS",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding",
+        "Excel"
+      ],
+      "missing_keywords": [
+        "Statutory Compliance",
+        "Attendance Management"
+      ]
+    },
+    {
+      "company": "Genpact",
+      "engine": "Taleo",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "Compliance",
+        "Employee Documentation"
+      ],
+      "missing_keywords": [
+        "Payroll Input Support",
+        "HRMS",
+        "Audit"
+      ]
+    },
+    {
+      "company": "Accenture",
+      "engine": "Workday",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "HRIS",
+        "Onboarding"
+      ],
+      "missing_keywords": [
+        "Process Improvement",
+        "Stakeholder Management"
+      ]
+    },
+    {
+      "company": "Quest Global",
+      "engine": "Lever",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "Talent Acquisition",
+        "HR Operations"
+      ],
+      "missing_keywords": [
+        "Technical Sourcing",
+        "Interview Coordination"
+      ]
+    },
+    {
+      "company": "Sutherland",
+      "engine": "iCIMS",
+      "score": 81.2,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "Recruitment & Talent Acquisition",
+        "Documentation",
+        "Compliance"
+      ],
+      "missing_keywords": [
+        "HR Executive"
+      ]
+    },
+    {
+      "company": "Concentrix",
+      "engine": "Greenhouse",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HR Operations",
+        "Onboarding"
+      ],
+      "missing_keywords": [
+        "Candidate Screening",
+        "HRMS"
+      ]
+    },
+    {
+      "company": "Swiggy Technologies",
+      "engine": "Greenhouse",
+      "score": 72.0,
+      "verdict": "Competitive",
+      "matched_keywords": [
+        "HRIS"
+      ],
+      "missing_keywords": [
+        "HR Operations Executive",
+        "Employee Lifecycle",
+        "Payroll Support"
+      ]
+    }
+  ],
+  "custom_jd_result": null,
+  "key_recommendations": [
+    "Include 'Statutory Compliance (PF/ESI)' explicitly in every tailored variant for Indian enterprise ATS portals.",
+    "Maintain quantifiable impact metrics (e.g., '100% compliance across employee records') to score top marks in Lever & Greenhouse.",
+    "Keep standard section headers ('Professional Experience', 'Education', 'Technical Skills') to ensure 100% parsability in Workday and iCIMS."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "candidate_id": "cand_jayanth",
+  "first_name": "JAYANTH",
+  "last_name": "J",
+  "email": "jjayanthheven20@gmail.com",
+  "phone": "+91 97783 91171",
+  "linkedin_url": "https://linkedin.com/in/jayanth-j",
+  "github_url": null,
+  "portfolio_url": null,
+  "location": "Kottayam, Kerala, India",
+  "preferred_locations": [
+    "Bangalore",
+    "Kochi",
+    "Coimbatore",
+    "UAE",
+    "Remote"
+  ],
+  "target_roles": [
+    "HR Executive",
+    "HR Operations Executive",
+    "Talent Acquisition Specialist"
+  ],
+  "verified_skills": [
+    "Recruitment & Talent Acquisition",
+    "HR Operations",
+    "Onboarding & Induction",
+    "HRIS",
+    "Compliance",
+    "Advanced Excel"
+  ],
+  "min_desired_salary_usd": 35000.0,
+  "experiences": [
+    {
+      "id": "exp_uploaded_01",
+      "company": "Trackpi Private Limited",
+      "role": "HR Executive",
+      "location": "Kottayam",
+      "start_date": "2025-12",
+      "end_date": null,
+      "achievements": [
+        {
+          "id": "ach_up_01",
+          "metric": "100% compliance across employee records and onboarding",
+          "action": "Managed end-to-end employee documentation, personal files, and compliance records",
+          "skills": [
+            "Recruitment & Talent Acquisition",
+            "Candidate Screening",
+            "Interview Coordination",
+            "Onboarding & Induction"
+          ],
+          "verifiable_context": "Parsed from uploaded document Jayanth_J_Merged_ATS_Resume.pdf"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "APJ Abdul Kalam Technological University",
+      "degree": "Bachelor of Technology",
+      "field_of_study": "Mechanical Engineering",
+      "graduation_year": 2024
+    }
+  ],
+  "version": 1
+}
