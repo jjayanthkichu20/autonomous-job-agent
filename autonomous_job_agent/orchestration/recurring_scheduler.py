@@ -29,7 +29,7 @@ class RecurringJobHunter:
         self.is_active = True
         self.is_running_cycle = False
         self.live_submit = True
-        self.max_apps_per_cycle = 5
+        self.max_apps_per_cycle = 20
         self.min_auto_apply_score = 0.70
         self.min_stage_draft_score = 0.55
         self.target_locations = ["Bangalore", "Kerala", "Coimbatore"]

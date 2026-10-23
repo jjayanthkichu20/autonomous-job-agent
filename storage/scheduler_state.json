@@ -3,111 +3,11 @@
   "live_submit": true,
   "interval_seconds": 7200,
   "interval_hours": 2.0,
-  "last_run": "2026-10-16T05:56:49.031774+00:00",
-  "next_run": "2026-10-16T07:56:49.031774+00:00",
-  "total_scans": 843,
-  "total_applied": 22,
+  "last_run": "2026-10-23T04:43:12.018463+00:00",
+  "next_run": "2026-10-23T06:43:12.018463+00:00",
+  "total_scans": 1328,
+  "total_applied": 32,
   "recent_logs": [
-    {
-      "timestamp": "2026-10-15T06:03:04.046979+00:00",
-      "scanned": 0,
-      "applied": 0,
-      "staged_drafts": 0,
-      "details": []
-    },
-    {
-      "timestamp": "2026-10-15T06:41:20.435136+00:00",
-      "scanned": 29,
-      "applied": 0,
-      "staged_drafts": 0,
-      "details": []
-    },
-    {
-      "timestamp": "2026-10-15T06:43:52.013935+00:00",
-      "scanned": 29,
-      "applied": 0,
-      "staged_drafts": 0,
-      "details": []
-    },
-    {
-      "timestamp": "2026-10-15T06:45:23.915361+00:00",
-      "scanned": 10,
-      "applied": 1,
-      "staged_drafts": 4,
-      "details": [
-        {
-          "title": "HR Generalist (Employee Lifecycle & Compliance)",
-          "company": "Quince",
-          "score": "69.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f94c7b6a_f7eb8dd0\\resume_tailored.md"
-        },
-        {
-          "title": "Talent Acquisition & People Operations Coordinator",
-          "company": "Inmobi",
-          "score": "76.0%",
-          "action": "AUTO_APPLIED",
-          "confirmation_id": "DRYRUN-SUB_01BB0F58_1792046722"
-        },
-        {
-          "title": "HR Operations Specialist (UAE & Gulf Hub)",
-          "company": "Al-Futtaim",
-          "score": "66.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_1f50a231_37898767\\resume_tailored.md"
-        },
-        {
-          "title": "HR Coordinator (India & APAC Hub)",
-          "company": "Appsflyer",
-          "score": "68.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_f71a0e5c_2eec0574\\resume_tailored.md"
-        },
-        {
-          "title": "Junior HR Business Partner (Operations)",
-          "company": "Browserstack",
-          "score": "61.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_0b3ab65b_5906af77\\resume_tailored.md"
-        }
-      ]
-    },
-    {
-      "timestamp": "2026-10-15T06:53:17.135645+00:00",
-      "scanned": 39,
-      "applied": 0,
-      "staged_drafts": 4,
-      "details": [
-        {
-          "title": "HR Generalist (Employee Lifecycle & Compliance)",
-          "company": "Quince",
-          "score": "69.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c9509e8b_48192c6a\\resume_tailored.md"
-        },
-        {
-          "title": "HR Operations Specialist (UAE & Gulf Hub)",
-          "company": "Al-Futtaim",
-          "score": "66.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_5f56e278_7042d240\\resume_tailored.md"
-        },
-        {
-          "title": "HR Coordinator (India & APAC Hub)",
-          "company": "Appsflyer",
-          "score": "68.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_8add3bc8_a5b52973\\resume_tailored.md"
-        },
-        {
-          "title": "Junior HR Business Partner (Operations)",
-          "company": "Browserstack",
-          "score": "61.0%",
-          "action": "STAGED_DRAFT",
-          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_84406edc_d5eb6a6b\\resume_tailored.md"
-        }
-      ]
-    },
     {
       "timestamp": "2026-10-15T08:53:26.225414+00:00",
       "scanned": 39,
@@ -361,7 +261,183 @@
       "applied": 0,
       "staged_drafts": 0,
       "details": []
+    },
+    {
+      "timestamp": "2026-10-16T07:57:29.309504+00:00",
+      "scanned": 68,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-16T09:13:48.200898+00:00",
+      "scanned": 67,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-16T10:51:06.242883+00:00",
+      "scanned": 66,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-17T06:51:07.695710+00:00",
+      "scanned": 67,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-21T08:51:08.377987+00:00",
+      "scanned": 66,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-22T02:51:06.799200+00:00",
+      "scanned": 66,
+      "applied": 0,
+      "staged_drafts": 0,
+      "details": []
+    },
+    {
+      "timestamp": "2026-10-23T04:43:12.018463+00:00",
+      "scanned": 85,
+      "applied": 10,
+      "staged_drafts": 8,
+      "details": [
+        {
+          "title": "HR Executive - People Operations & Attendance Management",
+          "company": "Bosch",
+          "score": "90.3%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_95F2C9DB_1792730560"
+        },
+        {
+          "title": "HR Operations Executive (Statutory Compliance & Verification)",
+          "company": "Cognizant",
+          "score": "83.7%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_B8C0E0F6_1792730563"
+        },
+        {
+          "title": "HR Executive - Talent Acquisition & People Care",
+          "company": "Kovai.Co",
+          "score": "89.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_9674AABF_1792730567"
+        },
+        {
+          "title": "HR Executive - Plant Operations & Industrial Relations",
+          "company": "Pricol",
+          "score": "65.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_b8e0ac3b_3e7e1caa\\resume_tailored.md"
+        },
+        {
+          "title": "HR Operations Specialist (Employee Lifecycle & Payroll Support)",
+          "company": "Kgisl",
+          "score": "68.7%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_efcdf44d_29e5bb16\\resume_tailored.md"
+        },
+        {
+          "title": "People Operations Coordinator & HR Generalist",
+          "company": "Payoda",
+          "score": "58.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_c50ce3b4_f302a28a\\resume_tailored.md"
+        },
+        {
+          "title": "HR Executive - Talent Management & Onboarding",
+          "company": "Ust",
+          "score": "86.7%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_4DA5D623_1792730572"
+        },
+        {
+          "title": "HR Operations Specialist (Statutory Compliance & Benefits)",
+          "company": "Ibs",
+          "score": "65.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_59d63e9e_c73bfbd1\\resume_tailored.md"
+        },
+        {
+          "title": "People Operations Executive (HRIS & Records)",
+          "company": "Carestack",
+          "score": "65.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_8c4d5a79_99440cf4\\resume_tailored.md"
+        },
+        {
+          "title": "HR Executive - Talent Acquisition & Employee Engagement",
+          "company": "Experion",
+          "score": "68.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_b12b8720_6c291a55\\resume_tailored.md"
+        },
+        {
+          "title": "HR Generalist - Employee Lifecycle Management",
+          "company": "Nest",
+          "score": "69.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_ed00ce37_84170d3e\\resume_tailored.md"
+        },
+        {
+          "title": "Senior HR Executive - Operations & Statutory Compliance",
+          "company": "Trackpi",
+          "score": "86.7%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_0D1DD1ED_1792730577"
+        },
+        {
+          "title": "Talent Acquisition Coordinator (HR Executive)",
+          "company": "Qburst",
+          "score": "76.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_1B3D4E99_1792730580"
+        },
+        {
+          "title": "HR Executive - Employee Lifecycle & People Operations",
+          "company": "Razorpay",
+          "score": "80.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_ABA8EC8C_1792730583"
+        },
+        {
+          "title": "Senior HR Executive - Talent Acquisition & Onboarding",
+          "company": "Swiggy",
+          "score": "84.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_5FC773C0_1792730585"
+        },
+        {
+          "title": "Talent Acquisition Coordinator (Lateral & Campus)",
+          "company": "Groww",
+          "score": "76.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_E90A9235_1792730588"
+        },
+        {
+          "title": "HR Operations Executive (HRMS Implementation & Client Success)",
+          "company": "Darwinbox",
+          "score": "76.0%",
+          "action": "AUTO_APPLIED",
+          "confirmation_id": "ATS-DISPATCH-SUB_85FD5DF1_1792730590"
+        },
+        {
+          "title": "People Experience & HR Operations Coordinator",
+          "company": "Thoughtworks",
+          "score": "69.0%",
+          "action": "STAGED_DRAFT",
+          "artifacts_dir": "C:\\Users\\jjaya\\.gemini\\antigravity\\scratch\\autonomous-job-agent\\storage\\artifacts\\job_eefa5dad_750f9950\\resume_tailored.md"
+        }
+      ]
     }
   ],
-  "updated_at": "2026-10-16T05:56:49.032049+00:00"
+  "updated_at": "2026-10-23T04:43:12.018975+00:00"
 }
