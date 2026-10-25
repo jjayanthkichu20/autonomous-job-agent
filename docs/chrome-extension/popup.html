@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arya AI Job Hunter</title>
+  <title>Arya AI Job Copilot</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
     <div class="brand">
       <div class="logo-box">✦</div>
       <div class="brand-text">
-        <div class="brand-title">Arya <span class="badge-tag">AI Hunter</span></div>
+        <div class="brand-title">Arya <span class="badge-tag">AI Copilot</span></div>
         <div class="candidate-tag" id="header-candidate-name">Jayanth J • HR Executive</div>
       </div>
     </div>
@@ -25,7 +25,7 @@
   <nav class="nav-tabs">
     <button class="nav-tab active" data-tab="tab-apply">⚡ Auto-Apply</button>
     <button class="nav-tab" data-tab="tab-cover">📝 Cover Letter</button>
-    <button class="nav-tab" data-tab="tab-profile">👤 Profile & CV</button>
+    <button class="nav-tab" data-tab="tab-profile">👤 Profile & Q&A</button>
     <button class="nav-tab" data-tab="tab-history">📋 History</button>
   </nav>
 
@@ -47,6 +47,15 @@
           </div>
         </div>
 
+        <!-- Atom-Style Safety Mode Selector -->
+        <div class="mode-box">
+          <div class="mode-label">Application Safety Mode:</div>
+          <div class="mode-seg">
+            <button type="button" id="pop-mode-copilot" class="mode-seg-btn active">🛡️ Co-Pilot (Stop before submit)</button>
+            <button type="button" id="pop-mode-autopilot" class="mode-seg-btn">⚡ Auto-Pilot</button>
+          </div>
+        </div>
+
         <div class="keywords-box">
           <div class="keywords-label">Matched Competencies:</div>
           <div class="tags-container" id="matched-tags">
@@ -64,12 +73,16 @@
         <div class="actions-row">
           <button id="btn-autofill-page" class="btn btn-primary">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            <span>Auto-Fill Application Form</span>
+            <span id="btn-autofill-text">Auto-Fill & Answer Q&A</span>
           </button>
           <button id="btn-rescan-page" class="btn btn-secondary" title="Re-scan page">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
           </button>
         </div>
+
+        <button id="btn-linkedin-easy-apply" class="btn btn-linkedin hidden mt-2">
+          <span>🚀 Run LinkedIn Easy Apply Multi-Step</span>
+        </button>
       </div>
 
       <!-- Fact-Grounded Bullet Calibration -->
@@ -98,11 +111,11 @@
       </div>
     </section>
 
-    <!-- TAB 3: Candidate Profile & Target Roles -->
+    <!-- TAB 3: Candidate Profile & Screening Q&A Settings -->
     <section id="tab-profile" class="tab-pane">
       <div class="card profile-card">
         <div class="card-header-row">
-          <div class="card-title">Master Profile Settings</div>
+          <div class="card-title">Candidate Profile & Q&A Memory</div>
           <button id="btn-sync-webapp" class="btn-sm" title="Pull updates from Web App">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
             <span>Sync Live</span>
@@ -149,7 +162,37 @@
           <input type="text" id="profile-linkedin" class="input-text">
         </div>
 
-        <button id="btn-save-profile" class="btn btn-primary mt-2">Save Profile Updates</button>
+        <!-- Atom-Style Screening Q&A Settings -->
+        <div class="card-title mt-3 mb-2">⚡ Smart Screening Q&A Answers</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Notice Period</label>
+            <input type="text" id="qa-notice-period" class="input-text" placeholder="15 Days">
+          </div>
+          <div class="form-group">
+            <label>Total Experience</label>
+            <input type="text" id="qa-experience" class="input-text" placeholder="2 Years">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Work Auth (Yes/No)</label>
+            <input type="text" id="qa-work-auth" class="input-text" placeholder="Yes">
+          </div>
+          <div class="form-group">
+            <label>Requires Sponsor (Yes/No)</label>
+            <input type="text" id="qa-sponsorship" class="input-text" placeholder="No">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Expected CTC / Salary</label>
+          <input type="text" id="qa-expected-ctc" class="input-text" placeholder="₹5,50,000 / annum">
+        </div>
+
+        <button id="btn-save-profile" class="btn btn-primary mt-2">Save Profile & Q&A Updates</button>
       </div>
     </section>
 
@@ -158,7 +201,7 @@
       <div class="card">
         <div class="card-title mb-2">Extension Application Ledger</div>
         <div id="history-container" class="history-list">
-          <div class="empty-state">No applications submitted via extension yet.</div>
+          <div class="empty-state">No applications submitted via extension yet. Browse any job posting and click Auto-Fill!</div>
         </div>
       </div>
     </section>
@@ -170,7 +213,7 @@
 
   <!-- Footer -->
   <footer class="app-footer">
-    <span>Arya AI Job Hunter • Fact-Grounded ATS Optimization</span>
+    <span>Arya AI Job Hunter • Atom-Style Copilot Engine</span>
   </footer>
 
   <script src="popup.js"></script>

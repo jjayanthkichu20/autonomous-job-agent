@@ -1,5 +1,6 @@
 /**
- * Arya AI Job Hunter — Popup Controller
+ * Arya AI Job Hunter — Popup Controller (Atom by JobAlchemy Style)
+ * Full Copilot Integration: Profile Alignment, Mode Switching, and Smart Screening Q&A.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,6 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (roleSelect && p.active_target_role) {
       roleSelect.value = p.active_target_role;
     }
+
+    // Populate Atom-Style Screening Q&A memory
+    const qa = p.qa_answers || {};
+    setValue("qa-notice-period", qa.notice_period_text || (qa.notice_period_days ? `${qa.notice_period_days} Days` : "15 Days"));
+    setValue("qa-experience", qa.years_of_experience ? (qa.years_of_experience.includes("Year") ? qa.years_of_experience : `${qa.years_of_experience} Years`) : "2 Years");
+    setValue("qa-work-auth", qa.work_authorization || "Yes");
+    setValue("qa-sponsorship", qa.require_sponsorship || "No");
+    setValue("qa-expected-ctc", qa.expected_ctc || "₹5,50,000 / annum");
+
+    // Initialize Mode UI
+    updateModeUI(p.application_mode || "COPILOT");
   }
 
   function setValue(id, val) {
@@ -61,23 +73,76 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el && val !== undefined) el.value = val;
   }
 
-  // 3. Inspect Current Web Page Tab
+  // 3. Application Safety Mode Switcher (Atom Style)
+  function updateModeUI(mode) {
+    const copilotBtn = document.getElementById("pop-mode-copilot");
+    const autopilotBtn = document.getElementById("pop-mode-autopilot");
+    const autofillText = document.getElementById("btn-autofill-text");
+
+    if (mode === "AUTOPILOT") {
+      if (copilotBtn) copilotBtn.classList.remove("active");
+      if (autopilotBtn) autopilotBtn.classList.add("active");
+      if (autofillText) autofillText.innerText = "Auto-Fill & Auto-Submit (Auto-Pilot)";
+    } else {
+      if (copilotBtn) copilotBtn.classList.add("active");
+      if (autopilotBtn) autopilotBtn.classList.remove("active");
+      if (autofillText) autofillText.innerText = "Auto-Fill & Review (Co-Pilot)";
+    }
+  }
+
+  function setApplicationMode(mode) {
+    if (activeProfile) {
+      activeProfile.application_mode = mode;
+    }
+    updateModeUI(mode);
+    chrome.runtime.sendMessage({ action: "SET_MODE", mode: mode }, () => {
+      showToast(mode === "COPILOT" 
+        ? "🛡️ Co-Pilot Mode: Fills inputs, stops before submit for review" 
+        : "⚡ Auto-Pilot Mode: Automated fill & submission enabled");
+    });
+  }
+
+  const copilotBtn = document.getElementById("pop-mode-copilot");
+  if (copilotBtn) {
+    copilotBtn.addEventListener("click", () => setApplicationMode("COPILOT"));
+  }
+
+  const autopilotBtn = document.getElementById("pop-mode-autopilot");
+  if (autopilotBtn) {
+    autopilotBtn.addEventListener("click", () => setApplicationMode("AUTOPILOT"));
+  }
+
+  // 4. Inspect Current Web Page Tab
   function inspectCurrentTab() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (!tabs || !tabs[0]) return;
       const activeTab = tabs[0];
+
+      // Detect LinkedIn tab for Easy Apply trigger
+      const isLinkedIn = activeTab.url && activeTab.url.includes("linkedin.com");
+      const linkedInBtn = document.getElementById("btn-linkedin-easy-apply");
+      if (linkedInBtn) {
+        if (isLinkedIn) {
+          linkedInBtn.classList.remove("hidden");
+        } else {
+          linkedInBtn.classList.add("hidden");
+        }
+      }
 
       chrome.tabs.sendMessage(activeTab.id, { action: "GET_JOB_DATA" }, (res) => {
         if (chrome.runtime.lastError || !res || !res.job) {
           // Fallback if content script not loaded or on generic page
           document.getElementById("job-title").innerText = activeTab.title ? activeTab.title.substring(0, 48) : "Active Web Page";
           document.getElementById("job-company").innerText = getDomainName(activeTab.url);
-          document.getElementById("job-location").innerText = "Browse a job board to evaluate ATS match.";
+          document.getElementById("job-location").innerText = "Browse any job board (LinkedIn, Greenhouse, Lever, etc.)";
           document.getElementById("match-score-value").innerText = "Ready";
           return;
         }
 
         currentJobData = res.job;
+        if (res.mode) {
+          updateModeUI(res.mode);
+        }
         renderJobData(res.job, res.cover_letter);
       });
     });
@@ -127,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 4. Auto-Fill Page
+  // 5. Auto-Fill Page
   document.getElementById("btn-autofill-page").addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (!tabs || !tabs[0]) return;
@@ -137,11 +202,25 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
         const count = res && res.filled_count ? res.filled_count : 7;
-        showToast(`⚡ ${count} application fields auto-filled!`);
+        const qCount = res && res.questions ? res.questions.length : 0;
+        showToast(`⚡ ${count} fields filled & ${qCount} screening Q&A answered!`);
         loadApplicationHistory();
       });
     });
   });
+
+  // LinkedIn Easy Apply Multi-Step
+  const linkedInBtn = document.getElementById("btn-linkedin-easy-apply");
+  if (linkedInBtn) {
+    linkedInBtn.addEventListener("click", () => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (!tabs || !tabs[0]) return;
+        chrome.tabs.sendMessage(tabs[0].id, { action: "TRIGGER_LINKEDIN_APPLY" }, () => {
+          showToast("🚀 LinkedIn Easy Apply initiated! Co-Pilot stepping through...");
+        });
+      });
+    });
+  }
 
   // Re-scan page
   document.getElementById("btn-rescan-page").addEventListener("click", () => {
@@ -149,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inspectCurrentTab();
   });
 
-  // 5. Copy Cover Letter
+  // 6. Copy Cover Letter
   document.getElementById("btn-copy-cover").addEventListener("click", () => {
     const text = document.getElementById("cover-letter-text").value;
     navigator.clipboard.writeText(text).then(() => {
@@ -173,8 +252,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 6. Save Profile Updates
+  // 7. Save Profile & Screening Q&A Updates
   document.getElementById("btn-save-profile").addEventListener("click", () => {
+    const qaAnswers = Object.assign({}, (activeProfile && activeProfile.qa_answers) || {}, {
+      notice_period_text: document.getElementById("qa-notice-period") ? document.getElementById("qa-notice-period").value.trim() : "15 Days",
+      notice_period_days: document.getElementById("qa-notice-period") ? document.getElementById("qa-notice-period").value.replace(/\D/g, "") || "15" : "15",
+      years_of_experience: document.getElementById("qa-experience") ? document.getElementById("qa-experience").value.trim() : "2 Years",
+      work_authorization: document.getElementById("qa-work-auth") ? document.getElementById("qa-work-auth").value.trim() : "Yes",
+      require_sponsorship: document.getElementById("qa-sponsorship") ? document.getElementById("qa-sponsorship").value.trim() : "No",
+      expected_ctc: document.getElementById("qa-expected-ctc") ? document.getElementById("qa-expected-ctc").value.trim() : "₹5,50,000 / annum"
+    });
+
     const updated = Object.assign({}, activeProfile, {
       first_name: document.getElementById("profile-first-name").value.trim(),
       last_name: document.getElementById("profile-last-name").value.trim(),
@@ -182,18 +270,19 @@ document.addEventListener("DOMContentLoaded", () => {
       phone: document.getElementById("profile-phone").value.trim(),
       location: document.getElementById("profile-location").value.trim(),
       linkedin_url: document.getElementById("profile-linkedin").value.trim(),
-      active_target_role: document.getElementById("profile-target-role").value
+      active_target_role: document.getElementById("profile-target-role").value,
+      qa_answers: qaAnswers
     });
 
-    chrome.runtime.sendMessage({ action: "UPDATE_PROFILE", profile: updated }, (res) => {
+    chrome.runtime.sendMessage({ action: "UPDATE_PROFILE", profile: updated }, () => {
       activeProfile = updated;
       renderProfileUI(updated);
-      showToast("Profile & target role updated!");
+      showToast("Profile & Screening Q&A saved!");
       inspectCurrentTab();
     });
   });
 
-  // 7. Sync Live with Web App
+  // 8. Sync Live with Web App
   document.getElementById("btn-sync-webapp").addEventListener("click", () => {
     showToast("Syncing with live candidate database...");
     chrome.runtime.sendMessage({ action: "SYNC_WITH_WEB_APP" }, (res) => {
@@ -207,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 8. Load Application History
+  // 9. Load Application History
   function loadApplicationHistory() {
     chrome.runtime.sendMessage({ action: "GET_APPLICATIONS" }, (res) => {
       const container = document.getElementById("history-container");

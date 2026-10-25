@@ -1,6 +1,6 @@
 /**
  * Arya AI Job Hunter — Background Service Worker (Manifest V3)
- * Manages candidate profile synchronization, context menus, and application recording.
+ * Full Auto-Apply & Screening Q&A Copilot Engine
  */
 
 const DEFAULT_PROFILE = {
@@ -41,62 +41,104 @@ const DEFAULT_PROFILE = {
       "Coordinated weekly new-hire induction and orientation programs, maintaining 96% positive candidate feedback rating."
     ]
   },
-  auto_pilot_enabled: true
+  // Application Mode: "COPILOT" (stops before final submit for safety review) or "AUTOPILOT" (full auto-submit)
+  application_mode: "COPILOT",
+  
+  // Knowledge Base for Smart Screening Questions (Atom by JobAlchemy style)
+  qa_answers: {
+    years_of_experience: "2",
+    years_hr_experience: "2",
+    notice_period_days: "15",
+    notice_period_text: "15 Days (Immediate joiner available)",
+    work_authorization: "Yes",
+    require_sponsorship: "No",
+    current_ctc: "₹4,50,000 / annum",
+    expected_ctc: "₹5,50,000 - ₹6,50,000 / annum",
+    willing_to_relocate: "Yes",
+    comfortable_with_hybrid_remote: "Yes",
+    gender: "Male",
+    highest_degree: "Bachelor of Technology",
+    university: "APJ Abdul Kalam Technological University",
+    graduation_year: "2024",
+    why_hire_me: "I bring 2+ years of verified hands-on experience managing end-to-end recruitment pipelines, onboarding, and statutory compliance (PF, ESI) at Trackpi Private Limited with 100% audit accuracy.",
+    difficult_situation: "When onboarding was delayed due to documentation discrepancies, I developed a standardized automated pre-joining checklist in HRMS, eliminating onboarding bottlenecks and achieving 100% data audit compliance."
+  }
 };
 
+// Initialize extension on install
 chrome.runtime.onInstalled.addListener(() => {
-  // Initialize storage with candidate master profile if not already set
   chrome.storage.local.get(["arya_profile", "arya_extension_apps"], (result) => {
     if (!result.arya_profile) {
       chrome.storage.local.set({ arya_profile: DEFAULT_PROFILE });
+    } else {
+      // Ensure new QA answers and mode exist
+      const merged = Object.assign({}, DEFAULT_PROFILE, result.arya_profile);
+      if (!merged.qa_answers) merged.qa_answers = DEFAULT_PROFILE.qa_answers;
+      if (!merged.application_mode) merged.application_mode = "COPILOT";
+      chrome.storage.local.set({ arya_profile: merged });
     }
+
     if (!result.arya_extension_apps) {
       chrome.storage.local.set({ arya_extension_apps: [] });
     }
   });
 
-  // Context menus for quick actions on any webpage
+  // Enable sidePanel behavior on action click if API exists
+  if (chrome.sidePanel && chrome.sidePanel.setPanelBehavior) {
+    chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: false }).catch(() => {});
+  }
+
+  // Create context menus for quick on-page actions
   chrome.contextMenus.create({
-    id: "arya_autofill",
-    title: "⚡ Auto-Fill Application Form with Arya",
+    id: "arya_autofill_page",
+    title: "⚡ Auto-Fill Application Form (Arya Copilot)",
     contexts: ["page", "editable"]
   });
 
   chrome.contextMenus.create({
-    id: "arya_score_jd",
+    id: "arya_evaluate_ats",
     title: "📊 Evaluate ATS Match with Jayanth's CV",
-    contexts: ["selection"]
+    contexts: ["selection", "page"]
   });
-
-  console.log("Arya AI Job Hunter Extension installed successfully!");
 });
 
-// Handle Context Menu clicks
+// Context Menu listener
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (!tab || !tab.id) return;
 
-  if (info.menuItemId === "arya_autofill") {
+  if (info.menuItemId === "arya_autofill_page") {
     chrome.tabs.sendMessage(tab.id, { action: "TRIGGER_AUTOFILL" });
-  } else if (info.menuItemId === "arya_score_jd") {
+  } else if (info.menuItemId === "arya_evaluate_ats") {
     chrome.tabs.sendMessage(tab.id, {
       action: "EVALUATE_SELECTED_TEXT",
-      selectedText: info.selectionText
+      selectedText: info.selectionText || ""
     });
   }
 });
 
-// Message listener for popup & content scripts
+// Message hub between background, content scripts, and popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "GET_PROFILE") {
     chrome.storage.local.get(["arya_profile"], (res) => {
       sendResponse({ status: "success", profile: res.arya_profile || DEFAULT_PROFILE });
     });
-    return true; // Keep channel open for async response
+    return true;
   }
 
   if (request.action === "UPDATE_PROFILE") {
     chrome.storage.local.set({ arya_profile: request.profile }, () => {
-      sendResponse({ status: "success", message: "Candidate profile updated" });
+      sendResponse({ status: "success", message: "Candidate profile and QA preferences saved" });
+    });
+    return true;
+  }
+
+  if (request.action === "SET_MODE") {
+    chrome.storage.local.get(["arya_profile"], (res) => {
+      const p = res.arya_profile || DEFAULT_PROFILE;
+      p.application_mode = request.mode; // "COPILOT" or "AUTOPILOT"
+      chrome.storage.local.set({ arya_profile: p }, () => {
+        sendResponse({ status: "success", mode: p.application_mode });
+      });
     });
     return true;
   }
@@ -107,21 +149,22 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       const confId = "ATS-EXT-" + Math.floor(10000000 + Math.random() * 90000000);
       const newApp = {
         confirmation_id: confId,
-        job_title: request.job_title || "HR Position",
+        job_title: request.job_title || "HR Opening",
         company_name: request.company_name || "Target Employer",
         job_url: request.job_url || (sender.tab ? sender.tab.url : ""),
         applied_at: new Date().toISOString(),
         match_score: request.match_score || 95,
-        status: "SUBMITTED"
+        fields_filled: request.fields_filled || 8,
+        mode: request.mode || "COPILOT",
+        status: request.submitted ? "SUBMITTED" : "REVIEWED_AND_FILLED"
       };
 
-      // Add to front
       apps.unshift(newApp);
       chrome.storage.local.set({ arya_extension_apps: apps.slice(0, 50) }, () => {
-        // Set badge on extension icon
+        // Show green success badge on extension icon
         chrome.action.setBadgeText({ text: "✓" });
         chrome.action.setBadgeBackgroundColor({ color: "#10B981" });
-        setTimeout(() => chrome.action.setBadgeText({ text: "" }), 4000);
+        setTimeout(() => chrome.action.setBadgeText({ text: "" }), 5000);
 
         sendResponse({ status: "success", confirmation_id: confId, application: newApp });
       });
