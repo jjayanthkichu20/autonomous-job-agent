@@ -337,6 +337,12 @@
         <span id="fresh-sync-label">Fresh Sync</span>
       </button>
 
+      <!-- Chrome Extension Modal Trigger -->
+      <button onclick="openExtensionModal()" id="btn-open-ext-modal" class="bg-indigo-600/90 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-indigo-500/50 transition-all flex items-center space-x-1.5 shadow-md shadow-indigo-600/20" title="Install Arya Google Chrome Extension">
+        <i class="fa-brands fa-chrome text-amber-300"></i>
+        <span>Chrome Extension</span>
+      </button>
+
       <!-- Quick Test Runner -->
       <button onclick="triggerMockSimulation()" id="btn-mock-sim" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-3.5 py-1.5 rounded-lg transition-all flex items-center space-x-2 shadow-md shadow-blue-600/20">
         <i class="fa-solid fa-play text-[10px]"></i>
@@ -451,6 +457,10 @@
               <button onclick="loadJobFeed()" class="bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-4 py-2.5 rounded-xl border border-gray-700 transition-all flex items-center space-x-2">
                 <i class="fa-solid fa-arrows-rotate"></i>
                 <span>Refresh Jobs</span>
+              </button>
+              <button onclick="openExtensionModal()" class="bg-indigo-600/90 hover:bg-indigo-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl border border-indigo-500/40 transition-all flex items-center space-x-2 shadow-lg shadow-indigo-600/25">
+                <i class="fa-brands fa-chrome text-amber-300"></i>
+                <span>Chrome Extension Auto-Apply</span>
               </button>
             </div>
           </div>
@@ -1499,8 +1509,95 @@
     </div>
   </div>
 
+  <!-- Modal for Chrome Extension Installation -->
+  <div id="chrome-extension-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+    <div class="glass-card max-w-xl w-full p-6 rounded-2xl space-y-5 border border-indigo-500/40 shadow-2xl shadow-indigo-600/20 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-600/30">
+            <i class="fa-brands fa-chrome text-amber-300"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Arya AI Chrome Extension</h3>
+            <p class="text-xs text-blue-400 font-medium">ATS Auto-Apply & Cover Letter Tailor for Google Chrome</p>
+          </div>
+        </div>
+        <button onclick="closeExtensionModal()" aria-label="Close Extension Modal" title="Close" class="text-gray-400 hover:text-white text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-gray-300 leading-relaxed">
+        Install the Arya AI Extension to apply directly on <b>LinkedIn</b>, <b>Greenhouse</b>, <b>Lever</b>, <b>Workday</b>, and <b>Indeed</b>. The extension automatically calculates your ATS match score against your active CV, synthesizes fact-grounded cover letters, and 1-click auto-fills application forms.
+      </p>
+
+      <!-- Download Button -->
+      <div class="flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/30 gap-3">
+        <div>
+          <div class="text-xs font-bold text-white flex items-center gap-2">
+            <span>📦 Extension Package Ready</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">v1.0.0</span>
+          </div>
+          <p class="text-[11px] text-gray-400 mt-0.5">Includes Manifest V3, background workers, and AI form filler.</p>
+        </div>
+        <a href="./arya-chrome-extension.zip" download="arya-chrome-extension.zip" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-download"></i>
+          <span>Download Extension (.zip)</span>
+        </a>
+      </div>
+
+      <!-- 3 Installation Steps -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-extrabold uppercase tracking-wider text-gray-400 flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-blue-400"></i>
+          <span>How to Install in 3 Easy Steps</span>
+        </h4>
+
+        <div class="grid grid-cols-1 gap-2.5 text-xs text-gray-300">
+          <div class="p-3 rounded-lg bg-gray-900/80 border border-gray-800 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 font-bold flex items-center justify-center shrink-0 border border-blue-500/40">1</span>
+            <div>
+              <b class="text-white">Unzip the Downloaded File:</b>
+              <p class="text-gray-400 text-[11px] mt-0.5">Extract <code>arya-chrome-extension.zip</code> on your computer (or use folder <code>C:\autonomous-job-agent\chrome-extension</code> directly).</p>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-lg bg-gray-900/80 border border-gray-800 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 font-bold flex items-center justify-center shrink-0 border border-blue-500/40">2</span>
+            <div>
+              <b class="text-white">Open Chrome Extensions:</b>
+              <p class="text-gray-400 text-[11px] mt-0.5">Navigate to <span class="text-cyan-400 font-mono">chrome://extensions</span> in your browser and turn on <b>Developer mode</b> (top-right toggle).</p>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-lg bg-gray-900/80 border border-gray-800 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 font-bold flex items-center justify-center shrink-0 border border-blue-500/40">3</span>
+            <div>
+              <b class="text-white">Click "Load unpacked":</b>
+              <p class="text-gray-400 text-[11px] mt-0.5">Click the <b>Load unpacked</b> button (top-left) and select the <code>chrome-extension</code> folder. Pin Arya to your toolbar and start applying!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end pt-2 border-t border-gray-800">
+        <button onclick="closeExtensionModal()" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-4 py-2 rounded-xl border border-gray-700 transition-colors">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Client-Side JavaScript Logic -->
   <script>
+    // Chrome Extension Modal Controls
+    function openExtensionModal() {
+      document.getElementById('chrome-extension-modal')?.classList.remove('hidden');
+    }
+    function closeExtensionModal() {
+      document.getElementById('chrome-extension-modal')?.classList.add('hidden');
+    }
+
     // Tab switching
     const tabs = ['jobs', 'custom-jd', 'drafts', 'applications', 'conversations', 'resume', 'profile', 'referrals'];
 

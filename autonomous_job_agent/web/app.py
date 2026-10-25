@@ -807,6 +807,22 @@ def download_tailored_pdf(draft_id: str):
     )
 
 
+@app.get("/arya-chrome-extension.zip")
+@app.get("/api/download/extension")
+def download_chrome_extension():
+    """Streams the packaged Google Chrome extension archive."""
+    zip_path = BASE_DIR / "docs" / "arya-chrome-extension.zip"
+    if not zip_path.exists():
+        zip_path = BASE_DIR / "arya-chrome-extension.zip"
+    if not zip_path.exists():
+        raise HTTPException(status_code=404, detail="Extension zip not found")
+    return FileResponse(
+        path=str(zip_path),
+        media_type="application/zip",
+        filename="arya-chrome-extension.zip"
+    )
+
+
 class SchedulerToggleRequest(BaseModel):
     active: Optional[bool] = None
     live_submit: Optional[bool] = None

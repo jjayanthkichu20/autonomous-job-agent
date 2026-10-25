@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arya AI Job Hunter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo-box">✦</div>
+      <div class="brand-text">
+        <div class="brand-title">Arya <span class="badge-tag">AI Hunter</span></div>
+        <div class="candidate-tag" id="header-candidate-name">Jayanth J • HR Executive</div>
+      </div>
+    </div>
+    <a href="https://jjayanthkichu20.github.io/autonomous-job-agent/" target="_blank" class="btn-dashboard" title="Open Full Web Dashboard">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      <span>Web App</span>
+    </a>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs">
+    <button class="nav-tab active" data-tab="tab-apply">⚡ Auto-Apply</button>
+    <button class="nav-tab" data-tab="tab-cover">📝 Cover Letter</button>
+    <button class="nav-tab" data-tab="tab-profile">👤 Profile & CV</button>
+    <button class="nav-tab" data-tab="tab-history">📋 History</button>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="tab-container">
+
+    <!-- TAB 1: Auto-Apply & Job Match -->
+    <section id="tab-apply" class="tab-pane active">
+      <div class="card job-card">
+        <div class="job-header">
+          <div class="job-meta">
+            <span class="company-badge" id="job-company">Detecting job...</span>
+            <h2 class="job-title" id="job-title">Scanning current tab</h2>
+            <p class="job-location" id="job-location">Reading page structure...</p>
+          </div>
+          <div class="score-circle" id="score-circle-container">
+            <span class="score-val" id="match-score-value">--%</span>
+            <span class="score-lbl">ATS Match</span>
+          </div>
+        </div>
+
+        <div class="keywords-box">
+          <div class="keywords-label">Matched Competencies:</div>
+          <div class="tags-container" id="matched-tags">
+            <span class="tag tag-match">Recruitment</span>
+            <span class="tag tag-match">HR Operations</span>
+            <span class="tag tag-match">Onboarding</span>
+          </div>
+          <div class="keywords-label mt-2">Recommended Emphasis:</div>
+          <div class="tags-container" id="missing-tags">
+            <span class="tag tag-gap">Statutory Compliance</span>
+            <span class="tag tag-gap">HRIS Management</span>
+          </div>
+        </div>
+
+        <div class="actions-row">
+          <button id="btn-autofill-page" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Auto-Fill Application Form</span>
+          </button>
+          <button id="btn-rescan-page" class="btn btn-secondary" title="Re-scan page">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Fact-Grounded Bullet Calibration -->
+      <div class="card bullet-card">
+        <div class="card-title">Fact-Anchored Bullet (Trackpi Experience)</div>
+        <p class="bullet-text" id="calibrated-bullet">
+          "Spearheaded end-to-end talent acquisition pipelines and maintained 100% compliance across employee records for 150+ staff in HRMS software."
+        </p>
+      </div>
+    </section>
+
+    <!-- TAB 2: Cover Letter -->
+    <section id="tab-cover" class="tab-pane">
+      <div class="card">
+        <div class="card-header-row">
+          <div class="card-title">Tailored ATS Cover Letter</div>
+          <button id="btn-copy-cover" class="btn-sm">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy</span>
+          </button>
+        </div>
+        <textarea id="cover-letter-text" class="cover-textarea" rows="12" placeholder="Generating tailored cover letter..."></textarea>
+        <button id="btn-inject-cover" class="btn btn-primary mt-2">
+          <span>Auto-Fill Letter into Page</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB 3: Candidate Profile & Target Roles -->
+    <section id="tab-profile" class="tab-pane">
+      <div class="card profile-card">
+        <div class="card-header-row">
+          <div class="card-title">Master Profile Settings</div>
+          <button id="btn-sync-webapp" class="btn-sm" title="Pull updates from Web App">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Sync Live</span>
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label>Target Role Alignment</label>
+          <select id="profile-target-role" class="input-select">
+            <option value="HR Executive">HR Executive</option>
+            <option value="HR Operations Executive">HR Operations Executive</option>
+            <option value="Talent Acquisition Specialist">Talent Acquisition Specialist</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="profile-first-name" class="input-text">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="profile-last-name" class="input-text">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="profile-email" class="input-text">
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="text" id="profile-phone" class="input-text">
+        </div>
+
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="profile-location" class="input-text">
+        </div>
+
+        <div class="form-group">
+          <label>LinkedIn URL</label>
+          <input type="text" id="profile-linkedin" class="input-text">
+        </div>
+
+        <button id="btn-save-profile" class="btn btn-primary mt-2">Save Profile Updates</button>
+      </div>
+    </section>
+
+    <!-- TAB 4: Extension Applied History -->
+    <section id="tab-history" class="tab-pane">
+      <div class="card">
+        <div class="card-title mb-2">Extension Application Ledger</div>
+        <div id="history-container" class="history-list">
+          <div class="empty-state">No applications submitted via extension yet.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Toast -->
+  <div id="popup-toast" class="toast hidden"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <span>Arya AI Job Hunter • Fact-Grounded ATS Optimization</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
