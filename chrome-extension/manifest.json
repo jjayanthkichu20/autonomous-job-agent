@@ -24,7 +24,9 @@
     "activeTab",
     "storage",
     "scripting",
-    "sidePanel"
+    "sidePanel",
+    "contextMenus",
+    "tabs"
   ],
   "host_permissions": [
     "https://*/*",

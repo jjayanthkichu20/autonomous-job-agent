@@ -88,18 +88,22 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: false }).catch(() => {});
   }
 
-  // Create context menus for quick on-page actions
-  chrome.contextMenus.create({
-    id: "arya_autofill_page",
-    title: "⚡ Auto-Fill Application Form (Arya Copilot)",
-    contexts: ["page", "editable"]
-  });
+  // Create context menus for quick on-page actions safely
+  if (chrome.contextMenus && chrome.contextMenus.removeAll) {
+    chrome.contextMenus.removeAll(() => {
+      chrome.contextMenus.create({
+        id: "arya_autofill_page",
+        title: "⚡ Auto-Fill Application Form (Arya Copilot)",
+        contexts: ["page", "editable"]
+      });
 
-  chrome.contextMenus.create({
-    id: "arya_evaluate_ats",
-    title: "📊 Evaluate ATS Match with Jayanth's CV",
-    contexts: ["selection", "page"]
-  });
+      chrome.contextMenus.create({
+        id: "arya_evaluate_ats",
+        title: "📊 Evaluate ATS Match with Jayanth's CV",
+        contexts: ["selection", "page"]
+      });
+    });
+  }
 });
 
 // Context Menu listener

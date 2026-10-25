@@ -33,10 +33,17 @@
       url.includes("workable.com") ||
       url.includes("/job/") ||
       url.includes("/jobs/") ||
-      url.includes("/careers/");
+      url.includes("/careers/") ||
+      url.includes("/career/") ||
+      url.includes("/apply");
 
-    const hasJobElements = document.querySelector('h1, [class*="job-title"], [class*="jobTitle"], [data-automation-id*="job"], form[action*="apply"]');
-    return isJobDomain || !!hasJobElements;
+    if (isJobDomain) return true;
+
+    // Strict job page check: Must have an explicit job application form or ATS identifier (never generic h1)
+    const hasJobElements = document.querySelector(
+      'form[action*="apply"], form[action*="job"], form[id*="apply"], form[id*="job"], [data-automation-id*="job"], [data-automation-id*="applicant"], .job-details, #job-description'
+    );
+    return !!hasJobElements;
   }
 
   function extractJobDetails() {
@@ -588,6 +595,8 @@ LinkedIn: ${p.linkedin_url || 'linkedin.com/in/jayanth-j'}`;
     pill.addEventListener("click", (e) => {
       if (e.target.id === "arya-btn-close-pill") {
         pill.remove();
+        drawer.remove();
+        sessionStorage.setItem("arya_copilot_dismissed", "1");
         return;
       }
       if (e.target.id === "arya-btn-quick-fill") {
@@ -659,6 +668,7 @@ LinkedIn: ${p.linkedin_url || 'linkedin.com/in/jayanth-j'}`;
   }
 
   function initAryaPageInspector() {
+    if (sessionStorage.getItem("arya_copilot_dismissed") === "1") return;
     if (!isJobPostingPage()) return;
 
     setTimeout(() => {
