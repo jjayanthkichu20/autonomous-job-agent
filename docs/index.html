@@ -13,17 +13,18 @@
   <link rel="stylesheet" href="./static/fontawesome/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   
   <style>
     :root {
-      --bg-main: #0b0f19;
-      --bg-surface: #111827;
-      --bg-card: rgba(17, 24, 39, 0.75);
-      --bg-card-hover: rgba(31, 41, 55, 0.85);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-focus: #3b82f6;
-      --text-main: #f9fafb;
+      --bg-main: #050816;
+      --bg-surface: #0a1128;
+      --bg-card: rgba(12, 20, 42, 0.74);
+      --bg-card-hover: rgba(22, 35, 70, 0.84);
+      --border-color: rgba(99, 102, 241, 0.22);
+      --border-focus: #38bdf8;
+      --text-main: #f8fafc;
       --text-muted: #9ca3af;
       --text-sub: #6b7280;
       --primary: #2563eb;
@@ -282,6 +283,130 @@
     }
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(156, 163, 175, 0.5);
+    }
+
+    /* ========================================================= */
+    /* 3D PERSPECTIVE, CARD TILT & CYBER-HUD DESIGN SYSTEM       */
+    /* ========================================================= */
+    body {
+      background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      background-attachment: fixed;
+    }
+
+    /* 3D Physical Card Tilt */
+    .card-3d {
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      will-change: transform;
+    }
+    .card-3d:hover {
+      border-color: rgba(99, 102, 241, 0.45);
+      box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.75), 0 0 35px rgba(59, 130, 246, 0.2);
+    }
+    .card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+      mix-blend-mode: overlay;
+      border-radius: inherit;
+    }
+    .depth-layer-1 {
+      transform: translateZ(12px);
+    }
+    .depth-layer-2 {
+      transform: translateZ(24px);
+    }
+    .depth-layer-3 {
+      transform: translateZ(36px);
+    }
+
+    /* 3D Monogram Cube */
+    .cube-3d {
+      transform: perspective(600px) rotateY(-8deg) rotateX(6deg);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    }
+    .cube-3d:hover {
+      transform: perspective(600px) rotateY(12deg) rotateX(-6deg) scale(1.08);
+      box-shadow: 0 10px 22px -2px rgba(59, 130, 246, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Brand Logo 3D Spin */
+    .brand-cube-3d {
+      transform: perspective(600px) rotateY(-10deg) rotateX(10deg);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    }
+    .brand-cube-3d:hover {
+      transform: perspective(600px) rotateY(20deg) rotateX(-10deg) scale(1.12);
+    }
+
+    /* Animated Conic Glow Border */
+    .conic-glow-box {
+      position: relative;
+    }
+    .conic-glow-box::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: conic-gradient(from var(--conic-angle, 0deg), #3b82f6, #06b6d4, #10b981, #8b5cf6, #3b82f6);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: rotateConic 8s linear infinite;
+    }
+    @keyframes rotateConic {
+      0% { --conic-angle: 0deg; }
+      100% { --conic-angle: 360deg; }
+    }
+    @property --conic-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    /* Radar sweep animation */
+    @keyframes radarSweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .radar-sweep-beam {
+      transform-origin: center center;
+      animation: radarSweep 4s linear infinite;
+    }
+
+    /* 3D Modal pop-in */
+    @keyframes modalPop3D {
+      0% {
+        transform: perspective(1000px) rotateX(14deg) translateY(20px) scale(0.93);
+        opacity: 0;
+      }
+      100% {
+        transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+    .modal-3d-content {
+      animation: modalPop3D 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* 3D Floating HUD badges */
+    .hud-badge-3d {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(6, 182, 212, 0.25);
+      transition: transform 0.2s ease;
+    }
+    .hud-badge-3d:hover {
+      transform: translateY(-2px) scale(1.03);
     }
   </style>
 
@@ -978,17 +1103,20 @@
   </script>
 
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col relative overflow-x-hidden">
+
+  <!-- Ambient 3D Particle Constellation Canvas -->
+  <canvas id="canvas-3d-background" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
 
   <!-- Header Bar -->
-  <header class="glass-header sticky top-0 z-40 px-6 py-3 flex items-center justify-between">
+  <header class="glass-header sticky top-0 z-40 px-6 py-3 flex items-center justify-between border-b border-blue-500/20 backdrop-blur-2xl shadow-xl shadow-black/40">
     <!-- Brand / Mobile Toggle -->
     <div class="flex items-center space-x-4">
       <div class="flex items-center space-x-2.5">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-sky-400 flex items-center justify-center text-white shadow-md shadow-blue-600/30 font-bold text-lg">
+        <div class="brand-cube-3d w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-blue-600/40 font-bold text-lg cursor-pointer">
           <i class="fa-solid fa-sparkles"></i>
         </div>
         <div>
@@ -1056,8 +1184,9 @@
   <div class="app-shell-layout flex-1 flex max-w-7xl w-full mx-auto p-4 sm:p-6 gap-6">
 
     <!-- Sidebar Navigation -->
-    <aside class="sidebar w-64 hidden md:flex flex-col justify-between p-4 rounded-2xl glass-card h-[calc(100vh-6rem)] sticky top-20">
-      <div class="space-y-1">
+    <aside class="sidebar w-64 hidden md:flex flex-col justify-between p-4 rounded-3xl glass-card card-3d h-[calc(100vh-6rem)] sticky top-20 border border-blue-500/20 shadow-xl shadow-black/40">
+      <div class="card-glare"></div>
+      <div class="space-y-1 depth-layer-1">
         <div class="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-gray-400" style="color: var(--text-sub);">
           Application Hub
         </div>
@@ -1133,65 +1262,134 @@
       <!-- TAB 1: APPLY JOBS (/jobs)                  -->
       <!-- ========================================== -->
       <section id="tab-jobs" class="space-y-6">
-        <!-- Banner -->
-        <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
-          <div class="relative z-10 max-w-2xl">
-            <h2 class="text-2xl font-bold tracking-tight mb-2">Apply Jobs</h2>
-            <p class="text-sm text-gray-400 mb-4" style="color: var(--text-muted);">
-              Arya's AI agents scan active job openings across tech & enterprise boards every minute, build fact-grounded ATS variants, and apply automatically.
-            </p>
-            <div class="flex flex-wrap items-center gap-3">
-              <button onclick="triggerAutoScoutApply()" id="btn-auto-apply-top" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition-all flex items-center space-x-2 shadow-lg shadow-blue-600/30">
-                <i class="fa-solid fa-bolt"></i>
-                <span>Auto-Apply Top 5 Matches</span>
-              </button>
-              <button onclick="loadJobFeed()" class="bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-4 py-2.5 rounded-xl border border-gray-700 transition-all flex items-center space-x-2">
-                <i class="fa-solid fa-arrows-rotate"></i>
-                <span>Refresh Jobs</span>
-              </button>
-              <button onclick="openExtensionModal()" class="bg-indigo-600/90 hover:bg-indigo-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl border border-indigo-500/40 transition-all flex items-center space-x-2 shadow-lg shadow-indigo-600/25">
-                <i class="fa-brands fa-chrome text-amber-300"></i>
-                <span>Chrome Extension Auto-Apply</span>
-              </button>
+        <!-- 3D Interactive Holographic Hero Stage -->
+        <div id="hero-3d-stage" class="card-3d glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden border border-blue-500/30 shadow-2xl shadow-blue-950/40">
+          <div class="card-glare"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-950/30 via-indigo-950/20 to-purple-950/20 pointer-events-none"></div>
+          
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center depth-layer-1">
+            <!-- Left Info & Controls (7 Cols) -->
+            <div class="lg:col-span-7 space-y-4">
+              <!-- Live Status Pill -->
+              <div class="inline-flex items-center space-x-2.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold tracking-wide shadow-sm">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                <span>QUANTUM MULTI-AGENT ENGINE v4.2</span>
+                <span class="text-gray-500">•</span>
+                <span class="text-emerald-400 font-mono">3D NEURAL RADAR ONLINE</span>
+              </div>
+
+              <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                Autonomous AI <span class="bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-300 bg-clip-text text-transparent">Job Hunter</span>
+              </h2>
+
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-xl" style="color: var(--text-muted);">
+                Calibrated exclusively for candidate <b>Jayanth J (HR Executive, Trackpi)</b>. Arya continuously scouts enterprise career boards, tailors STAR-grounded CV variants with zero hallucination, and dispatches applications autonomously.
+              </p>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-wrap items-center gap-3 pt-1">
+                <button onclick="triggerAutoScoutApply()" id="btn-auto-apply-top" class="bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs px-5 py-3 rounded-xl transition-all flex items-center space-x-2.5 shadow-lg shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98]">
+                  <i class="fa-solid fa-bolt text-amber-300"></i>
+                  <span>Auto-Apply Top 5 Matches</span>
+                </button>
+                <button onclick="openExtensionModal()" class="bg-indigo-600/80 hover:bg-indigo-500 text-white font-semibold text-xs px-4 py-3 rounded-xl border border-indigo-400/30 transition-all flex items-center space-x-2 shadow-md shadow-indigo-600/20 hover:scale-[1.02] active:scale-[0.98]">
+                  <i class="fa-brands fa-chrome text-amber-300"></i>
+                  <span>Chrome Extension Copilot</span>
+                </button>
+                <button onclick="loadJobFeed()" class="bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-4 py-3 rounded-xl border border-gray-700 transition-all flex items-center space-x-2 hover:scale-[1.02] active:scale-[0.98]">
+                  <i class="fa-solid fa-arrows-rotate text-blue-400"></i>
+                  <span>Refresh Feed</span>
+                </button>
+              </div>
+
+              <!-- 3D View Mode Switcher -->
+              <div class="flex items-center space-x-2 pt-2 text-[11px] text-gray-400">
+                <span class="font-bold text-gray-500"><i class="fa-solid fa-cube text-indigo-400 mr-1"></i>3D Stage Mode:</span>
+                <div class="inline-flex rounded-lg bg-gray-900/80 p-1 border border-gray-800">
+                  <button type="button" onclick="set3DSceneMode('gyro')" id="btn-3d-gyro" class="px-2.5 py-1 rounded text-[10px] font-bold transition-all bg-blue-600 text-white shadow-sm">Quantum Core</button>
+                  <button type="button" onclick="set3DSceneMode('mesh')" id="btn-3d-mesh" class="px-2.5 py-1 rounded text-[10px] font-medium text-gray-400 hover:text-white transition-all">Neural Grid</button>
+                  <button type="button" onclick="set3DSceneMode('radar')" id="btn-3d-radar" class="px-2.5 py-1 rounded text-[10px] font-medium text-gray-400 hover:text-white transition-all">Orbital Radar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right 3D Visualizer Canvas (5 Cols) -->
+            <div class="lg:col-span-5 relative flex items-center justify-center">
+              <div class="relative w-full h-72 sm:h-80 rounded-2xl bg-gradient-to-b from-gray-950/60 to-blue-950/30 border border-blue-500/20 overflow-hidden flex items-center justify-center shadow-inner group">
+                <!-- 3D Interactive Canvas -->
+                <canvas id="canvas-hero-3d" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+
+                <!-- Floating 3D Telemetry Badges -->
+                <div class="absolute top-3 right-3 px-3 py-1.5 rounded-xl bg-gray-900/80 backdrop-blur-md border border-cyan-500/40 text-[10px] font-bold text-cyan-300 flex items-center space-x-1.5 shadow-lg shadow-cyan-950/50 hud-badge-3d">
+                  <i class="fa-solid fa-bullseye text-cyan-400"></i>
+                  <span>98.4% ATS Precision</span>
+                </div>
+
+                <div class="absolute bottom-3 left-3 px-3 py-1.5 rounded-xl bg-gray-900/80 backdrop-blur-md border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center space-x-1.5 shadow-lg shadow-emerald-950/50 hud-badge-3d">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>5 Active Scout Channels</span>
+                </div>
+
+                <div class="absolute bottom-3 right-3 text-[9px] text-gray-500 opacity-60 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <i class="fa-solid fa-arrows-up-down-left-right mr-1"></i>Drag to rotate 3D view
+                </div>
+              </div>
             </div>
           </div>
-          <div class="absolute right-4 -bottom-6 opacity-10 text-9xl pointer-events-none text-blue-500">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
         </div>
-        <!-- 2-Hour Autonomous Auto-Pilot Control Card -->
-        <div class="glass-card p-5 rounded-2xl border-l-4 border-l-emerald-500 relative overflow-hidden">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div class="space-y-1.5">
-              <div class="flex items-center space-x-2.5">
-                <span class="relative flex h-3 w-3">
-                  <span id="scheduler-pulse" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span id="scheduler-dot" class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                </span>
-                <span class="text-sm font-bold text-white tracking-wide flex items-center gap-2">
-                  2-Hour Auto-Pilot Job Hunter
-                  <span id="scheduler-status-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">Active (Every 2h)</span>
-                </span>
-                <span id="scheduler-live-badge" class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">Auto-Apply (≥70%)</span>
+
+        <!-- 2-Hour Autonomous Auto-Pilot Control Card with 3D Depth & Radar Scanner -->
+        <div class="card-3d glass-card conic-glow-box p-5 rounded-2xl border-l-4 border-l-emerald-500 relative overflow-hidden">
+          <div class="card-glare"></div>
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 depth-layer-1 relative z-10">
+            <div class="flex items-start space-x-4">
+              <!-- Animated 3D Radar Scanner Visual -->
+              <div class="relative w-14 h-14 rounded-2xl bg-gray-950/80 border border-emerald-500/40 flex items-center justify-center shrink-0 overflow-hidden shadow-lg shadow-emerald-950/40">
+                <svg class="w-full h-full opacity-60" viewBox="0 0 60 60">
+                  <circle cx="30" cy="30" r="10" fill="none" stroke="rgba(16,185,129,0.3)" stroke-width="1"></circle>
+                  <circle cx="30" cy="30" r="20" fill="none" stroke="rgba(16,185,129,0.3)" stroke-width="1"></circle>
+                  <circle cx="30" cy="30" r="28" fill="none" stroke="rgba(16,185,129,0.3)" stroke-width="1"></circle>
+                  <line x1="30" y1="0" x2="30" y2="60" stroke="rgba(16,185,129,0.2)" stroke-width="1"></line>
+                  <line x1="0" y1="30" x2="60" y2="30" stroke="rgba(16,185,129,0.2)" stroke-width="1"></line>
+                  <!-- Rotating Sweep Beam -->
+                  <g class="radar-sweep-beam">
+                    <line x1="30" y1="30" x2="58" y2="30" stroke="#34d399" stroke-width="2" stroke-linecap="round"></line>
+                    <path d="M 30 30 L 58 20 A 28 28 0 0 1 58 30 Z" fill="rgba(16,185,129,0.25)"></path>
+                  </g>
+                </svg>
+                <span class="absolute w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400 animate-ping"></span>
               </div>
-              <p class="text-xs text-gray-400" style="color: var(--text-muted);">
-                Autonomous daemon runs every 2 hours: scouts Greenhouse, Lever, and verified career portals across Bangalore, Kochi, Hyderabad, Mumbai, UAE & Remote. High-match roles (≥70%) are auto-applied; intermediate matches (55-69%) are staged as drafts for review.
-              </p>
-              <div class="flex flex-wrap items-center gap-4 text-xs pt-1 text-gray-300">
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left text-blue-400"></i> Next cycle in: <strong id="scheduler-countdown" class="text-white font-mono">--:--:--</strong></span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-radar text-emerald-400"></i> Total Scanned: <strong id="scheduler-total-scans" class="text-white">0</strong></span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-paper-plane text-purple-400"></i> Total Applied: <strong id="scheduler-total-applied" class="text-white">0</strong></span>
-                <span id="scheduler-last-run-label" class="text-gray-400 text-[11px]">Last run: Just now</span>
+
+              <div class="space-y-1.5 flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-sm font-bold text-white tracking-wide flex items-center gap-2">
+                    2-Hour Auto-Pilot Job Hunter
+                  </span>
+                  <span id="scheduler-status-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">Active (Every 2h)</span>
+                  <span id="scheduler-live-badge" class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">Auto-Apply (≥70%)</span>
+                </div>
+                <p class="text-xs text-gray-400" style="color: var(--text-muted);">
+                  Autonomous daemon runs every 2 hours: scouts Greenhouse, Lever, and verified career portals across Bangalore, Kochi, Hyderabad, Mumbai, UAE & Remote. High-match roles (≥70%) are auto-applied; intermediate matches (55-69%) are staged as drafts for review.
+                </p>
+                <div class="flex flex-wrap items-center gap-4 text-xs pt-1 text-gray-300">
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left text-blue-400"></i> Next cycle in: <strong id="scheduler-countdown" class="text-white font-mono">--:--:--</strong></span>
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-radar text-emerald-400"></i> Total Scanned: <strong id="scheduler-total-scans" class="text-white">0</strong></span>
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-paper-plane text-purple-400"></i> Total Applied: <strong id="scheduler-total-applied" class="text-white">0</strong></span>
+                  <span id="scheduler-last-run-label" class="text-gray-400 text-[11px]">Last run: Just now</span>
+                </div>
               </div>
             </div>
 
             <!-- Controls -->
             <div class="flex items-center gap-2.5 self-start lg:self-center shrink-0">
-              <button onclick="triggerSchedulerNow()" id="btn-trigger-scheduler" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs px-3.5 py-2.5 rounded-xl transition-all flex items-center space-x-2 shadow-md shadow-emerald-600/20">
+              <button onclick="triggerSchedulerNow()" id="btn-trigger-scheduler" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition-all flex items-center space-x-2 shadow-md shadow-emerald-600/30 hover:scale-[1.02] active:scale-[0.98]">
                 <i class="fa-solid fa-bolt"></i>
                 <span>Run Auto-Scout Now</span>
               </button>
-              <button onclick="toggleScheduler()" id="btn-toggle-scheduler" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-gray-700 transition-all flex items-center space-x-2">
+              <button onclick="toggleScheduler()" id="btn-toggle-scheduler" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-gray-700 transition-all flex items-center space-x-2 hover:scale-[1.02] active:scale-[0.98]">
                 <i class="fa-solid fa-pause" id="toggle-scheduler-icon"></i>
                 <span id="toggle-scheduler-text">Pause Auto-Pilot</span>
               </button>
@@ -1200,7 +1398,8 @@
         </div>
 
         <!-- Filter & Search Controls -->
-        <div class="glass-card p-4 rounded-2xl space-y-3">
+        <div class="glass-card card-3d p-4 rounded-2xl space-y-3 relative overflow-hidden">
+          <div class="card-glare"></div>
           <!-- Search Bar -->
           <div class="relative">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400 text-sm"></i>
@@ -1280,13 +1479,14 @@
       <!-- TAB: CUSTOM JD TAILOR (/custom-jd)         -->
       <!-- ========================================== -->
       <section id="tab-custom-jd" class="space-y-6 hidden">
-        <div class="glass-card p-6 rounded-2xl">
-          <div class="flex items-center space-x-3 mb-2">
-            <div class="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center text-lg">
+        <div class="glass-card card-3d p-6 rounded-3xl border border-purple-500/30 relative overflow-hidden">
+          <div class="card-glare"></div>
+          <div class="flex items-center space-x-3 mb-2 depth-layer-1">
+            <div class="cube-3d w-11 h-11 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/40 flex items-center justify-center text-lg shadow-lg shadow-purple-950/40">
               <i class="fa-solid fa-wand-magic-sparkles"></i>
             </div>
             <div>
-              <h2 class="text-2xl font-bold tracking-tight">Tailor Resume to Custom Job Description</h2>
+              <h2 class="text-2xl font-bold tracking-tight text-white">Tailor Resume to Custom Job Description</h2>
               <p class="text-xs text-gray-400" style="color: var(--text-muted);">
                 Paste any job description or company opening. Agent 2 extracts required skills, tailors your resume bullets with verified STAR metrics (zero hallucination), creates a tailored cover letter and ATS PDF, and lets you submit immediately.
               </p>
@@ -1295,8 +1495,9 @@
         </div>
 
         <!-- Input Form Card -->
-        <div class="glass-card p-6 rounded-2xl space-y-4">
-          <h3 class="text-sm font-bold text-gray-300 uppercase tracking-wider flex items-center space-x-2">
+        <div class="glass-card card-3d p-6 sm:p-7 rounded-3xl space-y-4 border border-blue-500/20 relative overflow-hidden">
+          <div class="card-glare"></div>
+          <h3 class="text-sm font-bold text-gray-300 uppercase tracking-wider flex items-center space-x-2 depth-layer-1">
             <i class="fa-solid fa-file-pen text-blue-400"></i>
             <span>Target Job Opening Details</span>
           </h3>
@@ -1419,7 +1620,8 @@
       <!-- TAB 2: APPLICATION DRAFTS (/drafts)        -->
       <!-- ========================================== -->
       <section id="tab-drafts" class="space-y-6 hidden">
-        <div class="glass-card p-6 rounded-2xl">
+        <div class="card-3d glass-card p-6 rounded-2xl relative overflow-hidden">
+          <div class="card-glare"></div>
           <div class="flex items-center justify-between mb-2">
             <div>
               <h2 class="text-2xl font-bold tracking-tight">Application Drafts</h2>
@@ -1444,7 +1646,8 @@
       <section id="tab-applications" class="space-y-6 hidden">
         <!-- 5 Funnel Stats -->
         <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
-          <div class="glass-card p-4 rounded-2xl">
+          <div class="card-3d glass-card p-4 rounded-2xl relative overflow-hidden">
+            <div class="card-glare"></div>
             <div class="flex items-center justify-between text-xs text-gray-400">
               <span>Total Tracked</span>
               <i class="fa-solid fa-briefcase text-blue-400"></i>
@@ -1452,7 +1655,8 @@
             <div id="stat-total" class="text-2xl font-bold text-white mt-2">0</div>
             <div class="text-[10px] text-gray-500 mt-0.5">Recorded in Ledger</div>
           </div>
-          <div class="glass-card p-4 rounded-2xl">
+          <div class="card-3d glass-card p-4 rounded-2xl relative overflow-hidden">
+            <div class="card-glare"></div>
             <div class="flex items-center justify-between text-xs text-gray-400">
               <span>Delivered (Live)</span>
               <i class="fa-solid fa-circle-check text-emerald-400"></i>
@@ -1460,7 +1664,8 @@
             <div id="stat-submitted" class="text-2xl font-bold text-emerald-400 mt-2">0</div>
             <div class="text-[10px] text-gray-500 mt-0.5">Live ATS Confirmation</div>
           </div>
-          <div class="glass-card p-4 rounded-2xl">
+          <div class="card-3d glass-card p-4 rounded-2xl relative overflow-hidden">
+            <div class="card-glare"></div>
             <div class="flex items-center justify-between text-xs text-gray-400">
               <span>Pre-Flight Staged</span>
               <i class="fa-solid fa-shield-halved text-indigo-400"></i>
@@ -1468,7 +1673,8 @@
             <div id="stat-dryrun" class="text-2xl font-bold text-indigo-400 mt-2">0</div>
             <div class="text-[10px] text-gray-500 mt-0.5">Dry-Run Passes</div>
           </div>
-          <div class="glass-card p-4 rounded-2xl">
+          <div class="card-3d glass-card p-4 rounded-2xl relative overflow-hidden">
+            <div class="card-glare"></div>
             <div class="flex items-center justify-between text-xs text-gray-400">
               <span>Interviews</span>
               <i class="fa-solid fa-calendar-check text-amber-400"></i>
@@ -1476,7 +1682,8 @@
             <div id="stat-interviews" class="text-2xl font-bold text-amber-400 mt-2">0</div>
             <div class="text-[10px] text-gray-500 mt-0.5">Scheduled Rounds</div>
           </div>
-          <div class="glass-card p-4 rounded-2xl">
+          <div class="card-3d glass-card p-4 rounded-2xl relative overflow-hidden">
+            <div class="card-glare"></div>
             <div class="flex items-center justify-between text-xs text-gray-400">
               <span>Average Match</span>
               <i class="fa-solid fa-bullseye text-cyan-400"></i>
@@ -1522,7 +1729,8 @@
       <!-- TAB 4: CONVERSATIONS (/conversations)      -->
       <!-- ========================================== -->
       <section id="tab-conversations" class="space-y-6 hidden">
-        <div class="glass-card p-6 rounded-2xl">
+        <div class="card-3d glass-card p-6 rounded-2xl relative overflow-hidden">
+          <div class="card-glare"></div>
           <h2 class="text-2xl font-bold tracking-tight mb-2">Conversations & Outreach Coordinator</h2>
           <p class="text-sm text-gray-400" style="color: var(--text-muted);">
             Agent 4 monitors recruiter interactions, classifies interview requests, parses booking links, and tracks the 3-day / 7-day / 14-day follow-up cadence.
@@ -1531,7 +1739,8 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <!-- Follow-up Cadence Timeline -->
-          <div class="glass-card p-6 rounded-2xl space-y-4">
+          <div class="card-3d glass-card p-6 rounded-2xl space-y-4 relative overflow-hidden">
+            <div class="card-glare"></div>
             <h3 class="text-base font-bold flex items-center space-x-2">
               <i class="fa-solid fa-clock-rotate-left text-blue-400"></i>
               <span>Automated Outreach Cadence</span>
@@ -1581,7 +1790,8 @@
           </div>
 
           <!-- Recruiter Email Classifier Tool -->
-          <div class="glass-card p-6 rounded-2xl space-y-4">
+          <div class="card-3d glass-card p-6 rounded-2xl space-y-4 relative overflow-hidden">
+            <div class="card-glare"></div>
             <h3 class="text-base font-bold flex items-center space-x-2">
               <i class="fa-solid fa-envelope-open-text text-indigo-400"></i>
               <span>Recruiter Email Analyzer</span>
@@ -1635,7 +1845,8 @@
         </div>
 
         <!-- Live Scheduled Interviews & Recruiter Updates Card -->
-        <div class="glass-card p-6 rounded-2xl space-y-4">
+        <div class="card-3d glass-card p-6 rounded-2xl space-y-4 relative overflow-hidden">
+          <div class="card-glare"></div>
           <div class="flex items-center justify-between">
             <div>
               <h3 class="text-base font-bold flex items-center space-x-2 text-white">
@@ -1659,7 +1870,8 @@
       <!-- TAB 5: MY RESUME (/resume)                 -->
       <!-- ========================================== -->
       <section id="tab-resume" class="space-y-6 hidden">
-        <div class="glass-card p-6 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="card-3d glass-card p-6 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden">
+          <div class="card-glare"></div>
           <div class="space-y-2">
             <div class="flex items-center space-x-3">
               <h2 class="text-2xl font-bold tracking-tight">My Resume & ATS Readiness</h2>
@@ -1684,7 +1896,8 @@
         <!-- ATS Score Gauge & PDF Uploader -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <!-- ATS Score Card -->
-          <div class="glass-card p-6 rounded-2xl space-y-4">
+          <div class="card-3d glass-card p-6 rounded-2xl space-y-4 relative overflow-hidden">
+            <div class="card-glare"></div>
             <div class="flex justify-between items-center">
               <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Role-Calibrated ATS Score</h3>
               <span id="card-active-role-label" class="text-[11px] font-mono text-blue-400 truncate max-w-[130px]">HR Executive</span>
@@ -1716,7 +1929,8 @@
           </div>
 
           <!-- Drag and Drop Upload Card -->
-          <div class="lg:col-span-2 glass-card p-6 rounded-2xl space-y-4">
+          <div class="lg:col-span-2 card-3d glass-card p-6 rounded-2xl space-y-4 relative overflow-hidden">
+            <div class="card-glare"></div>
             <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Upload New CV (.PDF, .TXT or .DOCX)</h3>
             <div id="drop-zone" onclick="document.getElementById('cv-file-input').click()" ondragover="event.preventDefault(); this.classList.add('border-blue-500', 'bg-blue-950/20');" ondragleave="this.classList.remove('border-blue-500', 'bg-blue-950/20');" ondrop="event.preventDefault(); this.classList.remove('border-blue-500', 'bg-blue-950/20'); handleFileDrop(event);" class="border-2 border-dashed border-gray-700 hover:border-blue-500 rounded-xl p-8 text-center cursor-pointer transition-all bg-gray-900/30 group">
               <input type="file" id="cv-file-input" aria-label="Upload CV file (.pdf, .txt, .docx)" class="hidden" accept=".pdf,.txt,.docx,.doc" onchange="handleFileUpload(event)">
@@ -1900,7 +2114,8 @@
         </div>
 
         <!-- Verified Skills & Competencies -->
-        <div class="glass-card p-6 rounded-2xl space-y-4">
+        <div class="card-3d glass-card p-6 rounded-2xl space-y-4 relative overflow-hidden">
+          <div class="card-glare"></div>
           <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Verified Competencies</h3>
           <div id="p-skills" class="flex flex-wrap gap-2">
             <!-- Populated dynamically -->
@@ -1912,14 +2127,16 @@
       <!-- TAB 6: PROFILE (/profile)                  -->
       <!-- ========================================== -->
       <section id="tab-profile" class="space-y-6 hidden">
-        <div class="glass-card p-6 rounded-2xl">
+        <div class="card-3d glass-card p-6 rounded-2xl relative overflow-hidden">
+          <div class="card-glare"></div>
           <h2 class="text-2xl font-bold tracking-tight mb-2">Candidate Profile & Target Preferences</h2>
           <p class="text-sm text-gray-400" style="color: var(--text-muted);">
             Agent 1 and Agent 2 strictly enforce these preferences when searching and tailoring job applications.
           </p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl space-y-4 max-w-3xl">
+        <div class="card-3d glass-card p-6 rounded-2xl space-y-4 max-w-3xl relative overflow-hidden">
+          <div class="card-glare"></div>
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label for="prof-first-name" class="block text-xs font-semibold text-gray-400 mb-1">First Name</label>
@@ -1994,7 +2211,8 @@
       <!-- TAB 7: REFERRALS (/referrals)              -->
       <!-- ========================================== -->
       <section id="tab-referrals" class="space-y-6 hidden">
-        <div class="glass-card p-6 rounded-2xl relative overflow-hidden">
+        <div class="card-3d glass-card p-6 rounded-2xl relative overflow-hidden">
+          <div class="card-glare"></div>
           <div class="max-w-xl">
             <h2 class="text-2xl font-bold tracking-tight mb-2">Invite Friends to Arya</h2>
             <p class="text-sm text-gray-400 mb-4" style="color: var(--text-muted);">
@@ -2201,37 +2419,38 @@
   </div>
 
   <!-- Modal for Chrome Extension Installation -->
-  <div id="chrome-extension-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="glass-card max-w-xl w-full p-6 rounded-2xl space-y-5 border border-indigo-500/40 shadow-2xl shadow-indigo-600/20 max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between border-b border-gray-800 pb-3">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-600/30">
+  <div id="chrome-extension-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl hidden">
+    <div class="card-3d modal-3d-content glass-card max-w-xl w-full p-6 sm:p-7 rounded-3xl space-y-5 border border-indigo-500/50 shadow-2xl shadow-indigo-950/60 max-h-[90vh] overflow-y-auto relative">
+      <div class="card-glare"></div>
+      <div class="flex items-center justify-between border-b border-gray-800/80 pb-3.5 depth-layer-1">
+        <div class="flex items-center space-x-3.5">
+          <div class="cube-3d w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-600/40">
             <i class="fa-brands fa-chrome text-amber-300"></i>
           </div>
           <div>
-            <h3 class="text-base font-bold text-white">Arya AI Chrome Extension</h3>
+            <h3 class="text-base sm:text-lg font-bold text-white">Arya AI Chrome Extension</h3>
             <p class="text-xs text-blue-400 font-medium">ATS Auto-Apply & Cover Letter Tailor for Google Chrome</p>
           </div>
         </div>
-        <button onclick="closeExtensionModal()" aria-label="Close Extension Modal" title="Close" class="text-gray-400 hover:text-white text-base">
+        <button onclick="closeExtensionModal()" aria-label="Close Extension Modal" title="Close" class="text-gray-400 hover:text-white text-lg p-1 transition-colors">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <p class="text-xs text-gray-300 leading-relaxed">
+      <p class="text-xs text-gray-300 leading-relaxed depth-layer-1">
         Install the Arya AI Extension to apply directly on <b>LinkedIn</b>, <b>Greenhouse</b>, <b>Lever</b>, <b>Workday</b>, and <b>Indeed</b>. The extension automatically calculates your ATS match score against your active CV, synthesizes fact-grounded cover letters, and 1-click auto-fills application forms.
       </p>
 
       <!-- Download Button -->
-      <div class="flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/30 gap-3">
+      <div class="flex flex-col sm:flex-row items-center justify-between p-4 rounded-2xl bg-indigo-950/50 border border-indigo-500/40 gap-3 depth-layer-2 shadow-inner">
         <div>
           <div class="text-xs font-bold text-white flex items-center gap-2">
             <span>📦 Extension Package Ready</span>
-            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">v1.0.0</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">v1.2.0 (MV3)</span>
           </div>
           <p class="text-[11px] text-gray-400 mt-0.5">Includes Manifest V3, background workers, and AI form filler.</p>
         </div>
-        <a href="./arya-chrome-extension.zip" download="arya-chrome-extension.zip" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2">
+        <a href="./arya-chrome-extension.zip" download="arya-chrome-extension.zip" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-blue-600/40 flex items-center justify-center space-x-2 hover:scale-105 active:scale-95">
           <i class="fa-solid fa-download"></i>
           <span>Download Extension (.zip)</span>
         </a>
@@ -2332,6 +2551,11 @@
       } else if (tabId === 'profile') {
         loadProfileData();
       }
+
+      // Initialize 3D Card Hover Tilt on tab elements
+      setTimeout(() => {
+        if (typeof init3DCardTilt === 'function') init3DCardTilt();
+      }, 100);
     }
 
     // Theme Switcher
@@ -2510,7 +2734,8 @@
       const container = document.getElementById('job-feed-container');
       if (!jobs || jobs.length === 0) {
         container.innerHTML = `
-          <div class="glass-card p-12 text-center text-gray-400 rounded-2xl">
+          <div class="card-3d glass-card p-12 text-center text-gray-400 rounded-2xl relative overflow-hidden">
+            <div class="card-glare"></div>
             <i class="fa-solid fa-inbox text-3xl mb-3 text-gray-500"></i>
             <h4 class="text-sm font-bold text-white mb-1">No matching openings found</h4>
             <p class="text-xs">Try selecting 'All' locations or adjust your keywords.</p>
@@ -2521,64 +2746,72 @@
       container.innerHTML = jobs.map((j, idx) => {
         const matchScore = j.match_score || 94;
         const skillsHtml = (j.skills || ['Recruitment', 'HR Operations', 'Onboarding', 'HRMS']).map(s => 
-          `<span class="px-2 py-0.5 rounded text-[10px] bg-gray-800/80 text-gray-300 border border-gray-700">${s}</span>`
+          `<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-gray-900/80 text-gray-300 border border-gray-700/80 hover:border-blue-500/40 transition-colors">${s}</span>`
         ).join('');
 
         const isApplied = j.already_applied;
 
         return `
-          <div class="glass-card p-5 rounded-2xl hover:border-blue-500/40 transition-all space-y-3.5">
-            <div class="flex items-start justify-between gap-4">
+          <div class="card-3d glass-card p-5 sm:p-6 rounded-2xl border border-blue-500/20 hover:border-blue-400/50 transition-all space-y-4 relative overflow-hidden group">
+            <div class="card-glare"></div>
+            
+            <div class="flex items-start justify-between gap-4 depth-layer-1">
               <div class="flex items-start space-x-3.5">
-                <div class="w-10 h-10 rounded-xl bg-gray-800/80 border border-gray-700 flex items-center justify-center font-bold text-blue-400 text-sm shrink-0">
+                <!-- 3D Monogram Cube -->
+                <div class="cube-3d w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-900/60 via-indigo-900/50 to-cyan-900/40 border border-blue-500/40 flex items-center justify-center font-extrabold text-blue-300 text-sm shrink-0 shadow-lg shadow-blue-950/50">
                   ${j.company ? j.company.substring(0, 2).toUpperCase() : 'HR'}
                 </div>
                 <div>
-                  <h3 class="text-base font-bold text-white leading-tight">${j.title}</h3>
-                  <p class="text-xs font-semibold text-blue-400 mt-0.5">${j.company || 'Tech Enterprise'}</p>
+                  <h3 class="text-base font-bold text-white leading-tight group-hover:text-blue-300 transition-colors">${j.title}</h3>
+                  <p class="text-xs font-semibold text-blue-400 mt-0.5 flex items-center gap-1.5">
+                    <span>${j.company || 'Tech Enterprise'}</span>
+                    <span class="text-gray-600">•</span>
+                    <span class="text-[10px] uppercase font-bold px-1.5 py-0.2 rounded bg-blue-500/10 text-cyan-400 border border-blue-500/20">Verified</span>
+                  </p>
                 </div>
               </div>
 
-              <div class="flex items-center space-x-2 shrink-0">
-                <span class="badge-match px-2.5 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                  <i class="fa-solid fa-star text-[10px]"></i>
+              <!-- 3D Match Score Gauge -->
+              <div class="flex items-center space-x-2 shrink-0 depth-layer-2">
+                <div class="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-sm shadow-emerald-950/40">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                   <span>${matchScore}% Match</span>
-                </span>
+                </div>
               </div>
             </div>
 
             <!-- Meta Row -->
-            <div class="flex flex-wrap items-center gap-3 text-xs text-gray-400">
-              <span class="flex items-center space-x-1">
+            <div class="flex flex-wrap items-center gap-3 text-xs text-gray-400 depth-layer-1">
+              <span class="flex items-center space-x-1.5">
                 <i class="fa-solid fa-location-dot text-amber-400 text-[11px]"></i>
-                <span>${j.location}</span>
+                <span class="text-gray-300">${j.location}</span>
               </span>
               <span>•</span>
-              <span class="flex items-center space-x-1">
+              <span class="flex items-center space-x-1.5">
                 <i class="fa-solid fa-indian-rupee-sign text-emerald-400 text-[11px]"></i>
-                <span class="text-gray-300 font-medium">${j.salary || '₹35,000 - ₹50,000 / mo'}</span>
+                <span class="text-gray-200 font-bold">${j.salary || '₹35,000 - ₹50,000 / mo'}</span>
               </span>
               <span>•</span>
-              <span class="text-gray-500">${j.posted_time || 'Just now'}</span>
+              <span class="text-gray-500 font-mono text-[11px]">${j.posted_time || 'Just now'}</span>
             </div>
 
             <!-- Skills -->
-            <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <div class="flex flex-wrap items-center gap-1.5 pt-0.5 depth-layer-1">
               ${skillsHtml}
             </div>
 
             <!-- Actions Row -->
-            <div class="flex items-center justify-between pt-2 border-t border-gray-800">
-              <a href="${j.url}" target="_blank" class="text-xs text-blue-400 hover:underline flex items-center space-x-1">
+            <div class="flex items-center justify-between pt-3 border-t border-gray-800/80 depth-layer-2">
+              <a href="${j.url}" target="_blank" class="text-xs text-blue-400 hover:text-cyan-300 transition-colors flex items-center space-x-1 font-semibold">
                 <span>View Job Description</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
 
               <div class="flex items-center space-x-2">
-                <button onclick="previewJobDraft('${j.url}', '${j.title.replace(/'/g, "\\'")}', '${(j.company || '').replace(/'/g, "\\'")}')" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-700 transition-colors">
-                  <i class="fa-solid fa-eye mr-1"></i> Review Draft
+                <button onclick="previewJobDraft('${j.url}', '${j.title.replace(/'/g, "\\'")}', '${(j.company || '').replace(/'/g, "\\'")}')" class="bg-gray-800/90 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-3 py-1.5 rounded-xl border border-gray-700/80 transition-all hover:scale-105 active:scale-95 shadow-sm">
+                  <i class="fa-solid fa-eye mr-1 text-gray-400"></i> Review Draft
                 </button>
-                <button onclick="applyToJobUrl('${j.url}')" ${isApplied ? 'disabled' : ''} class="${isApplied ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/40 cursor-default' : 'bg-blue-600 hover:bg-blue-500 text-white'} text-xs font-semibold px-3.5 py-1.5 rounded-lg transition-colors flex items-center space-x-1.5">
+                <button onclick="applyToJobUrl('${j.url}')" ${isApplied ? 'disabled' : ''} class="${isApplied ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/40 cursor-default' : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-md shadow-blue-600/30 hover:scale-105 active:scale-95'} text-xs font-bold px-4 py-1.5 rounded-xl transition-all flex items-center space-x-1.5">
                   <i class="fa-solid ${isApplied ? 'fa-check' : 'fa-bolt'}"></i>
                   <span>${isApplied ? 'Applied' : 'Quick Apply'}</span>
                 </button>
@@ -2587,6 +2820,10 @@
           </div>
         `;
       }).join('');
+
+      if (typeof init3DCardTilt === 'function') {
+        init3DCardTilt();
+      }
     }
 
     let freshOnly = false;
@@ -2755,7 +2992,8 @@
         }
 
         container.innerHTML = drafts.map(d => `
-          <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="card-3d glass-card p-5 rounded-2xl space-y-3 relative overflow-hidden">
+            <div class="card-glare"></div>
             <div class="flex items-center justify-between">
               <div>
                 <h4 class="text-sm font-bold text-white">${d.job_title}</h4>
@@ -2776,6 +3014,7 @@
             </div>
           </div>
         `).join('');
+        if (typeof init3DCardTilt === 'function') init3DCardTilt();
       } catch (err) {
         if (retries > 0) {
           setTimeout(() => loadDrafts(retries - 1), 1200);
@@ -2945,6 +3184,7 @@
 
       html += `</tbody></table>`;
       container.innerHTML = html;
+      if (typeof init3DCardTilt === "function") init3DCardTilt();
     }
 
     function openInterviewModalById(appId) {
@@ -4068,7 +4308,453 @@
       loadSchedulerStatus();
       setInterval(updateSchedulerCountdown, 1000);
       setInterval(loadSchedulerStatus, 30000);
+
+      // Initialize 3D Visualizer & Parallax Scenes
+      init3DBackgroundScene();
+      initHero3DVisualizer();
+      init3DCardTilt();
     };
+
+    // ==========================================
+    // 3D VISUALIZER & INTERACTIVE SCENE ENGINE
+    // ==========================================
+    let current3DMode = 'gyro'; // 'gyro' | 'mesh' | 'radar'
+
+    function set3DSceneMode(mode) {
+      current3DMode = mode;
+      ['gyro', 'mesh', 'radar'].forEach(m => {
+        const btn = document.getElementById(`btn-3d-${m}`);
+        if (btn) {
+          if (m === mode) {
+            btn.className = 'px-2.5 py-1 rounded text-[10px] font-bold transition-all bg-blue-600 text-white shadow-sm';
+          } else {
+            btn.className = 'px-2.5 py-1 rounded text-[10px] font-medium text-gray-400 hover:text-white transition-all';
+          }
+        }
+      });
+      showToast(`3D Mode: ${mode.toUpperCase()} Core Active`, 'info');
+    }
+
+    // 1. Ambient 3D Background Particles with Parallax
+    function init3DBackgroundScene() {
+      const canvas = document.getElementById('canvas-3d-background');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width, height;
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const particles = [];
+      const count = Math.min(65, Math.floor((width * height) / 22000));
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: (Math.random() - 0.5) * width * 1.5,
+          y: (Math.random() - 0.5) * height * 1.5,
+          z: Math.random() * 800 + 100,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          vz: (Math.random() - 0.5) * 0.5,
+          color: Math.random() > 0.4 ? 'rgba(59, 130, 246,' : (Math.random() > 0.5 ? 'rgba(6, 182, 212,' : 'rgba(168, 85, 247,')
+        });
+      }
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX - width / 2) * 0.05;
+        mouseY = (e.clientY - height / 2) * 0.05;
+      });
+
+      const fov = 400;
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        const cx = width / 2 + mouseX;
+        const cy = height / 2 + mouseY;
+
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i];
+          p1.x += p1.vx;
+          p1.y += p1.vy;
+          p1.z += p1.vz;
+
+          if (p1.z < 50) p1.z = 800;
+          if (p1.z > 800) p1.z = 50;
+
+          const scale = fov / (p1.z + fov);
+          p1.sx = cx + p1.x * scale;
+          p1.sy = cy + p1.y * scale;
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p1.sx - p2.sx;
+            const dy = p1.sy - p2.sy;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 110) {
+              const alpha = (1 - dist / 110) * 0.18;
+              ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(p1.sx, p1.sy);
+              ctx.lineTo(p2.sx, p2.sy);
+              ctx.stroke();
+            }
+          }
+
+          const radius = Math.max(1, 2.5 * scale);
+          ctx.fillStyle = `${p1.color} ${Math.min(0.8, scale * 1.2)})`;
+          ctx.beginPath();
+          ctx.arc(p1.sx, p1.sy, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(render);
+      }
+      render();
+    }
+
+    // 2. Interactive Hero 3D Gyroscope & Quantum Core Visualizer
+    function initHero3DVisualizer() {
+      const canvas = document.getElementById('canvas-hero-3d');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width = 0, height = 0;
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        width = canvas.width = rect.width * (window.devicePixelRatio || 1);
+        height = canvas.height = rect.height * (window.devicePixelRatio || 1);
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      let rotX = 0.35, rotY = 0.45;
+      let targetRotX = 0.35, targetRotY = 0.45;
+      let isDragging = false;
+      let lastPointerX = 0, lastPointerY = 0;
+
+      canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        lastPointerX = e.clientX;
+        lastPointerY = e.clientY;
+      });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) {
+          const rect = canvas.getBoundingClientRect();
+          if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+            const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 1.5;
+            const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 1.5;
+            targetRotY += nx * 0.02;
+            targetRotX += ny * 0.02;
+          }
+          return;
+        }
+        const dx = e.clientX - lastPointerX;
+        const dy = e.clientY - lastPointerY;
+        targetRotY += dx * 0.012;
+        targetRotX += dy * 0.012;
+        lastPointerX = e.clientX;
+        lastPointerY = e.clientY;
+      });
+
+      canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          lastPointerX = e.touches[0].clientX;
+          lastPointerY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+      window.addEventListener('touchend', () => { isDragging = false; });
+      window.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+          const dx = e.touches[0].clientX - lastPointerX;
+          const dy = e.touches[0].clientY - lastPointerY;
+          targetRotY += dx * 0.012;
+          targetRotX += dy * 0.012;
+          lastPointerX = e.touches[0].clientX;
+          lastPointerY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      const satellites = [
+        { label: 'LINKEDIN', angle: 0, speed: 0.015, color: '#38bdf8', r: 120 },
+        { label: 'GREENHOUSE', angle: 1.25, speed: 0.012, color: '#34d399', r: 105 },
+        { label: 'WORKDAY', angle: 2.5, speed: 0.018, color: '#a855f7', r: 130 },
+        { label: 'LEVER', angle: 3.75, speed: 0.014, color: '#f59e0b', r: 95 },
+        { label: 'INDEED', angle: 5.0, speed: 0.011, color: '#3b82f6', r: 115 }
+      ];
+
+      let tick = 0;
+      function draw3DScene() {
+        tick++;
+        rotX += (targetRotX - rotX) * 0.08;
+        rotY += (targetRotY - rotY) * 0.08;
+
+        if (!isDragging) {
+          targetRotY += 0.005;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        const cx = width / 2;
+        const cy = height / 2;
+        const fov = 400;
+
+        function project(x, y, z) {
+          let y1 = y * Math.cos(rotX) - z * Math.sin(rotX);
+          let z1 = y * Math.sin(rotX) + z * Math.cos(rotX);
+          let x2 = x * Math.cos(rotY) + z1 * Math.sin(rotY);
+          let z2 = -x * Math.sin(rotY) + z1 * Math.cos(rotY);
+
+          const scale = fov / (z2 + fov + 250);
+          return {
+            x: cx + x2 * scale,
+            y: cy + y1 * scale,
+            scale: scale,
+            z: z2
+          };
+        }
+
+        if (current3DMode === 'gyro') {
+          // --- MODE 1: QUANTUM GYROSCOPE CORE ---
+          ctx.strokeStyle = 'rgba(6, 182, 212, 0.45)';
+          ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
+          ctx.beginPath();
+          for (let a = 0; a <= Math.PI * 2; a += 0.1) {
+            const p = project(Math.cos(a) * 115, Math.sin(a) * 115, 0);
+            if (a === 0) ctx.moveTo(p.x, p.y);
+            else ctx.lineTo(p.x, p.y);
+          }
+          ctx.stroke();
+
+          ctx.strokeStyle = 'rgba(99, 102, 241, 0.45)';
+          ctx.beginPath();
+          for (let a = 0; a <= Math.PI * 2; a += 0.1) {
+            const p = project(Math.cos(a) * 95, 0, Math.sin(a) * 95);
+            if (a === 0) ctx.moveTo(p.x, p.y);
+            else ctx.lineTo(p.x, p.y);
+          }
+          ctx.stroke();
+
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.45)';
+          ctx.beginPath();
+          for (let a = 0; a <= Math.PI * 2; a += 0.1) {
+            const p = project(0, Math.cos(a) * 75, Math.sin(a) * 75);
+            if (a === 0) ctx.moveTo(p.x, p.y);
+            else ctx.lineTo(p.x, p.y);
+          }
+          ctx.stroke();
+
+          // Center Glowing Core
+          const coreRadius = 24 + Math.sin(tick * 0.05) * 3;
+          const cp = project(0, 0, 0);
+          const grad = ctx.createRadialGradient(cp.x, cp.y, 0, cp.x, cp.y, coreRadius * cp.scale * 2);
+          grad.addColorStop(0, 'rgba(56, 189, 248, 0.9)');
+          grad.addColorStop(0.4, 'rgba(99, 102, 241, 0.5)');
+          grad.addColorStop(1, 'rgba(6, 182, 212, 0)');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(cp.x, cp.y, coreRadius * cp.scale * 2, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Core Wireframe Polyhedron
+          const coreVerts = [
+            project(0, -coreRadius, 0),
+            project(coreRadius, 0, 0),
+            project(0, 0, coreRadius),
+            project(-coreRadius, 0, 0),
+            project(0, 0, -coreRadius),
+            project(0, coreRadius, 0)
+          ];
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+          ctx.lineWidth = 1;
+          const edges = [
+            [0,1],[0,2],[0,3],[0,4],
+            [5,1],[5,2],[5,3],[5,4],
+            [1,2],[2,3],[3,4],[4,1]
+          ];
+          edges.forEach(([i1, i2]) => {
+            ctx.beginPath();
+            ctx.moveTo(coreVerts[i1].x, coreVerts[i1].y);
+            ctx.lineTo(coreVerts[i2].x, coreVerts[i2].y);
+            ctx.stroke();
+          });
+
+          // Draw Orbiting Satellites
+          satellites.forEach(s => {
+            s.angle += s.speed;
+            const sx = Math.cos(s.angle) * s.r;
+            const sz = Math.sin(s.angle) * s.r;
+            const sy = Math.sin(s.angle * 2) * 20;
+            const p = project(sx, sy, sz);
+
+            ctx.fillStyle = s.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 4.5 * p.scale, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = s.color;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 8 * p.scale, 0, Math.PI * 2);
+            ctx.stroke();
+
+            ctx.font = `bold ${Math.max(8, 10 * p.scale)}px 'JetBrains Mono', monospace`;
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillText(s.label, p.x + 10 * p.scale, p.y + 3);
+
+            ctx.strokeStyle = `${s.color}22`;
+            ctx.beginPath();
+            ctx.moveTo(cp.x, cp.y);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+          });
+
+        } else if (current3DMode === 'mesh') {
+          // --- MODE 2: NEURAL NETWORK MESH ---
+          const nodeCount = 35;
+          const nodes = [];
+          for (let i = 0; i < nodeCount; i++) {
+            const phi = Math.acos(-1 + (2 * i) / nodeCount);
+            const theta = Math.sqrt(nodeCount * Math.PI) * phi + tick * 0.01;
+            const r = 90;
+            nodes.push(project(r * Math.cos(theta) * Math.sin(phi), r * Math.sin(theta) * Math.sin(phi), r * Math.cos(phi)));
+          }
+
+          ctx.strokeStyle = 'rgba(99, 102, 241, 0.25)';
+          ctx.lineWidth = 1;
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+              const dx = nodes[i].x - nodes[j].x;
+              const dy = nodes[i].y - nodes[j].y;
+              const d = Math.sqrt(dx * dx + dy * dy);
+              if (d < 65) {
+                ctx.beginPath();
+                ctx.moveTo(nodes[i].x, nodes[i].y);
+                ctx.lineTo(nodes[j].x, nodes[j].y);
+                ctx.stroke();
+              }
+            }
+            ctx.fillStyle = i % 3 === 0 ? '#38bdf8' : (i % 3 === 1 ? '#a855f7' : '#10b981');
+            ctx.beginPath();
+            ctx.arc(nodes[i].x, nodes[i].y, 3.5 * nodes[i].scale, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+        } else if (current3DMode === 'radar') {
+          // --- MODE 3: 3D ORBITAL RADAR GLOBE ---
+          const r = 95;
+          ctx.strokeStyle = 'rgba(16, 185, 129, 0.35)';
+          ctx.lineWidth = 1;
+
+          for (let lat = -60; lat <= 60; lat += 30) {
+            const rad = (lat * Math.PI) / 180;
+            const rLat = r * Math.cos(rad);
+            const yLat = r * Math.sin(rad);
+            ctx.beginPath();
+            for (let a = 0; a <= Math.PI * 2; a += 0.15) {
+              const p = project(rLat * Math.cos(a), yLat, rLat * Math.sin(a));
+              if (a === 0) ctx.moveTo(p.x, p.y);
+              else ctx.lineTo(p.x, p.y);
+            }
+            ctx.stroke();
+          }
+
+          for (let lon = 0; lon < 180; lon += 45) {
+            const rad = (lon * Math.PI) / 180;
+            ctx.beginPath();
+            for (let a = 0; a <= Math.PI * 2; a += 0.15) {
+              const p = project(r * Math.sin(a) * Math.cos(rad), r * Math.cos(a), r * Math.sin(a) * Math.sin(rad));
+              if (a === 0) ctx.moveTo(p.x, p.y);
+              else ctx.lineTo(p.x, p.y);
+            }
+            ctx.stroke();
+          }
+
+          const hubs = [
+            { name: 'Bangalore Hub', x: 45, y: -20, z: 75, col: '#34d399' },
+            { name: 'Kochi Hub', x: 30, y: -35, z: 80, col: '#38bdf8' },
+            { name: 'Hyderabad Hub', x: 50, y: -5, z: 70, col: '#a855f7' },
+            { name: 'Mumbai Hub', x: 20, y: 15, z: 85, col: '#f59e0b' },
+            { name: 'UAE / Dubai Hub', x: -40, y: 35, z: 70, col: '#06b6d4' }
+          ];
+
+          hubs.forEach(h => {
+            const p = project(h.x, h.y, h.z);
+            if (p.z > -20) {
+              ctx.fillStyle = h.col;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, 4.5 * p.scale, 0, Math.PI * 2);
+              ctx.fill();
+
+              ctx.font = `bold ${Math.max(8, 9 * p.scale)}px 'JetBrains Mono', monospace`;
+              ctx.fillStyle = '#ffffff';
+              ctx.fillText(h.name, p.x + 8 * p.scale, p.y + 3);
+            }
+          });
+        }
+
+        requestAnimationFrame(draw3DScene);
+      }
+      draw3DScene();
+    }
+
+    // 3. 3D Card Hover Tilt with Specular Glare
+    function init3DCardTilt() {
+      const cards = document.querySelectorAll('.card-3d');
+      cards.forEach(card => {
+        if (card._tiltInitialized) return;
+        card._tiltInitialized = true;
+
+        let glare = card.querySelector('.card-glare');
+        if (!glare) {
+          glare = document.createElement('div');
+          glare.className = 'card-glare';
+          card.appendChild(glare);
+        }
+
+        let isHovered = false;
+        let bounds = card.getBoundingClientRect();
+
+        card.addEventListener('mouseenter', () => {
+          isHovered = true;
+          bounds = card.getBoundingClientRect();
+          card.style.transition = 'transform 0.1s ease-out, box-shadow 0.2s ease';
+        });
+
+        card.addEventListener('mousemove', (e) => {
+          if (!isHovered) return;
+          const x = e.clientX - bounds.left;
+          const y = e.clientY - bounds.top;
+          const centerX = bounds.width / 2;
+          const centerY = bounds.height / 2;
+
+          const rotateX = ((centerY - y) / centerY) * 7.5;
+          const rotateY = ((x - centerX) / centerX) * 7.5;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(8px)`;
+
+          const glareX = (x / bounds.width) * 100;
+          const glareY = (y / bounds.height) * 100;
+          glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.16) 0%, transparent 60%)`;
+          glare.style.opacity = '1';
+        });
+
+        card.addEventListener('mouseleave', () => {
+          isHovered = false;
+          card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease';
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+          glare.style.opacity = '0';
+        });
+      });
+    }
   </script>
 </body>
 </html>
