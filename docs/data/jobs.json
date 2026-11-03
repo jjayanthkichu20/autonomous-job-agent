@@ -1,25 +1,234 @@
 {
   "status": "success",
-  "count": 121,
+  "count": 133,
   "jobs": [
     {
-      "id": "vj_accenture_indeed_18",
-      "title": "Talent Acquisition Coordinator",
-      "company": "Accenture",
-      "location": "Bangalore / Kerala, India",
+      "id": "top_swiggy_hr_06",
+      "title": "HR Executive - People Solutions & Compliance",
+      "company": "Swiggy",
+      "location": "Bangalore, India",
+      "is_remote": true,
+      "salary": "\u20b948,000 - \u20b965,000 / mo",
+      "match_score": 96,
+      "url": "https://careers.swiggy.com/#/jobs/hr-executive-people-solutions-blr",
+      "already_applied": false,
+      "skills": [
+        "HR Operations",
+        "Compliance",
+        "Employee Relations",
+        "Onboarding",
+        "Excel"
+      ],
+      "posted_time": "35m ago"
+    },
+    {
+      "id": "top_razorpay_po_07",
+      "title": "People Operations Partner - Employee Relations",
+      "company": "Razorpay",
+      "location": "Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b952,000 - \u20b970,000 / mo",
+      "match_score": 96,
+      "url": "https://razorpay.com/jobs/people-operations-partner-blr-2026",
+      "already_applied": false,
+      "skills": [
+        "Employee Relations",
+        "HR Operations",
+        "Onboarding & Induction",
+        "HRMS",
+        "Documentation"
+      ],
+      "posted_time": "42m ago"
+    },
+    {
+      "id": "top_zoho_ta_08",
+      "title": "Talent Acquisition Specialist",
+      "company": "Zoho Corporation",
+      "location": "Coimbatore, Tamil Nadu, India",
       "is_remote": false,
       "salary": "\u20b942,000 - \u20b958,000 / mo",
-      "match_score": 94,
-      "url": "https://www.indeed.com/viewjob?jk=accenture_tac_91829381&cmp=Accenture",
-      "already_applied": true,
+      "match_score": 96,
+      "url": "https://www.zoho.com/careers/talent-acquisition-specialist-cbe.html",
+      "already_applied": false,
+      "skills": [
+        "Talent Acquisition",
+        "Technical Sourcing",
+        "Interview Scheduling",
+        "HR Operations",
+        "Reporting"
+      ],
+      "posted_time": "50m ago"
+    },
+    {
+      "id": "top_ust_hr_09",
+      "title": "HR Executive - Employee Lifecycle & Induction",
+      "company": "UST Global",
+      "location": "Kochi / Trivandrum, Kerala",
+      "is_remote": false,
+      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "match_score": 95,
+      "url": "https://ust.wd1.myworkdayjobs.com/UST/job/Kochi/HR-Executive-Lifecycle_JR10928",
+      "already_applied": false,
+      "skills": [
+        "Onboarding & Induction",
+        "HR Operations",
+        "HRIS",
+        "Employee Documentation",
+        "Compliance"
+      ],
+      "posted_time": "1h ago"
+    },
+    {
+      "id": "top_amzn_ops_10",
+      "title": "HR Operations Coordinator - Employee Services",
+      "company": "Amazon",
+      "location": "Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b950,000 - \u20b968,000 / mo",
+      "match_score": 95,
+      "url": "https://amazon.jobs/en/jobs/2591823/hr-operations-coordinator-employee-services",
+      "already_applied": false,
+      "skills": [
+        "HR Operations",
+        "Case Management",
+        "Statutory Compliance",
+        "HRIS",
+        "Advanced Excel"
+      ],
+      "posted_time": "1h ago"
+    },
+    {
+      "id": "top_cognizant_ta_11",
+      "title": "Talent Acquisition Coordinator",
+      "company": "Cognizant",
+      "location": "Coimbatore / Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "match_score": 95,
+      "url": "https://careers.cognizant.com/global/en/job/0005918201/Talent-Acquisition-Coordinator",
+      "already_applied": false,
       "skills": [
         "Talent Acquisition",
         "Interview Scheduling",
         "ATS Management",
-        "Candidate Screening",
-        "Reporting"
+        "Background Verification",
+        "Compliance"
       ],
-      "posted_time": "4h ago"
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "top_freshworks_po_12",
+      "title": "People Operations Associate",
+      "company": "Freshworks",
+      "location": "Remote, India",
+      "is_remote": true,
+      "salary": "\u20b948,000 - \u20b965,000 / mo",
+      "match_score": 95,
+      "url": "https://www.freshworks.com/company/careers/jobs/people-operations-associate-remote-2026",
+      "already_applied": false,
+      "skills": [
+        "People Operations",
+        "HRIS",
+        "Onboarding",
+        "Compliance",
+        "Employee Engagement"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "top_trackpi_lead_01",
+      "title": "Lead HR Executive - Strategic HR & Compliance",
+      "company": "Trackpi Enterprise",
+      "location": "Kochi, Kerala / Remote",
+      "is_remote": true,
+      "salary": "\u20b950,000 - \u20b972,000 / mo",
+      "match_score": 99,
+      "url": "https://careers.trackpi.com/jobs/lead-hr-executive-compliance-2026",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Recruitment & Talent Acquisition",
+        "Statutory Compliance",
+        "Onboarding",
+        "HRIS"
+      ],
+      "posted_time": "Just now"
+    },
+    {
+      "id": "top_google_ops_02",
+      "title": "HR Executive - Talent Operations & People Experience",
+      "company": "Google",
+      "location": "Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b955,000 - \u20b975,000 / mo",
+      "match_score": 98,
+      "url": "https://careers.google.com/jobs/results/hr-executive-talent-ops-bangalore",
+      "already_applied": true,
+      "skills": [
+        "Recruitment & Talent Acquisition",
+        "HR Operations",
+        "Onboarding & Induction",
+        "HRIS",
+        "Compliance"
+      ],
+      "posted_time": "3m ago"
+    },
+    {
+      "id": "top_msft_people_03",
+      "title": "People Operations Specialist - Employee Lifecycle",
+      "company": "Microsoft",
+      "location": "Bangalore / Remote, India",
+      "is_remote": true,
+      "salary": "\u20b958,000 - \u20b978,000 / mo",
+      "match_score": 98,
+      "url": "https://careers.microsoft.com/us/en/job/people-ops-specialist-lifecycle-blr",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Onboarding & Induction",
+        "Statutory Compliance",
+        "Workday HRIS",
+        "Advanced Excel"
+      ],
+      "posted_time": "8m ago"
+    },
+    {
+      "id": "top_infy_ops_04",
+      "title": "HR Operations Associate - Talent Fulfillment",
+      "company": "Infosys",
+      "location": "Kochi, Kerala, India",
+      "is_remote": false,
+      "salary": "\u20b945,000 - \u20b962,000 / mo",
+      "match_score": 97,
+      "url": "https://career.infosys.com/jobdesc?jobId=HR_OPS_KOCHI_2026_9182",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Candidate Screening",
+        "Onboarding",
+        "HRIS",
+        "Compliance"
+      ],
+      "posted_time": "14m ago"
+    },
+    {
+      "id": "top_wipro_ta_05",
+      "title": "Talent Acquisition Specialist - Lateral Hiring",
+      "company": "Wipro",
+      "location": "Kochi / Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b946,000 - \u20b964,000 / mo",
+      "match_score": 97,
+      "url": "https://careers.wipro.com/careers-home/jobs/ta-specialist-lateral-koc-blr",
+      "already_applied": true,
+      "skills": [
+        "Recruitment & Talent Acquisition",
+        "Candidate Screening",
+        "Interview Coordination",
+        "ATS Management",
+        "Offer Rollout"
+      ],
+      "posted_time": "22m ago"
     },
     {
       "id": "vj_accenture_portal_17",
@@ -41,25 +250,6 @@
       "posted_time": "2h ago"
     },
     {
-      "id": "vj_concentrix_glassdoor_16",
-      "title": "Talent Acquisition Specialist",
-      "company": "Concentrix",
-      "location": "Bangalore / Coimbatore / Remote, India",
-      "is_remote": true,
-      "salary": "\u20b937,000 - \u20b951,000 / mo",
-      "match_score": 94,
-      "url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-concentrix-JV_IC2940587_KO0,29_KE30,40.htm?jl=1009581920",
-      "already_applied": true,
-      "skills": [
-        "Talent Acquisition",
-        "Screening",
-        "Interview Coordination",
-        "Candidate Engagement",
-        "Offer Rollout"
-      ],
-      "posted_time": "3h ago"
-    },
-    {
       "id": "vj_concentrix_portal_15",
       "title": "HR Executive - People Solutions & Onboarding",
       "company": "Concentrix",
@@ -77,25 +267,6 @@
         "Attendance Management"
       ],
       "posted_time": "1h ago"
-    },
-    {
-      "id": "vj_genpact_indeed_14",
-      "title": "Talent Sourcing & Recruitment Specialist",
-      "company": "Genpact",
-      "location": "Bangalore / Remote, India",
-      "is_remote": true,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
-      "match_score": 94,
-      "url": "https://www.indeed.com/viewjob?jk=genpact_ta_81920381&cmp=Genpact",
-      "already_applied": true,
-      "skills": [
-        "Recruitment",
-        "Talent Sourcing",
-        "Candidate Screening",
-        "Interview Scheduling",
-        "ATS Management"
-      ],
-      "posted_time": "4h ago"
     },
     {
       "id": "vj_genpact_portal_13",
@@ -193,25 +364,6 @@
       "posted_time": "1h ago"
     },
     {
-      "id": "vj_quest_glassdoor_08",
-      "title": "Talent Acquisition Specialist - Technical Sourcing",
-      "company": "Quest Global",
-      "location": "Bangalore, Karnataka, India",
-      "is_remote": false,
-      "salary": "\u20b940,000 - \u20b954,000 / mo",
-      "match_score": 94,
-      "url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-quest-global-JV_IC2940587_KO0,29_KE30,42.htm?jl=1009482103",
-      "already_applied": true,
-      "skills": [
-        "Technical Sourcing",
-        "Resume Screening",
-        "Recruitment",
-        "Stakeholder Management",
-        "HR Analytics"
-      ],
-      "posted_time": "3h ago"
-    },
-    {
       "id": "vj_quest_portal_07",
       "title": "HR Executive - Talent Acquisition & Onboarding",
       "company": "Quest Global",
@@ -229,44 +381,6 @@
         "Statutory Compliance"
       ],
       "posted_time": "1h ago"
-    },
-    {
-      "id": "vj_dell_indeed_06",
-      "title": "Talent Acquisition Coordinator",
-      "company": "Dell Technologies",
-      "location": "Bangalore / Hybrid, India",
-      "is_remote": false,
-      "salary": "\u20b942,000 - \u20b956,000 / mo",
-      "match_score": 94,
-      "url": "https://www.indeed.com/viewjob?jk=dell_tac_84719203&cmp=Dell-Technologies",
-      "already_applied": true,
-      "skills": [
-        "Talent Acquisition",
-        "Candidate Experience",
-        "Interview Scheduling",
-        "ATS Management",
-        "MIS Reporting"
-      ],
-      "posted_time": "5h ago"
-    },
-    {
-      "id": "vj_dell_portal_05",
-      "title": "HR Shared Services Specialist",
-      "company": "Dell Technologies",
-      "location": "Bangalore, Karnataka, India",
-      "is_remote": false,
-      "salary": "\u20b944,000 - \u20b960,000 / mo",
-      "match_score": 94,
-      "url": "https://jobs.dell.com/en/job/bangalore/hr-shared-services-specialist/375/59281042",
-      "already_applied": true,
-      "skills": [
-        "HR Shared Services",
-        "Employee Queries",
-        "Statutory Compliance",
-        "HRIS",
-        "Attendance Tracking"
-      ],
-      "posted_time": "2h ago"
     },
     {
       "id": "vj_hp_glassdoor_04",
@@ -306,25 +420,6 @@
         "Excel"
       ],
       "posted_time": "3h ago"
-    },
-    {
-      "id": "vj_infosys_indeed_02",
-      "title": "Talent Acquisition Specialist - Sourcing & Interview Coordination",
-      "company": "Infosys",
-      "location": "Trivandrum / Kochi, Kerala, India",
-      "is_remote": false,
-      "salary": "\u20b938,000 - \u20b952,000 / mo",
-      "match_score": 94,
-      "url": "https://www.indeed.com/viewjob?jk=inf_ta_98240219&cmp=Infosys",
-      "already_applied": true,
-      "skills": [
-        "Recruitment",
-        "Talent Acquisition",
-        "Candidate Screening",
-        "Interview Coordination",
-        "ATS Sourcing"
-      ],
-      "posted_time": "2h ago"
     },
     {
       "id": "vj_infosys_portal_01",
@@ -524,25 +619,6 @@
       "posted_time": "3h ago"
     },
     {
-      "id": "vj_ker_04",
-      "title": "HR Generalist & Talent Specialist",
-      "company": "Experion Technologies",
-      "location": "Kochi, Kerala, India",
-      "is_remote": false,
-      "salary": "\u20b934,000 - \u20b946,000 / mo",
-      "match_score": 94,
-      "url": "https://experionglobal.com/careers/kochi/hr-generalist-talent-specialist-2026",
-      "already_applied": true,
-      "skills": [
-        "Employee Relations",
-        "Recruitment",
-        "Onboarding",
-        "Documentation",
-        "HRIS"
-      ],
-      "posted_time": "4h ago"
-    },
-    {
       "id": "vj_ker_05",
       "title": "HR Executive - Recruitment & People Services",
       "company": "NeST Digital",
@@ -618,25 +694,6 @@
         "HRIS"
       ],
       "posted_time": "3h ago"
-    },
-    {
-      "id": "vj_blr_03",
-      "title": "HR Coordinator (Employee Lifecycle & Compliance)",
-      "company": "Razorpay",
-      "location": "Bangalore, Karnataka, India",
-      "is_remote": false,
-      "salary": "\u20b940,000 - \u20b952,000 / mo",
-      "match_score": 94,
-      "url": "https://razorpay.com/careers/bangalore/hr-coordinator-employee-lifecycle-2026",
-      "already_applied": true,
-      "skills": [
-        "Employee Lifecycle",
-        "Documentation",
-        "Statutory Compliance",
-        "HR Operations",
-        "Advanced Excel"
-      ],
-      "posted_time": "4h ago"
     },
     {
       "id": "vj_blr_04",
@@ -717,25 +774,6 @@
       "posted_time": "Fresh (< 12h)"
     },
     {
-      "id": "vj_02",
-      "title": "HR Generalist (Employee Lifecycle & Compliance)",
-      "company": "Quince India",
-      "location": "Bangalore, Karnataka, India",
-      "is_remote": false,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
-      "match_score": 94,
-      "url": "https://quince.com/careers/hr-generalist-bangalore",
-      "already_applied": true,
-      "skills": [
-        "Employee Relations",
-        "Documentation",
-        "PF / ESI Compliance",
-        "Payroll Inputs",
-        "Onboarding"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
       "id": "vj_03",
       "title": "Talent Acquisition & People Operations Coordinator",
       "company": "InMobi",
@@ -792,24 +830,6 @@
       "posted_time": "Fresh (< 12h)"
     },
     {
-      "id": "vj_06",
-      "title": "Talent Sourcing & HR Coordinator",
-      "company": "Freshworks",
-      "location": "Kochi / Bangalore / Remote",
-      "is_remote": true,
-      "salary": "\u20b938,000 - \u20b950,000 / mo",
-      "match_score": 94,
-      "url": "https://freshworks.com/careers/talent-sourcing-specialist",
-      "already_applied": true,
-      "skills": [
-        "Talent Sourcing",
-        "Screening",
-        "Applicant Tracking System",
-        "Candidate Experience"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
       "id": "vj_07",
       "title": "Junior HR Business Partner (Operations)",
       "company": "BrowserStack",
@@ -825,24 +845,6 @@
         "Employee Queries",
         "HR Analytics",
         "Onboarding"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
-      "id": "vj_08",
-      "title": "Recruitment & Onboarding Specialist",
-      "company": "Springworks",
-      "location": "Bangalore / Remote, India",
-      "is_remote": true,
-      "salary": "\u20b936,000 - \u20b948,000 / mo",
-      "match_score": 94,
-      "url": "https://springworks.in/careers/recruitment-onboarding-specialist",
-      "already_applied": true,
-      "skills": [
-        "Onboarding",
-        "Background Verification",
-        "Remote Work Culture",
-        "HRMS"
       ],
       "posted_time": "Fresh (< 12h)"
     },
@@ -951,24 +953,6 @@
         "Labour Law",
         "Audit Readiness",
         "Payroll Administration"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
-      "id": "vj_15",
-      "title": "Talent Acquisition Associate",
-      "company": "Meesho",
-      "location": "Bangalore, Karnataka, India",
-      "is_remote": true,
-      "salary": "\u20b940,000 - \u20b954,000 / mo",
-      "match_score": 94,
-      "url": "https://meesho.com/careers/talent-acquisition-associate",
-      "already_applied": true,
-      "skills": [
-        "Talent Acquisition",
-        "Headhunting",
-        "Interview Panels",
-        "Candidate Engagement"
       ],
       "posted_time": "Fresh (< 12h)"
     },
@@ -1100,60 +1084,6 @@
       "posted_time": "Fresh (< 12h)"
     },
     {
-      "id": "vj_23",
-      "title": "HR Generalist (E-Commerce Logistics)",
-      "company": "Noon.com",
-      "location": "Dubai / Abu Dhabi, UAE",
-      "is_remote": false,
-      "salary": "AED 6,000 - 8,500 / mo",
-      "match_score": 94,
-      "url": "https://noon.com/careers/hr-generalist-uae",
-      "already_applied": true,
-      "skills": [
-        "Shift Management",
-        "Attendance Tracking",
-        "Grievance Handling",
-        "Labour Regulations"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
-      "id": "vj_24",
-      "title": "Talent Acquisition Coordinator",
-      "company": "Majid Al Futtaim",
-      "location": "Dubai, UAE",
-      "is_remote": false,
-      "salary": "AED 5,200 - 7,500 / mo",
-      "match_score": 94,
-      "url": "https://majidalfuttaim.com/careers/ta-coordinator-dubai",
-      "already_applied": true,
-      "skills": [
-        "Talent Acquisition",
-        "Interview Scheduling",
-        "Time-to-Hire",
-        "Candidate Experience"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
-      "id": "vj_25",
-      "title": "HR Officer (Personnel & Compliance)",
-      "company": "Aster DM Healthcare",
-      "location": "Kochi, Kerala / Dubai, UAE",
-      "is_remote": true,
-      "salary": "\u20b938,000 - \u20b950,000 / mo (India) / AED 5,000 (UAE)",
-      "match_score": 94,
-      "url": "https://asterdmhealthcare.com/careers/hr-officer",
-      "already_applied": true,
-      "skills": [
-        "Personnel Records",
-        "Compliance Verification",
-        "Onboarding",
-        "Attendance Management"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
       "id": "vj_26",
       "title": "HR Executive (Retail Operations)",
       "company": "Landmark Group",
@@ -1222,42 +1152,6 @@
         "Personnel Documentation",
         "Attendance Management",
         "Audit"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
-      "id": "vj_30",
-      "title": "Talent Acquisition Coordinator",
-      "company": "UST Global",
-      "location": "Kochi / Trivandrum / Bangalore, India",
-      "is_remote": true,
-      "salary": "\u20b936,000 - \u20b948,000 / mo",
-      "match_score": 94,
-      "url": "https://ust.com/careers/talent-acquisition-coordinator",
-      "already_applied": true,
-      "skills": [
-        "SmartRecruiters ATS",
-        "Assessment Scheduling",
-        "Offer Generation",
-        "Candidate Communication"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
-      "id": "vj_31",
-      "title": "HR Generalist (People & Culture)",
-      "company": "Experion Technologies",
-      "location": "Kochi / Trivandrum, Kerala, India",
-      "is_remote": false,
-      "salary": "\u20b935,000 - \u20b946,000 / mo",
-      "match_score": 94,
-      "url": "https://experionglobal.com/careers/hr-generalist",
-      "already_applied": true,
-      "skills": [
-        "Employee Welfare",
-        "Appraisal Coordination",
-        "Statutory Logs",
-        "Onboarding"
       ],
       "posted_time": "Fresh (< 12h)"
     },
@@ -1352,24 +1246,6 @@
       "posted_time": "Fresh (< 12h)"
     },
     {
-      "id": "vj_37",
-      "title": "Talent Acquisition Coordinator (Distributed / Remote)",
-      "company": "Elastic",
-      "location": "India - Remote",
-      "is_remote": true,
-      "salary": "\u20b946,000 - \u20b964,000 / mo",
-      "match_score": 94,
-      "url": "https://elastic.co/careers/talent-acquisition-coordinator",
-      "already_applied": true,
-      "skills": [
-        "Remote Interview Scheduling",
-        "Candidate Packets",
-        "Requisition Management",
-        "Greenhouse"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
       "id": "vj_38",
       "title": "People Operations Specialist",
       "company": "Twilio",
@@ -1402,24 +1278,6 @@
         "Leave Reconciliation",
         "New Joiner Logistics",
         "HRMS"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
-      "id": "vj_40",
-      "title": "Recruiting Coordinator (APAC)",
-      "company": "Reddit",
-      "location": "Bangalore / Remote",
-      "is_remote": true,
-      "salary": "\u20b945,000 - \u20b960,000 / mo",
-      "match_score": 94,
-      "url": "https://reddit.com/careers/recruiting-coordinator-apac",
-      "already_applied": true,
-      "skills": [
-        "Interview Scheduling",
-        "Feedback Tracking",
-        "Candidate Journey",
-        "ATS Administration"
       ],
       "posted_time": "Fresh (< 12h)"
     },
@@ -1514,24 +1372,6 @@
       "posted_time": "Fresh (< 12h)"
     },
     {
-      "id": "vj_46",
-      "title": "HR Coordinator (India & APAC Hub)",
-      "company": "AppsFlyer",
-      "location": "Bangalore / Remote",
-      "is_remote": true,
-      "salary": "\u20b942,000 - \u20b956,000 / mo",
-      "match_score": 94,
-      "url": "https://appsflyer.com/jobs/hr-coordinator-apac",
-      "already_applied": true,
-      "skills": [
-        "Onboarding",
-        "Culture Rituals",
-        "Attendance Management",
-        "Personnel Files"
-      ],
-      "posted_time": "Fresh (< 12h)"
-    },
-    {
       "id": "vj_47",
       "title": "HR Executive (Operations & Payroll Support)",
       "company": "Khatabook",
@@ -1604,42 +1444,392 @@
       "posted_time": "Fresh (< 12h)"
     },
     {
-      "id": "gh_516046",
-      "title": "Director, Talent Analytics",
-      "company": "Canonical",
-      "location": "Home based - EMEA",
+      "id": "vj_accenture_indeed_18",
+      "title": "Talent Acquisition Coordinator",
+      "company": "Accenture",
+      "location": "Bangalore / Kerala, India",
       "is_remote": false,
-      "salary": "$65,000 - $85,000 / yr",
-      "match_score": 90,
-      "url": "https://job-boards.greenhouse.io/canonical/jobs/6460571",
+      "salary": "\u20b942,000 - \u20b958,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=accenture_tac_91829381&cmp=Accenture",
       "already_applied": true,
       "skills": [
-        "Recruitment",
-        "HR Operations",
-        "Onboarding",
-        "HRIS",
-        "Compliance"
+        "Talent Acquisition",
+        "Interview Scheduling",
+        "ATS Management",
+        "Candidate Screening",
+        "Reporting"
       ],
-      "posted_time": "Recently active"
+      "posted_time": "4h ago"
     },
     {
-      "id": "gh_795869",
-      "title": "Global Payroll Manager",
-      "company": "Canonical",
-      "location": "Home based - EMEA; Office Based - London, UK",
-      "is_remote": false,
-      "salary": "$65,000 - $85,000 / yr",
-      "match_score": 90,
-      "url": "https://job-boards.greenhouse.io/canonical/jobs/8081579",
+      "id": "vj_concentrix_glassdoor_16",
+      "title": "Talent Acquisition Specialist",
+      "company": "Concentrix",
+      "location": "Bangalore / Coimbatore / Remote, India",
+      "is_remote": true,
+      "salary": "\u20b937,000 - \u20b951,000 / mo",
+      "match_score": 94,
+      "url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-concentrix-JV_IC2940587_KO0,29_KE30,40.htm?jl=1009581920",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Screening",
+        "Interview Coordination",
+        "Candidate Engagement",
+        "Offer Rollout"
+      ],
+      "posted_time": "3h ago"
+    },
+    {
+      "id": "vj_genpact_indeed_14",
+      "title": "Talent Sourcing & Recruitment Specialist",
+      "company": "Genpact",
+      "location": "Bangalore / Remote, India",
+      "is_remote": true,
+      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=genpact_ta_81920381&cmp=Genpact",
       "already_applied": true,
       "skills": [
         "Recruitment",
-        "HR Operations",
-        "Onboarding",
-        "HRIS",
-        "Compliance"
+        "Talent Sourcing",
+        "Candidate Screening",
+        "Interview Scheduling",
+        "ATS Management"
       ],
-      "posted_time": "Recently active"
+      "posted_time": "4h ago"
+    },
+    {
+      "id": "vj_quest_glassdoor_08",
+      "title": "Talent Acquisition Specialist - Technical Sourcing",
+      "company": "Quest Global",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "\u20b940,000 - \u20b954,000 / mo",
+      "match_score": 94,
+      "url": "https://www.glassdoor.com/job-listing/talent-acquisition-specialist-quest-global-JV_IC2940587_KO0,29_KE30,42.htm?jl=1009482103",
+      "already_applied": true,
+      "skills": [
+        "Technical Sourcing",
+        "Resume Screening",
+        "Recruitment",
+        "Stakeholder Management",
+        "HR Analytics"
+      ],
+      "posted_time": "3h ago"
+    },
+    {
+      "id": "vj_dell_indeed_06",
+      "title": "Talent Acquisition Coordinator",
+      "company": "Dell Technologies",
+      "location": "Bangalore / Hybrid, India",
+      "is_remote": false,
+      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=dell_tac_84719203&cmp=Dell-Technologies",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Candidate Experience",
+        "Interview Scheduling",
+        "ATS Management",
+        "MIS Reporting"
+      ],
+      "posted_time": "5h ago"
+    },
+    {
+      "id": "vj_dell_portal_05",
+      "title": "HR Shared Services Specialist",
+      "company": "Dell Technologies",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "\u20b944,000 - \u20b960,000 / mo",
+      "match_score": 94,
+      "url": "https://jobs.dell.com/en/job/bangalore/hr-shared-services-specialist/375/59281042",
+      "already_applied": true,
+      "skills": [
+        "HR Shared Services",
+        "Employee Queries",
+        "Statutory Compliance",
+        "HRIS",
+        "Attendance Tracking"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "vj_infosys_indeed_02",
+      "title": "Talent Acquisition Specialist - Sourcing & Interview Coordination",
+      "company": "Infosys",
+      "location": "Trivandrum / Kochi, Kerala, India",
+      "is_remote": false,
+      "salary": "\u20b938,000 - \u20b952,000 / mo",
+      "match_score": 94,
+      "url": "https://www.indeed.com/viewjob?jk=inf_ta_98240219&cmp=Infosys",
+      "already_applied": true,
+      "skills": [
+        "Recruitment",
+        "Talent Acquisition",
+        "Candidate Screening",
+        "Interview Coordination",
+        "ATS Sourcing"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "vj_ker_04",
+      "title": "HR Generalist & Talent Specialist",
+      "company": "Experion Technologies",
+      "location": "Kochi, Kerala, India",
+      "is_remote": false,
+      "salary": "\u20b934,000 - \u20b946,000 / mo",
+      "match_score": 94,
+      "url": "https://experionglobal.com/careers/kochi/hr-generalist-talent-specialist-2026",
+      "already_applied": true,
+      "skills": [
+        "Employee Relations",
+        "Recruitment",
+        "Onboarding",
+        "Documentation",
+        "HRIS"
+      ],
+      "posted_time": "4h ago"
+    },
+    {
+      "id": "vj_blr_03",
+      "title": "HR Coordinator (Employee Lifecycle & Compliance)",
+      "company": "Razorpay",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "\u20b940,000 - \u20b952,000 / mo",
+      "match_score": 94,
+      "url": "https://razorpay.com/careers/bangalore/hr-coordinator-employee-lifecycle-2026",
+      "already_applied": true,
+      "skills": [
+        "Employee Lifecycle",
+        "Documentation",
+        "Statutory Compliance",
+        "HR Operations",
+        "Advanced Excel"
+      ],
+      "posted_time": "4h ago"
+    },
+    {
+      "id": "vj_02",
+      "title": "HR Generalist (Employee Lifecycle & Compliance)",
+      "company": "Quince India",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": false,
+      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "match_score": 94,
+      "url": "https://quince.com/careers/hr-generalist-bangalore",
+      "already_applied": true,
+      "skills": [
+        "Employee Relations",
+        "Documentation",
+        "PF / ESI Compliance",
+        "Payroll Inputs",
+        "Onboarding"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_06",
+      "title": "Talent Sourcing & HR Coordinator",
+      "company": "Freshworks",
+      "location": "Kochi / Bangalore / Remote",
+      "is_remote": true,
+      "salary": "\u20b938,000 - \u20b950,000 / mo",
+      "match_score": 94,
+      "url": "https://freshworks.com/careers/talent-sourcing-specialist",
+      "already_applied": true,
+      "skills": [
+        "Talent Sourcing",
+        "Screening",
+        "Applicant Tracking System",
+        "Candidate Experience"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_08",
+      "title": "Recruitment & Onboarding Specialist",
+      "company": "Springworks",
+      "location": "Bangalore / Remote, India",
+      "is_remote": true,
+      "salary": "\u20b936,000 - \u20b948,000 / mo",
+      "match_score": 94,
+      "url": "https://springworks.in/careers/recruitment-onboarding-specialist",
+      "already_applied": true,
+      "skills": [
+        "Onboarding",
+        "Background Verification",
+        "Remote Work Culture",
+        "HRMS"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_15",
+      "title": "Talent Acquisition Associate",
+      "company": "Meesho",
+      "location": "Bangalore, Karnataka, India",
+      "is_remote": true,
+      "salary": "\u20b940,000 - \u20b954,000 / mo",
+      "match_score": 94,
+      "url": "https://meesho.com/careers/talent-acquisition-associate",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Headhunting",
+        "Interview Panels",
+        "Candidate Engagement"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_23",
+      "title": "HR Generalist (E-Commerce Logistics)",
+      "company": "Noon.com",
+      "location": "Dubai / Abu Dhabi, UAE",
+      "is_remote": false,
+      "salary": "AED 6,000 - 8,500 / mo",
+      "match_score": 94,
+      "url": "https://noon.com/careers/hr-generalist-uae",
+      "already_applied": true,
+      "skills": [
+        "Shift Management",
+        "Attendance Tracking",
+        "Grievance Handling",
+        "Labour Regulations"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_24",
+      "title": "Talent Acquisition Coordinator",
+      "company": "Majid Al Futtaim",
+      "location": "Dubai, UAE",
+      "is_remote": false,
+      "salary": "AED 5,200 - 7,500 / mo",
+      "match_score": 94,
+      "url": "https://majidalfuttaim.com/careers/ta-coordinator-dubai",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Interview Scheduling",
+        "Time-to-Hire",
+        "Candidate Experience"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_25",
+      "title": "HR Officer (Personnel & Compliance)",
+      "company": "Aster DM Healthcare",
+      "location": "Kochi, Kerala / Dubai, UAE",
+      "is_remote": true,
+      "salary": "\u20b938,000 - \u20b950,000 / mo (India) / AED 5,000 (UAE)",
+      "match_score": 94,
+      "url": "https://asterdmhealthcare.com/careers/hr-officer",
+      "already_applied": true,
+      "skills": [
+        "Personnel Records",
+        "Compliance Verification",
+        "Onboarding",
+        "Attendance Management"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_30",
+      "title": "Talent Acquisition Coordinator",
+      "company": "UST Global",
+      "location": "Kochi / Trivandrum / Bangalore, India",
+      "is_remote": true,
+      "salary": "\u20b936,000 - \u20b948,000 / mo",
+      "match_score": 94,
+      "url": "https://ust.com/careers/talent-acquisition-coordinator",
+      "already_applied": true,
+      "skills": [
+        "SmartRecruiters ATS",
+        "Assessment Scheduling",
+        "Offer Generation",
+        "Candidate Communication"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_31",
+      "title": "HR Generalist (People & Culture)",
+      "company": "Experion Technologies",
+      "location": "Kochi / Trivandrum, Kerala, India",
+      "is_remote": false,
+      "salary": "\u20b935,000 - \u20b946,000 / mo",
+      "match_score": 94,
+      "url": "https://experionglobal.com/careers/hr-generalist",
+      "already_applied": true,
+      "skills": [
+        "Employee Welfare",
+        "Appraisal Coordination",
+        "Statutory Logs",
+        "Onboarding"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_37",
+      "title": "Talent Acquisition Coordinator (Distributed / Remote)",
+      "company": "Elastic",
+      "location": "India - Remote",
+      "is_remote": true,
+      "salary": "\u20b946,000 - \u20b964,000 / mo",
+      "match_score": 94,
+      "url": "https://elastic.co/careers/talent-acquisition-coordinator",
+      "already_applied": true,
+      "skills": [
+        "Remote Interview Scheduling",
+        "Candidate Packets",
+        "Requisition Management",
+        "Greenhouse"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_40",
+      "title": "Recruiting Coordinator (APAC)",
+      "company": "Reddit",
+      "location": "Bangalore / Remote",
+      "is_remote": true,
+      "salary": "\u20b945,000 - \u20b960,000 / mo",
+      "match_score": 94,
+      "url": "https://reddit.com/careers/recruiting-coordinator-apac",
+      "already_applied": true,
+      "skills": [
+        "Interview Scheduling",
+        "Feedback Tracking",
+        "Candidate Journey",
+        "ATS Administration"
+      ],
+      "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "vj_46",
+      "title": "HR Coordinator (India & APAC Hub)",
+      "company": "AppsFlyer",
+      "location": "Bangalore / Remote",
+      "is_remote": true,
+      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "match_score": 94,
+      "url": "https://appsflyer.com/jobs/hr-coordinator-apac",
+      "already_applied": true,
+      "skills": [
+        "Onboarding",
+        "Culture Rituals",
+        "Attendance Management",
+        "Personnel Files"
+      ],
+      "posted_time": "Fresh (< 12h)"
     },
     {
       "id": "gh_19482",
@@ -1718,6 +1908,82 @@
       "posted_time": "Recently active"
     },
     {
+      "id": "gh_645472",
+      "title": "Senior HR Generalist - EMEA",
+      "company": "Canonical",
+      "location": "Home based - EMEA",
+      "is_remote": false,
+      "salary": "$65,000 - $85,000 / yr",
+      "match_score": 94,
+      "url": "https://job-boards.greenhouse.io/canonical/jobs/6762650",
+      "already_applied": true,
+      "skills": [
+        "Recruitment",
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance"
+      ],
+      "posted_time": "Recently active"
+    },
+    {
+      "id": "gh_539479",
+      "title": "People Generalist",
+      "company": "Twilio",
+      "location": "Remote - India",
+      "is_remote": true,
+      "salary": "\u20b935,000 - \u20b955,000 / mo",
+      "match_score": 94,
+      "url": "https://job-boards.greenhouse.io/twilio/jobs/8256431",
+      "already_applied": true,
+      "skills": [
+        "Recruitment",
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance"
+      ],
+      "posted_time": "Recently active"
+    },
+    {
+      "id": "gh_516046",
+      "title": "Director, Talent Analytics",
+      "company": "Canonical",
+      "location": "Home based - EMEA",
+      "is_remote": false,
+      "salary": "$65,000 - $85,000 / yr",
+      "match_score": 90,
+      "url": "https://job-boards.greenhouse.io/canonical/jobs/6460571",
+      "already_applied": true,
+      "skills": [
+        "Recruitment",
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance"
+      ],
+      "posted_time": "Recently active"
+    },
+    {
+      "id": "gh_795869",
+      "title": "Global Payroll Manager",
+      "company": "Canonical",
+      "location": "Home based - EMEA; Office Based - London, UK",
+      "is_remote": false,
+      "salary": "$65,000 - $85,000 / yr",
+      "match_score": 90,
+      "url": "https://job-boards.greenhouse.io/canonical/jobs/8081579",
+      "already_applied": true,
+      "skills": [
+        "Recruitment",
+        "HR Operations",
+        "Onboarding",
+        "HRIS",
+        "Compliance"
+      ],
+      "posted_time": "Recently active"
+    },
+    {
       "id": "gh_311662",
       "title": "Regional HR Manager - AMER",
       "company": "Canonical",
@@ -1745,25 +2011,6 @@
       "salary": "$65,000 - $85,000 / yr",
       "match_score": 90,
       "url": "https://job-boards.greenhouse.io/canonical/jobs/6180909",
-      "already_applied": true,
-      "skills": [
-        "Recruitment",
-        "HR Operations",
-        "Onboarding",
-        "HRIS",
-        "Compliance"
-      ],
-      "posted_time": "Recently active"
-    },
-    {
-      "id": "gh_645472",
-      "title": "Senior HR Generalist - EMEA",
-      "company": "Canonical",
-      "location": "Home based - EMEA",
-      "is_remote": false,
-      "salary": "$65,000 - $85,000 / yr",
-      "match_score": 94,
-      "url": "https://job-boards.greenhouse.io/canonical/jobs/6762650",
       "already_applied": true,
       "skills": [
         "Recruitment",
@@ -2182,25 +2429,6 @@
       "salary": "$65,000 - $85,000 / yr",
       "match_score": 90,
       "url": "https://www.coinbase.com/careers/positions/8260306?gh_jid=8260306",
-      "already_applied": true,
-      "skills": [
-        "Recruitment",
-        "HR Operations",
-        "Onboarding",
-        "HRIS",
-        "Compliance"
-      ],
-      "posted_time": "Recently active"
-    },
-    {
-      "id": "gh_539479",
-      "title": "People Generalist",
-      "company": "Twilio",
-      "location": "Remote - India",
-      "is_remote": true,
-      "salary": "\u20b935,000 - \u20b955,000 / mo",
-      "match_score": 94,
-      "url": "https://job-boards.greenhouse.io/twilio/jobs/8256431",
       "already_applied": true,
       "skills": [
         "Recruitment",

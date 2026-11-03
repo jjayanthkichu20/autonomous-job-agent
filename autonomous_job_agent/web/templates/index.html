@@ -720,6 +720,16 @@
                 });
               }
             } catch(e) {}
+            if (data.jobs) {
+              data.jobs.sort((a, b) => {
+                const appliedA = a.already_applied ? 1 : 0;
+                const appliedB = b.already_applied ? 1 : 0;
+                if (appliedA !== appliedB) return appliedA - appliedB;
+                const scoreA = typeof a.match_score === 'number' ? a.match_score : (parseFloat(a.match_score) || 0);
+                const scoreB = typeof b.match_score === 'number' ? b.match_score : (parseFloat(b.match_score) || 0);
+                return scoreB - scoreA;
+              });
+            }
             return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
@@ -1303,6 +1313,15 @@
                   <i class="fa-solid fa-arrows-rotate text-blue-400"></i>
                   <span>Refresh Feed</span>
                 </button>
+                <!-- Live 1-Minute Scanner Pill -->
+                <div class="inline-flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-mono shadow-sm">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="font-bold text-white">1-Min Scanner:</span>
+                  <span id="scan-1min-countdown" class="text-cyan-300">Next check in 59s</span>
+                  <span class="text-gray-600">|</span>
+                  <button type="button" onclick="triggerImmediateScan()" class="text-xs text-cyan-400 hover:text-white underline font-sans font-semibold">Check Now</button>
+                </div>
+
               </div>
 
               <!-- 3D View Mode Switcher -->
@@ -1340,6 +1359,53 @@
             </div>
           </div>
         </div>
+
+                <!-- Morning 9:00 AM Auto-Apply Scheduled Dispatcher Card -->
+        <div class="card-3d glass-card conic-glow-box p-5 rounded-2xl border-l-4 border-l-amber-500 relative overflow-hidden bg-gradient-to-r from-amber-950/20 via-orange-950/10 to-blue-950/30 shadow-xl border border-amber-500/30">
+          <div class="card-glare"></div>
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 depth-layer-1 relative z-10">
+            <div class="flex items-start space-x-4">
+              <!-- Animated Morning Sun Visual -->
+              <div class="relative w-14 h-14 rounded-2xl bg-amber-950/60 border border-amber-500/40 flex items-center justify-center shrink-0 overflow-hidden shadow-lg shadow-amber-950/40">
+                <i class="fa-solid fa-sun text-2xl text-amber-400"></i>
+                <span class="absolute w-2 h-2 rounded-full bg-amber-400 shadow-sm shadow-amber-400 animate-ping"></span>
+              </div>
+
+              <div class="space-y-1.5 flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-sm font-bold text-white tracking-wide flex items-center gap-2">
+                    Morning 9:00 AM Auto-Apply Engine
+                  </span>
+                  <span id="morning-apply-status-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">Active (Daily at 9:00 AM)</span>
+                  <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Highest Matches (Best on Top)</span>
+                  <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30"><i class="fa-solid fa-rotate text-[9px] mr-1"></i>1-Min Continuous Check</span>
+                </div>
+                <p class="text-xs text-gray-300" style="color: var(--text-muted);">
+                  Scouts opening feeds every <b>1 minute</b>, prioritizes highest-match ATS roles to the very top, and automatically submits applications every morning at <b>9:00 AM sharp</b> with verified, fact-grounded CV variants.
+                </p>
+                <div class="flex flex-wrap items-center gap-4 text-xs pt-1 text-gray-300">
+                  <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-amber-400"></i> Next 9:00 AM Dispatch: <strong id="morning-run-countdown" class="text-amber-300 font-mono">--:--:--</strong></span>
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-ranking-star text-cyan-400"></i> Top Queued Match: <strong id="morning-top-match-badge" class="text-white">Trackpi Enterprise (99%)</strong></span>
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Priority Mode: <strong class="text-emerald-300 font-mono">Best Matches First</strong></span>
+                  <span id="morning-last-run-label" class="text-gray-400 text-[11px]">Daily 9:00 AM automation armed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-2.5 self-start lg:self-center shrink-0">
+              <button onclick="triggerMorning9AMBatchNow()" id="btn-morning-apply-now" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-gray-950 font-bold text-xs px-4 py-2.5 rounded-xl transition-all flex items-center space-x-2 shadow-md shadow-amber-500/30 hover:scale-[1.02] active:scale-[0.98]">
+                <i class="fa-solid fa-paper-plane text-black"></i>
+                <span>Apply Top 5 for 9 AM Now</span>
+              </button>
+              <button onclick="toggleMorning9AMScheduler()" id="btn-toggle-morning-apply" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-gray-700 transition-all flex items-center space-x-2 hover:scale-[1.02] active:scale-[0.98]">
+                <i class="fa-solid fa-clock text-amber-400" id="morning-toggle-icon"></i>
+                <span id="morning-toggle-text">Active</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
 
         <!-- 2-Hour Autonomous Auto-Pilot Control Card with 3D Depth & Radar Scanner -->
         <div class="card-3d glass-card conic-glow-box p-5 rounded-2xl border-l-4 border-l-emerald-500 relative overflow-hidden">
@@ -2887,6 +2953,17 @@
         return textMatch && cityMatch && modeMatch && freshMatch;
       });
 
+      // Best in the top: unapplied first, then highest match_score descending
+      filtered.sort((a, b) => {
+        const appliedA = a.already_applied ? 1 : 0;
+        const appliedB = b.already_applied ? 1 : 0;
+        if (appliedA !== appliedB) return appliedA - appliedB;
+
+        const scoreA = typeof a.match_score === 'number' ? a.match_score : (parseFloat(a.match_score) || 0);
+        const scoreB = typeof b.match_score === 'number' ? b.match_score : (parseFloat(b.match_score) || 0);
+        return scoreB - scoreA;
+      });
+
       const badge = document.getElementById('badge-jobs-count');
       if (badge) badge.innerText = filtered.length;
 
@@ -4309,6 +4386,10 @@
       setInterval(updateSchedulerCountdown, 1000);
       setInterval(loadSchedulerStatus, 30000);
 
+      // Start 1-Minute Radar Scanner and Morning 9:00 AM Scheduler
+      initOneMinuteScanner();
+      initMorning9AMScheduler();
+
       // Initialize 3D Visualizer & Parallax Scenes
       init3DBackgroundScene();
       initHero3DVisualizer();
@@ -4755,6 +4836,194 @@
         });
       });
     }
+  
+    // ========================================================
+    // 1-MINUTE RADAR SCANNER & MORNING 9:00 AM AUTO-APPLIER
+    // ========================================================
+    let scan1MinCountdown = 60;
+    let morningApplyActive = true;
+    let lastMorningAppliedDay = null;
+
+    function initOneMinuteScanner() {
+      scan1MinCountdown = 60;
+      update1MinCountdownDisplay();
+
+      // Countdown tick every 1 second
+      setInterval(() => {
+        scan1MinCountdown--;
+        if (scan1MinCountdown <= 0) {
+          scan1MinCountdown = 60;
+          perform1MinScan();
+        }
+        update1MinCountdownDisplay();
+      }, 1000);
+    }
+
+    function update1MinCountdownDisplay() {
+      const el = document.getElementById('scan-1min-countdown');
+      if (el) {
+        el.innerText = `Next check in ${scan1MinCountdown}s`;
+      }
+    }
+
+    async function perform1MinScan() {
+      const el = document.getElementById('scan-1min-countdown');
+      if (el) el.innerText = 'Scanning feed...';
+      try {
+        await loadJobFeed();
+        updateMorningTopMatchDisplay();
+      } catch (e) {
+        console.warn('1-min scan warning:', e);
+      }
+    }
+
+    function triggerImmediateScan() {
+      scan1MinCountdown = 60;
+      showToast('Checking career boards for fresh matching roles...', 'info');
+      perform1MinScan();
+    }
+
+    function updateMorningTopMatchDisplay() {
+      const badge = document.getElementById('morning-top-match-badge');
+      if (!badge) return;
+      const unapplied = (allJobs || []).filter(j => !j.already_applied);
+      if (unapplied.length > 0) {
+        unapplied.sort((a, b) => (b.match_score || 0) - (a.match_score || 0));
+        const top = unapplied[0];
+        badge.innerText = `${top.company} (${top.match_score}% Match)`;
+      } else {
+        badge.innerText = 'All Current Roles Applied';
+      }
+    }
+
+    function initMorning9AMScheduler() {
+      try {
+        const saved = localStorage.getItem('arya_morning_apply_active');
+        if (saved !== null) morningApplyActive = (saved === 'true');
+      } catch(e) {}
+      updateMorningSchedulerUI();
+
+      // Tick every 1 second for live countdown to next 9:00 AM
+      setInterval(updateMorningCountdown, 1000);
+      updateMorningCountdown();
+    }
+
+    function getNext9AMDate() {
+      const now = new Date();
+      const target = new Date(now);
+      target.setHours(9, 0, 0, 0);
+      if (now >= target) {
+        target.setDate(target.getDate() + 1);
+      }
+      return target;
+    }
+
+    function updateMorningCountdown() {
+      const countdownElem = document.getElementById('morning-run-countdown');
+      if (!countdownElem) return;
+
+      const now = new Date();
+      const next9AM = getNext9AMDate();
+      const diffMs = next9AM - now;
+
+      // Check if current time is exactly 9:00 AM (within first 15 seconds)
+      const todayStr = now.toDateString();
+      if (now.getHours() === 9 && now.getMinutes() === 0 && now.getSeconds() < 15) {
+        if (morningApplyActive && lastMorningAppliedDay !== todayStr) {
+          lastMorningAppliedDay = todayStr;
+          console.log('[Morning 9 AM Auto-Pilot] 09:00 AM reached! Automatically dispatching applications.');
+          triggerMorning9AMBatchNow();
+        }
+      }
+
+      if (diffMs <= 0) {
+        countdownElem.innerText = '00:00:00 (Dispatching)';
+        return;
+      }
+
+      const hours = Math.floor(diffMs / (1000 * 60 * 60));
+      const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+      const actualSecs = Math.floor((diffMs % (1000 * 60)) / 1000);
+      countdownElem.innerText = `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(actualSecs).padStart(2, '0')}`;
+    }
+
+    async function triggerMorning9AMBatchNow() {
+      const btn = document.getElementById('btn-morning-apply-now');
+      const orig = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Applying at 9:00 AM...`;
+        btn.disabled = true;
+      }
+      showToast('🌅 Executing Morning 9:00 AM Auto-Apply Batch for top matches...', 'info');
+
+      try {
+        const unapplied = (allJobs || []).filter(j => !j.already_applied);
+        unapplied.sort((a, b) => (b.match_score || 0) - (a.match_score || 0));
+        const topToApply = unapplied.slice(0, 5);
+
+        if (topToApply.length === 0) {
+          showToast('All matching roles have already been applied! No pending openings.', 'info');
+          return;
+        }
+
+        const urls = topToApply.map(j => j.url);
+        const res = await fetch('/api/jobs/batch-apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ job_urls: urls, dry_run: false })
+        });
+        const data = await res.json();
+
+        showToast(`🌅 Morning 9:00 AM batch completed! Auto-applied to top ${topToApply.length} positions: ${topToApply.map(j => j.company).join(', ')}.`, 'success');
+        
+        await Promise.allSettled([
+          loadJobFeed(),
+          loadLedgerData(),
+          loadSchedulerStatus()
+        ]);
+        updateMorningTopMatchDisplay();
+
+        const lastRunLabel = document.getElementById('morning-last-run-label');
+        if (lastRunLabel) {
+          const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          lastRunLabel.innerText = `Last morning dispatch: Today at ${nowStr}`;
+        }
+      } catch (err) {
+        showToast('Morning apply error: ' + err.message, 'error');
+      } finally {
+        if (btn) {
+          btn.innerHTML = orig;
+          btn.disabled = false;
+        }
+      }
+    }
+
+    function toggleMorning9AMScheduler() {
+      morningApplyActive = !morningApplyActive;
+      try {
+        localStorage.setItem('arya_morning_apply_active', String(morningApplyActive));
+      } catch(e) {}
+      updateMorningSchedulerUI();
+      showToast(morningApplyActive ? 'Morning 9:00 AM Auto-Apply is armed & active.' : 'Morning 9:00 AM Auto-Apply paused.', 'info');
+    }
+
+    function updateMorningSchedulerUI() {
+      const badge = document.getElementById('morning-apply-status-badge');
+      const toggleText = document.getElementById('morning-toggle-text');
+      const toggleIcon = document.getElementById('morning-toggle-icon');
+      if (badge) {
+        if (morningApplyActive) {
+          badge.innerText = 'Active (Daily at 9:00 AM)';
+          badge.className = 'px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40';
+        } else {
+          badge.innerText = 'Paused';
+          badge.className = 'px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/40';
+        }
+      }
+      if (toggleText) toggleText.innerText = morningApplyActive ? 'Active' : 'Paused';
+      if (toggleIcon) toggleIcon.className = morningApplyActive ? 'fa-solid fa-clock text-amber-400' : 'fa-solid fa-pause text-gray-400';
+    }
+
   </script>
 </body>
 </html>

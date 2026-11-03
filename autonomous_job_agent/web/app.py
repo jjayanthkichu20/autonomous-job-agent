@@ -503,6 +503,9 @@ def get_jobs_feed(role: Optional[str] = None):
             seen_urls.add(j["url"])
             all_jobs.append(j)
 
+    # Sort best on top: unapplied first, then highest match_score descending
+    all_jobs.sort(key=lambda x: (not x.get("already_applied", False), x.get("match_score", 0)), reverse=True)
+
     return {
         "status": "success",
         "count": len(all_jobs),
@@ -979,3 +982,22 @@ def gdpr_purge():
 
 if __name__ == "__main__":
     uvicorn.run("autonomous_job_agent.web.app:app", host="0.0.0.0", port=8000, reload=False)
+
+
+@app.post("/api/scheduler/morning-9am-apply")
+async def trigger_morning_9am_apply():
+    """Triggers morning 9:00 AM priority application batch for top matches."""
+    import subprocess
+    try:
+        script = BASE_DIR / "morning_9am_apply.py"
+        res = subprocess.run(["python", str(script), "--batch=5"], capture_output=True, text=True, check=True)
+        return {
+            "status": "success",
+            "message": "Morning 9:00 AM application run executed successfully!",
+            "details": res.stdout[-400:]
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": f"Failed morning run: {str(e)}"
+        }
