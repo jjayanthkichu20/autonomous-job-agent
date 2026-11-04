@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 
 from autonomous_job_agent.core.config import config
 from autonomous_job_agent.core.ledger import ledger
+from autonomous_job_agent.core.supabase_db import supabase_db
 from autonomous_job_agent.core.models import CandidateMasterProfile, JobPosting
 from autonomous_job_agent.orchestration.pipeline import AutonomousJobApplicationPipeline
 from autonomous_job_agent.mock_ats.server import MockATSServer
@@ -1001,3 +1002,41 @@ async def trigger_morning_9am_apply():
             "status": "error",
             "message": f"Failed morning run: {str(e)}"
         }
+
+
+# ========================================================
+# SUPABASE CLOUD DATABASE API ENDPOINTS
+# ========================================================
+class SupabaseConfigRequest(BaseModel):
+    url: str
+    key: str
+
+@app.get("/api/supabase/config")
+def get_supabase_config():
+    """Returns current Supabase connection status."""
+    return {
+        "is_configured": supabase_db.is_configured(),
+        "url": supabase_db.url or "",
+        "has_key": bool(supabase_db.key)
+    }
+
+@app.post("/api/supabase/config")
+def set_supabase_config(req: SupabaseConfigRequest):
+    """Saves Supabase credentials and tests connection."""
+    supabase_db.save_config(req.url, req.key)
+    test = supabase_db.test_connection()
+    return {
+        "status": "success" if test.get("connected") else "warning",
+        "connected": test.get("connected", False),
+        "message": test.get("message") or test.get("error")
+    }
+
+@app.post("/api/supabase/test")
+def test_supabase_connection():
+    """Verifies connectivity to configured Supabase database."""
+    return supabase_db.test_connection()
+
+@app.post("/api/supabase/sync")
+def sync_supabase_data():
+    """Synchronizes all local candidate data, active jobs, and applications to Supabase."""
+    return supabase_db.sync_all_local_data()
