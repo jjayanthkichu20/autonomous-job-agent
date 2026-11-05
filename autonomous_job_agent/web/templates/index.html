@@ -5098,7 +5098,7 @@
 
     function getSupabaseConfig() {
       const url = localStorage.getItem('arya_supabase_url') || (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.url) || 'https://gggdzurflxsocjfhsunn.supabase.co';
-      const key = localStorage.getItem('arya_supabase_key') || (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.key) || '';
+      const key = localStorage.getItem('arya_supabase_key') || (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.key) || 'sb_publishable_PQY6mTa1SkJ614aw4MTUlw_DkZj-j6P';
       return { url: url.trim(), key: key.trim() };
     }
 
@@ -5425,7 +5425,7 @@
           <label for="input-supabase-key" class="block text-xs font-semibold text-gray-300 mb-1">
             Supabase Anon / Public API Key <span class="text-emerald-400">*</span>
           </label>
-          <input type="password" id="input-supabase-key" placeholder="eyJhbGciOi..." class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white font-mono">
+          <input type="password" id="input-supabase-key" value="sb_publishable_PQY6mTa1SkJ614aw4MTUlw_DkZj-j6P" placeholder="eyJhbGciOi..." class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white font-mono">
         </div>
 
         <div id="supabase-live-telemetry" class="p-3 rounded-xl bg-gray-900/70 border border-gray-800 text-xs text-gray-300 space-y-1">

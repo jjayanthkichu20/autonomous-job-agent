@@ -7,3 +7,5 @@ __pycache__/
 .env
 storage/artifacts/job_*
 node_modules/
+storage/supabase_config.json
+storage/monitor_state.json
