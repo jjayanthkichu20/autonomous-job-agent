@@ -5097,7 +5097,7 @@
     let isSupabaseRealtimeActive = false;
 
     function getSupabaseConfig() {
-      const url = localStorage.getItem('arya_supabase_url') || (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.url) || '';
+      const url = localStorage.getItem('arya_supabase_url') || (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.url) || 'https://gggdzurflxsocjfhsunn.supabase.co';
       const key = localStorage.getItem('arya_supabase_key') || (window.SUPABASE_CONFIG && window.SUPABASE_CONFIG.key) || '';
       return { url: url.trim(), key: key.trim() };
     }
@@ -5418,7 +5418,7 @@
           <label for="input-supabase-url" class="block text-xs font-semibold text-gray-300 mb-1">
             Supabase Project URL <span class="text-emerald-400">*</span>
           </label>
-          <input type="text" id="input-supabase-url" placeholder="https://your-project-id.supabase.co" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white font-mono">
+          <input type="text" id="input-supabase-url" value="https://gggdzurflxsocjfhsunn.supabase.co" placeholder="https://gggdzurflxsocjfhsunn.supabase.co" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white font-mono">
         </div>
 
         <div>
