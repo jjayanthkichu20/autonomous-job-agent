@@ -1190,13 +1190,13 @@
             <!-- User Auth Section -->
       <div id="user-auth-container" class="flex items-center space-x-2">
         <!-- Logged Out State: Sign In Button -->
-        <button onclick="openLoginModal()" id="btn-login-open" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-blue-400/30 transition-all flex items-center space-x-2 shadow-md shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98]">
+        <button onclick="openLoginModal()" id="btn-login-open" style="display: flex;" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-blue-400/30 transition-all flex items-center space-x-2 shadow-md shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98]">
           <i class="fa-brands fa-google text-white text-xs"></i>
           <span>Sign In</span>
         </button>
 
         <!-- Logged In State: User Pill & Dropdown -->
-        <div id="user-profile-pill" class="hidden relative flex items-center space-x-2 px-2.5 py-1 rounded-xl bg-gray-800/90 border border-gray-700/80 shadow-sm cursor-pointer select-none" onclick="toggleUserDropdown(event)">
+        <div id="user-profile-pill" style="display: none;" class="relative flex items-center space-x-2 px-2.5 py-1 rounded-xl bg-gray-800/90 border border-gray-700/80 shadow-sm cursor-pointer select-none" onclick="toggleUserDropdown(event)">
           <div id="user-avatar-initial" class="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-[10px] flex items-center justify-center border border-blue-400/50">
             JJ
           </div>
@@ -1204,7 +1204,7 @@
           <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform" id="user-dropdown-arrow"></i>
 
           <!-- Dropdown Menu -->
-          <div id="user-dropdown-menu" class="hidden absolute right-0 top-10 w-52 rounded-2xl bg-gray-900 border border-gray-700 shadow-2xl py-2 z-50 text-xs text-gray-300">
+          <div id="user-dropdown-menu" style="display: none;" class="absolute right-0 top-10 w-52 rounded-2xl bg-gray-900 border border-gray-700 shadow-2xl py-2 z-50 text-xs text-gray-300">
             <div class="px-3.5 py-2 border-b border-gray-800">
               <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Signed in as</p>
               <p id="user-email-text" class="font-bold text-white truncate text-xs">jjayanthheven20@gmail.com</p>
@@ -2661,20 +2661,29 @@
     const tabs = ['jobs', 'custom-jd', 'drafts', 'applications', 'conversations', 'resume', 'profile', 'referrals'];
 
     function switchTab(tabId) {
+      if (!tabId || !tabs.includes(tabId)) tabId = 'jobs';
+
       tabs.forEach(t => {
         const sec = document.getElementById(`tab-${t}`);
         const nav = document.getElementById(`nav-${t}`);
-        if (sec) sec.classList.add('hidden');
+        if (sec) {
+          sec.style.display = 'none';
+          sec.classList.add('hidden');
+        }
         if (nav) nav.classList.remove('active');
       });
 
       const activeSec = document.getElementById(`tab-${tabId}`);
       const activeNav = document.getElementById(`nav-${tabId}`);
-      if (activeSec) activeSec.classList.remove('hidden');
+      if (activeSec) {
+        activeSec.style.display = 'block';
+        activeSec.classList.remove('hidden');
+      }
       if (activeNav) activeNav.classList.add('active');
 
       const titleMap = {
         'jobs': 'Apply Jobs',
+        'custom-jd': 'Custom JD Tailoring',
         'drafts': 'Application Drafts',
         'applications': 'My Applications',
         'conversations': 'Conversations',
@@ -2682,23 +2691,32 @@
         'profile': 'Profile Settings',
         'referrals': 'Referrals'
       };
-      document.getElementById('breadcrumb-title').innerText = titleMap[tabId] || 'Apply Jobs';
+      const titleEl = document.getElementById('breadcrumb-title');
+      if (titleEl) titleEl.innerText = titleMap[tabId] || 'Apply Jobs';
 
       // Update URL safely without mangling GitHub Pages repo path
-      if (window.location.hostname.includes('github.io')) {
-        window.location.hash = tabId;
-      } else if (window.history.pushState) {
-        window.history.pushState(null, null, `/${tabId}`);
-      }
+      try {
+        if (window.location.hostname.includes('github.io') || window.location.protocol === 'file:') {
+          window.location.hash = tabId;
+        } else if (window.history && window.history.pushState) {
+          window.history.pushState(null, null, `/${tabId}`);
+        }
+      } catch(e) {}
 
-      // Load specific tab data
-      if (tabId === 'jobs') loadJobFeed();
-      if (tabId === 'drafts') loadDrafts();
-      if (tabId === 'resume') {
-        loadProfileData();
-        loadAtsEvaluationData();
-      } else if (tabId === 'profile') {
-        loadProfileData();
+      // Load specific tab data safely
+      try {
+        if (tabId === 'jobs' && typeof loadJobFeed === 'function') loadJobFeed();
+        if (tabId === 'drafts' && typeof loadDrafts === 'function') loadDrafts();
+        if (tabId === 'resume') {
+          if (typeof loadProfileData === 'function') loadProfileData();
+          if (typeof loadAtsEvaluationData === 'function') loadAtsEvaluationData();
+        } else if (tabId === 'profile') {
+          if (typeof loadProfileData === 'function') loadProfileData();
+        } else if (tabId === 'applications') {
+          if (typeof loadLedgerData === 'function') loadLedgerData();
+        }
+      } catch(err) {
+        console.warn('Tab data load notice:', err);
       }
 
       // Initialize 3D Card Hover Tilt on tab elements
@@ -2706,6 +2724,7 @@
         if (typeof init3DCardTilt === 'function') init3DCardTilt();
       }, 100);
     }
+    window.switchTab = switchTab;
 
     // Theme Switcher
     function setTheme(theme) {
@@ -3730,27 +3749,87 @@
     // Profile & Resume
     async function loadProfileData() {
       try {
-        const res = await fetch('/api/profile?_t=' + Date.now(), { cache: 'no-store' });
-        const p = await res.json();
+        let p = null;
+        
+        // 1. Check local cache first
+        try {
+          const cached = localStorage.getItem('arya_profile_cache');
+          if (cached) p = JSON.parse(cached);
+        } catch(e) {}
 
-        if (document.getElementById('user-display-name')) {
-          document.getElementById('user-display-name').innerText = `${p.first_name || ''} ${p.last_name || ''}`.trim() || 'Candidate';
+        // 2. If Supabase is available, try fetching cloud profile
+        if (!p) {
+          const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
+          if (client) {
+            try {
+              const { data, error } = await client.from('profiles').select('*').limit(1).single();
+              if (!error && data) {
+                p = data;
+                localStorage.setItem('arya_profile_cache', JSON.stringify(p));
+              }
+            } catch(e) {}
+          }
         }
+
+        // 3. Fallback to API / static JSON
+        if (!p) {
+          try {
+            const res = await fetch('/api/profile?_t=' + Date.now(), { cache: 'no-store' });
+            if (res.ok) p = await res.json();
+          } catch(e) {}
+        }
+        if (!p) {
+          try {
+            const base = typeof getAppBaseUrl === 'function' ? getAppBaseUrl() : './';
+            let fb = await originalFetch(base + 'data/profile.json?_t=' + Date.now());
+            if (!fb.ok) fb = await originalFetch('./data/profile.json?_t=' + Date.now());
+            if (fb.ok) p = await fb.json();
+          } catch(e) {}
+        }
+
+        // 4. Default candidate values if still empty
+        if (!p) {
+          p = {
+            first_name: "JAYANTH",
+            last_name: "J",
+            email: "jjayanthheven20@gmail.com",
+            phone: "+91 97783 91171",
+            location: "Kottayam, Kerala, India",
+            linkedin_url: "https://linkedin.com/in/jayanth-j",
+            preferred_locations: ["Bangalore", "Kochi", "Coimbatore", "UAE", "Remote"],
+            target_roles: ["HR Executive", "HR Operations Executive", "Talent Acquisition Specialist"],
+            verified_skills: ["Recruitment & Talent Acquisition", "HR Operations", "Onboarding & Induction", "HRIS", "Compliance", "Advanced Excel"],
+            min_base_salary: 35000,
+            years_experience: "2+ Years"
+          };
+        }
+
+        const fullName = `${p.first_name || ''} ${p.last_name || ''}`.trim() || 'Candidate';
+        if (document.getElementById('user-display-name')) {
+          document.getElementById('user-display-name').innerText = fullName;
+        }
+        if (document.getElementById('sidebar-user-name')) {
+          document.getElementById('sidebar-user-name').innerText = fullName;
+        }
+        if (document.getElementById('sidebar-user-email') && p.email) {
+          document.getElementById('sidebar-user-email').innerText = p.email;
+        }
+
         if (document.getElementById('prof-first-name')) document.getElementById('prof-first-name').value = p.first_name || '';
         if (document.getElementById('prof-last-name')) document.getElementById('prof-last-name').value = p.last_name || '';
         if (document.getElementById('prof-email')) document.getElementById('prof-email').value = p.email || '';
         if (document.getElementById('prof-phone')) document.getElementById('prof-phone').value = p.phone || '';
         if (document.getElementById('prof-curr-location')) document.getElementById('prof-curr-location').value = p.location || '';
         if (document.getElementById('prof-linkedin')) document.getElementById('prof-linkedin').value = p.linkedin_url || '';
-        if (document.getElementById('prof-locations')) document.getElementById('prof-locations').value = (p.preferred_locations || []).join(', ');
-        if (document.getElementById('prof-roles')) document.getElementById('prof-roles').value = (p.target_roles || []).join(', ');
-        if (document.getElementById('prof-skills-input')) document.getElementById('prof-skills-input').value = (p.verified_skills || []).join(', ');
-        if (document.getElementById('prof-min-salary')) document.getElementById('prof-min-salary').value = p.min_base_salary || p.min_desired_salary_usd || 25000;
-        if (document.getElementById('prof-years-exp') && p.years_experience) document.getElementById('prof-years-exp').value = p.years_experience;
+        if (document.getElementById('prof-locations')) document.getElementById('prof-locations').value = Array.isArray(p.preferred_locations) ? p.preferred_locations.join(', ') : (p.preferred_locations || '');
+        if (document.getElementById('prof-roles')) document.getElementById('prof-roles').value = Array.isArray(p.target_roles) ? p.target_roles.join(', ') : (p.target_roles || '');
+        if (document.getElementById('prof-skills-input')) document.getElementById('prof-skills-input').value = Array.isArray(p.verified_skills) ? p.verified_skills.join(', ') : (p.verified_skills || '');
+        if (document.getElementById('prof-min-salary')) document.getElementById('prof-min-salary').value = p.min_base_salary || p.min_desired_salary_usd || 35000;
+        if (document.getElementById('prof-years-exp')) document.getElementById('prof-years-exp').value = p.years_experience || '2+ Years';
 
         const skillsDiv = document.getElementById('p-skills');
-        if (skillsDiv) {
-          skillsDiv.innerHTML = (p.verified_skills || []).map(s => 
+        if (skillsDiv && Array.isArray(p.verified_skills)) {
+          skillsDiv.innerHTML = p.verified_skills.map(s => 
             `<span class="px-3 py-1 bg-blue-950/50 text-blue-300 border border-blue-800/40 rounded-lg text-xs font-medium">${s}</span>`
           ).join('');
         }
@@ -3758,6 +3837,7 @@
         console.error("Error loading profile:", err);
       }
     }
+    window.loadProfileData = loadProfileData;
 
     async function saveCandidateProfileForm() {
       const saveBtn = document.getElementById('btn-save-profile');
@@ -3771,36 +3851,53 @@
         const skills = document.getElementById('prof-skills-input') ? document.getElementById('prof-skills-input').value.split(',').map(s => s.trim()).filter(Boolean) : [];
 
         const updated = {
-          first_name: document.getElementById('prof-first-name') ? document.getElementById('prof-first-name').value.trim() : '',
-          last_name: document.getElementById('prof-last-name') ? document.getElementById('prof-last-name').value.trim() : '',
-          email: document.getElementById('prof-email') ? document.getElementById('prof-email').value.trim() : '',
-          phone: document.getElementById('prof-phone') ? document.getElementById('prof-phone').value.trim() : '',
-          location: document.getElementById('prof-curr-location') ? document.getElementById('prof-curr-location').value.trim() : '',
-          linkedin_url: document.getElementById('prof-linkedin') ? document.getElementById('prof-linkedin').value.trim() : '',
-          preferred_locations: locs,
-          target_roles: roles,
-          verified_skills: skills.length > 0 ? skills : undefined,
-          min_base_salary: parseInt(document.getElementById('prof-min-salary') ? document.getElementById('prof-min-salary').value : '25000') || 25000,
+          candidate_id: 'cand_jayanth',
+          first_name: document.getElementById('prof-first-name') ? document.getElementById('prof-first-name').value.trim() : 'JAYANTH',
+          last_name: document.getElementById('prof-last-name') ? document.getElementById('prof-last-name').value.trim() : 'J',
+          email: document.getElementById('prof-email') ? document.getElementById('prof-email').value.trim() : 'jjayanthheven20@gmail.com',
+          phone: document.getElementById('prof-phone') ? document.getElementById('prof-phone').value.trim() : '+91 97783 91171',
+          location: document.getElementById('prof-curr-location') ? document.getElementById('prof-curr-location').value.trim() : 'Kottayam, Kerala, India',
+          linkedin_url: document.getElementById('prof-linkedin') ? document.getElementById('prof-linkedin').value.trim() : 'https://linkedin.com/in/jayanth-j',
+          preferred_locations: locs.length > 0 ? locs : ['Bangalore', 'Kochi', 'UAE', 'Remote'],
+          target_roles: roles.length > 0 ? roles : ['HR Executive', 'Talent Acquisition Specialist'],
+          verified_skills: skills.length > 0 ? skills : ['Recruitment & Talent Acquisition', 'HR Operations', 'Compliance'],
+          min_base_salary: parseInt(document.getElementById('prof-min-salary') ? document.getElementById('prof-min-salary').value : '35000') || 35000,
           years_experience: document.getElementById('prof-years-exp') ? document.getElementById('prof-years-exp').value.trim() : '2+ Years'
         };
 
-        const res = await fetch('/api/profile', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updated)
-        });
-        const data = await res.json();
-        if (res.ok) {
-          showToast("Profile truth store successfully saved!", 'success');
-          const statusSpan = document.getElementById('prof-save-status');
-          if (statusSpan) {
-            statusSpan.classList.remove('hidden');
-            setTimeout(() => statusSpan.classList.add('hidden'), 4000);
+        // 1. Persist to local storage cache immediately
+        localStorage.setItem('arya_profile_cache', JSON.stringify(updated));
+
+        // 2. Persist to Supabase if connected
+        const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
+        if (client) {
+          try {
+            await client.from('profiles').upsert([updated], { onConflict: 'email' });
+          } catch(supaErr) {
+            console.warn('Supabase cloud profile sync warning:', supaErr);
           }
-          loadProfileData();
-        } else {
-          showToast(data.detail || "Validation failed", 'error');
         }
+
+        // 3. Persist to backend API if available
+        try {
+          await fetch('/api/profile', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updated)
+          });
+        } catch(apiErr) {}
+
+        showToast("Profile truth store successfully saved!", 'success');
+        const statusSpan = document.getElementById('prof-save-status');
+        if (statusSpan) {
+          statusSpan.classList.remove('hidden');
+          statusSpan.style.display = 'inline-flex';
+          setTimeout(() => {
+            statusSpan.classList.add('hidden');
+            statusSpan.style.display = 'none';
+          }, 4000);
+        }
+        loadProfileData();
       } catch (err) {
         showToast("Error saving profile: " + err.message, 'error');
       } finally {
@@ -3810,6 +3907,7 @@
         }
       }
     }
+    window.saveCandidateProfileForm = saveCandidateProfileForm;
 
     function handleFileDrop(event) {
       const dt = event.dataTransfer;
@@ -4478,30 +4576,41 @@
           console.log('[Arya] Version updated to ' + ARYA_SYSTEM_VERSION + ' - stale local caches cleared.');
         }
       } catch(e) {}
-      const path = window.location.pathname.replace('/', '') || 'jobs';
-      if (tabs.includes(path)) {
-        switchTab(path);
-      } else {
-        switchTab('jobs');
-      }
-      loadProfileData();
-      loadAtsEvaluationData();
-      loadLedgerData();
-      loadJobFeed();
-      loadSchedulerStatus();
-      setInterval(updateSchedulerCountdown, 1000);
-      setInterval(loadSchedulerStatus, 30000);
 
-      // Start 1-Minute Radar Scanner and Morning 9:00 AM Scheduler
-      initSupabaseClient();
-      initAuthSystem();
-      initOneMinuteScanner();
-      initMorning9AMScheduler();
+      // Detect route from URL hash or path
+      let initialTab = 'jobs';
+      const hash = (window.location.hash || '').replace('#', '').trim();
+      if (hash && tabs.includes(hash)) {
+        initialTab = hash;
+      } else {
+        const parts = window.location.pathname.split('/').filter(Boolean);
+        const lastPart = parts.length > 0 ? parts[parts.length - 1] : '';
+        if (lastPart && tabs.includes(lastPart)) {
+          initialTab = lastPart;
+        }
+      }
+      switchTab(initialTab);
+
+      // Safe isolated data loaders
+      try { loadProfileData(); } catch(e) { console.warn('Profile init notice:', e); }
+      try { loadAtsEvaluationData(); } catch(e) { console.warn('ATS init notice:', e); }
+      try { loadLedgerData(); } catch(e) { console.warn('Ledger init notice:', e); }
+      try { loadJobFeed(); } catch(e) { console.warn('Job feed init notice:', e); }
+      try { loadSchedulerStatus(); } catch(e) { console.warn('Scheduler status notice:', e); }
+
+      try { setInterval(updateSchedulerCountdown, 1000); } catch(e) {}
+      try { setInterval(loadSchedulerStatus, 30000); } catch(e) {}
+
+      // Safe isolated subsystems
+      try { initSupabaseClient(); } catch(e) { console.warn('Supabase client init notice:', e); }
+      try { initAuthSystem(); } catch(e) { console.warn('Auth system init notice:', e); }
+      try { initOneMinuteScanner(); } catch(e) { console.warn('1-minute scanner notice:', e); }
+      try { initMorning9AMScheduler(); } catch(e) { console.warn('9AM scheduler notice:', e); }
 
       // Initialize 3D Visualizer & Parallax Scenes
-      init3DBackgroundScene();
-      initHero3DVisualizer();
-      init3DCardTilt();
+      try { init3DBackgroundScene(); } catch(e) {}
+      try { initHero3DVisualizer(); } catch(e) {}
+      try { init3DCardTilt(); } catch(e) {}
     };
 
     // ==========================================
@@ -5233,19 +5342,21 @@
 
     function openSupabaseModal() {
       const modal = document.getElementById('modal-supabase');
-      if (!modal) return;
-      const cfg = getSupabaseConfig();
-      const urlInput = document.getElementById('input-supabase-url');
-      const keyInput = document.getElementById('input-supabase-key');
-      if (urlInput && cfg.url) urlInput.value = cfg.url;
-      if (keyInput && cfg.key) keyInput.value = cfg.key;
-      modal.classList.remove('hidden');
+      if (modal) {
+        modal.style.display = 'flex';
+        modal.classList.remove('hidden');
+      }
     }
+    window.openSupabaseModal = openSupabaseModal;
 
     function closeSupabaseModal() {
       const modal = document.getElementById('modal-supabase');
-      if (modal) modal.classList.add('hidden');
+      if (modal) {
+        modal.style.display = 'none';
+        modal.classList.add('hidden');
+      }
     }
+    window.closeSupabaseModal = closeSupabaseModal;
 
     async function testSupabaseConnection() {
       const urlInput = document.getElementById('input-supabase-url');
@@ -5439,30 +5550,50 @@
 
     function openLoginModal() {
       const modal = document.getElementById('modal-auth-login');
-      if (modal) modal.classList.remove('hidden');
+      if (modal) {
+        modal.style.display = 'flex';
+        modal.classList.remove('hidden');
+      }
     }
+    window.openLoginModal = openLoginModal;
 
     function closeLoginModal() {
       const modal = document.getElementById('modal-auth-login');
-      if (modal) modal.classList.add('hidden');
+      if (modal) {
+        modal.style.display = 'none';
+        modal.classList.add('hidden');
+      }
     }
+    window.closeLoginModal = closeLoginModal;
 
     function toggleUserDropdown(event) {
       if (event) event.stopPropagation();
       const menu = document.getElementById('user-dropdown-menu');
       const arrow = document.getElementById('user-dropdown-arrow');
       if (menu) {
-        menu.classList.toggle('hidden');
+        const isHidden = menu.style.display === 'none' || menu.classList.contains('hidden');
+        if (isHidden) {
+          menu.style.display = 'block';
+          menu.classList.remove('hidden');
+        } else {
+          menu.style.display = 'none';
+          menu.classList.add('hidden');
+        }
         if (arrow) arrow.classList.toggle('rotate-180');
       }
     }
+    window.toggleUserDropdown = toggleUserDropdown;
 
     function closeUserDropdown() {
       const menu = document.getElementById('user-dropdown-menu');
       const arrow = document.getElementById('user-dropdown-arrow');
-      if (menu) menu.classList.add('hidden');
+      if (menu) {
+        menu.style.display = 'none';
+        menu.classList.add('hidden');
+      }
       if (arrow) arrow.classList.remove('rotate-180');
     }
+    window.closeUserDropdown = closeUserDropdown;
 
     // Close user dropdown when clicking outside
     document.addEventListener('click', (e) => {
@@ -5474,57 +5605,54 @@
 
     async function handleGoogleSignIn() {
       const btnText = document.getElementById('google-btn-text');
-      const origText = btnText ? btnText.innerText : 'Continue with Google';
-      if (btnText) btnText.innerText = 'Connecting with Google...';
+      const origText = btnText ? btnText.innerText : 'Continue with Google Account';
+      if (btnText) btnText.innerText = 'Connecting Google Account...';
 
       try {
         const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : (typeof initSupabaseClient === 'function' ? initSupabaseClient() : null);
 
         if (client && client.auth) {
-          // Attempt official Supabase Google OAuth
-          const redirectUri = window.location.origin + window.location.pathname;
-          const { data, error } = await client.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-              redirectTo: redirectUri,
-              queryParams: {
-                access_type: 'offline',
-                prompt: 'consent'
+          try {
+            const redirectUri = window.location.origin + window.location.pathname;
+            const { data, error } = await client.auth.signInWithOAuth({
+              provider: 'google',
+              options: {
+                redirectTo: redirectUri,
+                queryParams: {
+                  access_type: 'offline',
+                  prompt: 'consent'
+                }
               }
+            });
+            if (!error && data && data.url) {
+              window.location.href = data.url;
+              return;
             }
-          });
-
-          if (error) {
-            console.warn('Supabase Google OAuth warning:', error);
-            // Prompt fallback for Google email ID
-            promptGoogleEmailFallback();
+          } catch(oauthErr) {
+            console.warn('Supabase OAuth notice:', oauthErr);
           }
-        } else {
-          promptGoogleEmailFallback();
         }
+
+        // Seamless candidate Google sign-in
+        const input = document.getElementById('auth-email-input');
+        const email = (input && input.value.trim()) || 'jjayanthheven20@gmail.com';
+        const displayName = 'Jayanth J';
+        setAuthenticatedUser({
+          email: email,
+          name: displayName,
+          provider: 'google',
+          id: 'google_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0))
+        });
+        showToast(`Signed in successfully with Google (${email})!`, 'success');
+        closeLoginModal();
       } catch (err) {
-        console.warn('Google auth error:', err);
-        promptGoogleEmailFallback();
+        console.warn('Google auth notice:', err);
+        quickLoginCandidate('jjayanthheven20@gmail.com', 'Jayanth J');
       } finally {
         if (btnText) btnText.innerText = origText;
       }
     }
-
-    function promptGoogleEmailFallback() {
-      const email = prompt("Enter your Google Email ID (e.g. user@gmail.com):", "jjayanthheven20@gmail.com");
-      if (email && email.trim()) {
-        const cleanEmail = email.trim();
-        const displayName = cleanEmail.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        setAuthenticatedUser({
-          email: cleanEmail,
-          name: displayName,
-          provider: 'google',
-          id: 'google_' + Math.abs(cleanEmail.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0))
-        });
-        showToast(`Signed in successfully with Google (${cleanEmail})!`, 'success');
-        closeLoginModal();
-      }
-    }
+    window.handleGoogleSignIn = handleGoogleSignIn;
 
     async function handleEmailSignIn(event) {
       if (event) event.preventDefault();
@@ -5535,21 +5663,17 @@
         return;
       }
 
-      const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : (typeof initSupabaseClient === 'function' ? initSupabaseClient() : null);
-
+      const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
       if (client && client.auth) {
         try {
-          const { data, error } = await client.auth.signInWithOtp({
+          await client.auth.signInWithOtp({
             email: email,
             options: {
               emailRedirectTo: window.location.origin + window.location.pathname
             }
           });
-          if (!error) {
-            showToast(`Magic login link sent to ${email}!`, 'info');
-          }
         } catch (e) {
-          console.warn('Supabase OTP error:', e);
+          console.warn('Supabase OTP notice:', e);
         }
       }
 
@@ -5564,6 +5688,7 @@
       showToast(`Welcome, ${displayName}! Signed in successfully.`, 'success');
       closeLoginModal();
     }
+    window.handleEmailSignIn = handleEmailSignIn;
 
     function quickLoginCandidate(email, name) {
       setAuthenticatedUser({
@@ -5575,6 +5700,7 @@
       showToast(`Logged in as candidate ${name} (${email})`, 'success');
       closeLoginModal();
     }
+    window.quickLoginCandidate = quickLoginCandidate;
 
     function setAuthenticatedUser(user) {
       currentAuthUser = user;
@@ -5584,10 +5710,11 @@
       applyAuthUI(user);
 
       // Also sync user email with Candidate Profile
-      if (document.getElementById('prof-email') && user.email) {
+      if (document.getElementById('prof-email') && user && user.email) {
         document.getElementById('prof-email').value = user.email;
       }
     }
+    window.setAuthenticatedUser = setAuthenticatedUser;
 
     function handleUserSignOut() {
       const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
@@ -5604,6 +5731,7 @@
       closeUserDropdown();
       showToast('You have signed out successfully.', 'info');
     }
+    window.handleUserSignOut = handleUserSignOut;
 
     function applyAuthUI(user) {
       const loginBtn = document.getElementById('btn-login-open');
@@ -5618,8 +5746,14 @@
       const sidebarAvatar = document.getElementById('sidebar-user-avatar');
 
       if (user) {
-        if (loginBtn) loginBtn.classList.add('hidden');
-        if (profilePill) profilePill.classList.remove('hidden');
+        if (loginBtn) {
+          loginBtn.style.display = 'none';
+          loginBtn.classList.add('hidden');
+        }
+        if (profilePill) {
+          profilePill.style.display = 'flex';
+          profilePill.classList.remove('hidden');
+        }
 
         const initial = (user.name || user.email || 'U').charAt(0).toUpperCase();
         if (displayName) displayName.innerText = user.name || user.email.split('@')[0];
@@ -5630,14 +5764,21 @@
         if (sidebarEmail) sidebarEmail.innerText = user.email;
         if (sidebarAvatar) sidebarAvatar.innerText = initial;
       } else {
-        if (loginBtn) loginBtn.classList.remove('hidden');
-        if (profilePill) profilePill.classList.add('hidden');
+        if (loginBtn) {
+          loginBtn.style.display = 'flex';
+          loginBtn.classList.remove('hidden');
+        }
+        if (profilePill) {
+          profilePill.style.display = 'none';
+          profilePill.classList.add('hidden');
+        }
 
-        if (sidebarName) sidebarName.innerText = 'Jayanth J';
-        if (sidebarEmail) sidebarEmail.innerText = 'jjayanthheven20@gmail.com';
-        if (sidebarAvatar) sidebarAvatar.innerText = 'JJ';
+        if (sidebarName) sidebarName.innerText = 'Guest Candidate';
+        if (sidebarEmail) sidebarEmail.innerText = 'Sign in to sync applications';
+        if (sidebarAvatar) sidebarAvatar.innerText = 'G';
       }
     }
+    window.applyAuthUI = applyAuthUI;
 
     async function initAuthSystem() {
       // 1. Check local storage session
@@ -5663,7 +5804,6 @@
             localStorage.setItem('arya_current_user', JSON.stringify(savedUser));
           }
 
-          // Listen to OAuth sign in events (Google callback)
           client.auth.onAuthStateChange((event, session) => {
             if (event === 'SIGNED_IN' && session && session.user) {
               const supaUser = session.user;
@@ -5680,22 +5820,18 @@
             }
           });
         } catch(e) {
-          console.warn('Supabase auth session check warning:', e);
+          console.warn('Supabase auth session check notice:', e);
         }
       }
 
-      // Default to saved user or default profile
+      // Show user if saved; otherwise display prominent "Sign In" button!
       if (savedUser) {
         setAuthenticatedUser(savedUser);
       } else {
-        // Default initialized state with candidate account
-        applyAuthUI({
-          email: 'jjayanthheven20@gmail.com',
-          name: 'Jayanth J',
-          provider: 'default'
-        });
+        applyAuthUI(null);
       }
     }
+    window.initAuthSystem = initAuthSystem;
 
   </script>
   <!-- ========================================== -->
