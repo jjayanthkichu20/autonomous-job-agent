@@ -1196,35 +1196,38 @@
         </button>
 
         <!-- Logged In State: User Pill & Dropdown -->
-        <div id="user-profile-pill" style="display: none;" class="relative flex items-center space-x-2 px-2.5 py-1 rounded-xl bg-gray-800/90 border border-gray-700/80 shadow-sm cursor-pointer select-none" onclick="toggleUserDropdown(event)">
-          <div id="user-avatar-initial" class="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-[10px] flex items-center justify-center border border-blue-400/50">
-            JJ
+        <div id="user-profile-pill" style="display: none;" class="relative">
+          <!-- Clickable Pill Header -->
+          <div class="flex items-center space-x-2 px-2.5 py-1 rounded-xl bg-gray-800/90 hover:bg-gray-700/80 border border-gray-700/80 shadow-sm cursor-pointer select-none transition-all" onclick="toggleUserDropdown(event)" id="user-profile-pill-header">
+            <div id="user-avatar-initial" class="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-bold text-[10px] flex items-center justify-center border border-blue-400/50">
+              JJ
+            </div>
+            <span id="user-display-name" class="text-xs font-semibold text-white max-w-[110px] truncate">Candidate</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform" id="user-dropdown-arrow"></i>
           </div>
-          <span id="user-display-name" class="text-xs font-semibold text-white max-w-[110px] truncate">Candidate</span>
-          <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform" id="user-dropdown-arrow"></i>
 
           <!-- Dropdown Menu -->
-          <div id="user-dropdown-menu" style="display: none;" class="absolute right-0 top-10 w-52 rounded-2xl bg-gray-900 border border-gray-700 shadow-2xl py-2 z-50 text-xs text-gray-300">
+          <div id="user-dropdown-menu" style="display: none;" onclick="event.stopPropagation()" class="absolute right-0 top-11 w-56 rounded-2xl bg-gray-900 border border-gray-700 shadow-2xl py-2 z-50 text-xs text-gray-300">
             <div class="px-3.5 py-2 border-b border-gray-800">
               <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Signed in as</p>
               <p id="user-email-text" class="font-bold text-white truncate text-xs">jjayanthheven20@gmail.com</p>
             </div>
-            <a href="javascript:void(0)" onclick="switchTab('profile'); closeUserDropdown();" class="flex items-center space-x-2 px-3.5 py-2 hover:bg-gray-800 text-gray-200 transition-colors">
+            <button type="button" onclick="onDropdownProfileClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-gray-800 text-gray-200 hover:text-white transition-colors cursor-pointer">
               <i class="fa-solid fa-user-gear text-blue-400 w-4"></i>
-              <span>Profile & Target Roles</span>
-            </a>
-            <a href="javascript:void(0)" onclick="switchTab('applications'); closeUserDropdown();" class="flex items-center space-x-2 px-3.5 py-2 hover:bg-gray-800 text-gray-200 transition-colors">
+              <span class="font-medium">Profile & Target Roles</span>
+            </button>
+            <button type="button" onclick="onDropdownApplicationsClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-gray-800 text-gray-200 hover:text-white transition-colors cursor-pointer">
               <i class="fa-solid fa-file-lines text-purple-400 w-4"></i>
-              <span>My Applications</span>
-            </a>
-            <a href="javascript:void(0)" onclick="openSupabaseModal(); closeUserDropdown();" class="flex items-center space-x-2 px-3.5 py-2 hover:bg-gray-800 text-gray-200 transition-colors">
+              <span class="font-medium">My Applications</span>
+            </button>
+            <button type="button" onclick="onDropdownSupabaseClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-gray-800 text-gray-200 hover:text-white transition-colors cursor-pointer">
               <i class="fa-solid fa-database text-emerald-400 w-4"></i>
-              <span>Supabase Cloud DB</span>
-            </a>
+              <span class="font-medium">Supabase Cloud DB</span>
+            </button>
             <div class="border-t border-gray-800 my-1"></div>
-            <button type="button" onclick="handleUserSignOut()" class="w-full text-left flex items-center space-x-2 px-3.5 py-2 hover:bg-red-500/10 text-red-400 transition-colors">
+            <button type="button" onclick="onDropdownSignOutClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-red-500/10 text-red-400 hover:text-red-300 transition-colors cursor-pointer">
               <i class="fa-solid fa-arrow-right-from-bracket w-4"></i>
-              <span>Sign Out</span>
+              <span class="font-medium">Sign Out</span>
             </button>
           </div>
         </div>
@@ -5567,19 +5570,23 @@
     window.closeLoginModal = closeLoginModal;
 
     function toggleUserDropdown(event) {
-      if (event) event.stopPropagation();
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
       const menu = document.getElementById('user-dropdown-menu');
       const arrow = document.getElementById('user-dropdown-arrow');
       if (menu) {
-        const isHidden = menu.style.display === 'none' || menu.classList.contains('hidden');
-        if (isHidden) {
-          menu.style.display = 'block';
-          menu.classList.remove('hidden');
-        } else {
+        const isVisible = menu.style.display === 'block';
+        if (isVisible) {
           menu.style.display = 'none';
           menu.classList.add('hidden');
+          if (arrow) arrow.classList.remove('rotate-180');
+        } else {
+          menu.style.display = 'block';
+          menu.classList.remove('hidden');
+          if (arrow) arrow.classList.add('rotate-180');
         }
-        if (arrow) arrow.classList.toggle('rotate-180');
       }
     }
     window.toggleUserDropdown = toggleUserDropdown;
@@ -5595,11 +5602,44 @@
     }
     window.closeUserDropdown = closeUserDropdown;
 
+    function onDropdownProfileClick(event) {
+      if (event) event.stopPropagation();
+      closeUserDropdown();
+      switchTab('profile');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    window.onDropdownProfileClick = onDropdownProfileClick;
+
+    function onDropdownApplicationsClick(event) {
+      if (event) event.stopPropagation();
+      closeUserDropdown();
+      switchTab('applications');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    window.onDropdownApplicationsClick = onDropdownApplicationsClick;
+
+    function onDropdownSupabaseClick(event) {
+      if (event) event.stopPropagation();
+      closeUserDropdown();
+      openSupabaseModal();
+    }
+    window.onDropdownSupabaseClick = onDropdownSupabaseClick;
+
+    function onDropdownSignOutClick(event) {
+      if (event) event.stopPropagation();
+      closeUserDropdown();
+      handleUserSignOut();
+    }
+    window.onDropdownSignOutClick = onDropdownSignOutClick;
+
     // Close user dropdown when clicking outside
     document.addEventListener('click', (e) => {
       const pill = document.getElementById('user-profile-pill');
-      if (pill && !pill.contains(e.target)) {
-        closeUserDropdown();
+      const menu = document.getElementById('user-dropdown-menu');
+      if (menu && menu.style.display === 'block') {
+        if (!pill || !pill.contains(e.target)) {
+          closeUserDropdown();
+        }
       }
     });
 
@@ -5837,7 +5877,7 @@
   <!-- ========================================== -->
   <!-- MODAL: SUPABASE CLOUD DATABASE SYNC        -->
   <!-- ========================================== -->
-  <div id="modal-supabase" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+  <div id="modal-supabase" style="display: none;" class="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="card-3d glass-card max-w-xl w-full p-6 sm:p-7 rounded-3xl border border-emerald-500/40 shadow-2xl relative overflow-hidden space-y-5">
       <div class="card-glare"></div>
       <div class="flex items-center justify-between border-b border-gray-800 pb-3">
@@ -5925,7 +5965,7 @@
   <!-- ========================================== -->
   <!-- MODAL: GOOGLE & EMAIL ID LOGIN             -->
   <!-- ========================================== -->
-  <div id="modal-auth-login" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+  <div id="modal-auth-login" style="display: none;" class="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="card-3d glass-card max-w-md w-full p-6 sm:p-8 rounded-3xl border border-blue-500/40 shadow-2xl relative overflow-hidden space-y-5">
       <div class="card-glare"></div>
       
