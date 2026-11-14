@@ -3248,8 +3248,7 @@
           body: JSON.stringify({ draft_id: draftId })
         });
         const data = await res.json();
-        showToast("Draft approved and submitted live!", "success");
-        loadDrafts();
+       showToast(data.submitted ? "Application submitted." : "Draft approved and staged. Not sent to any employer yet. Apply on the job page.", data.submitted ? "success" : "info");
         loadLedgerData();
       } catch (err) {
         showToast("Approval error: " + err.message, "error");
