@@ -611,10 +611,13 @@ def get_drafts():
 
 @app.post("/api/drafts/approve")
 def approve_draft(req: DraftApproveRequest):
+    # Approval only marks the draft as reviewed. Nothing is sent to any employer
+    # from this route, so it must never return a confirmation ID or say "live".
     return {
-        "status": "success",
-        "message": f"Draft {req.draft_id} approved and submitted live to ATS.",
-        "confirmation_id": f"ATS-CONF-LIVE-{int(time.time())}"
+        "status": "staged",
+        "submitted": False,
+        "message": f"Draft {req.draft_id} approved and staged. Not submitted: open the job link and apply yourself.",
+        "confirmation_id": None
     }
 
 
