@@ -797,9 +797,10 @@
           // 5. Drafts & Approve
           if (cleanPath.endsWith('/api/drafts/approve')) {
             return new Response(JSON.stringify({
-              status: "success",
-              message: "Draft approved and submitted live to ATS.",
-              confirmation_id: "ATS-CONF-LIVE-" + Math.floor(10000000 + Math.random() * 90000000)
+                status: "staged",
+    submitted: false,
+    message: "Draft approved and staged. Not submitted: open the job link and apply yourself.",
+    confirmation_id: null
             }), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
