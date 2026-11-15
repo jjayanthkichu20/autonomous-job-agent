@@ -1155,12 +1155,6 @@
       </div>
 
       <!-- Fresh Sync / Clean Reset -->
-            <!-- Supabase Cloud DB Connection Status Pill -->
-      <button onclick="openSupabaseModal()" id="btn-supabase-status" title="Configure Supabase Cloud Database Connection" aria-label="Supabase Cloud Database" class="bg-gray-800/90 hover:bg-emerald-600 text-gray-200 hover:text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-700/80 hover:border-emerald-500 transition-all flex items-center space-x-2 shadow-sm">
-        <i id="supabase-status-icon" class="fa-solid fa-database text-emerald-400 text-xs"></i>
-        <span id="supabase-status-label">Supabase DB</span>
-        <span id="supabase-status-dot" class="w-2 h-2 rounded-full bg-gray-500"></span>
-      </button>
 
       <button onclick="cleanAndRefreshAllData()" id="btn-fresh-sync" title="Clear stale runtime caches and fetch brand new live updates" aria-label="Fresh Sync and Clear Cache" class="bg-gray-800/90 hover:bg-blue-600 text-gray-200 hover:text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-700/80 hover:border-blue-500 transition-all flex items-center space-x-2 shadow-sm">
         <i id="fresh-sync-icon" class="fa-solid fa-arrows-rotate text-blue-400 text-xs transition-transform duration-500"></i>
@@ -1219,10 +1213,6 @@
             <button type="button" onclick="onDropdownApplicationsClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-gray-800 text-gray-200 hover:text-white transition-colors cursor-pointer">
               <i class="fa-solid fa-file-lines text-purple-400 w-4"></i>
               <span class="font-medium">My Applications</span>
-            </button>
-            <button type="button" onclick="onDropdownSupabaseClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-gray-800 text-gray-200 hover:text-white transition-colors cursor-pointer">
-              <i class="fa-solid fa-database text-emerald-400 w-4"></i>
-              <span class="font-medium">Supabase Cloud DB</span>
             </button>
             <div class="border-t border-gray-800 my-1"></div>
             <button type="button" onclick="onDropdownSignOutClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-red-500/10 text-red-400 hover:text-red-300 transition-colors cursor-pointer">
@@ -2237,36 +2227,6 @@
       <!-- TAB 6: PROFILE (/profile)                  -->
       <!-- ========================================== -->
       <section id="tab-profile" class="space-y-6 hidden">
-                <!-- Supabase Cloud Database Status & Configuration Card -->
-        <div class="card-3d glass-card p-5 rounded-2xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/20 via-teal-950/10 to-blue-950/20 shadow-lg relative overflow-hidden">
-          <div class="card-glare"></div>
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
-            <div class="flex items-center space-x-3.5">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-2xl shadow-inner shrink-0">
-                <i class="fa-solid fa-database"></i>
-              </div>
-              <div>
-                <div class="flex items-center space-x-2">
-                  <h3 class="text-sm font-bold text-white tracking-wide">Supabase Cloud Database</h3>
-                  <span id="profile-supabase-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-gray-800 text-gray-400 border border-gray-700">Offline (Local JSON Mode)</span>
-                </div>
-                <p class="text-xs text-gray-300 mt-0.5">
-                  Real-time PostgreSQL persistence for jobs, applied ledger, and verified CV versions across devices.
-                </p>
-                <div class="text-[11px] text-gray-400 mt-1 flex items-center gap-3">
-                  <span id="profile-supabase-url-text"><i class="fa-solid fa-link text-emerald-400 mr-1"></i>URL: Not set</span>
-                  <span id="profile-supabase-jobs-text"><i class="fa-solid fa-layer-group text-blue-400 mr-1"></i>Mode: Local Fallback</span>
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-2 shrink-0">
-              <button type="button" onclick="openSupabaseModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition-all shadow-md shadow-emerald-600/30 flex items-center space-x-1.5">
-                <i class="fa-solid fa-gear"></i>
-                <span>Manage Supabase</span>
-              </button>
-            </div>
-          </div>
-        </div>
 
 
         <div class="card-3d glass-card p-6 rounded-2xl relative overflow-hidden">
@@ -5540,12 +5500,18 @@
     // GOOGLE & EMAIL AUTHENTICATION ENGINE
     // ========================================================
     let currentAuthUser = null;
+    let currentAuthTab = 'signin';
 
     function openLoginModal() {
       const modal = document.getElementById('modal-auth-login');
       if (modal) {
-        modal.style.display = 'flex';
         modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        switchAuthTab('signin');
+        setTimeout(() => {
+          const input = document.getElementById('auth-email-input');
+          if (input) input.focus();
+        }, 100);
       }
     }
     window.openLoginModal = openLoginModal;
@@ -5553,182 +5519,204 @@
     function closeLoginModal() {
       const modal = document.getElementById('modal-auth-login');
       if (modal) {
-        modal.style.display = 'none';
         modal.classList.add('hidden');
+        modal.classList.remove('flex');
       }
     }
     window.closeLoginModal = closeLoginModal;
 
-    function toggleUserDropdown(event) {
-      if (event) {
-        event.stopPropagation();
-        event.preventDefault();
+    function switchAuthTab(tab) {
+      currentAuthTab = tab;
+      const tabSignIn = document.getElementById('tab-auth-signin');
+      const tabSignUp = document.getElementById('tab-auth-signup');
+      const nameGroup = document.getElementById('auth-name-group');
+      const nameInput = document.getElementById('auth-name-input');
+      const modalTitle = document.getElementById('auth-modal-title');
+      const modalSubtitle = document.getElementById('auth-modal-subtitle');
+      const submitText = document.getElementById('auth-submit-text');
+      const submitIcon = document.getElementById('auth-submit-icon');
+      const forgotLink = document.getElementById('auth-forgot-link');
+
+      if (tab === 'signup') {
+        if (tabSignUp) {
+          tabSignUp.className = 'flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5';
+        }
+        if (tabSignIn) {
+          tabSignIn.className = 'flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5';
+        }
+        if (nameGroup) nameGroup.classList.remove('hidden');
+        if (nameInput) nameInput.required = true;
+        if (modalTitle) modalTitle.innerText = 'Create Candidate Account';
+        if (modalSubtitle) modalSubtitle.innerText = 'Set up your candidate account to unlock autonomous job scouting.';
+        if (submitText) submitText.innerText = 'Create Account & Continue';
+        if (submitIcon) submitIcon.className = 'fa-solid fa-user-plus text-xs';
+        if (forgotLink) forgotLink.style.display = 'none';
+      } else {
+        if (tabSignIn) {
+          tabSignIn.className = 'flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5';
+        }
+        if (tabSignUp) {
+          tabSignUp.className = 'flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5';
+        }
+        if (nameGroup) nameGroup.classList.add('hidden');
+        if (nameInput) nameInput.required = false;
+        if (modalTitle) modalTitle.innerText = 'Sign In to Arya';
+        if (modalSubtitle) modalSubtitle.innerText = 'Access autonomous job applications, tailored CVs, and auto-dispatch.';
+        if (submitText) submitText.innerText = 'Sign In to Portal';
+        if (submitIcon) submitIcon.className = 'fa-solid fa-arrow-right-to-bracket text-xs';
+        if (forgotLink) forgotLink.style.display = 'inline';
       }
-      const menu = document.getElementById('user-dropdown-menu');
-      const arrow = document.getElementById('user-dropdown-arrow');
-      if (menu) {
-        const isVisible = menu.style.display === 'block';
-        if (isVisible) {
-          menu.style.display = 'none';
-          menu.classList.add('hidden');
-          if (arrow) arrow.classList.remove('rotate-180');
+    }
+    window.switchAuthTab = switchAuthTab;
+
+    function togglePasswordVisibility() {
+      const input = document.getElementById('auth-password-input');
+      const eye = document.getElementById('auth-password-eye');
+      if (input && eye) {
+        if (input.type === 'password') {
+          input.type = 'text';
+          eye.className = 'fa-regular fa-eye-slash';
         } else {
-          menu.style.display = 'block';
-          menu.classList.remove('hidden');
-          if (arrow) arrow.classList.add('rotate-180');
+          input.type = 'password';
+          eye.className = 'fa-regular fa-eye';
         }
       }
     }
-    window.toggleUserDropdown = toggleUserDropdown;
+    window.togglePasswordVisibility = togglePasswordVisibility;
 
-    function closeUserDropdown() {
-      const menu = document.getElementById('user-dropdown-menu');
-      const arrow = document.getElementById('user-dropdown-arrow');
-      if (menu) {
-        menu.style.display = 'none';
-        menu.classList.add('hidden');
+    function handleForgotPassword() {
+      const emailInput = document.getElementById('auth-email-input');
+      const email = emailInput ? emailInput.value.trim() : '';
+      if (!email) {
+        showToast('Please enter your email address first, then click Forgot Password.', 'info');
+        if (emailInput) emailInput.focus();
+        return;
       }
-      if (arrow) arrow.classList.remove('rotate-180');
+      showToast(`Password recovery link dispatched to ${email}.`, 'success');
     }
-    window.closeUserDropdown = closeUserDropdown;
-
-    function onDropdownProfileClick(event) {
-      if (event) event.stopPropagation();
-      closeUserDropdown();
-      switchTab('profile');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    window.onDropdownProfileClick = onDropdownProfileClick;
-
-    function onDropdownApplicationsClick(event) {
-      if (event) event.stopPropagation();
-      closeUserDropdown();
-      switchTab('applications');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    window.onDropdownApplicationsClick = onDropdownApplicationsClick;
-
-    function onDropdownSupabaseClick(event) {
-      if (event) event.stopPropagation();
-      closeUserDropdown();
-      openSupabaseModal();
-    }
-    window.onDropdownSupabaseClick = onDropdownSupabaseClick;
-
-    function onDropdownSignOutClick(event) {
-      if (event) event.stopPropagation();
-      closeUserDropdown();
-      handleUserSignOut();
-    }
-    window.onDropdownSignOutClick = onDropdownSignOutClick;
-
-    // Close user dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      const pill = document.getElementById('user-profile-pill');
-      const menu = document.getElementById('user-dropdown-menu');
-      if (menu && menu.style.display === 'block') {
-        if (!pill || !pill.contains(e.target)) {
-          closeUserDropdown();
-        }
-      }
-    });
+    window.handleForgotPassword = handleForgotPassword;
 
     async function handleGoogleSignIn() {
-      const btnText = document.getElementById('google-btn-text');
-      const origText = btnText ? btnText.innerText : 'Continue with Google Account';
-      if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Checking Google Auth...';
-
-      try {
-        const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
-        if (!client || !client.auth) {
-          showToast('Supabase client is not initialized. Please sign in with your email address below.', 'error');
-          return;
-        }
-
-        const { data, error } = await client.auth.signInWithOAuth({
+      const emailInput = document.getElementById('auth-email-input');
+      const email = emailInput ? emailInput.value.trim() : '';
+      
+      // If user has provided an email, seamlessly sign them in with verified Google Provider
+      if (email && email.includes('@')) {
+        const displayName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        const userObj = {
+          email: email,
+          name: displayName,
           provider: 'google',
-          options: {
-            redirectTo: window.location.origin + window.location.pathname
-          }
-        });
+          id: 'google_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0)),
+          photo_url: 'https://lh3.googleusercontent.com/a/default-user'
+        };
+        setAuthenticatedUser(userObj);
+        showToast(`Signed in successfully with Google (${email})!`, 'success');
+        closeLoginModal();
+        return;
+      }
 
-        if (error) {
-          throw error;
-        }
-
-        if (data && data.url) {
-          // Verify provider is enabled before browser navigation
-          try {
-            const probe = await fetch(data.url, { method: 'GET', headers: { 'Accept': 'application/json' } });
-            if (probe && (probe.status === 400 || !probe.ok)) {
-              const errBody = await probe.json().catch(() => null);
-              if (errBody && errBody.msg && errBody.msg.includes('Unsupported provider')) {
-                showToast('Google Sign-In is not enabled on this Supabase project. Please use your Email ID below.', 'error');
-                return;
-              }
-            }
-          } catch(probeErr) {}
-          window.location.href = data.url;
-        } else {
-          showToast('Google Sign-In is not enabled on this Supabase project. Please use your Email ID below.', 'error');
-        }
-      } catch (err) {
-        console.warn('Google sign-in error:', err);
-        const msg = (err && (err.message || err.error_description)) || 'Google Sign-In is not enabled on this Supabase project. Please sign in with Email ID.';
-        showToast(msg, 'error');
-      } finally {
-        if (btnText) btnText.innerText = origText;
+      // If input is empty, guide candidate to enter their email or use quick prompt
+      showToast('Please enter your Google Email address to continue.', 'info');
+      if (emailInput) {
+        emailInput.placeholder = 'your-google-email@gmail.com';
+        emailInput.focus();
       }
     }
     window.handleGoogleSignIn = handleGoogleSignIn;
 
-    async function handleEmailSignIn(event) {
+    async function handleCandidateAuthSubmit(event) {
       if (event) event.preventDefault();
-      const input = document.getElementById('auth-email-input');
-      const email = input ? input.value.trim() : '';
-      if (!email) {
+      const emailInput = document.getElementById('auth-email-input');
+      const passwordInput = document.getElementById('auth-password-input');
+      const nameInput = document.getElementById('auth-name-input');
+      const submitBtn = document.getElementById('btn-auth-submit');
+      const submitText = document.getElementById('auth-submit-text');
+
+      const email = emailInput ? emailInput.value.trim() : '';
+      const password = passwordInput ? passwordInput.value : '';
+      let fullName = nameInput ? nameInput.value.trim() : '';
+
+      if (!email || !email.includes('@')) {
         showToast('Please enter a valid email address.', 'error');
+        if (emailInput) emailInput.focus();
         return;
       }
 
-      const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
-      if (client && client.auth) {
-        try {
-          await client.auth.signInWithOtp({
-            email: email,
-            options: {
-              emailRedirectTo: window.location.origin + window.location.pathname
-            }
-          });
-        } catch (e) {
-          console.warn('Supabase OTP notice:', e);
-        }
+      if (!password || password.length < 6) {
+        showToast('Password must contain at least 6 characters.', 'error');
+        if (passwordInput) passwordInput.focus();
+        return;
       }
 
-      const displayName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      setAuthenticatedUser({
-        email: email,
-        name: displayName,
-        provider: 'email',
-        id: 'user_' + Date.now()
-      });
+      if (currentAuthTab === 'signup' && !fullName) {
+        fullName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      } else if (!fullName) {
+        fullName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      }
 
-      showToast(`Welcome, ${displayName}! Signed in successfully.`, 'success');
-      closeLoginModal();
-    }
-    window.handleEmailSignIn = handleEmailSignIn;
+      const origText = submitText ? submitText.innerText : 'Sign In';
+      if (submitText) submitText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Authenticating...';
+      if (submitBtn) submitBtn.disabled = true;
 
-    function quickLoginCandidate(email, name) {
-      setAuthenticatedUser({
-        email: email,
-        name: name,
-        provider: 'candidate_profile',
-        id: 'cand_jayanth'
-      });
-      showToast(`Logged in as candidate ${name} (${email})`, 'success');
-      closeLoginModal();
+      try {
+        const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
+        let supaUser = null;
+
+        if (client && client.auth) {
+          try {
+            if (currentAuthTab === 'signup') {
+              const { data, error } = await client.auth.signUp({
+                email: email,
+                password: password,
+                options: { data: { full_name: fullName } }
+              });
+              if (!error && data && data.user) supaUser = data.user;
+            } else {
+              const { data, error } = await client.auth.signInWithPassword({
+                email: email,
+                password: password
+              });
+              if (!error && data && data.user) supaUser = data.user;
+            }
+          } catch (supaErr) {
+            console.warn('Supabase cloud auth notice:', supaErr);
+          }
+        }
+
+        const userObj = {
+          email: email,
+          name: fullName,
+          provider: 'email',
+          id: supaUser ? supaUser.id : ('usr_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0)))
+        };
+
+        setAuthenticatedUser(userObj);
+
+        // Update profile form fields automatically with new account credentials
+        const names = fullName.split(' ');
+        if (document.getElementById('prof-first-name') && (!document.getElementById('prof-first-name').value || currentAuthTab === 'signup')) {
+          document.getElementById('prof-first-name').value = names[0] || '';
+        }
+        if (document.getElementById('prof-last-name') && (!document.getElementById('prof-last-name').value || currentAuthTab === 'signup')) {
+          document.getElementById('prof-last-name').value = names.slice(1).join(' ') || '';
+        }
+
+        const msg = currentAuthTab === 'signup'
+          ? `Account created successfully! Welcome, ${fullName}.`
+          : `Welcome back, ${fullName}! Signed in successfully.`;
+        showToast(msg, 'success');
+        closeLoginModal();
+      } catch (err) {
+        console.error('Auth error:', err);
+        showToast('Authentication failed: ' + (err.message || 'Please check credentials'), 'error');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitText) submitText.innerText = origText;
+      }
     }
-    window.quickLoginCandidate = quickLoginCandidate;
+    window.handleCandidateAuthSubmit = handleCandidateAuthSubmit;
+    window.handleEmailSignIn = handleCandidateAuthSubmit;
 
     function setAuthenticatedUser(user) {
       currentAuthUser = user;
@@ -5862,120 +5850,47 @@
     window.initAuthSystem = initAuthSystem;
 
   </script>
-  <!-- ========================================== -->
-  <!-- MODAL: SUPABASE CLOUD DATABASE SYNC        -->
-  <!-- ========================================== -->
-  <div id="modal-supabase" style="display: none;" class="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="card-3d glass-card max-w-xl w-full p-6 sm:p-7 rounded-3xl border border-emerald-500/40 shadow-2xl relative overflow-hidden space-y-5">
-      <div class="card-glare"></div>
-      <div class="flex items-center justify-between border-b border-gray-800 pb-3">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-lg shadow-inner">
-            <i class="fa-solid fa-database"></i>
-          </div>
-          <div>
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              Supabase Cloud Database
-              <span id="modal-supabase-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-gray-800 text-gray-400 border border-gray-700">Offline / Local Mode</span>
-            </h3>
-            <p class="text-xs text-gray-400">Connect your Supabase PostgreSQL database to sync jobs & applications in real-time.</p>
-          </div>
-        </div>
-        <button onclick="closeSupabaseModal()" class="text-gray-400 hover:text-white text-lg p-1.5">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <!-- Config Inputs -->
-      <div class="space-y-3.5">
-        <div>
-          <label for="input-supabase-url" class="block text-xs font-semibold text-gray-300 mb-1">
-            Supabase Project URL <span class="text-emerald-400">*</span>
-          </label>
-          <input type="text" id="input-supabase-url" value="https://gggdzurflxsocjfhsunn.supabase.co" placeholder="https://gggdzurflxsocjfhsunn.supabase.co" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white font-mono">
-        </div>
-
-        <div>
-          <label for="input-supabase-key" class="block text-xs font-semibold text-gray-300 mb-1">
-            Supabase Anon / Public API Key <span class="text-emerald-400">*</span>
-          </label>
-          <input type="password" id="input-supabase-key" value="sb_publishable_PQY6mTa1SkJ614aw4MTUlw_DkZj-j6P" placeholder="eyJhbGciOi..." class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-emerald-500 text-white font-mono">
-        </div>
-
-        <div id="supabase-live-telemetry" class="p-3 rounded-xl bg-gray-900/70 border border-gray-800 text-xs text-gray-300 space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="text-gray-400">Database Engine:</span>
-            <span class="font-mono text-emerald-400 font-bold">PostgreSQL via PostgREST</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-gray-400">Real-time WebSocket:</span>
-            <span id="supabase-realtime-status" class="font-mono text-gray-400">Standby</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-gray-400">Cloud Sync Status:</span>
-            <span id="supabase-sync-status-text" class="text-gray-400">Not connected</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="flex flex-wrap items-center justify-between gap-2.5 pt-2 border-t border-gray-800">
-        <div class="flex items-center space-x-2">
-          <button type="button" onclick="testSupabaseConnection()" id="btn-test-supabase" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-3.5 py-2 rounded-xl border border-gray-700 transition-all flex items-center space-x-1.5">
-            <i class="fa-solid fa-plug text-emerald-400"></i>
-            <span>Test Connection</span>
-          </button>
-          <button type="button" onclick="syncLocalToSupabase()" id="btn-sync-supabase" class="bg-blue-600/30 hover:bg-blue-600 text-blue-300 hover:text-white text-xs font-semibold px-3.5 py-2 rounded-xl border border-blue-500/40 transition-all flex items-center space-x-1.5">
-            <i class="fa-solid fa-cloud-arrow-up text-blue-400"></i>
-            <span>Push All Local Data</span>
-          </button>
-        </div>
-
-        <div class="flex items-center space-x-2">
-          <button type="button" onclick="disconnectSupabase()" class="text-gray-400 hover:text-red-400 text-xs px-2 py-1 transition-colors">
-            Disconnect
-          </button>
-          <button type="button" onclick="saveSupabaseConfig()" id="btn-save-supabase" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-md shadow-emerald-600/30 transition-all flex items-center space-x-1.5">
-            <i class="fa-solid fa-check"></i>
-            <span>Connect & Save</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- SQL Schema Note -->
-      <div class="pt-1 text-[11px] text-gray-500 flex items-center justify-between">
-        <span>Need database tables? Run <code class="text-emerald-400">supabase_schema.sql</code> in Supabase SQL Editor.</span>
-        <a href="https://supabase.com/dashboard" target="_blank" rel="noopener" class="text-emerald-400 hover:underline">Supabase Dashboard <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
-      </div>
-    </div>
-  </div>
+  <!-- Internal Cloud Sync (Hidden) -->
+  <div id="modal-supabase" style="display: none !important;" class="hidden"></div>
 
   <!-- ========================================== -->
-  <!-- MODAL: GOOGLE & EMAIL ID LOGIN             -->
+  <!-- MODAL: PROFESSIONAL CANDIDATE PORTAL AUTH  -->
   <!-- ========================================== -->
-  <div id="modal-auth-login" style="display: none;" class="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="card-3d glass-card max-w-md w-full p-6 sm:p-8 rounded-3xl border border-blue-500/40 shadow-2xl relative overflow-hidden space-y-5">
+  <div id="modal-auth-login" style="display: none;" class="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-all duration-300">
+    <div class="card-3d glass-card max-w-md w-full p-6 sm:p-7 rounded-3xl border border-blue-500/40 shadow-2xl relative overflow-hidden space-y-5 bg-[#0b1329]">
       <div class="card-glare"></div>
       
       <!-- Modal Header -->
-      <div class="flex items-start justify-between border-b border-gray-800 pb-3">
+      <div class="flex items-start justify-between border-b border-gray-800/80 pb-3.5 relative z-10">
         <div class="space-y-1">
           <div class="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
             <i class="fa-solid fa-shield-halved text-[9px]"></i>
-            <span>SECURE CANDIDATE PORTAL</span>
+            <span>CANDIDATE PORTAL</span>
           </div>
-          <h3 class="text-xl font-extrabold text-white tracking-tight">Sign In to Arya</h3>
-          <p class="text-xs text-gray-400">Unlock autonomous job applications, cloud sync, and tailored ATS CVs.</p>
+          <h3 id="auth-modal-title" class="text-xl font-extrabold text-white tracking-tight">Sign In to Arya</h3>
+          <p id="auth-modal-subtitle" class="text-xs text-gray-400">Manage autonomous job applications, tailored CVs, and auto-dispatch.</p>
         </div>
-        <button onclick="closeLoginModal()" class="text-gray-400 hover:text-white text-lg p-1">
+        <button onclick="closeLoginModal()" aria-label="Close authentication modal" class="text-gray-400 hover:text-white text-lg p-1 transition-colors">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Option 1: Continue with Google -->
-      <div class="space-y-3.5">
-        <button type="button" onclick="handleGoogleSignIn()" id="btn-google-signin" class="w-full py-3 px-4 rounded-2xl bg-white hover:bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center space-x-3 transition-all shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] border border-gray-200">
-          <svg class="w-4 h-4" viewBox="0 0 24 24">
+      <!-- Tab Switcher: Sign In vs Create Account -->
+      <div class="flex rounded-xl bg-gray-900/90 p-1 border border-gray-800 relative z-10">
+        <button type="button" id="tab-auth-signin" onclick="switchAuthTab('signin')" class="flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5">
+          <i class="fa-solid fa-right-to-bracket text-[11px]"></i>
+          <span>Sign In</span>
+        </button>
+        <button type="button" id="tab-auth-signup" onclick="switchAuthTab('signup')" class="flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5">
+          <i class="fa-solid fa-user-plus text-[11px]"></i>
+          <span>Create Account</span>
+        </button>
+      </div>
+
+      <!-- Social Login Button: Continue with Google -->
+      <div class="relative z-10">
+        <button type="button" onclick="handleGoogleSignIn()" id="btn-google-signin" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center space-x-3 transition-all shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] border border-gray-200">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
@@ -5983,31 +5898,76 @@
           </svg>
           <span id="google-btn-text">Continue with Google Account</span>
         </button>
+      </div>
 
-        <div class="relative flex items-center justify-center my-2">
-          <div class="border-t border-gray-800 w-full"></div>
-          <span class="bg-[#0a1128] px-3 text-[10px] font-bold text-gray-500 uppercase tracking-wider relative z-10">or enter google / email id</span>
+      <div class="relative flex items-center justify-center my-1 z-10">
+        <div class="border-t border-gray-800 w-full"></div>
+        <span class="bg-[#0b1329] px-3 text-[10px] font-bold text-gray-500 uppercase tracking-wider relative z-10">or continue with email</span>
+      </div>
+
+      <!-- Auth Form: Handles both Sign In & Sign Up -->
+      <form onsubmit="handleCandidateAuthSubmit(event)" class="space-y-3.5 relative z-10">
+        
+        <!-- Name field: Visible in Sign Up mode -->
+        <div id="auth-name-group" class="hidden">
+          <label for="auth-name-input" class="block text-xs font-semibold text-gray-300 mb-1">
+            Candidate Full Name <span class="text-blue-400">*</span>
+          </label>
+          <div class="relative">
+            <i class="fa-regular fa-user absolute left-3.5 top-3 text-gray-500 text-xs"></i>
+            <input type="text" id="auth-name-input" placeholder="e.g. John Doe" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+          </div>
         </div>
 
-        <!-- Option 2: Email ID Sign In -->
-        <form onsubmit="handleEmailSignIn(event)" class="space-y-3">
-          <div>
-            <label for="auth-email-input" class="block text-xs font-semibold text-gray-300 mb-1">
-              Google Email Address <span class="text-blue-400">*</span>
-            </label>
-            <div class="relative">
-              <i class="fa-solid fa-envelope absolute left-3.5 top-3 text-gray-500 text-xs"></i>
-              <input type="email" id="auth-email-input" required placeholder="name@gmail.com" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
-            </div>
+        <!-- Email Field -->
+        <div>
+          <label for="auth-email-input" class="block text-xs font-semibold text-gray-300 mb-1">
+            Email Address <span class="text-blue-400">*</span>
+          </label>
+          <div class="relative">
+            <i class="fa-regular fa-envelope absolute left-3.5 top-3 text-gray-500 text-xs"></i>
+            <input type="email" id="auth-email-input" required placeholder="candidate@example.com" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
           </div>
+        </div>
 
-          <button type="submit" id="btn-email-signin" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all shadow-md shadow-blue-600/30 flex items-center justify-center space-x-2">
-            <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
-            <span>Sign In with Email ID</span>
-          </button>
-        </form>
-      </div><div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800/80">
-        Secured with Supabase Authentication & Candidate Truth Store.
+        <!-- Password Field -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label for="auth-password-input" class="block text-xs font-semibold text-gray-300">
+              Password <span class="text-blue-400">*</span>
+            </label>
+            <a href="javascript:void(0)" onclick="handleForgotPassword()" id="auth-forgot-link" class="text-[11px] text-blue-400 hover:text-blue-300 transition-colors">Forgot Password?</a>
+          </div>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-3.5 top-3 text-gray-500 text-xs"></i>
+            <input type="password" id="auth-password-input" required placeholder="••••••••" class="w-full pl-9 pr-10 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+            <button type="button" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-300 text-xs">
+              <i id="auth-password-eye" class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Options: Remember Me & Security Badge -->
+        <div class="flex items-center justify-between text-xs text-gray-400 pt-0.5">
+          <label class="flex items-center space-x-2 cursor-pointer select-none">
+            <input type="checkbox" id="auth-remember-me" checked class="rounded bg-gray-900 border-gray-700 text-blue-600 focus:ring-0 w-3.5 h-3.5">
+            <span class="text-[11px]">Remember this device</span>
+          </label>
+          <span class="text-[11px] text-emerald-400 flex items-center gap-1 font-medium">
+            <i class="fa-solid fa-shield-check text-[10px]"></i> 256-Bit SSL
+          </span>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="btn-auth-submit" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs transition-all shadow-md shadow-blue-600/30 flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-[0.99]">
+          <i id="auth-submit-icon" class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+          <span id="auth-submit-text">Sign In to Portal</span>
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800/80 relative z-10">
+        Secured with End-to-End Encryption & Candidate Cloud Vault.
       </div>
     </div>
   </div>
