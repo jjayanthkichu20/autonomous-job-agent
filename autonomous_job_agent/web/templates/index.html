@@ -929,7 +929,7 @@
               job_title: "HR Executive",
               applied_date: "Recently",
               recipient_email: "talent-hr@company.com",
-              email_draft: `Dear Hiring Team,\n\nI hope this email finds you well. I am following up on my application for the HR Executive role. With hands-on experience across full-cycle recruitment, onboarding, and statutory compliance, I am enthusiastic about the opportunity to contribute to your team.\n\nPlease let me know if you require any additional details.\n\nWarm regards,\nJayanth J\n+91 97783 91171`
+              email_draft: `Dear Hiring Team,\n\nI hope this email finds you well. I am following up on my application for the HR Executive role. With hands-on experience across full-cycle recruitment, onboarding, and statutory compliance, I am enthusiastic about the opportunity to contribute to your team.\n\nPlease let me know if you require any additional details.\n\nWarm regards,\nCandidate`
             }), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
@@ -956,9 +956,9 @@
                 company_name: comp,
                 location: loc,
                 match_score: 97.4,
-                download_pdf_url: "./data/Jayanth_J_Resume.pdf",
-                tailored_resume_md: `# JAYANTH J — ${title.toUpperCase()}\n\n**Email**: jjayanthheven20@gmail.com | **Phone**: +91 97783 91171 | **Location**: ${loc}\n**LinkedIn**: linkedin.com/in/jayanth-j\n\n---\n\n### Professional Summary\nDedicated HR professional with 2+ years of experience across full-cycle recruitment, employee onboarding, statutory compliance (PF, ESI, Labour Law), HRMS administration, and operations. Proven track record of streamlining screening workflows and enhancing employee engagement.\n\n### Core Competencies\n- **Talent Acquisition**: Job posting, resume screening, technical interview coordination, offer negotiation\n- **HR Operations**: Employee lifecycle records, documentation, attendance tracking, leave management\n- **Compliance & Payroll**: PF, ESI, statutory records, monthly payroll input preparation\n- **Tools**: Advanced Excel, HRMS/HRIS portals, SQL, Applicant Tracking Systems (ATS)\n\n### Professional Experience\n**Trackpi Private Limited** — HR Executive\n*Kottayam, Kerala / Bangalore* | *2022 – Present*\n- Spearheaded end-to-end talent acquisition pipelines for technical and operational positions, cutting time-to-hire by 28%.\n- Administered employee lifecycle records for 150+ staff across HRMS software with 100% data audit compliance.\n- Coordinated weekly new-hire induction and orientation programs, maintaining 96% positive candidate feedback rating.\n\n### Education\n- **Bachelor of Technology (B.Tech)** — APJ Abdul Kalam Technological University`,
-                cover_letter: `Dear Hiring Team at ${comp},\n\nI am writing to express my enthusiastic interest in the ${title} position at ${comp}. With demonstrated expertise in high-volume talent sourcing, structured candidate screening, and seamless onboarding, I am well-prepared to make an immediate impact on your people operations.\n\nAt Trackpi Private Limited, I managed full-cycle recruiting and employee records for over 150 employees, ensuring timely statutory compliance and seamless HRMS workflows. The requirements outlined in your job description closely align with my background in talent acquisition and HR administration.\n\nI would welcome the opportunity to speak with you regarding how my qualifications align with your hiring goals.\n\nSincerely,\nJayanth J\n+91 97783 91171\njjayanthheven20@gmail.com`,
+                download_pdf_url: "",
+                tailored_resume_md: `# CANDIDATE RESUME — ${title.toUpperCase()}\n\n**Location**: ${loc}\n\n---\n\n### Professional Summary\nDedicated HR professional with 2+ years of experience across full-cycle recruitment, employee onboarding, statutory compliance (PF, ESI, Labour Law), HRMS administration, and operations. Proven track record of streamlining screening workflows and enhancing employee engagement.\n\n### Core Competencies\n- **Talent Acquisition**: Job posting, resume screening, technical interview coordination, offer negotiation\n- **HR Operations**: Employee lifecycle records, documentation, attendance tracking, leave management\n- **Compliance & Payroll**: PF, ESI, statutory records, monthly payroll input preparation\n- **Tools**: Advanced Excel, HRMS/HRIS portals, SQL, Applicant Tracking Systems (ATS)\n\n### Professional Experience\n**Trackpi Private Limited** — HR Executive\n*Kottayam, Kerala / Bangalore* | *2022 – Present*\n- Spearheaded end-to-end talent acquisition pipelines for technical and operational positions, cutting time-to-hire by 28%.\n- Administered employee lifecycle records for 150+ staff across HRMS software with 100% data audit compliance.\n- Coordinated weekly new-hire induction and orientation programs, maintaining 96% positive candidate feedback rating.\n\n### Education\n- **Bachelor of Technology (B.Tech)** — APJ Abdul Kalam Technological University`,
+                cover_letter: `Dear Hiring Team at ${comp},\n\nI am writing to express my enthusiastic interest in the ${title} position at ${comp}. With demonstrated expertise in high-volume talent sourcing, structured candidate screening, and seamless onboarding, I am well-prepared to make an immediate impact on your people operations.\n\nAt Trackpi Private Limited, I managed full-cycle recruiting and employee records for over 150 employees, ensuring timely statutory compliance and seamless HRMS workflows. The requirements outlined in your job description closely align with my background in talent acquisition and HR administration.\n\nI would welcome the opportunity to speak with you regarding how my qualifications align with your hiring goals.\n\nSincerely,\nCandidate`,
                 bullet_diffs: [
                   {
                     original: "Conducted candidate screening and coordinated interviews.",
@@ -1011,7 +1011,7 @@
             if (text.includes("interview") || text.includes("schedule") || text.includes("calendly") || text.includes("meet") || text.includes("call")) {
               intent = "INTERVIEW_REQUEST";
               action = "Confirm interview slot & update ledger";
-              link = "https://calendly.com/talentpulse-hr/jayanth-interview";
+              link = "";
             } else if (text.includes("assessment") || text.includes("test") || text.includes("assignment")) {
               intent = "TECHNICAL_ASSESSMENT";
               action = "Review assessment timeline and guidelines";
@@ -1025,7 +1025,7 @@
               confidence: 0.98,
               suggested_action: action,
               scheduling_link: link,
-              draft_response: `Dear Hiring Team at ${body.company_name || 'Target Company'},\n\nThank you very much for the update regarding the ${body.job_title || 'HR Position'} opening. I look forward to our next steps.\n\nBest regards,\nJayanth J\n+91 97783 91171`
+              draft_response: `Dear Hiring Team at ${body.company_name || 'Target Company'},\n\nThank you very much for the update regarding the ${body.job_title || 'HR Position'} opening. I look forward to our next steps.\n\nBest regards,\nCandidate`
             }), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
@@ -1151,7 +1151,7 @@
       <!-- Credits Pill -->
       <div class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 shadow-sm">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span id="header-credits-text">50 Applications Today · Active</span>
+        <span id="header-credits-text">0 Applications Today · Ready</span>
       </div>
 
       <!-- Fresh Sync / Clean Reset -->
@@ -1210,7 +1210,7 @@
           <div id="user-dropdown-menu" style="display: none;" onclick="event.stopPropagation()" class="absolute right-0 top-11 w-56 rounded-2xl bg-gray-900 border border-gray-700 shadow-2xl py-2 z-50 text-xs text-gray-300">
             <div class="px-3.5 py-2 border-b border-gray-800">
               <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Signed in as</p>
-              <p id="user-email-text" class="font-bold text-white truncate text-xs">jjayanthheven20@gmail.com</p>
+              <p id="user-email-text" class="font-bold text-white truncate text-xs">Not signed in</p>
             </div>
             <button type="button" onclick="onDropdownProfileClick(event)" class="w-full text-left flex items-center space-x-2.5 px-3.5 py-2.5 hover:bg-gray-800 text-gray-200 hover:text-white transition-colors cursor-pointer">
               <i class="fa-solid fa-user-gear text-blue-400 w-4"></i>
@@ -1258,7 +1258,7 @@
         <button onclick="switchTab('jobs')" id="nav-jobs" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors active text-gray-400 hover:text-white hover:bg-gray-800/40">
           <i class="fa-solid fa-magnifying-glass w-4 text-center"></i>
           <span>Apply Jobs</span>
-          <span id="badge-jobs-count" class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">105</span>
+          <span id="badge-jobs-count" class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">0</span>
         </button>
 
         <button onclick="switchTab('custom-jd')" id="nav-custom-jd" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors text-gray-400 hover:text-white hover:bg-gray-800/40">
@@ -1287,7 +1287,7 @@
         <button onclick="switchTab('resume')" id="nav-resume" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors text-gray-400 hover:text-white hover:bg-gray-800/40">
           <i class="fa-solid fa-file-lines w-4 text-center"></i>
           <span>My Resume</span>
-          <span class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">96 ATS</span>
+          <span id="sidebar-ats-badge" class="ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">— ATS</span>
         </button>
 
         <button onclick="switchTab('profile')" id="nav-profile" class="nav-btn w-full text-left px-3.5 py-2.5 rounded-xl flex items-center space-x-3 text-sm font-medium transition-colors text-gray-400 hover:text-white hover:bg-gray-800/40">
@@ -1309,8 +1309,8 @@
             JJ
           </div>
           <div class="flex-1 min-w-0">
-            <p id="user-display-name" class="text-xs font-bold truncate">Jayanth J</p>
-            <p id="user-display-role" class="text-[10px] text-gray-400 truncate">HR Executive</p>
+            <p id="sidebar-user-name" class="text-xs font-bold truncate">Guest Candidate</p>
+              <p id="sidebar-user-role" class="text-[10px] text-gray-400 truncate">Not signed in</p>
           </div>
           <button onclick="switchTab('profile')" class="text-gray-400 hover:text-white text-xs p-1" title="Edit Profile">
             <i class="fa-solid fa-gear"></i>
@@ -1350,7 +1350,7 @@
               </h2>
 
               <p class="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-xl" style="color: var(--text-muted);">
-                Calibrated exclusively for candidate <b>Jayanth J (HR Executive, Trackpi)</b>. Arya continuously scouts enterprise career boards, tailors STAR-grounded CV variants with zero hallucination, and dispatches applications autonomously.
+                Autonomous multi-agent scout. Arya continuously monitors enterprise career boards, tailors STAR-grounded CV variants using only facts from your CV, and dispatches applications autonomously.
               </p>
 
               <!-- Action Buttons -->
@@ -1371,7 +1371,7 @@
                 <div class="inline-flex items-center space-x-2 px-3.5 py-2.5 rounded-xl bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-mono shadow-sm">
                   <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   <span class="font-bold text-white">1-Min Scanner:</span>
-                  <span id="scan-1min-countdown" class="text-cyan-300">Next check in 59s</span>
+                  <span id="scan-1min-countdown" class="text-cyan-300">Scanner idle</span>
                   <span class="text-gray-600">|</span>
                   <button type="button" onclick="triggerImmediateScan()" class="text-xs text-cyan-400 hover:text-white underline font-sans font-semibold">Check Now</button>
                 </div>
@@ -1394,12 +1394,6 @@
               <div class="relative w-full h-72 sm:h-80 rounded-2xl bg-gradient-to-b from-gray-950/60 to-blue-950/30 border border-blue-500/20 overflow-hidden flex items-center justify-center shadow-inner group">
                 <!-- 3D Interactive Canvas -->
                 <canvas id="canvas-hero-3d" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
-
-                <!-- Floating 3D Telemetry Badges -->
-                <div class="absolute top-3 right-3 px-3 py-1.5 rounded-xl bg-gray-900/80 backdrop-blur-md border border-cyan-500/40 text-[10px] font-bold text-cyan-300 flex items-center space-x-1.5 shadow-lg shadow-cyan-950/50 hud-badge-3d">
-                  <i class="fa-solid fa-bullseye text-cyan-400"></i>
-                  <span>98.4% ATS Precision</span>
-                </div>
 
                 <div class="absolute bottom-3 left-3 px-3 py-1.5 rounded-xl bg-gray-900/80 backdrop-blur-md border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center space-x-1.5 shadow-lg shadow-emerald-950/50 hud-badge-3d">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
@@ -1439,7 +1433,7 @@
                 </p>
                 <div class="flex flex-wrap items-center gap-4 text-xs pt-1 text-gray-300">
                   <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-amber-400"></i> Next 9:00 AM Dispatch: <strong id="morning-run-countdown" class="text-amber-300 font-mono">--:--:--</strong></span>
-                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-ranking-star text-cyan-400"></i> Top Queued Match: <strong id="morning-top-match-badge" class="text-white">Trackpi Enterprise (99%)</strong></span>
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-ranking-star text-cyan-400"></i> Top Queued Match: <strong id="morning-top-match-badge" class="text-gray-400">None yet</strong></span>
                   <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-emerald-400"></i> Priority Mode: <strong class="text-emerald-300 font-mono">Best Matches First</strong></span>
                   <span id="morning-last-run-label" class="text-gray-400 text-[11px]">Daily 9:00 AM automation armed</span>
                 </div>
@@ -1498,7 +1492,7 @@
                   <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left text-blue-400"></i> Next cycle in: <strong id="scheduler-countdown" class="text-white font-mono">--:--:--</strong></span>
                   <span class="flex items-center gap-1.5"><i class="fa-solid fa-radar text-emerald-400"></i> Total Scanned: <strong id="scheduler-total-scans" class="text-white">0</strong></span>
                   <span class="flex items-center gap-1.5"><i class="fa-solid fa-paper-plane text-purple-400"></i> Total Applied: <strong id="scheduler-total-applied" class="text-white">0</strong></span>
-                  <span id="scheduler-last-run-label" class="text-gray-400 text-[11px]">Last run: Just now</span>
+                  <span id="scheduler-last-run-label" class="text-gray-400 text-[11px]">Last run: Not yet run</span>
                 </div>
               </div>
             </div>
@@ -1529,11 +1523,11 @@
           <!-- Target Role Filter Chips -->
           <div class="flex flex-wrap items-center gap-2 pt-1 border-b border-gray-800/80 pb-2.5">
             <span class="text-xs font-semibold text-gray-400 mr-1 flex items-center gap-1.5" style="color: var(--text-sub);"><i class="fa-solid fa-user-tie text-blue-400"></i>Target Role:</span>
-            <button onclick="filterRole('ALL')" id="role-btn-all" class="role-filter-btn active px-3 py-1 rounded-full text-xs font-semibold bg-blue-600 text-white border border-blue-500/30 transition-colors shadow-sm">All Matching Roles (<span id="role-count-all">121</span>)</button>
-            <button onclick="filterRole('HR Executive')" id="role-btn-hr-exec" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">HR Executive (<span id="role-count-hr-exec">36</span>)</button>
-            <button onclick="filterRole('HR Operations')" id="role-btn-hr-ops" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">HR Operations (<span id="role-count-hr-ops">62</span>)</button>
-            <button onclick="filterRole('Talent Acquisition')" id="role-btn-ta" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Talent Acquisition (<span id="role-count-ta">47</span>)</button>
-            <button onclick="filterRole('People Operations')" id="role-btn-people-ops" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">People Operations (<span id="role-count-people-ops">31</span>)</button>
+            <button onclick="filterRole('ALL')" id="role-btn-all" class="role-filter-btn active px-3 py-1 rounded-full text-xs font-semibold bg-blue-600 text-white border border-blue-500/30 transition-colors shadow-sm">All Matching Roles (<span id="role-count-all">0</span>)</button>
+            <button onclick="filterRole('HR Executive')" id="role-btn-hr-exec" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">HR Executive (<span id="role-count-hr-exec">0</span>)</button>
+            <button onclick="filterRole('HR Operations')" id="role-btn-hr-ops" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">HR Operations (<span id="role-count-hr-ops">0</span>)</button>
+            <button onclick="filterRole('Talent Acquisition')" id="role-btn-ta" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">Talent Acquisition (<span id="role-count-ta">0</span>)</button>
+            <button onclick="filterRole('People Operations')" id="role-btn-people-ops" class="role-filter-btn px-3 py-1 rounded-full text-xs font-medium bg-gray-800/70 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors">People Operations (<span id="role-count-people-ops">0</span>)</button>
             <span class="text-[11px] text-emerald-400/90 ml-auto hidden sm:flex items-center gap-1 font-medium bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
               <i class="fa-solid fa-shield-check text-[10px]"></i> Strict Title Match Enforced
             </span>
@@ -1608,7 +1602,7 @@
             <div>
               <h2 class="text-2xl font-bold tracking-tight text-white">Tailor Resume to Custom Job Description</h2>
               <p class="text-xs text-gray-400" style="color: var(--text-muted);">
-                Paste any job description or company opening. Agent 2 extracts required skills, tailors your resume bullets with verified STAR metrics (zero hallucination), creates a tailored cover letter and ATS PDF, and lets you submit immediately.
+                Paste any job description or company opening. Agent 2 extracts required skills, tailors your resume bullets with verified STAR metrics (using only facts from your CV), creates a tailored cover letter and ATS PDF, and lets you submit immediately.
               </p>
             </div>
           </div>
@@ -1674,7 +1668,7 @@
 
               <!-- Action Buttons -->
               <div class="flex flex-wrap items-center gap-2">
-                <a id="custom-res-download-btn" href="#" target="_blank" rel="noopener noreferrer" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs px-4 py-2.5 rounded-xl border border-gray-700 flex items-center space-x-1.5 transition-all">
+                <a id="custom-res-download-btn" href="#" target="_blank" rel="noopener noreferrer" style="display: none;" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs px-4 py-2.5 rounded-xl border border-gray-700 flex items-center space-x-1.5 transition-all">
                   <i class="fa-solid fa-file-arrow-down text-blue-400"></i>
                   <span>Download Tailored PDF</span>
                 </a>
@@ -1928,7 +1922,7 @@
               </div>
               <div>
                 <label for="input-recruiter-body" class="block text-xs font-medium text-gray-400 mb-1">Email Body Text</label>
-                <textarea id="input-recruiter-body" rows="3" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">Hi Jayanth, We reviewed your profile and experience in onboarding and HR operations. We would love to schedule a 30-minute introductory discussion this week. Please pick a slot here: https://calendly.com/talentpulse-hr/jayanth-interview</textarea>
+                <textarea id="input-recruiter-body" rows="3" class="w-full text-xs px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white">Paste recruiter email or interview update here...</textarea>
               </div>
 
               <button onclick="analyzeRecruiterEmail()" id="btn-analyze-email" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs py-2 rounded-lg transition-all flex items-center justify-center space-x-2">
@@ -1949,7 +1943,7 @@
               </div>
               <div class="text-xs">
                 <span class="text-gray-400 block mb-1">Extracted Booking Link:</span>
-                <a id="res-sched-link" href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline truncate block font-mono text-[11px]">https://calendly.com/...</a>
+                <a id="res-sched-link" href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline truncate block font-mono text-[11px]">—</a>
               </div>
               <div>
                 <div class="flex items-center justify-between text-xs text-gray-400 mb-1">
@@ -2023,11 +2017,9 @@
               <span id="card-active-role-label" class="text-[11px] font-mono text-blue-400 truncate max-w-[130px]">HR Executive</span>
             </div>
             <div class="flex items-center space-x-4">
-              <div id="resume-main-ats-gauge" class="w-20 h-20 rounded-full border-4 border-emerald-500 flex items-center justify-center text-2xl font-black text-emerald-400">
-                96.2
-              </div>
+              <div id="resume-main-ats-gauge" class="w-20 h-20 rounded-full border-4 border-emerald-500 flex items-center justify-center text-2xl font-black text-emerald-400">—</div>
               <div>
-                <h4 id="resume-main-ats-verdict" class="text-sm font-bold text-white">Optimal Pass</h4>
+                <h4 id="resume-main-ats-verdict" class="text-sm font-bold text-white">Ready</h4>
                 <p id="resume-main-ats-subtext" class="text-xs text-gray-400">Calibrated for target role requirements and keyword density.</p>
               </div>
             </div>
@@ -2035,15 +2027,15 @@
             <div class="space-y-2 pt-2 border-t border-gray-800 text-xs">
               <div class="flex justify-between">
                 <span class="text-gray-400">Active Target Role:</span>
-                <span id="resume-main-role-name" class="text-blue-400 font-semibold">HR Executive</span>
+                <span id="resume-main-role-name" class="text-blue-400 font-semibold">—</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-400">Target Roles Evaluated:</span>
-                <span id="resume-target-roles-count" class="text-emerald-400 font-semibold">5 Roles Compared</span>
+                <span id="resume-target-roles-count" class="text-emerald-400 font-semibold">0 Roles Compared</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-gray-400">Contact & Phone Validation:</span>
-                <span class="text-emerald-400 font-semibold">+91 97783 91171</span>
+                <span id="prof-phone-val-status" class="text-gray-400 font-semibold">—</span>
               </div>
             </div>
           </div>
@@ -2131,66 +2123,64 @@
               <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-2 hover:border-blue-500/50 transition-all">
                 <div class="flex justify-between items-start">
                   <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Workday</span>
-                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40">100%</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-gray-900 text-gray-400 border border-gray-800">—</span>
                 </div>
-                <div class="text-2xl font-black text-white" id="score-workday">100<span class="text-xs text-gray-400 font-normal">/100</span></div>
+                <div class="text-2xl font-black text-white" id="score-workday">—<span class="text-xs text-gray-400 font-normal">/100</span></div>
                 <p class="text-[11px] text-gray-400 line-clamp-2">Strict exact keyword match density and structured employment history parsing.</p>
-                <div class="pt-2 border-t border-gray-800 text-[10px] text-emerald-400 font-medium">Optimal Timeline & Contact Pass</div>
+                <div class="pt-2 border-t border-gray-800 text-[10px] text-emerald-400 font-medium">Baseline Verification</div>
               </div>
 
               <!-- Greenhouse -->
               <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-2 hover:border-blue-500/50 transition-all">
                 <div class="flex justify-between items-start">
                   <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Greenhouse</span>
-                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-950 text-blue-400 border border-blue-800/40">83.3%</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-gray-900 text-gray-400 border border-gray-800">—</span>
                 </div>
-                <div class="text-2xl font-black text-white" id="score-greenhouse">83.3<span class="text-xs text-gray-400 font-normal">/100</span></div>
+                <div class="text-2xl font-black text-white" id="score-greenhouse">—<span class="text-xs text-gray-400 font-normal">/100</span></div>
                 <p class="text-[11px] text-gray-400 line-clamp-2">Competency scorecard mapping against role requirements and verified skills.</p>
-                <div class="pt-2 border-t border-gray-800 text-[10px] text-blue-400 font-medium">5/6 Core Competencies Cleared</div>
+                <div class="pt-2 border-t border-gray-800 text-[10px] text-blue-400 font-medium">Pending Evaluation</div>
               </div>
 
               <!-- Taleo / Oracle -->
               <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-2 hover:border-blue-500/50 transition-all">
                 <div class="flex justify-between items-start">
                   <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Taleo</span>
-                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-950 text-purple-400 border border-purple-800/40">91.2%</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-gray-900 text-gray-400 border border-gray-800">—</span>
                 </div>
-                <div class="text-2xl font-black text-white" id="score-taleo">91.2<span class="text-xs text-gray-400 font-normal">/100</span></div>
+                <div class="text-2xl font-black text-white" id="score-taleo">—<span class="text-xs text-gray-400 font-normal">/100</span></div>
                 <p class="text-[11px] text-gray-400 line-clamp-2">Rigid knockout filters, degree threshold validation, and keyword counts.</p>
-                <div class="pt-2 border-t border-gray-800 text-[10px] text-purple-400 font-medium">Degree Knockout Passed</div>
+                <div class="pt-2 border-t border-gray-800 text-[10px] text-purple-400 font-medium">Standard Filter Ready</div>
               </div>
 
               <!-- Lever -->
               <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-2 hover:border-blue-500/50 transition-all">
                 <div class="flex justify-between items-start">
                   <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Lever</span>
-                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-950 text-amber-400 border border-amber-800/40">100%</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-gray-900 text-gray-400 border border-gray-800">—</span>
                 </div>
-                <div class="text-2xl font-black text-white" id="score-lever">100<span class="text-xs text-gray-400 font-normal">/100</span></div>
+                <div class="text-2xl font-black text-white" id="score-lever">—<span class="text-xs text-gray-400 font-normal">/100</span></div>
                 <p class="text-[11px] text-gray-400 line-clamp-2">Recruiter impact index: quantifiable metrics (%), numbers, and strong action verbs.</p>
-                <div class="pt-2 border-t border-gray-800 text-[10px] text-amber-400 font-medium">100% Quantifiable Outcomes</div>
+                <div class="pt-2 border-t border-gray-800 text-[10px] text-amber-400 font-medium">Awaiting Analysis</div>
               </div>
 
               <!-- iCIMS / Sovren -->
               <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-2 hover:border-blue-500/50 transition-all">
                 <div class="flex justify-between items-start">
                   <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">iCIMS / Sovren</span>
-                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/40">100%</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-gray-900 text-gray-400 border border-gray-800">—</span>
                 </div>
-                <div class="text-2xl font-black text-white" id="score-icims">100<span class="text-xs text-gray-400 font-normal">/100</span></div>
+                <div class="text-2xl font-black text-white" id="score-icims">—<span class="text-xs text-gray-400 font-normal">/100</span></div>
                 <p class="text-[11px] text-gray-400 line-clamp-2">Semantic & format audit: section header hygiene and corruption-free plain text.</p>
-                <div class="pt-2 border-t border-gray-800 text-[10px] text-cyan-400 font-medium">100% Parsable Typography</div>
+                <div class="pt-2 border-t border-gray-800 text-[10px] text-cyan-400 font-medium">Standard Typography</div>
               </div>
             </div>
 
             <!-- Composite Summary Bar -->
             <div class="p-4 rounded-xl bg-gradient-to-r from-emerald-950/40 via-blue-950/30 to-purple-950/40 border border-emerald-800/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-xl font-bold text-emerald-400" id="score-composite">
-                  94.9
-                </div>
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-xl font-bold text-emerald-400" id="score-composite">—</div>
                 <div>
-                  <h4 class="text-sm font-bold text-white">Unified Multi-Engine ATS Verdict: <span class="text-emerald-400 font-semibold" id="score-composite-verdict">Tier-1 Interview Ready</span></h4>
+                  <h4 class="text-sm font-bold text-white">Unified Multi-Engine ATS Verdict: <span class="text-emerald-400 font-semibold" id="score-composite-verdict">Ready to apply</span></h4>
                   <p class="text-xs text-gray-400">High probability of passing automated screening across Workday, Greenhouse, Taleo, Lever, and iCIMS.</p>
                 </div>
               </div>
@@ -3157,7 +3147,7 @@
         <div class="text-gray-400 mt-2">Tailored ATS Bullet (Fact-Grounded):</div>
         <div class="text-emerald-400">Spearheaded end-to-end employee lifecycle documentation and HRIS recordkeeping, achieving 100% compliance across all audits.</div>
       `;
-      document.getElementById('modal-draft-letter').value = `Dear Hiring Team at ${company || 'your organization'},\n\nI am writing to express my enthusiasm for the ${title} position. With my verified background in HR Operations, Recruitment, and Statutory Compliance, I am excited to support your people operations.\n\nBest regards,\nJayanth J\njjayanthheven20@gmail.com | +91 97783 91171`;
+      document.getElementById('modal-draft-letter').value = `Dear Hiring Team at ${company || 'your organization'},\n\nI am writing to express my enthusiasm for the ${title} position. With my verified background in HR Operations, Recruitment, and Statutory Compliance, I am excited to support your people operations.\n\nBest regards,\nCandidate`;
       document.getElementById('draft-modal').classList.remove('hidden');
     }
 
@@ -3689,11 +3679,11 @@
         `).join('');
 
         // Download link
-        document.getElementById('custom-res-download-btn').href = r.download_pdf_url;
+        const dlBtn = document.getElementById('custom-res-download-btn'); if (dlBtn) { dlBtn.href = r.download_pdf_url || '#'; dlBtn.style.display = r.download_pdf_url ? 'inline-flex' : 'none'; }
 
         // Show Results section
         document.getElementById('custom-jd-results').classList.remove('hidden');
-        showToast("Resume tailored successfully with 0 hallucination! Ready to apply.", "success");
+        showToast("Resume tailored successfully using only facts from your CV! Ready to apply.", "success");
       } catch (err) {
         showToast("Error tailoring: " + err.message, "error");
       } finally {
@@ -3793,17 +3783,17 @@
         // 4. Default candidate values if still empty
         if (!p) {
           p = {
-            first_name: "JAYANTH",
-            last_name: "J",
-            email: "jjayanthheven20@gmail.com",
-            phone: "+91 97783 91171",
-            location: "Kottayam, Kerala, India",
-            linkedin_url: "https://linkedin.com/in/jayanth-j",
-            preferred_locations: ["Bangalore", "Kochi", "Coimbatore", "UAE", "Remote"],
-            target_roles: ["HR Executive", "HR Operations Executive", "Talent Acquisition Specialist"],
-            verified_skills: ["Recruitment & Talent Acquisition", "HR Operations", "Onboarding & Induction", "HRIS", "Compliance", "Advanced Excel"],
-            min_base_salary: 35000,
-            years_experience: "2+ Years"
+            first_name: "",
+            last_name: "",
+            email: "",
+            phone: "",
+            location: "",
+            linkedin_url: "",
+            preferred_locations: [],
+            target_roles: [],
+            verified_skills: [],
+            min_base_salary: "",
+            years_experience: ""
           };
         }
 
@@ -3855,10 +3845,10 @@
 
         const updated = {
           candidate_id: 'cand_jayanth',
-          first_name: document.getElementById('prof-first-name') ? document.getElementById('prof-first-name').value.trim() : 'JAYANTH',
-          last_name: document.getElementById('prof-last-name') ? document.getElementById('prof-last-name').value.trim() : 'J',
-          email: document.getElementById('prof-email') ? document.getElementById('prof-email').value.trim() : 'jjayanthheven20@gmail.com',
-          phone: document.getElementById('prof-phone') ? document.getElementById('prof-phone').value.trim() : '+91 97783 91171',
+          first_name: document.getElementById('prof-first-name') ? document.getElementById('prof-first-name').value.trim() : '',
+          last_name: document.getElementById('prof-last-name') ? document.getElementById('prof-last-name').value.trim() : '',
+          email: document.getElementById('prof-email') ? document.getElementById('prof-email').value.trim() : '',
+          phone: document.getElementById('prof-phone') ? document.getElementById('prof-phone').value.trim() : '',
           location: document.getElementById('prof-curr-location') ? document.getElementById('prof-curr-location').value.trim() : 'Kottayam, Kerala, India',
           linkedin_url: document.getElementById('prof-linkedin') ? document.getElementById('prof-linkedin').value.trim() : 'https://linkedin.com/in/jayanth-j',
           preferred_locations: locs.length > 0 ? locs : ['Bangalore', 'Kochi', 'UAE', 'Remote'],
@@ -4037,7 +4027,7 @@
 
         // Update Active Target Role display in header and score card
         const activeRole = data.active_target_role || "HR Executive";
-        const activeScore = data.active_role_score || data.overall_composite_score || 94.9;
+        const activeScore = data.active_role_score || data.overall_composite_score || "—";
 
         if (document.getElementById('header-role-name')) {
           document.getElementById('header-role-name').innerText = activeRole;
@@ -4086,10 +4076,10 @@
           document.getElementById('score-icims').innerHTML = `${m.icims_sovren.score}<span class="text-xs text-gray-400 font-normal">/100</span>`;
         }
         if (document.getElementById('score-composite')) {
-          document.getElementById('score-composite').innerText = data.overall_composite_score || 94.9;
+          document.getElementById('score-composite').innerText = data.overall_composite_score || '—';
         }
         if (document.getElementById('score-composite-verdict')) {
-          document.getElementById('score-composite-verdict').innerText = data.readiness_verdict || "Tier-1 Interview Ready";
+          document.getElementById('score-composite-verdict').innerText = data.readiness_verdict || "Ready to apply";
         }
 
         renderAtsDimensions(data.dimensions || []);
@@ -5646,45 +5636,46 @@
     async function handleGoogleSignIn() {
       const btnText = document.getElementById('google-btn-text');
       const origText = btnText ? btnText.innerText : 'Continue with Google Account';
-      if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Signing in with Google...';
+      if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Checking Google Auth...';
 
       try {
-        const input = document.getElementById('auth-email-input');
-        const email = (input && input.value.trim()) || 'jjayanthheven20@gmail.com';
-        const displayName = email.includes('jjayanth') ? 'Jayanth J' : email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-
-        const userObj = {
-          email: email,
-          name: displayName,
-          provider: 'google',
-          id: 'google_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0)),
-          photo_url: 'https://lh3.googleusercontent.com/a/default-user'
-        };
-
-        // 1. Establish authenticated session
-        setAuthenticatedUser(userObj);
-
-        // 2. Sync candidate truth store with Supabase profiles if client is connected
         const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
-        if (client) {
-          try {
-            await client.from('profiles').upsert([{
-              id: 'cand_jayanth',
-              email: email,
-              first_name: displayName.split(' ')[0] || 'Jayanth',
-              last_name: displayName.split(' ')[1] || 'J',
-              raw_profile: { provider: 'google', signed_in_at: new Date().toISOString() }
-            }], { onConflict: 'email' });
-          } catch (supaErr) {
-            console.warn('Supabase cloud profile sync notice:', supaErr);
-          }
+        if (!client || !client.auth) {
+          showToast('Supabase client is not initialized. Please sign in with your email address below.', 'error');
+          return;
         }
 
-        showToast(`Signed in successfully with Google (${email})!`, 'success');
-        closeLoginModal();
+        const { data, error } = await client.auth.signInWithOAuth({
+          provider: 'google',
+          options: {
+            redirectTo: window.location.origin + window.location.pathname
+          }
+        });
+
+        if (error) {
+          throw error;
+        }
+
+        if (data && data.url) {
+          // Verify provider is enabled before browser navigation
+          try {
+            const probe = await fetch(data.url, { method: 'GET', headers: { 'Accept': 'application/json' } });
+            if (probe && (probe.status === 400 || !probe.ok)) {
+              const errBody = await probe.json().catch(() => null);
+              if (errBody && errBody.msg && errBody.msg.includes('Unsupported provider')) {
+                showToast('Google Sign-In is not enabled on this Supabase project. Please use your Email ID below.', 'error');
+                return;
+              }
+            }
+          } catch(probeErr) {}
+          window.location.href = data.url;
+        } else {
+          showToast('Google Sign-In is not enabled on this Supabase project. Please use your Email ID below.', 'error');
+        }
       } catch (err) {
-        console.warn('Google sign-in notice:', err);
-        quickLoginCandidate('jjayanthheven20@gmail.com', 'Jayanth J');
+        console.warn('Google sign-in error:', err);
+        const msg = (err && (err.message || err.error_description)) || 'Google Sign-In is not enabled on this Supabase project. Please sign in with Email ID.';
+        showToast(msg, 'error');
       } finally {
         if (btnText) btnText.innerText = origText;
       }
@@ -6015,22 +6006,7 @@
             <span>Sign In with Email ID</span>
           </button>
         </form>
-
-        <!-- Quick 1-Click Candidate Profile -->
-        <div class="pt-2">
-          <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-2">Instant Candidate Access</p>
-          <button type="button" onclick="quickLoginCandidate('jjayanthheven20@gmail.com', 'Jayanth J')" class="w-full py-2 px-3 rounded-xl bg-gray-900/70 hover:bg-gray-800 border border-gray-800 hover:border-gray-700 text-left flex items-center space-x-2.5 transition-all text-xs text-gray-300 group">
-            <div class="w-7 h-7 rounded-full bg-blue-600/30 text-blue-400 border border-blue-500/40 flex items-center justify-center text-[10px] font-bold">JJ</div>
-            <div class="flex-1 min-w-0">
-              <p class="font-semibold text-white truncate text-xs group-hover:text-blue-400 transition-colors">Jayanth J (Candidate Account)</p>
-              <p class="text-[10px] text-gray-500 truncate">jjayanthheven20@gmail.com</p>
-            </div>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">1-Click</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800/80">
+      </div><div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800/80">
         Secured with Supabase Authentication & Candidate Truth Store.
       </div>
     </div>
