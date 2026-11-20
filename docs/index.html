@@ -3070,14 +3070,23 @@
       btn.disabled = true;
 
       try {
-        const top5Urls = allJobs.slice(0, 5).map(j => j.url);
+        const unapplied = (allJobs || []).filter(j => !j.already_applied);
+        unapplied.sort((a, b) => (b.match_score || 0) - (a.match_score || 0));
+        const top5 = unapplied.slice(0, 5);
+
+        if (top5.length === 0) {
+          showToast('All matching openings have already been applied to! No pending jobs.', 'info');
+          return;
+        }
+
+        const top5Urls = top5.map(j => j.url);
         const res = await fetch('/api/jobs/batch-apply', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ job_urls: top5Urls, dry_run: false })
         });
         const data = await res.json();
-        showToast(`Auto-applied to top ${data.processed} openings with verified ATS variants!`, 'success');
+        showToast(`Auto-applied to top ${top5.length} openings with verified ATS variants!`, 'success');
         loadJobFeed();
         loadLedgerData();
         loadSchedulerStatus();

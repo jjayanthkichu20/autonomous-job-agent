@@ -3,139 +3,6 @@
   "count": 133,
   "jobs": [
     {
-      "id": "top_swiggy_hr_06",
-      "title": "HR Executive - People Solutions & Compliance",
-      "company": "Swiggy",
-      "location": "Bangalore, India",
-      "is_remote": true,
-      "salary": "\u20b948,000 - \u20b965,000 / mo",
-      "match_score": 96,
-      "url": "https://careers.swiggy.com/#/jobs/hr-executive-people-solutions-blr",
-      "already_applied": true,
-      "skills": [
-        "HR Operations",
-        "Compliance",
-        "Employee Relations",
-        "Onboarding",
-        "Excel"
-      ],
-      "posted_time": "35m ago"
-    },
-    {
-      "id": "top_razorpay_po_07",
-      "title": "People Operations Partner - Employee Relations",
-      "company": "Razorpay",
-      "location": "Bangalore, India",
-      "is_remote": false,
-      "salary": "\u20b952,000 - \u20b970,000 / mo",
-      "match_score": 96,
-      "url": "https://razorpay.com/jobs/people-operations-partner-blr-2026",
-      "already_applied": true,
-      "skills": [
-        "Employee Relations",
-        "HR Operations",
-        "Onboarding & Induction",
-        "HRMS",
-        "Documentation"
-      ],
-      "posted_time": "42m ago"
-    },
-    {
-      "id": "top_zoho_ta_08",
-      "title": "Talent Acquisition Specialist",
-      "company": "Zoho Corporation",
-      "location": "Coimbatore, Tamil Nadu, India",
-      "is_remote": false,
-      "salary": "\u20b942,000 - \u20b958,000 / mo",
-      "match_score": 96,
-      "url": "https://www.zoho.com/careers/talent-acquisition-specialist-cbe.html",
-      "already_applied": true,
-      "skills": [
-        "Talent Acquisition",
-        "Technical Sourcing",
-        "Interview Scheduling",
-        "HR Operations",
-        "Reporting"
-      ],
-      "posted_time": "50m ago"
-    },
-    {
-      "id": "top_ust_hr_09",
-      "title": "HR Executive - Employee Lifecycle & Induction",
-      "company": "UST Global",
-      "location": "Kochi / Trivandrum, Kerala",
-      "is_remote": false,
-      "salary": "\u20b940,000 - \u20b955,000 / mo",
-      "match_score": 95,
-      "url": "https://ust.wd1.myworkdayjobs.com/UST/job/Kochi/HR-Executive-Lifecycle_JR10928",
-      "already_applied": true,
-      "skills": [
-        "Onboarding & Induction",
-        "HR Operations",
-        "HRIS",
-        "Employee Documentation",
-        "Compliance"
-      ],
-      "posted_time": "1h ago"
-    },
-    {
-      "id": "top_amzn_ops_10",
-      "title": "HR Operations Coordinator - Employee Services",
-      "company": "Amazon",
-      "location": "Bangalore, India",
-      "is_remote": false,
-      "salary": "\u20b950,000 - \u20b968,000 / mo",
-      "match_score": 95,
-      "url": "https://amazon.jobs/en/jobs/2591823/hr-operations-coordinator-employee-services",
-      "already_applied": true,
-      "skills": [
-        "HR Operations",
-        "Case Management",
-        "Statutory Compliance",
-        "HRIS",
-        "Advanced Excel"
-      ],
-      "posted_time": "1h ago"
-    },
-    {
-      "id": "top_cognizant_ta_11",
-      "title": "Talent Acquisition Coordinator",
-      "company": "Cognizant",
-      "location": "Coimbatore / Bangalore, India",
-      "is_remote": false,
-      "salary": "\u20b942,000 - \u20b956,000 / mo",
-      "match_score": 95,
-      "url": "https://careers.cognizant.com/global/en/job/0005918201/Talent-Acquisition-Coordinator",
-      "already_applied": true,
-      "skills": [
-        "Talent Acquisition",
-        "Interview Scheduling",
-        "ATS Management",
-        "Background Verification",
-        "Compliance"
-      ],
-      "posted_time": "2h ago"
-    },
-    {
-      "id": "top_freshworks_po_12",
-      "title": "People Operations Associate",
-      "company": "Freshworks",
-      "location": "Remote, India",
-      "is_remote": true,
-      "salary": "\u20b948,000 - \u20b965,000 / mo",
-      "match_score": 95,
-      "url": "https://www.freshworks.com/company/careers/jobs/people-operations-associate-remote-2026",
-      "already_applied": true,
-      "skills": [
-        "People Operations",
-        "HRIS",
-        "Onboarding",
-        "Compliance",
-        "Employee Engagement"
-      ],
-      "posted_time": "2h ago"
-    },
-    {
       "id": "top_trackpi_lead_01",
       "title": "Lead HR Executive - Strategic HR & Compliance",
       "company": "Trackpi Enterprise",
@@ -144,7 +11,7 @@
       "salary": "\u20b950,000 - \u20b972,000 / mo",
       "match_score": 99,
       "url": "https://careers.trackpi.com/jobs/lead-hr-executive-compliance-2026",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "HR Operations",
         "Recruitment & Talent Acquisition",
@@ -163,7 +30,7 @@
       "salary": "\u20b955,000 - \u20b975,000 / mo",
       "match_score": 98,
       "url": "https://careers.google.com/jobs/results/hr-executive-talent-ops-bangalore",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "Recruitment & Talent Acquisition",
         "HR Operations",
@@ -182,7 +49,7 @@
       "salary": "\u20b958,000 - \u20b978,000 / mo",
       "match_score": 98,
       "url": "https://careers.microsoft.com/us/en/job/people-ops-specialist-lifecycle-blr",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "HR Operations",
         "Onboarding & Induction",
@@ -201,7 +68,7 @@
       "salary": "\u20b945,000 - \u20b962,000 / mo",
       "match_score": 97,
       "url": "https://career.infosys.com/jobdesc?jobId=HR_OPS_KOCHI_2026_9182",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "HR Operations",
         "Candidate Screening",
@@ -220,7 +87,7 @@
       "salary": "\u20b946,000 - \u20b964,000 / mo",
       "match_score": 97,
       "url": "https://careers.wipro.com/careers-home/jobs/ta-specialist-lateral-koc-blr",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "Recruitment & Talent Acquisition",
         "Candidate Screening",
@@ -231,6 +98,63 @@
       "posted_time": "22m ago"
     },
     {
+      "id": "top_swiggy_hr_06",
+      "title": "HR Executive - People Solutions & Compliance",
+      "company": "Swiggy",
+      "location": "Bangalore, India",
+      "is_remote": true,
+      "salary": "\u20b948,000 - \u20b965,000 / mo",
+      "match_score": 96,
+      "url": "https://careers.swiggy.com/#/jobs/hr-executive-people-solutions-blr",
+      "already_applied": false,
+      "skills": [
+        "HR Operations",
+        "Compliance",
+        "Employee Relations",
+        "Onboarding",
+        "Excel"
+      ],
+      "posted_time": "35m ago"
+    },
+    {
+      "id": "top_razorpay_po_07",
+      "title": "People Operations Partner - Employee Relations",
+      "company": "Razorpay",
+      "location": "Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b952,000 - \u20b970,000 / mo",
+      "match_score": 96,
+      "url": "https://razorpay.com/jobs/people-operations-partner-blr-2026",
+      "already_applied": false,
+      "skills": [
+        "Employee Relations",
+        "HR Operations",
+        "Onboarding & Induction",
+        "HRMS",
+        "Documentation"
+      ],
+      "posted_time": "42m ago"
+    },
+    {
+      "id": "top_zoho_ta_08",
+      "title": "Talent Acquisition Specialist",
+      "company": "Zoho Corporation",
+      "location": "Coimbatore, Tamil Nadu, India",
+      "is_remote": false,
+      "salary": "\u20b942,000 - \u20b958,000 / mo",
+      "match_score": 96,
+      "url": "https://www.zoho.com/careers/talent-acquisition-specialist-cbe.html",
+      "already_applied": false,
+      "skills": [
+        "Talent Acquisition",
+        "Technical Sourcing",
+        "Interview Scheduling",
+        "HR Operations",
+        "Reporting"
+      ],
+      "posted_time": "50m ago"
+    },
+    {
       "id": "vj_accenture_portal_17",
       "title": "HR Operations Associate - Talent Fulfillment & Onboarding",
       "company": "Accenture",
@@ -239,7 +163,7 @@
       "salary": "\u20b945,000 - \u20b962,000 / mo",
       "match_score": 96,
       "url": "https://www.accenture.com/in-en/careers/jobdetails?id=10928194_india",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "HR Operations",
         "Talent Fulfillment",
@@ -258,7 +182,7 @@
       "salary": "\u20b936,000 - \u20b950,000 / mo",
       "match_score": 96,
       "url": "https://jobs.concentrix.com/job/bangalore/hr-executive-people-solutions/2049/5819204",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "Onboarding",
         "HR Operations",
@@ -277,7 +201,7 @@
       "salary": "\u20b942,000 - \u20b957,000 / mo",
       "match_score": 96,
       "url": "https://careers.genpact.com/job/bangalore/hr-operations-specialist/2931/4819201",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "HR Operations",
         "Employee Experience",
@@ -296,7 +220,7 @@
       "salary": "\u20b942,000 - \u20b958,000 / mo",
       "match_score": 96,
       "url": "https://www.glassdoor.com/job-listing/hr-operations-specialist-tata-consultancy-services-JV_IC2940587_KO0,24_KE25,50.htm?jl=1009712048",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "Employee Lifecycle",
         "Payroll Support",
@@ -315,7 +239,7 @@
       "salary": "\u20b940,000 - \u20b955,000 / mo",
       "match_score": 96,
       "url": "https://ibegin.tcs.com/iBegin/jobs/tcs-hr-operations-executive-928103",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "Talent Acquisition",
         "HR Operations",
@@ -334,7 +258,7 @@
       "salary": "\u20b934,000 - \u20b946,000 / mo",
       "match_score": 96,
       "url": "https://www.indeed.com/viewjob?jk=suth_hrops_93810284&cmp=Sutherland",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "HR Operations",
         "HRMS Administration",
@@ -353,7 +277,7 @@
       "salary": "\u20b935,000 - \u20b948,000 / mo",
       "match_score": 96,
       "url": "https://jobs.sutherlandglobal.com/job/kochi/hr-executive-talent-acquisition/1932/3920194",
-      "already_applied": true,
+      "already_applied": false,
       "skills": [
         "High-Volume Recruitment",
         "Candidate Screening",
@@ -1442,6 +1366,82 @@
         "Darwinbox HRMS"
       ],
       "posted_time": "Fresh (< 12h)"
+    },
+    {
+      "id": "top_ust_hr_09",
+      "title": "HR Executive - Employee Lifecycle & Induction",
+      "company": "UST Global",
+      "location": "Kochi / Trivandrum, Kerala",
+      "is_remote": false,
+      "salary": "\u20b940,000 - \u20b955,000 / mo",
+      "match_score": 95,
+      "url": "https://ust.wd1.myworkdayjobs.com/UST/job/Kochi/HR-Executive-Lifecycle_JR10928",
+      "already_applied": true,
+      "skills": [
+        "Onboarding & Induction",
+        "HR Operations",
+        "HRIS",
+        "Employee Documentation",
+        "Compliance"
+      ],
+      "posted_time": "1h ago"
+    },
+    {
+      "id": "top_amzn_ops_10",
+      "title": "HR Operations Coordinator - Employee Services",
+      "company": "Amazon",
+      "location": "Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b950,000 - \u20b968,000 / mo",
+      "match_score": 95,
+      "url": "https://amazon.jobs/en/jobs/2591823/hr-operations-coordinator-employee-services",
+      "already_applied": true,
+      "skills": [
+        "HR Operations",
+        "Case Management",
+        "Statutory Compliance",
+        "HRIS",
+        "Advanced Excel"
+      ],
+      "posted_time": "1h ago"
+    },
+    {
+      "id": "top_cognizant_ta_11",
+      "title": "Talent Acquisition Coordinator",
+      "company": "Cognizant",
+      "location": "Coimbatore / Bangalore, India",
+      "is_remote": false,
+      "salary": "\u20b942,000 - \u20b956,000 / mo",
+      "match_score": 95,
+      "url": "https://careers.cognizant.com/global/en/job/0005918201/Talent-Acquisition-Coordinator",
+      "already_applied": true,
+      "skills": [
+        "Talent Acquisition",
+        "Interview Scheduling",
+        "ATS Management",
+        "Background Verification",
+        "Compliance"
+      ],
+      "posted_time": "2h ago"
+    },
+    {
+      "id": "top_freshworks_po_12",
+      "title": "People Operations Associate",
+      "company": "Freshworks",
+      "location": "Remote, India",
+      "is_remote": true,
+      "salary": "\u20b948,000 - \u20b965,000 / mo",
+      "match_score": 95,
+      "url": "https://www.freshworks.com/company/careers/jobs/people-operations-associate-remote-2026",
+      "already_applied": true,
+      "skills": [
+        "People Operations",
+        "HRIS",
+        "Onboarding",
+        "Compliance",
+        "Employee Engagement"
+      ],
+      "posted_time": "2h ago"
     },
     {
       "id": "vj_accenture_indeed_18",
