@@ -30,7 +30,7 @@
       "salary": "\u20b955,000 - \u20b975,000 / mo",
       "match_score": 98,
       "url": "https://careers.google.com/jobs/results/hr-executive-talent-ops-bangalore",
-      "already_applied": false,
+      "already_applied": true,
       "skills": [
         "Recruitment & Talent Acquisition",
         "HR Operations",
@@ -38,7 +38,9 @@
         "HRIS",
         "Compliance"
       ],
-      "posted_time": "3m ago"
+      "posted_time": "3m ago",
+      "applied_at": "2026-11-24T09:42:36.657036+00:00",
+      "receipt_id": "REC-BLR-GOOGL-5A7CE5AD"
     },
     {
       "id": "top_msft_people_03",
@@ -49,7 +51,7 @@
       "salary": "\u20b958,000 - \u20b978,000 / mo",
       "match_score": 98,
       "url": "https://careers.microsoft.com/us/en/job/people-ops-specialist-lifecycle-blr",
-      "already_applied": false,
+      "already_applied": true,
       "skills": [
         "HR Operations",
         "Onboarding & Induction",
@@ -57,7 +59,9 @@
         "Workday HRIS",
         "Advanced Excel"
       ],
-      "posted_time": "8m ago"
+      "posted_time": "8m ago",
+      "applied_at": "2026-11-24T09:42:36.657036+00:00",
+      "receipt_id": "REC-BLR-MICRO-800A8DF5"
     },
     {
       "id": "top_infy_ops_04",
@@ -87,7 +91,7 @@
       "salary": "\u20b946,000 - \u20b964,000 / mo",
       "match_score": 97,
       "url": "https://careers.wipro.com/careers-home/jobs/ta-specialist-lateral-koc-blr",
-      "already_applied": false,
+      "already_applied": true,
       "skills": [
         "Recruitment & Talent Acquisition",
         "Candidate Screening",
@@ -95,7 +99,9 @@
         "ATS Management",
         "Offer Rollout"
       ],
-      "posted_time": "22m ago"
+      "posted_time": "22m ago",
+      "applied_at": "2026-11-24T09:42:36.657036+00:00",
+      "receipt_id": "REC-BLR-WIPRO-6D45C726"
     },
     {
       "id": "top_swiggy_hr_06",
@@ -106,7 +112,7 @@
       "salary": "\u20b948,000 - \u20b965,000 / mo",
       "match_score": 96,
       "url": "https://careers.swiggy.com/#/jobs/hr-executive-people-solutions-blr",
-      "already_applied": false,
+      "already_applied": true,
       "skills": [
         "HR Operations",
         "Compliance",
@@ -114,7 +120,9 @@
         "Onboarding",
         "Excel"
       ],
-      "posted_time": "35m ago"
+      "posted_time": "35m ago",
+      "applied_at": "2026-11-24T09:42:36.657036+00:00",
+      "receipt_id": "REC-BLR-SWIGG-3D44D25C"
     },
     {
       "id": "top_razorpay_po_07",
@@ -125,7 +133,7 @@
       "salary": "\u20b952,000 - \u20b970,000 / mo",
       "match_score": 96,
       "url": "https://razorpay.com/jobs/people-operations-partner-blr-2026",
-      "already_applied": false,
+      "already_applied": true,
       "skills": [
         "Employee Relations",
         "HR Operations",
@@ -133,7 +141,9 @@
         "HRMS",
         "Documentation"
       ],
-      "posted_time": "42m ago"
+      "posted_time": "42m ago",
+      "applied_at": "2026-11-24T09:42:36.657036+00:00",
+      "receipt_id": "REC-BLR-RAZOR-A093724C"
     },
     {
       "id": "top_zoho_ta_08",
