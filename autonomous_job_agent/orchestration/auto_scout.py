@@ -8,7 +8,7 @@ import re
 import time
 from typing import Dict, List, Optional
 import requests
-from rich.console import Console
+from autonomous_job_agent.core.rich_compat import Console
 
 from autonomous_job_agent.core.ledger import ledger
 from autonomous_job_agent.core.models import CandidateMasterProfile

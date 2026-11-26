@@ -1,11 +1,11 @@
 """Application Ledger: Tracks discovered jobs, submitted applications, statuses, and follow-ups."""
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
-from rich.console import Console
-from rich.table import Table
+from autonomous_job_agent.core.rich_compat import Console, Table
 
 from autonomous_job_agent.core.config import config
 

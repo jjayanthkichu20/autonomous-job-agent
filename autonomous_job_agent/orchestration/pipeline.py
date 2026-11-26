@@ -1,8 +1,9 @@
 """Orchestration Pipeline: Coordinates all four AI agents across the end-to-end application lifecycle."""
 
+import re
 from datetime import datetime
 from typing import Any, Dict, Optional
-from rich.console import Console
+from autonomous_job_agent.core.rich_compat import Console
 
 from autonomous_job_agent.agents.agent1_scraper.scraper_engine import JobScraperEngine
 from autonomous_job_agent.agents.agent1_scraper.relevance_scorer import RelevanceScorer

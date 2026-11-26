@@ -1,11 +1,10 @@
 """Formal Verification Test Harness: Executes an end-to-end audit proving the multi-agent system operates properly."""
 
 import json
+import re
 from pathlib import Path
 import time
-from rich.console import Console
-from rich.table import Table
-from rich.panel import Panel
+from autonomous_job_agent.core.rich_compat import Console, Table, Panel
 
 from autonomous_job_agent.core.config import config
 from autonomous_job_agent.core.ledger import ledger
@@ -152,3 +151,8 @@ def run_formal_verification_test(profile_path: str = "my_profile.json") -> bool:
 
     finally:
         server.stop()
+
+
+if __name__ == "__main__":
+    run_formal_verification_test()
+

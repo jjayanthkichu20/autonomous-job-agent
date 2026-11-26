@@ -1,8 +1,7 @@
 """Human-In-The-Loop (HITL) Gateway: Manages approval barriers, pre-flight inspection, and CAPTCHA escalation."""
 
 from typing import List, Optional, Tuple
-from rich.console import Console
-from rich.table import Table
+from autonomous_job_agent.core.rich_compat import Console, Table
 
 from autonomous_job_agent.core.config import config
 from autonomous_job_agent.core.models import (

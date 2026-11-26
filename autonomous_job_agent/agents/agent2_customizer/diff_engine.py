@@ -1,8 +1,7 @@
 """Diff Engine: Formats and exposes explainability diffs between Master Profile and tailored variants."""
 
 from typing import List
-from rich.table import Table
-from rich.console import Console
+from autonomous_job_agent.core.rich_compat import Console, Table
 from autonomous_job_agent.core.models import ApplicationVariant, BulletDiff
 
 

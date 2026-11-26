@@ -5,8 +5,7 @@ import json
 from pathlib import Path
 import sys
 import time
-from rich.console import Console
-from rich.panel import Panel
+from autonomous_job_agent.core.rich_compat import Console, Panel
 
 from autonomous_job_agent.core.models import CandidateMasterProfile
 from autonomous_job_agent.mock_ats.server import MockATSServer
