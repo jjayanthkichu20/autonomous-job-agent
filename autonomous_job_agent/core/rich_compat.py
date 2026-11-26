@@ -17,7 +17,7 @@ except ImportError:
             print(cleaned)
 
     class Table:
-        def __init__(self, title=""):
+        def __init__(self, title="", *args, **kwargs):
             self.title = title
             self.columns = []
             self.rows = []
