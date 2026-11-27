@@ -451,6 +451,10 @@
         tier = "FOLLOW_UP";
         label = "FOLLOW-UP SENT";
         badge = "badge-followup";
+      } else if (status === "UNDER_REVIEW" || status === "VIEWED" || status === "SHORTLISTED") {
+        tier = "LIVE";
+        label = status === "SHORTLISTED" ? "MOVED: SHORTLISTED" : "MOVED: VIEWED / UNDER REVIEW";
+        badge = "badge-interview";
       } else if (status === "REJECTED") {
         tier = "REJECTED";
         label = "REJECTED";
@@ -902,14 +906,22 @@
               const body = typeof options.body === 'string' ? JSON.parse(options.body) : (options.body || {});
               let userApps = [];
               try { userApps = JSON.parse(localStorage.getItem('arya_user_applications') || '[]'); } catch(e) {}
-              const app = userApps.find(a => a.job_url === body.job_url_or_id || a.job_id === body.job_url_or_id);
+              let app = userApps.find(a => a.job_url === body.job_url_or_id || a.job_id === body.job_url_or_id);
+              if (!app && typeof allApplications !== 'undefined' && Array.isArray(allApplications)) {
+                const baseMatch = allApplications.find(a => a.job_url === body.job_url_or_id || a.job_id === body.job_url_or_id);
+                if (baseMatch) {
+                  app = Object.assign({}, baseMatch);
+                  userApps.unshift(app);
+                }
+              }
               if (app) {
                 app.status = body.status;
-                if (body.notes) app.notes = body.notes;
-                if (body.interview_date) app.interview_date = body.interview_date;
-                if (body.interview_time) app.interview_time = body.interview_time;
-                if (body.interview_round) app.interview_round = body.interview_round;
-                if (body.meeting_link) app.meeting_link = body.meeting_link;
+                app.last_updated = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+                if (body.notes !== undefined) app.notes = body.notes;
+                if (body.interview_date !== undefined) app.interview_date = body.interview_date;
+                if (body.interview_time !== undefined) app.interview_time = body.interview_time;
+                if (body.interview_round !== undefined) app.interview_round = body.interview_round;
+                if (body.meeting_link !== undefined) app.meeting_link = body.meeting_link;
                 localStorage.setItem('arya_user_applications', JSON.stringify(userApps));
               }
             } catch(e) {}
@@ -923,18 +935,52 @@
           if (cleanPath.endsWith('/api/applications/generate-followup')) {
             const body = typeof options.body === 'string' ? JSON.parse(options.body) : (options.body || {});
             const cadence = body.cadence_stage || "T+7";
+            const targetKey = body.job_url_or_id || '';
+            const matchedApp = (typeof allApplications !== 'undefined' && Array.isArray(allApplications))
+              ? allApplications.find(a => a.job_url === targetKey || a.job_id === targetKey)
+              : null;
+            const company = (matchedApp && matchedApp.company_name) ? matchedApp.company_name : "Hiring Team";
+            const role = (matchedApp && matchedApp.job_title) ? matchedApp.job_title : "HR Position";
+            const appliedDate = (matchedApp && (matchedApp.applied_date || matchedApp.applied_at)) ? (matchedApp.applied_date || matchedApp.applied_at).substring(0, 10) : "recently";
+            const receiptRef = (matchedApp && matchedApp.confirmation_id) ? ` (Reference ID: ${matchedApp.confirmation_id})` : "";
+            const companySlug = company.toLowerCase().replace(/[^a-z0-9]/g, '') || 'company';
             return new Response(JSON.stringify({
               status: "success",
               cadence: cadence,
-              company_name: "Target Enterprise",
-              job_title: "HR Executive",
-              applied_date: "Recently",
-              recipient_email: "talent-hr@company.com",
-              email_draft: `Dear Hiring Team,\n\nI hope this email finds you well. I am following up on my application for the HR Executive role. With hands-on experience across full-cycle recruitment, onboarding, and statutory compliance, I am enthusiastic about the opportunity to contribute to your team.\n\nPlease let me know if you require any additional details.\n\nWarm regards,\nCandidate`
+              company_name: company,
+              job_title: role,
+              applied_date: appliedDate,
+              recipient_email: `careers@${companySlug}.com`,
+              email_draft: cadence === "T+14"
+                ? `Subject: Status Check: ${role} Application${receiptRef}\n\nDear ${company} Hiring Team,\n\nI am writing a brief follow-up to check whether there is any update on my application for the ${role} position submitted on ${appliedDate}${receiptRef}.\n\nI remain very interested in contributing to ${company}'s people operations and talent acquisition goals, and I would be glad to share any additional details needed.\n\nBest regards,\nJayanth J`
+                : `Subject: Following up on ${role} Application${receiptRef}\n\nDear ${company} Hiring Team,\n\nI hope your week is going well. I wanted to follow up on my application for the ${role} role submitted on ${appliedDate}${receiptRef} and confirm it is under review.\n\nWith hands-on experience across full-cycle recruitment, employee onboarding, HRMS administration, and statutory compliance, I would welcome the chance to discuss how I can support ${company}.\n\nThank you for your time and consideration.\n\nSincerely,\nJayanth J`
             }), { status: 200, headers: { 'Content-Type': 'application/json' } });
           }
 
           if (cleanPath.endsWith('/api/applications/record-followup')) {
+            try {
+              const body = typeof options.body === 'string' ? JSON.parse(options.body) : (options.body || {});
+              let userApps = [];
+              try { userApps = JSON.parse(localStorage.getItem('arya_user_applications') || '[]'); } catch(e) {}
+              let app = userApps.find(a => a.job_url === body.job_url_or_id || a.job_id === body.job_url_or_id);
+              if (!app && typeof allApplications !== 'undefined' && Array.isArray(allApplications)) {
+                const baseMatch = allApplications.find(a => a.job_url === body.job_url_or_id || a.job_id === body.job_url_or_id);
+                if (baseMatch) {
+                  app = Object.assign({}, baseMatch);
+                  userApps.unshift(app);
+                }
+              }
+              if (app) {
+                const nowIso = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+                app.status = "FOLLOW_UP_SENT";
+                app.last_updated = nowIso;
+                app.last_followup_at = nowIso;
+                app.last_followup_cadence = body.cadence || "T+7";
+                app.followup_history = app.followup_history || [];
+                app.followup_history.push({ timestamp: nowIso, cadence: body.cadence || "T+7", notes: body.notes || "" });
+                localStorage.setItem('arya_user_applications', JSON.stringify(userApps));
+              }
+            } catch(e) {}
             return new Response(JSON.stringify({
               status: "success",
               message: "Follow-up successfully recorded in ledger."
@@ -2594,8 +2640,10 @@
         <div>
           <label for="modal-interview-status" class="block font-medium text-gray-300 mb-1">Application Status</label>
           <select id="modal-interview-status" class="w-full px-3 py-2 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
+            <option value="UNDER_REVIEW">👀 Viewed / Under Review</option>
+            <option value="SHORTLISTED">⭐ Shortlisted / Moving Forward</option>
             <option value="INTERVIEW_SCHEDULED">📅 Interview Scheduled</option>
-            <option value="SUBMITTED">✅ Delivered (Live to ATS)</option>
+            <option value="SUBMITTED">✅ Applied / Recorded in Ledger</option>
             <option value="FOLLOW_UP_SENT">✉️ Follow-Up Sent</option>
             <option value="OFFER">🎉 Offer Received</option>
             <option value="REJECTED">❌ Not Moving Forward / Rejected</option>
@@ -2634,6 +2682,87 @@
         <button onclick="saveInterviewStatus()" id="btn-save-interview" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all shadow-lg shadow-blue-600/20">
           <i class="fa-solid fa-floppy-disk mr-1"></i> Save Interview & Status
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Full Application Details & Employer Movement Check -->
+  <div id="app-details-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+    <div class="glass-card max-w-2xl w-full p-6 rounded-2xl space-y-4 border border-cyan-500/30 max-h-[88vh] overflow-y-auto bg-gray-950/95">
+      <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+        <div>
+          <h3 id="details-company-title" class="text-base font-bold text-white">Company — Job Title</h3>
+          <p id="details-location-sub" class="text-xs text-gray-400">Location • Channel</p>
+        </div>
+        <button onclick="closeAppDetailsModal()" aria-label="Close Application Details" title="Close" class="text-gray-400 hover:text-white text-sm">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div class="p-3 rounded-xl bg-gray-900 border border-gray-800">
+          <div class="text-[10px] text-gray-400 uppercase">Current Status</div>
+          <div id="details-status-badge" class="font-bold text-emerald-400 mt-1">SUBMITTED</div>
+        </div>
+        <div class="p-3 rounded-xl bg-gray-900 border border-gray-800">
+          <div class="text-[10px] text-gray-400 uppercase">Receipt / Ref ID</div>
+          <div id="details-receipt-id" class="font-mono text-cyan-300 mt-1 break-all">—</div>
+        </div>
+        <div class="p-3 rounded-xl bg-gray-900 border border-gray-800">
+          <div class="text-[10px] text-gray-400 uppercase">Applied Timestamp</div>
+          <div id="details-applied-date" class="text-white mt-1">—</div>
+        </div>
+        <div class="p-3 rounded-xl bg-gray-900 border border-gray-800">
+          <div class="text-[10px] text-gray-400 uppercase">Match Score</div>
+          <div id="details-match-score" class="font-bold text-cyan-400 mt-1">—</div>
+        </div>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2 text-xs">
+        <div class="flex items-center justify-between gap-2">
+          <span class="font-bold text-gray-300"><i class="fa-solid fa-link text-blue-400 mr-1.5"></i>Employer Job / Portal Link</span>
+          <a id="details-job-link-btn" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1 rounded-lg bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 border border-blue-500/40 text-[11px] font-bold">
+            <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Open Employer Portal
+          </a>
+        </div>
+        <div id="details-job-url-text" class="font-mono text-[11px] text-gray-400 break-all">—</div>
+        <div id="details-channel-row" class="text-[11px] text-gray-300 pt-1"></div>
+      </div>
+
+      <div id="details-bullets-box" class="p-3.5 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2 text-xs hidden">
+        <div class="font-bold text-purple-300 flex items-center gap-1.5">
+          <i class="fa-solid fa-file-lines"></i>
+          <span id="details-cv-version">Tailored Resume Summary Used</span>
+        </div>
+        <ul id="details-bullets-list" class="list-disc pl-5 space-y-1 text-[11px] text-gray-300"></ul>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-1.5 text-xs">
+        <div class="font-bold text-amber-300 flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>How to Check If This Application Moved Forward</span>
+        </div>
+        <p class="text-[11px] text-gray-300 leading-relaxed">
+          External company portals (Workday, Greenhouse, Lever, Google, Microsoft) do not send automatic "Viewed" status back to this page. To verify real movement:
+          <strong>1)</strong> Check your email inbox for the ATS confirmation or recruiter reply;
+          <strong>2)</strong> Click <strong>Open Employer Portal</strong> above to view live status (e.g. <em>Under Review / Shortlisted</em>);
+          <strong>3)</strong> Use <strong>Send Follow-Up</strong> below or update status if it moved.
+        </p>
+      </div>
+
+      <div class="p-3 rounded-xl bg-gray-900/60 border border-gray-800 text-xs space-y-1">
+        <div class="font-semibold text-gray-400 text-[11px]">Submission Notes & Follow-Up Log</div>
+        <div id="details-notes-text" class="text-[11px] text-gray-200 whitespace-pre-line">—</div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-end gap-2 pt-3 border-t border-gray-800">
+        <button onclick="detailsTriggerUpdateStatus()" class="px-3.5 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 border border-blue-500/40 text-xs font-semibold">
+          <i class="fa-solid fa-pen-to-square mr-1"></i>Update Movement Status
+        </button>
+        <button onclick="detailsTriggerFollowup()" class="px-3.5 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 border border-indigo-500/40 text-xs font-semibold">
+          <i class="fa-solid fa-envelope mr-1"></i>Ask for Status Update
+        </button>
+        <button onclick="closeAppDetailsModal()" class="bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold px-4 py-2 rounded-xl border border-gray-700">Close</button>
       </div>
     </div>
   </div>
@@ -3644,12 +3773,16 @@
 
       apps.forEach(a => {
         const badgeClass = a.delivery_badge || (a.is_live ? 'badge-delivered' : 'badge-staged');
-        const statusLabel = a.delivery_label || (a.is_live ? 'DELIVERED (Live to ATS)' : 'STAGED (Dry-Run)');
+        const statusLabel = a.delivery_label || (a.is_live ? 'SUBMITTED (Ledger)' : 'STAGED (Dry-Run)');
+        const rawScore = a.match_score != null ? Number(a.match_score) : ((a.relevance_score || 0.9) * 100);
+        const appliedDateStr = (a.applied_date || a.applied_at || a.created_at || '').substring(0, 10);
 
         // Format interview badge if scheduled
         let interviewSnippet = '';
         if (a.interview_date) {
           interviewSnippet = `<div class="text-[10px] text-amber-300 font-bold mt-0.5"><i class="fa-solid fa-calendar-day mr-1"></i>${a.interview_date} ${a.interview_time || ''}</div>`;
+        } else if (a.last_followup_at) {
+          interviewSnippet = `<div class="text-[10px] text-indigo-300 mt-0.5"><i class="fa-solid fa-paper-plane mr-1"></i>Follow-up: ${String(a.last_followup_at).substring(0, 10)}</div>`;
         }
 
         const appIdEsc = (a.job_id || a.job_url || '').replace(/'/g, "\\'");
@@ -3658,10 +3791,14 @@
           <tr class="border-b border-gray-800/60 hover:bg-gray-800/20 transition-colors">
             <td class="py-3 font-bold text-white">${a.company_name}</td>
             <td class="py-3 text-gray-300">
-              <div>${a.job_title}</div>
+              <div class="flex items-center gap-1.5">
+                <span>${a.job_title}</span>
+                ${a.job_url ? `<a href="${a.job_url}" target="_blank" rel="noopener noreferrer" title="Open Employer Job Link" class="text-blue-400 hover:text-blue-300"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : ''}
+              </div>
+              ${a.channel ? `<div class="text-[10px] text-gray-500 mt-0.5">${a.channel}</div>` : ''}
               ${a.meeting_link ? `<a href="${a.meeting_link}" target="_blank" class="text-[10px] text-blue-400 hover:underline flex items-center space-x-1 mt-0.5"><i class="fa-solid fa-video text-[9px]"></i><span>Join Meeting</span></a>` : ''}
             </td>
-            <td class="py-3 font-mono text-cyan-400 font-bold">${((a.relevance_score || 0.9) * 100).toFixed(0)}%</td>
+            <td class="py-3 font-mono text-cyan-400 font-bold">${rawScore.toFixed(0)}%</td>
             <td class="py-3">
               <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${badgeClass}">${statusLabel}</span>
             </td>
@@ -3669,14 +3806,17 @@
               ${a.confirmation_id || 'CONF-STORED'}
             </td>
             <td class="py-3 text-gray-400">
-              <div>${(a.applied_date || '').substring(0, 10)}</div>
+              <div>${appliedDateStr || '—'}</div>
               ${interviewSnippet}
             </td>
             <td class="py-3 text-right space-x-1.5 whitespace-nowrap">
-              <button onclick="openInterviewModalById('${appIdEsc}')" class="px-2.5 py-1 rounded-lg bg-blue-900/40 hover:bg-blue-800 text-blue-300 border border-blue-700/50 text-[11px] font-semibold transition-colors" title="Log Interview / Update Status">
-                <i class="fa-solid fa-calendar-plus mr-1"></i><span>Log Interview</span>
+              <button onclick="openAppDetailsModalById('${appIdEsc}')" class="px-2.5 py-1 rounded-lg bg-cyan-900/40 hover:bg-cyan-800 text-cyan-300 border border-cyan-700/50 text-[11px] font-semibold transition-colors" title="Inspect Application Details & Portal Link">
+                <i class="fa-solid fa-eye mr-1"></i><span>Details</span>
               </button>
-              <button onclick="openFollowupModalById('${appIdEsc}')" class="px-2.5 py-1 rounded-lg bg-indigo-900/40 hover:bg-indigo-800 text-indigo-300 border border-indigo-700/50 text-[11px] font-semibold transition-colors" title="Generate Recruiter Follow-up Email">
+              <button onclick="openInterviewModalById('${appIdEsc}')" class="px-2.5 py-1 rounded-lg bg-blue-900/40 hover:bg-blue-800 text-blue-300 border border-blue-700/50 text-[11px] font-semibold transition-colors" title="Update Movement Status / Log Interview">
+                <i class="fa-solid fa-calendar-plus mr-1"></i><span>Status</span>
+              </button>
+              <button onclick="openFollowupModalById('${appIdEsc}')" class="px-2.5 py-1 rounded-lg bg-indigo-900/40 hover:bg-indigo-800 text-indigo-300 border border-indigo-700/50 text-[11px] font-semibold transition-colors" title="Ask Recruiter for Status Update">
                 <i class="fa-solid fa-envelope mr-1"></i><span>Follow-up</span>
               </button>
             </td>
@@ -3686,6 +3826,65 @@
       html += `</tbody></table>`;
       container.innerHTML = html;
       if (typeof init3DCardTilt === "function") init3DCardTilt();
+    }
+
+    let activeDetailsApp = null;
+    function openAppDetailsModalById(appId) {
+      const a = allApplications.find(app => (app.job_id === appId || app.job_url === appId));
+      if (!a) return;
+      activeDetailsApp = a;
+      document.getElementById('details-company-title').innerText = `${a.company_name || 'Company'} — ${a.job_title || 'Position'}`;
+      document.getElementById('details-location-sub').innerText = `${a.location || 'India / Remote'}${a.salary ? ' • ' + a.salary : ''}`;
+      document.getElementById('details-status-badge').innerText = a.delivery_label || a.status || 'SUBMITTED';
+      document.getElementById('details-receipt-id').innerText = a.confirmation_id || 'CONF-STORED';
+      document.getElementById('details-applied-date').innerText = a.applied_date || a.applied_at || a.created_at || '—';
+      const rawScore = a.match_score != null ? Number(a.match_score) : ((a.relevance_score || 0.9) * 100);
+      document.getElementById('details-match-score').innerText = `${rawScore.toFixed(0)}%`;
+
+      const linkBtn = document.getElementById('details-job-link-btn');
+      const urlText = document.getElementById('details-job-url-text');
+      if (a.job_url) {
+        linkBtn.href = a.job_url;
+        linkBtn.classList.remove('hidden');
+        urlText.innerText = a.job_url;
+      } else {
+        linkBtn.classList.add('hidden');
+        urlText.innerText = 'No external URL recorded';
+      }
+      document.getElementById('details-channel-row').innerHTML = a.channel ? `<span class="text-gray-400">ATS Channel:</span> <strong class="text-white">${a.channel}</strong>` : '';
+
+      const bulletsBox = document.getElementById('details-bullets-box');
+      const bulletsList = document.getElementById('details-bullets-list');
+      if (Array.isArray(a.tailored_star_bullets) && a.tailored_star_bullets.length > 0) {
+        document.getElementById('details-cv-version').innerText = `Tailored Resume (${a.tailored_cv_version || 'ATS Variant'})`;
+        bulletsList.innerHTML = a.tailored_star_bullets.map(b => `<li>${b}</li>`).join('');
+        bulletsBox.classList.remove('hidden');
+      } else {
+        bulletsBox.classList.add('hidden');
+      }
+
+      let notesText = a.notes || 'No custom notes recorded yet.';
+      if (Array.isArray(a.followup_history) && a.followup_history.length > 0) {
+        notesText += '\n\nFollow-Up Log:\n' + a.followup_history.map(f => `• [${f.timestamp}] ${f.cadence}: ${f.notes || 'Sent'}`).join('\n');
+      }
+      document.getElementById('details-notes-text').innerText = notesText;
+      document.getElementById('app-details-modal').classList.remove('hidden');
+    }
+
+    function closeAppDetailsModal() {
+      document.getElementById('app-details-modal')?.classList.add('hidden');
+    }
+
+    function detailsTriggerUpdateStatus() {
+      const a = activeDetailsApp;
+      closeAppDetailsModal();
+      if (a) openInterviewModal(a.job_url || a.job_id, a.company_name || 'Company', a.job_title || 'Position', a.status, a.interview_date, a.interview_time, a.interview_round, a.notes);
+    }
+
+    function detailsTriggerFollowup() {
+      const a = activeDetailsApp;
+      closeAppDetailsModal();
+      if (a) openFollowupModal(a.job_url || a.job_id, a.company_name || 'Company', a.job_title || 'Position');
     }
 
     function openInterviewModalById(appId) {
@@ -3712,10 +3911,10 @@
       document.getElementById('modal-interview-heading').innerText = `Interview & Status: ${company}`;
       document.getElementById('modal-interview-subheading').innerText = title;
 
-      if (status && ['INTERVIEW_SCHEDULED', 'SUBMITTED', 'FOLLOW_UP_SENT', 'OFFER', 'REJECTED'].includes(status)) {
+      if (status && ['UNDER_REVIEW', 'SHORTLISTED', 'INTERVIEW_SCHEDULED', 'SUBMITTED', 'FOLLOW_UP_SENT', 'OFFER', 'REJECTED'].includes(status)) {
         document.getElementById('modal-interview-status').value = status;
       } else {
-        document.getElementById('modal-interview-status').value = 'INTERVIEW_SCHEDULED';
+        document.getElementById('modal-interview-status').value = 'UNDER_REVIEW';
       }
 
       document.getElementById('modal-interview-date').value = date || '';
