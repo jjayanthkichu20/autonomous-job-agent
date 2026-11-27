@@ -408,6 +408,170 @@
     .hud-badge-3d:hover {
       transform: translateY(-2px) scale(1.03);
     }
+
+    /* Dedicated Front-Page Login Gate Styles (Tailwind-version independent) */
+    .auth-gate-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      position: relative;
+      z-index: 30;
+    }
+    .auth-gate-grid {
+      width: 100%;
+      max-width: 1040px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    @media (min-width: 960px) {
+      .auth-gate-grid {
+        grid-template-columns: 1fr 1.05fr;
+      }
+      .auth-gate-info-col {
+        order: 1;
+      }
+      .auth-gate-card-col {
+        order: 2;
+      }
+    }
+    @media (max-width: 959px) {
+      .auth-gate-card-col {
+        order: 1;
+      }
+      .auth-gate-info-col {
+        order: 2;
+      }
+    }
+    .auth-card-shell {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 1.75rem;
+      border-radius: 1.5rem;
+      background: rgba(11, 19, 41, 0.96);
+      border: 1px solid rgba(59, 130, 246, 0.45);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
+    }
+    .auth-btn-google {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 0.75rem;
+      background: #ffffff !important;
+      color: #111827 !important;
+      border: 1px solid #d1d5db !important;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .auth-btn-google:hover {
+      background: #f3f4f6 !important;
+      transform: translateY(-1px);
+    }
+    .auth-btn-apple {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 0.75rem;
+      background: #09090b !important;
+      color: #ffffff !important;
+      border: 1px solid #52525b !important;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .auth-btn-apple:hover {
+      background: #18181b !important;
+      transform: translateY(-1px);
+    }
+    .auth-btn-primary {
+      width: 100%;
+      padding: 0.72rem 1rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(96, 165, 250, 0.5) !important;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .auth-btn-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+    .auth-btn-cyan {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, #0891b2, #2563eb) !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(56, 189, 248, 0.5) !important;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      cursor: pointer;
+    }
+    .auth-btn-cyan:hover {
+      filter: brightness(1.1);
+    }
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.5rem 0;
+      color: #9ca3af;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(55, 65, 81, 0.85);
+    }
+    .auth-social-panel {
+      padding: 0.9rem;
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+    }
+    .auth-feedback-error {
+      background: rgba(127, 29, 29, 0.75) !important;
+      color: #fecaca !important;
+      border: 1px solid rgba(248, 113, 113, 0.55) !important;
+    }
+    .auth-feedback-success {
+      background: rgba(6, 78, 59, 0.75) !important;
+      color: #a7f3d0 !important;
+      border: 1px solid rgba(52, 211, 153, 0.55) !important;
+    }
+    .auth-feedback-info {
+      background: rgba(30, 58, 138, 0.75) !important;
+      color: #bfdbfe !important;
+      border: 1px solid rgba(96, 165, 250, 0.55) !important;
+    }
   </style>
 
   <script>
@@ -1171,79 +1335,78 @@
   <!-- ======================================================== -->
   <!-- FRONT PAGE AUTH GATE: SIGN IN BEFORE VIEWING DASHBOARD   -->
   <!-- ======================================================== -->
-  <section id="login-gate-page" class="relative z-30 min-h-screen flex items-center justify-center p-4 sm:p-8">
-    <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+  <section id="login-gate-page" class="auth-gate-container">
+    <div class="auth-gate-grid">
 
-      <!-- Left: Brand & 4-Agent Overview -->
-      <div class="lg:col-span-6 space-y-6 text-left">
-        <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-bold tracking-wide">
+      <!-- Left / Desktop Info Panel (Below Card on Smaller Screens) -->
+      <div class="auth-gate-info-col space-y-5 text-left">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-bold tracking-wide">
           <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
           <span>CANDIDATE ACCESS GATE • 256-BIT PROTECTED</span>
         </div>
 
         <div class="flex items-center space-x-3.5">
-          <div class="brand-cube-3d w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white shadow-xl shadow-blue-600/40 font-bold text-2xl">
+          <div class="brand-cube-3d w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white shadow-xl shadow-blue-600/40 font-bold text-xl">
             <i class="fa-solid fa-sparkles"></i>
           </div>
           <div>
-            <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-white">Arya AI Job Hunter</h1>
-            <p class="text-xs sm:text-sm text-cyan-300 font-medium">Autonomous 4-Agent Career Portal & Application Ledger</p>
+            <h1 class="text-3xl font-black tracking-tight text-white">Arya AI Job Hunter</h1>
+            <p class="text-xs sm:text-sm text-cyan-300 font-medium">Autonomous 4-Agent Career Portal &amp; Application Ledger</p>
           </div>
         </div>
 
         <p class="text-sm text-gray-300 leading-relaxed max-w-xl">
-          Sign in with your <strong>Google</strong>, <strong>Apple</strong>, or email account to unlock your private job scouting radar, tailored ATS resume workspace, portal auto-fill assistant, and live application tracker.
+          Sign in with your <strong>Google</strong>, <strong>Apple</strong>, or email account to open your job scouting radar, tailored ATS resume workspace, portal auto-fill assistant, and live application tracker.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
-          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-cyan-500/25 space-y-1">
-            <div class="font-bold text-cyan-300 flex items-center gap-1.5">
+          <div class="p-3 rounded-2xl bg-gray-900/75 border border-gray-800 space-y-1">
+            <div class="font-bold text-blue-400 flex items-center gap-1.5">
               <i class="fa-solid fa-satellite-dish"></i>
               <span>Agent 1: Radar Scout</span>
             </div>
-            <p class="text-[11px] text-gray-400">Matches verified HR & operations roles across target cities.</p>
+            <p class="text-[11px] text-gray-400">Matches verified HR &amp; operations roles across target cities.</p>
           </div>
-          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-purple-500/25 space-y-1">
-            <div class="font-bold text-purple-300 flex items-center gap-1.5">
+          <div class="p-3 rounded-2xl bg-gray-900/75 border border-gray-800 space-y-1">
+            <div class="font-bold text-purple-400 flex items-center gap-1.5">
               <i class="fa-solid fa-microchip"></i>
-              <span>Agent 2: CV & JD Tailor</span>
+              <span>Agent 2: CV &amp; JD Tailor</span>
             </div>
             <p class="text-[11px] text-gray-400">Tailors resumes strictly using verified facts from your CV.</p>
           </div>
-          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-emerald-500/25 space-y-1">
-            <div class="font-bold text-emerald-300 flex items-center gap-1.5">
+          <div class="p-3 rounded-2xl bg-gray-900/75 border border-gray-800 space-y-1">
+            <div class="font-bold text-emerald-400 flex items-center gap-1.5">
               <i class="fa-solid fa-paper-plane"></i>
               <span>Agent 3: Portal Submitter</span>
             </div>
             <p class="text-[11px] text-gray-400">Maps application forms and logs confirmation receipts.</p>
           </div>
-          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-amber-500/25 space-y-1">
-            <div class="font-bold text-amber-300 flex items-center gap-1.5">
+          <div class="p-3 rounded-2xl bg-gray-900/75 border border-gray-800 space-y-1">
+            <div class="font-bold text-amber-400 flex items-center gap-1.5">
               <i class="fa-solid fa-envelope-circle-check"></i>
               <span>Agent 4: Status Tracker</span>
             </div>
-            <p class="text-[11px] text-gray-400">Tracks movement updates, interviews & recruiter follow-ups.</p>
+            <p class="text-[11px] text-gray-400">Tracks movement updates, interviews &amp; follow-ups.</p>
           </div>
         </div>
       </div>
 
-      <!-- Right: Full-Page Sign In / Create Account Card -->
-      <div class="lg:col-span-6">
-        <div class="card-3d glass-card w-full max-w-md mx-auto p-6 sm:p-7 rounded-3xl border border-blue-500/40 shadow-2xl relative overflow-hidden space-y-4 bg-[#0b1329]/95">
-          <div class="card-glare"></div>
+      <!-- Right / First Above-the-Fold Sign In Card -->
+      <div class="auth-gate-card-col">
+        <div class="auth-card-shell space-y-4">
 
           <!-- Card Heading -->
-          <div class="space-y-1 border-b border-gray-800/80 pb-3 relative z-10">
+          <div class="space-y-1 border-b border-gray-800 pb-3">
             <div class="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
               <i class="fa-solid fa-lock text-[9px]"></i>
-              <span>SIGN IN REQUIRED</span>
+              <span>SIGN IN TO CONTINUE</span>
             </div>
             <h2 id="gate-auth-title" class="text-xl font-extrabold text-white tracking-tight">Sign In to Arya</h2>
-            <p id="gate-auth-subtitle" class="text-xs text-gray-400">Authenticate to access your dashboard and application ledger.</p>
+            <p id="gate-auth-subtitle" class="text-xs text-gray-400">Choose Google, Apple, or Email below to enter your portal.</p>
           </div>
 
           <!-- Tab Switcher: Sign In vs Create Account -->
-          <div class="flex rounded-xl bg-gray-900/90 p-1 border border-gray-800 relative z-10">
+          <div class="flex rounded-xl bg-gray-900 p-1 border border-gray-800">
             <button type="button" id="gate-tab-signin" onclick="switchGateAuthTab('signin')" class="flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5">
               <i class="fa-solid fa-right-to-bracket text-[11px]"></i>
               <span>Sign In</span>
@@ -1255,9 +1418,9 @@
           </div>
 
           <!-- Social Auth Providers: Google & Apple -->
-          <div class="space-y-2.5 relative z-10">
-            <button type="button" onclick="startSocialProviderLogin('google')" id="btn-google-signin" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center space-x-3 transition-all shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] border border-gray-200">
-              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+          <div class="space-y-2.5">
+            <button type="button" onclick="startSocialProviderLogin('google')" id="btn-google-signin" class="auth-btn-google">
+              <svg class="w-4 h-4 shrink-0" style="width:18px;height:18px;flex-shrink:0;" viewBox="0 0 24 24" aria-hidden="true">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
@@ -1266,51 +1429,48 @@
               <span>Continue with Google</span>
             </button>
 
-            <button type="button" onclick="startSocialProviderLogin('apple')" id="btn-apple-signin" class="w-full py-2.5 px-4 rounded-xl bg-black hover:bg-gray-950 text-white font-bold text-xs flex items-center justify-center space-x-3 transition-all shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] border border-gray-700">
-              <svg class="w-4 h-4 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <button type="button" onclick="startSocialProviderLogin('apple')" id="btn-apple-signin" class="auth-btn-apple">
+              <svg class="w-4 h-4 shrink-0" style="width:18px;height:18px;flex-shrink:0;fill:#ffffff;" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/>
               </svg>
               <span>Continue with Apple</span>
             </button>
           </div>
 
-          <!-- Inline Google / Apple Account Prompt Panel (when clicked) -->
-          <div id="gate-social-box" class="hidden p-3.5 rounded-2xl bg-gray-900/95 border border-cyan-500/40 space-y-2.5 relative z-10">
+          <!-- Inline Google / Apple Account Prompt Form (instant, no OAuth 400 crash) -->
+          <form id="gate-social-box" onsubmit="event.preventDefault(); completeSocialProviderLogin();" class="hidden auth-social-panel space-y-2.5">
             <div class="flex items-center justify-between">
               <span id="gate-social-title" class="text-xs font-bold text-white flex items-center gap-2">
-                <i class="fa-brands fa-google text-cyan-400"></i>
+                <i class="fa-brands fa-google text-blue-400"></i>
                 <span>Sign in with Google</span>
               </span>
               <button type="button" onclick="closeSocialProviderBox()" class="text-gray-400 hover:text-white text-xs" aria-label="Close provider box">
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
+            <p class="text-[11px] text-gray-400" id="gate-social-hint">
+              Enter your email once — saved on this device for 1-click sign-in next time.
+            </p>
             <div id="gate-saved-accounts" class="hidden flex flex-wrap gap-1.5"></div>
             <div>
-              <input type="email" id="gate-social-email" placeholder="Enter your Google or Apple email" class="w-full px-3 py-2 rounded-xl text-xs bg-gray-950 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500">
+              <input type="email" id="gate-social-email" required placeholder="Enter your Google or Apple email" class="w-full px-3 py-2.5 rounded-xl text-xs bg-gray-900 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
             </div>
-            <div>
-              <input type="text" id="gate-social-name" placeholder="Full Name (optional)" class="w-full px-3 py-2 rounded-xl text-xs bg-gray-950 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500">
-            </div>
-            <button type="button" onclick="completeSocialProviderLogin()" id="btn-social-continue" class="w-full py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition-all">
-              Continue &amp; Unlock Portal
+            <button type="submit" id="btn-social-continue" class="auth-btn-cyan">
+              Continue &amp; Enter Dashboard
             </button>
-          </div>
+          </form>
 
-          <div id="gate-auth-feedback" class="hidden p-2.5 rounded-xl text-[11px] font-medium border relative z-10"></div>
+          <div id="gate-auth-feedback" class="hidden p-2.5 rounded-xl text-[11px] font-medium"></div>
 
-          <div class="relative flex items-center justify-center my-1 z-10">
-            <div class="border-t border-gray-800 w-full"></div>
-            <span class="bg-[#0b1329] px-3 text-[10px] font-bold text-gray-500 uppercase tracking-wider relative z-10">or continue with email</span>
-          </div>
+          <div class="auth-divider">or continue with email</div>
 
-          <!-- Email / Password Form -->
-          <form onsubmit="handleGateAuthSubmit(event)" class="space-y-3 relative z-10">
+          <!-- Email Form (Password optional for easy quick sign-in, or full password) -->
+          <form onsubmit="handleGateAuthSubmit(event)" class="space-y-3">
             <div id="gate-name-group" class="hidden">
               <label for="gate-name-input" class="block text-xs font-semibold text-gray-300 mb-1">Full Name <span class="text-blue-400">*</span></label>
               <div class="relative">
                 <i class="fa-regular fa-user absolute left-3.5 top-3 text-gray-500 text-xs"></i>
-                <input type="text" id="gate-name-input" placeholder="Your full name" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+                <input type="text" id="gate-name-input" placeholder="Your full name" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
               </div>
             </div>
 
@@ -1318,18 +1478,18 @@
               <label for="gate-email-input" class="block text-xs font-semibold text-gray-300 mb-1">Email Address <span class="text-blue-400">*</span></label>
               <div class="relative">
                 <i class="fa-regular fa-envelope absolute left-3.5 top-3 text-gray-500 text-xs"></i>
-                <input type="email" id="gate-email-input" required placeholder="you@example.com" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+                <input type="email" id="gate-email-input" required placeholder="you@example.com" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
               </div>
             </div>
 
             <div>
               <div class="flex items-center justify-between mb-1">
-                <label for="gate-password-input" class="block text-xs font-semibold text-gray-300">Password <span class="text-blue-400">*</span></label>
+                <label for="gate-password-input" class="block text-xs font-semibold text-gray-300">Password <span class="text-gray-500 text-[10px]">(optional for quick login)</span></label>
                 <a href="javascript:void(0)" onclick="handleGateForgotPassword()" id="gate-forgot-link" class="text-[11px] text-blue-400 hover:text-blue-300 transition-colors">Forgot Password?</a>
               </div>
               <div class="relative">
                 <i class="fa-solid fa-lock absolute left-3.5 top-3 text-gray-500 text-xs"></i>
-                <input type="password" id="gate-password-input" required placeholder="Minimum 6 characters" class="w-full pl-9 pr-10 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+                <input type="password" id="gate-password-input" placeholder="Password (min 6 chars if creating)" class="w-full pl-9 pr-10 py-2.5 rounded-xl text-xs bg-gray-900 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
                 <button type="button" onclick="toggleGatePasswordVisibility()" aria-label="Toggle password visibility" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-300 text-xs">
                   <i id="gate-password-eye" class="fa-regular fa-eye"></i>
                 </button>
@@ -1346,13 +1506,13 @@
               </span>
             </div>
 
-            <button type="submit" id="btn-gate-submit" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs transition-all shadow-md shadow-blue-600/30 flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-[0.99]">
+            <button type="submit" id="btn-gate-submit" class="auth-btn-primary">
               <i id="gate-submit-icon" class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
               <span id="gate-submit-text">Sign In &amp; Enter Dashboard</span>
             </button>
           </form>
 
-          <div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800/80 relative z-10">
+          <div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800">
             Protected Portal • Sign in with Google, Apple, or Email to view jobs &amp; applications.
           </div>
         </div>
@@ -6246,16 +6406,17 @@
     let currentAuthUser = null;
     let currentAuthTab = 'signin';
     let pendingSocialProvider = 'google';
+    let supabaseOAuthExternal = { google: false, apple: false };
 
     function showGateFeedback(msg, kind = 'info') {
       const box = document.getElementById('gate-auth-feedback');
       if (!box) return;
-      const styles = {
-        error: 'bg-red-950/70 text-red-300 border-red-500/40',
-        success: 'bg-emerald-950/70 text-emerald-300 border-emerald-500/40',
-        info: 'bg-blue-950/70 text-blue-300 border-blue-500/40'
+      const clsMap = {
+        error: 'auth-feedback-error',
+        success: 'auth-feedback-success',
+        info: 'auth-feedback-info'
       };
-      box.className = `p-2.5 rounded-xl text-[11px] font-medium border relative z-10 ${styles[kind] || styles.info}`;
+      box.className = `p-2.5 rounded-xl text-[11px] font-medium ${clsMap[kind] || clsMap.info}`;
       box.innerText = msg;
       box.classList.remove('hidden');
     }
@@ -6392,35 +6553,22 @@
       pendingSocialProvider = provider === 'apple' ? 'apple' : 'google';
       const label = pendingSocialProvider === 'apple' ? 'Apple ID' : 'Google';
       const prefilledEmail = (document.getElementById('gate-email-input')?.value || '').trim();
+      const feedbackBox = document.getElementById('gate-auth-feedback');
+      if (feedbackBox) feedbackBox.classList.add('hidden');
 
-      // 1. Check if Supabase OAuth provider is genuinely enabled before attempting redirect
+      // 1. Instant check from background-cached Supabase settings (zero wait on click)
       const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
-      const cfg = (typeof getSupabaseConfig === 'function') ? getSupabaseConfig() : null;
-      if (client && client.auth && cfg && cfg.url && cfg.key) {
-        try {
-          const ctrl = new AbortController();
-          const timer = setTimeout(() => ctrl.abort(), 1600);
-          const settingsRes = await originalFetch(`${cfg.url}/auth/v1/settings`, {
-            headers: { 'apikey': cfg.key },
-            signal: ctrl.signal
-          });
-          clearTimeout(timer);
-          if (settingsRes.ok) {
-            const settings = await settingsRes.json();
-            if (settings && settings.external && settings.external[pendingSocialProvider] === true) {
-              const { error } = await client.auth.signInWithOAuth({
-                provider: pendingSocialProvider,
-                options: { redirectTo: window.location.href.split('#')[0] }
-              });
-              if (!error) return;
-              showGateFeedback(`${label} OAuth failed: ${error.message}`, 'error');
-              return;
-            }
-          }
-        } catch(e) {}
+      if (client && client.auth && supabaseOAuthExternal[pendingSocialProvider] === true) {
+        const { error } = await client.auth.signInWithOAuth({
+          provider: pendingSocialProvider,
+          options: { redirectTo: window.location.href.split('#')[0] }
+        });
+        if (!error) return;
+        showGateFeedback(`${label} OAuth failed: ${error.message}`, 'error');
+        return;
       }
 
-      // 2. If user already typed email in form, complete provider sign-in directly
+      // 2. If user already typed email in the form, sign in immediately
       if (prefilledEmail && prefilledEmail.includes('@')) {
         const displayName = prefilledEmail.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
         const userObj = {
@@ -6435,14 +6583,18 @@
         return;
       }
 
-      // 3. Otherwise open inline Google / Apple account prompt box cleanly (never triggers raw 400 page)
+      // 3. Open crisp instant Google / Apple Email box (zero network hang)
       const box = document.getElementById('gate-social-box');
       const title = document.getElementById('gate-social-title');
+      const hint = document.getElementById('gate-social-hint');
       const emailEl = document.getElementById('gate-social-email');
       if (title) {
         title.innerHTML = pendingSocialProvider === 'apple'
           ? '<i class="fa-brands fa-apple text-white"></i><span>Sign in with Apple ID</span>'
-          : '<i class="fa-brands fa-google text-cyan-400"></i><span>Sign in with Google Account</span>';
+          : '<i class="fa-brands fa-google text-blue-400"></i><span>Sign in with Google Account</span>';
+      }
+      if (hint) {
+        hint.innerText = `Live ${label} OAuth is not enabled on the Supabase server yet — enter your ${label} email once for instant access (remembered for 1-click next time).`;
       }
       if (emailEl) {
         emailEl.placeholder = pendingSocialProvider === 'apple' ? 'Enter your Apple ID email (e.g. name@icloud.com)' : 'Enter your Google email (e.g. name@gmail.com)';
@@ -6450,7 +6602,7 @@
       renderSavedAccountsForProvider(pendingSocialProvider);
       if (box) {
         box.classList.remove('hidden');
-        setTimeout(() => emailEl && emailEl.focus(), 60);
+        setTimeout(() => emailEl && emailEl.focus(), 40);
       }
     }
     window.startSocialProviderLogin = startSocialProviderLogin;
@@ -6459,17 +6611,13 @@
 
     function completeSocialProviderLogin() {
       const emailEl = document.getElementById('gate-social-email');
-      const nameEl = document.getElementById('gate-social-name');
       const email = emailEl ? emailEl.value.trim() : '';
-      let name = nameEl ? nameEl.value.trim() : '';
       if (!email || !email.includes('@')) {
         showGateFeedback(`Please enter a valid ${pendingSocialProvider === 'apple' ? 'Apple ID' : 'Google'} email address.`, 'error');
         if (emailEl) emailEl.focus();
         return;
       }
-      if (!name) {
-        name = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      }
+      const name = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       const userObj = {
         email: email,
         name: name,
@@ -6501,8 +6649,8 @@
         return;
       }
 
-      if (!password || password.length < 6) {
-        showGateFeedback('Password must contain at least 6 characters.', 'error');
+      if (currentAuthTab === 'signup' && password && password.length < 6) {
+        showGateFeedback('Password must be at least 6 characters (or leave blank for quick login).', 'error');
         if (passwordInput) passwordInput.focus();
         return;
       }
@@ -6512,14 +6660,14 @@
       }
 
       const origText = submitText ? submitText.innerText : 'Sign In & Enter Dashboard';
-      if (submitText) submitText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Authenticating...';
+      if (submitText) submitText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Entering Portal...';
       if (submitBtn) submitBtn.disabled = true;
 
       try {
         const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
         let supaUser = null;
 
-        if (client && client.auth) {
+        if (client && client.auth && password && password.length >= 6) {
           try {
             if (currentAuthTab === 'signup') {
               const { data, error } = await client.auth.signUp({
@@ -6676,6 +6824,21 @@
       try {
         const stored = localStorage.getItem('arya_current_user');
         if (stored) savedUser = JSON.parse(stored);
+      } catch(e) {}
+
+      // Background check for live Google/Apple OAuth provider readiness (never blocks UI clicks)
+      try {
+        const cfg = (typeof getSupabaseConfig === 'function') ? getSupabaseConfig() : null;
+        if (cfg && cfg.url && cfg.key) {
+          originalFetch(`${cfg.url}/auth/v1/settings`, { headers: { 'apikey': cfg.key } })
+            .then(r => r.ok ? r.json() : null)
+            .then(s => {
+              if (s && s.external) {
+                supabaseOAuthExternal.google = !!s.external.google;
+                supabaseOAuthExternal.apple = !!s.external.apple;
+              }
+            }).catch(() => {});
+        }
       } catch(e) {}
 
       const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : (typeof initSupabaseClient === 'function' ? initSupabaseClient() : null);
