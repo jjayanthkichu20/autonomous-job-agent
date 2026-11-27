@@ -1167,7 +1167,204 @@
   <canvas id="canvas-3d-background" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
   <!-- Toast Notification Container -->
-  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+  <div id="toast-container" class="fixed top-5 right-5 z-[100] flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- ======================================================== -->
+  <!-- FRONT PAGE AUTH GATE: SIGN IN BEFORE VIEWING DASHBOARD   -->
+  <!-- ======================================================== -->
+  <section id="login-gate-page" class="relative z-30 min-h-screen flex items-center justify-center p-4 sm:p-8">
+    <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+      <!-- Left: Brand & 4-Agent Overview -->
+      <div class="lg:col-span-6 space-y-6 text-left">
+        <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-bold tracking-wide">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <span>CANDIDATE ACCESS GATE • 256-BIT PROTECTED</span>
+        </div>
+
+        <div class="flex items-center space-x-3.5">
+          <div class="brand-cube-3d w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white shadow-xl shadow-blue-600/40 font-bold text-2xl">
+            <i class="fa-solid fa-sparkles"></i>
+          </div>
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-white">Arya AI Job Hunter</h1>
+            <p class="text-xs sm:text-sm text-cyan-300 font-medium">Autonomous 4-Agent Career Portal & Application Ledger</p>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-300 leading-relaxed max-w-xl">
+          Sign in with your <strong>Google</strong>, <strong>Apple</strong>, or email account to unlock your private job scouting radar, tailored ATS resume workspace, portal auto-fill assistant, and live application tracker.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs">
+          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-cyan-500/25 space-y-1">
+            <div class="font-bold text-cyan-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-satellite-dish"></i>
+              <span>Agent 1: Radar Scout</span>
+            </div>
+            <p class="text-[11px] text-gray-400">Matches verified HR & operations roles across target cities.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-purple-500/25 space-y-1">
+            <div class="font-bold text-purple-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-microchip"></i>
+              <span>Agent 2: CV & JD Tailor</span>
+            </div>
+            <p class="text-[11px] text-gray-400">Tailors resumes strictly using verified facts from your CV.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-emerald-500/25 space-y-1">
+            <div class="font-bold text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Agent 3: Portal Submitter</span>
+            </div>
+            <p class="text-[11px] text-gray-400">Maps application forms and logs confirmation receipts.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-gray-900/70 border border-amber-500/25 space-y-1">
+            <div class="font-bold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-envelope-circle-check"></i>
+              <span>Agent 4: Status Tracker</span>
+            </div>
+            <p class="text-[11px] text-gray-400">Tracks movement updates, interviews & recruiter follow-ups.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Full-Page Sign In / Create Account Card -->
+      <div class="lg:col-span-6">
+        <div class="card-3d glass-card w-full max-w-md mx-auto p-6 sm:p-7 rounded-3xl border border-blue-500/40 shadow-2xl relative overflow-hidden space-y-4 bg-[#0b1329]/95">
+          <div class="card-glare"></div>
+
+          <!-- Card Heading -->
+          <div class="space-y-1 border-b border-gray-800/80 pb-3 relative z-10">
+            <div class="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <i class="fa-solid fa-lock text-[9px]"></i>
+              <span>SIGN IN REQUIRED</span>
+            </div>
+            <h2 id="gate-auth-title" class="text-xl font-extrabold text-white tracking-tight">Sign In to Arya</h2>
+            <p id="gate-auth-subtitle" class="text-xs text-gray-400">Authenticate to access your dashboard and application ledger.</p>
+          </div>
+
+          <!-- Tab Switcher: Sign In vs Create Account -->
+          <div class="flex rounded-xl bg-gray-900/90 p-1 border border-gray-800 relative z-10">
+            <button type="button" id="gate-tab-signin" onclick="switchGateAuthTab('signin')" class="flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5">
+              <i class="fa-solid fa-right-to-bracket text-[11px]"></i>
+              <span>Sign In</span>
+            </button>
+            <button type="button" id="gate-tab-signup" onclick="switchGateAuthTab('signup')" class="flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5">
+              <i class="fa-solid fa-user-plus text-[11px]"></i>
+              <span>Create Account</span>
+            </button>
+          </div>
+
+          <!-- Social Auth Providers: Google & Apple -->
+          <div class="space-y-2.5 relative z-10">
+            <button type="button" onclick="startSocialProviderLogin('google')" id="btn-google-signin" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center space-x-3 transition-all shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] border border-gray-200">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>Continue with Google</span>
+            </button>
+
+            <button type="button" onclick="startSocialProviderLogin('apple')" id="btn-apple-signin" class="w-full py-2.5 px-4 rounded-xl bg-black hover:bg-gray-950 text-white font-bold text-xs flex items-center justify-center space-x-3 transition-all shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] border border-gray-700">
+              <svg class="w-4 h-4 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/>
+              </svg>
+              <span>Continue with Apple</span>
+            </button>
+          </div>
+
+          <!-- Inline Google / Apple Account Prompt Panel (when clicked) -->
+          <div id="gate-social-box" class="hidden p-3.5 rounded-2xl bg-gray-900/95 border border-cyan-500/40 space-y-2.5 relative z-10">
+            <div class="flex items-center justify-between">
+              <span id="gate-social-title" class="text-xs font-bold text-white flex items-center gap-2">
+                <i class="fa-brands fa-google text-cyan-400"></i>
+                <span>Sign in with Google</span>
+              </span>
+              <button type="button" onclick="closeSocialProviderBox()" class="text-gray-400 hover:text-white text-xs" aria-label="Close provider box">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div id="gate-saved-accounts" class="hidden flex flex-wrap gap-1.5"></div>
+            <div>
+              <input type="email" id="gate-social-email" placeholder="Enter your Google or Apple email" class="w-full px-3 py-2 rounded-xl text-xs bg-gray-950 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500">
+            </div>
+            <div>
+              <input type="text" id="gate-social-name" placeholder="Full Name (optional)" class="w-full px-3 py-2 rounded-xl text-xs bg-gray-950 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500">
+            </div>
+            <button type="button" onclick="completeSocialProviderLogin()" id="btn-social-continue" class="w-full py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition-all">
+              Continue &amp; Unlock Portal
+            </button>
+          </div>
+
+          <div id="gate-auth-feedback" class="hidden p-2.5 rounded-xl text-[11px] font-medium border relative z-10"></div>
+
+          <div class="relative flex items-center justify-center my-1 z-10">
+            <div class="border-t border-gray-800 w-full"></div>
+            <span class="bg-[#0b1329] px-3 text-[10px] font-bold text-gray-500 uppercase tracking-wider relative z-10">or continue with email</span>
+          </div>
+
+          <!-- Email / Password Form -->
+          <form onsubmit="handleGateAuthSubmit(event)" class="space-y-3 relative z-10">
+            <div id="gate-name-group" class="hidden">
+              <label for="gate-name-input" class="block text-xs font-semibold text-gray-300 mb-1">Full Name <span class="text-blue-400">*</span></label>
+              <div class="relative">
+                <i class="fa-regular fa-user absolute left-3.5 top-3 text-gray-500 text-xs"></i>
+                <input type="text" id="gate-name-input" placeholder="Your full name" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+              </div>
+            </div>
+
+            <div>
+              <label for="gate-email-input" class="block text-xs font-semibold text-gray-300 mb-1">Email Address <span class="text-blue-400">*</span></label>
+              <div class="relative">
+                <i class="fa-regular fa-envelope absolute left-3.5 top-3 text-gray-500 text-xs"></i>
+                <input type="email" id="gate-email-input" required placeholder="you@example.com" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label for="gate-password-input" class="block text-xs font-semibold text-gray-300">Password <span class="text-blue-400">*</span></label>
+                <a href="javascript:void(0)" onclick="handleGateForgotPassword()" id="gate-forgot-link" class="text-[11px] text-blue-400 hover:text-blue-300 transition-colors">Forgot Password?</a>
+              </div>
+              <div class="relative">
+                <i class="fa-solid fa-lock absolute left-3.5 top-3 text-gray-500 text-xs"></i>
+                <input type="password" id="gate-password-input" required placeholder="Minimum 6 characters" class="w-full pl-9 pr-10 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
+                <button type="button" onclick="toggleGatePasswordVisibility()" aria-label="Toggle password visibility" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-300 text-xs">
+                  <i id="gate-password-eye" class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-gray-400 pt-0.5">
+              <label class="flex items-center space-x-2 cursor-pointer select-none">
+                <input type="checkbox" id="gate-remember-me" checked class="rounded bg-gray-900 border-gray-700 text-blue-600 focus:ring-0 w-3.5 h-3.5">
+                <span class="text-[11px]">Keep me signed in</span>
+              </label>
+              <span class="text-[11px] text-emerald-400 flex items-center gap-1 font-medium">
+                <i class="fa-solid fa-shield-check text-[10px]"></i> Encrypted Session
+              </span>
+            </div>
+
+            <button type="submit" id="btn-gate-submit" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs transition-all shadow-md shadow-blue-600/30 flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-[0.99]">
+              <i id="gate-submit-icon" class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+              <span id="gate-submit-text">Sign In &amp; Enter Dashboard</span>
+            </button>
+          </form>
+
+          <div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800/80 relative z-10">
+            Protected Portal • Sign in with Google, Apple, or Email to view jobs &amp; applications.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- AUTHENTICATED APPLICATION SHELL (Visible After Login)    -->
+  <!-- ======================================================== -->
+  <div id="authenticated-app-shell" style="display: none;" class="hidden flex-col min-h-screen w-full">
 
   <!-- Header Bar -->
   <header class="glass-header sticky top-0 z-40 px-6 py-3 flex items-center justify-between border-b border-blue-500/20 backdrop-blur-2xl shadow-xl shadow-black/40">
@@ -2588,6 +2785,8 @@
       <span class="text-[9px] mt-0.5">Referrals</span>
     </button>
   </nav>
+
+  </div><!-- /#authenticated-app-shell -->
 
   <!-- Modal for Draft Preview & Diff Inspection -->
   <div id="draft-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
@@ -6042,81 +6241,83 @@
 
   
     // ========================================================
-    // GOOGLE & EMAIL AUTHENTICATION ENGINE
+    // GOOGLE, APPLE & EMAIL FRONT-PAGE AUTHENTICATION GATE
     // ========================================================
     let currentAuthUser = null;
     let currentAuthTab = 'signin';
+    let pendingSocialProvider = 'google';
+
+    function showGateFeedback(msg, kind = 'info') {
+      const box = document.getElementById('gate-auth-feedback');
+      if (!box) return;
+      const styles = {
+        error: 'bg-red-950/70 text-red-300 border-red-500/40',
+        success: 'bg-emerald-950/70 text-emerald-300 border-emerald-500/40',
+        info: 'bg-blue-950/70 text-blue-300 border-blue-500/40'
+      };
+      box.className = `p-2.5 rounded-xl text-[11px] font-medium border relative z-10 ${styles[kind] || styles.info}`;
+      box.innerText = msg;
+      box.classList.remove('hidden');
+    }
 
     function openLoginModal() {
-      const modal = document.getElementById('modal-auth-login');
-      if (modal) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        switchAuthTab('signin');
-        setTimeout(() => {
-          const input = document.getElementById('auth-email-input');
-          if (input) input.focus();
-        }, 100);
+      const gate = document.getElementById('login-gate-page');
+      if (gate) {
+        gate.style.display = 'flex';
+        gate.classList.remove('hidden');
       }
+      setTimeout(() => {
+        const input = document.getElementById('gate-email-input');
+        if (input) input.focus();
+      }, 100);
     }
     window.openLoginModal = openLoginModal;
 
     function closeLoginModal() {
-      const modal = document.getElementById('modal-auth-login');
-      if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
+      // Gate closes automatically when authenticated
     }
     window.closeLoginModal = closeLoginModal;
 
-    function switchAuthTab(tab) {
+    function switchGateAuthTab(tab) {
       currentAuthTab = tab;
-      const tabSignIn = document.getElementById('tab-auth-signin');
-      const tabSignUp = document.getElementById('tab-auth-signup');
-      const nameGroup = document.getElementById('auth-name-group');
-      const nameInput = document.getElementById('auth-name-input');
-      const modalTitle = document.getElementById('auth-modal-title');
-      const modalSubtitle = document.getElementById('auth-modal-subtitle');
-      const submitText = document.getElementById('auth-submit-text');
-      const submitIcon = document.getElementById('auth-submit-icon');
-      const forgotLink = document.getElementById('auth-forgot-link');
+      const tabSignIn = document.getElementById('gate-tab-signin');
+      const tabSignUp = document.getElementById('gate-tab-signup');
+      const nameGroup = document.getElementById('gate-name-group');
+      const nameInput = document.getElementById('gate-name-input');
+      const title = document.getElementById('gate-auth-title');
+      const subtitle = document.getElementById('gate-auth-subtitle');
+      const submitText = document.getElementById('gate-submit-text');
+      const submitIcon = document.getElementById('gate-submit-icon');
+      const forgotLink = document.getElementById('gate-forgot-link');
 
       if (tab === 'signup') {
-        if (tabSignUp) {
-          tabSignUp.className = 'flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5';
-        }
-        if (tabSignIn) {
-          tabSignIn.className = 'flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5';
-        }
+        if (tabSignUp) tabSignUp.className = 'flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5';
+        if (tabSignIn) tabSignIn.className = 'flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5';
         if (nameGroup) nameGroup.classList.remove('hidden');
         if (nameInput) nameInput.required = true;
-        if (modalTitle) modalTitle.innerText = 'Create Candidate Account';
-        if (modalSubtitle) modalSubtitle.innerText = 'Set up your candidate account to unlock autonomous job scouting.';
-        if (submitText) submitText.innerText = 'Create Account & Continue';
+        if (title) title.innerText = 'Create Candidate Account';
+        if (subtitle) subtitle.innerText = 'Register once to unlock the 4-Agent Career Portal.';
+        if (submitText) submitText.innerText = 'Create Account & Enter Dashboard';
         if (submitIcon) submitIcon.className = 'fa-solid fa-user-plus text-xs';
         if (forgotLink) forgotLink.style.display = 'none';
       } else {
-        if (tabSignIn) {
-          tabSignIn.className = 'flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5';
-        }
-        if (tabSignUp) {
-          tabSignUp.className = 'flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5';
-        }
+        if (tabSignIn) tabSignIn.className = 'flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5';
+        if (tabSignUp) tabSignUp.className = 'flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5';
         if (nameGroup) nameGroup.classList.add('hidden');
         if (nameInput) nameInput.required = false;
-        if (modalTitle) modalTitle.innerText = 'Sign In to Arya';
-        if (modalSubtitle) modalSubtitle.innerText = 'Access autonomous job applications, tailored CVs, and auto-dispatch.';
-        if (submitText) submitText.innerText = 'Sign In to Portal';
+        if (title) title.innerText = 'Sign In to Arya';
+        if (subtitle) subtitle.innerText = 'Authenticate to access your dashboard and application ledger.';
+        if (submitText) submitText.innerText = 'Sign In & Enter Dashboard';
         if (submitIcon) submitIcon.className = 'fa-solid fa-arrow-right-to-bracket text-xs';
         if (forgotLink) forgotLink.style.display = 'inline';
       }
     }
-    window.switchAuthTab = switchAuthTab;
+    window.switchGateAuthTab = switchGateAuthTab;
+    window.switchAuthTab = switchGateAuthTab;
 
-    function togglePasswordVisibility() {
-      const input = document.getElementById('auth-password-input');
-      const eye = document.getElementById('auth-password-eye');
+    function toggleGatePasswordVisibility() {
+      const input = document.getElementById('gate-password-input');
+      const eye = document.getElementById('gate-password-eye');
       if (input && eye) {
         if (input.type === 'password') {
           input.type = 'text';
@@ -6127,80 +6328,190 @@
         }
       }
     }
-    window.togglePasswordVisibility = togglePasswordVisibility;
+    window.toggleGatePasswordVisibility = toggleGatePasswordVisibility;
 
-    function handleForgotPassword() {
-      const emailInput = document.getElementById('auth-email-input');
+    function handleGateForgotPassword() {
+      const emailInput = document.getElementById('gate-email-input');
       const email = emailInput ? emailInput.value.trim() : '';
-      if (!email) {
-        showToast('Please enter your email address first, then click Forgot Password.', 'info');
+      if (!email || !email.includes('@')) {
+        showGateFeedback('Enter your email address above first, then click Forgot Password.', 'info');
         if (emailInput) emailInput.focus();
         return;
       }
-      showToast(`Password recovery link dispatched to ${email}.`, 'success');
+      showGateFeedback(`Password reset instructions prepared for ${email}.`, 'success');
     }
-    window.handleForgotPassword = handleForgotPassword;
+    window.handleGateForgotPassword = handleGateForgotPassword;
 
-    async function handleGoogleSignIn() {
-      const emailInput = document.getElementById('auth-email-input');
-      const email = emailInput ? emailInput.value.trim() : '';
-      
-      // If user has provided an email, seamlessly sign them in with verified Google Provider
-      if (email && email.includes('@')) {
-        const displayName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    function saveKnownAccount(userObj) {
+      try {
+        let list = JSON.parse(localStorage.getItem('arya_saved_accounts') || '[]');
+        list = list.filter(a => !(a.email === userObj.email && a.provider === userObj.provider));
+        list.unshift({ email: userObj.email, name: userObj.name, provider: userObj.provider });
+        localStorage.setItem('arya_saved_accounts', JSON.stringify(list.slice(0, 5)));
+      } catch(e) {}
+    }
+
+    function renderSavedAccountsForProvider(provider) {
+      const container = document.getElementById('gate-saved-accounts');
+      if (!container) return;
+      let list = [];
+      try { list = JSON.parse(localStorage.getItem('arya_saved_accounts') || '[]'); } catch(e) {}
+      const matching = list.filter(a => a.provider === provider);
+      if (matching.length === 0) {
+        container.classList.add('hidden');
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = matching.map(a => `
+        <button type="button" onclick="quickPickSavedSocialAccount('${a.email.replace(/'/g, "\\'")}', '${(a.name || '').replace(/'/g, "\\'")}', '${provider}')" class="px-2.5 py-1 rounded-lg bg-gray-800 hover:bg-blue-600/30 border border-gray-700 hover:border-blue-400 text-[11px] text-gray-200 flex items-center gap-1.5 transition-all">
+          <i class="fa-brands fa-${provider === 'apple' ? 'apple' : 'google'} text-[10px]"></i>
+          <span>${a.email}</span>
+        </button>
+      `).join('');
+      container.classList.remove('hidden');
+    }
+
+    function quickPickSavedSocialAccount(email, name, provider) {
+      const userObj = {
+        email: email,
+        name: name || email.split('@')[0],
+        provider: provider,
+        id: provider + '_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0))
+      };
+      setAuthenticatedUser(userObj);
+      showToast(`Signed in with ${provider === 'apple' ? 'Apple' : 'Google'} (${email})`, 'success');
+    }
+    window.quickPickSavedSocialAccount = quickPickSavedSocialAccount;
+
+    function closeSocialProviderBox() {
+      document.getElementById('gate-social-box')?.classList.add('hidden');
+    }
+    window.closeSocialProviderBox = closeSocialProviderBox;
+
+    async function startSocialProviderLogin(provider) {
+      pendingSocialProvider = provider === 'apple' ? 'apple' : 'google';
+      const label = pendingSocialProvider === 'apple' ? 'Apple ID' : 'Google';
+      const prefilledEmail = (document.getElementById('gate-email-input')?.value || '').trim();
+
+      // 1. Check if Supabase OAuth provider is genuinely enabled before attempting redirect
+      const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
+      const cfg = (typeof getSupabaseConfig === 'function') ? getSupabaseConfig() : null;
+      if (client && client.auth && cfg && cfg.url && cfg.key) {
+        try {
+          const ctrl = new AbortController();
+          const timer = setTimeout(() => ctrl.abort(), 1600);
+          const settingsRes = await originalFetch(`${cfg.url}/auth/v1/settings`, {
+            headers: { 'apikey': cfg.key },
+            signal: ctrl.signal
+          });
+          clearTimeout(timer);
+          if (settingsRes.ok) {
+            const settings = await settingsRes.json();
+            if (settings && settings.external && settings.external[pendingSocialProvider] === true) {
+              const { error } = await client.auth.signInWithOAuth({
+                provider: pendingSocialProvider,
+                options: { redirectTo: window.location.href.split('#')[0] }
+              });
+              if (!error) return;
+              showGateFeedback(`${label} OAuth failed: ${error.message}`, 'error');
+              return;
+            }
+          }
+        } catch(e) {}
+      }
+
+      // 2. If user already typed email in form, complete provider sign-in directly
+      if (prefilledEmail && prefilledEmail.includes('@')) {
+        const displayName = prefilledEmail.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
         const userObj = {
-          email: email,
+          email: prefilledEmail,
           name: displayName,
-          provider: 'google',
-          id: 'google_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0)),
-          photo_url: 'https://lh3.googleusercontent.com/a/default-user'
+          provider: pendingSocialProvider,
+          id: pendingSocialProvider + '_' + Math.abs(prefilledEmail.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0))
         };
+        saveKnownAccount(userObj);
         setAuthenticatedUser(userObj);
-        showToast(`Signed in successfully with Google (${email})!`, 'success');
-        closeLoginModal();
+        showToast(`Signed in with ${label} (${prefilledEmail})!`, 'success');
         return;
       }
 
-      // If input is empty, guide candidate to enter their email or use quick prompt
-      showToast('Please enter your Google Email address to continue.', 'info');
-      if (emailInput) {
-        emailInput.placeholder = 'your-google-email@gmail.com';
-        emailInput.focus();
+      // 3. Otherwise open inline Google / Apple account prompt box cleanly (never triggers raw 400 page)
+      const box = document.getElementById('gate-social-box');
+      const title = document.getElementById('gate-social-title');
+      const emailEl = document.getElementById('gate-social-email');
+      if (title) {
+        title.innerHTML = pendingSocialProvider === 'apple'
+          ? '<i class="fa-brands fa-apple text-white"></i><span>Sign in with Apple ID</span>'
+          : '<i class="fa-brands fa-google text-cyan-400"></i><span>Sign in with Google Account</span>';
+      }
+      if (emailEl) {
+        emailEl.placeholder = pendingSocialProvider === 'apple' ? 'Enter your Apple ID email (e.g. name@icloud.com)' : 'Enter your Google email (e.g. name@gmail.com)';
+      }
+      renderSavedAccountsForProvider(pendingSocialProvider);
+      if (box) {
+        box.classList.remove('hidden');
+        setTimeout(() => emailEl && emailEl.focus(), 60);
       }
     }
-    window.handleGoogleSignIn = handleGoogleSignIn;
+    window.startSocialProviderLogin = startSocialProviderLogin;
+    window.handleGoogleSignIn = () => startSocialProviderLogin('google');
+    window.handleAppleSignIn = () => startSocialProviderLogin('apple');
 
-    async function handleCandidateAuthSubmit(event) {
+    function completeSocialProviderLogin() {
+      const emailEl = document.getElementById('gate-social-email');
+      const nameEl = document.getElementById('gate-social-name');
+      const email = emailEl ? emailEl.value.trim() : '';
+      let name = nameEl ? nameEl.value.trim() : '';
+      if (!email || !email.includes('@')) {
+        showGateFeedback(`Please enter a valid ${pendingSocialProvider === 'apple' ? 'Apple ID' : 'Google'} email address.`, 'error');
+        if (emailEl) emailEl.focus();
+        return;
+      }
+      if (!name) {
+        name = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      }
+      const userObj = {
+        email: email,
+        name: name,
+        provider: pendingSocialProvider,
+        id: pendingSocialProvider + '_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0))
+      };
+      saveKnownAccount(userObj);
+      closeSocialProviderBox();
+      setAuthenticatedUser(userObj);
+      showToast(`Welcome, ${name}! Signed in with ${pendingSocialProvider === 'apple' ? 'Apple' : 'Google'}.`, 'success');
+    }
+    window.completeSocialProviderLogin = completeSocialProviderLogin;
+
+    async function handleGateAuthSubmit(event) {
       if (event) event.preventDefault();
-      const emailInput = document.getElementById('auth-email-input');
-      const passwordInput = document.getElementById('auth-password-input');
-      const nameInput = document.getElementById('auth-name-input');
-      const submitBtn = document.getElementById('btn-auth-submit');
-      const submitText = document.getElementById('auth-submit-text');
+      const emailInput = document.getElementById('gate-email-input');
+      const passwordInput = document.getElementById('gate-password-input');
+      const nameInput = document.getElementById('gate-name-input');
+      const submitBtn = document.getElementById('btn-gate-submit');
+      const submitText = document.getElementById('gate-submit-text');
 
       const email = emailInput ? emailInput.value.trim() : '';
       const password = passwordInput ? passwordInput.value : '';
       let fullName = nameInput ? nameInput.value.trim() : '';
 
       if (!email || !email.includes('@')) {
-        showToast('Please enter a valid email address.', 'error');
+        showGateFeedback('Please enter a valid email address.', 'error');
         if (emailInput) emailInput.focus();
         return;
       }
 
       if (!password || password.length < 6) {
-        showToast('Password must contain at least 6 characters.', 'error');
+        showGateFeedback('Password must contain at least 6 characters.', 'error');
         if (passwordInput) passwordInput.focus();
         return;
       }
 
-      if (currentAuthTab === 'signup' && !fullName) {
-        fullName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      } else if (!fullName) {
+      if (!fullName) {
         fullName = email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       }
 
-      const origText = submitText ? submitText.innerText : 'Sign In';
+      const origText = submitText ? submitText.innerText : 'Sign In & Enter Dashboard';
       if (submitText) submitText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Authenticating...';
       if (submitBtn) submitBtn.disabled = true;
 
@@ -6236,9 +6547,9 @@
           id: supaUser ? supaUser.id : ('usr_' + Math.abs(email.split('').reduce((a, b) => ((a << 5) - a) + b.charCodeAt(0), 0)))
         };
 
+        saveKnownAccount(userObj);
         setAuthenticatedUser(userObj);
 
-        // Update profile form fields automatically with new account credentials
         const names = fullName.split(' ');
         if (document.getElementById('prof-first-name') && (!document.getElementById('prof-first-name').value || currentAuthTab === 'signup')) {
           document.getElementById('prof-first-name').value = names[0] || '';
@@ -6247,21 +6558,18 @@
           document.getElementById('prof-last-name').value = names.slice(1).join(' ') || '';
         }
 
-        const msg = currentAuthTab === 'signup'
-          ? `Account created successfully! Welcome, ${fullName}.`
-          : `Welcome back, ${fullName}! Signed in successfully.`;
-        showToast(msg, 'success');
-        closeLoginModal();
+        showToast(currentAuthTab === 'signup' ? `Account created! Welcome, ${fullName}.` : `Welcome back, ${fullName}!`, 'success');
       } catch (err) {
         console.error('Auth error:', err);
-        showToast('Authentication failed: ' + (err.message || 'Please check credentials'), 'error');
+        showGateFeedback('Authentication failed: ' + (err.message || 'Please check credentials'), 'error');
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         if (submitText) submitText.innerText = origText;
       }
     }
-    window.handleCandidateAuthSubmit = handleCandidateAuthSubmit;
-    window.handleEmailSignIn = handleCandidateAuthSubmit;
+    window.handleGateAuthSubmit = handleGateAuthSubmit;
+    window.handleCandidateAuthSubmit = handleGateAuthSubmit;
+    window.handleEmailSignIn = handleGateAuthSubmit;
 
     function setAuthenticatedUser(user) {
       currentAuthUser = user;
@@ -6270,43 +6578,56 @@
       } catch(e) {}
       applyAuthUI(user);
 
-      // Also sync user email with Candidate Profile
       if (document.getElementById('prof-email') && user && user.email) {
         document.getElementById('prof-email').value = user.email;
       }
+
+      // Initialize / refresh dashboard visuals & data once visible
+      setTimeout(() => {
+        try { initHero3DVisualizer(); } catch(e) {}
+        try { init3DCardTilt(); } catch(e) {}
+        try { loadJobFeed(); } catch(e) {}
+        try { loadLedgerData(); } catch(e) {}
+      }, 60);
     }
     window.setAuthenticatedUser = setAuthenticatedUser;
 
     function handleUserSignOut() {
       const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : null;
       if (client && client.auth) {
-        try {
-          client.auth.signOut();
-        } catch(e) {}
+        try { client.auth.signOut(); } catch(e) {}
       }
       try {
         localStorage.removeItem('arya_current_user');
       } catch(e) {}
       currentAuthUser = null;
       applyAuthUI(null);
-      closeUserDropdown();
-      showToast('You have signed out successfully.', 'info');
+      if (typeof closeUserDropdown === 'function') closeUserDropdown();
+      showToast('Signed out. Please sign in to access Arya.', 'info');
     }
     window.handleUserSignOut = handleUserSignOut;
 
     function applyAuthUI(user) {
+      const loginGate = document.getElementById('login-gate-page');
+      const appShell = document.getElementById('authenticated-app-shell');
       const loginBtn = document.getElementById('btn-login-open');
       const profilePill = document.getElementById('user-profile-pill');
       const displayName = document.getElementById('user-display-name');
       const emailText = document.getElementById('user-email-text');
       const avatarInitial = document.getElementById('user-avatar-initial');
-
-      // Sidebar account elements
       const sidebarName = document.getElementById('sidebar-user-name');
       const sidebarEmail = document.getElementById('sidebar-user-email');
       const sidebarAvatar = document.getElementById('sidebar-user-avatar');
 
       if (user) {
+        if (loginGate) {
+          loginGate.style.display = 'none';
+          loginGate.classList.add('hidden');
+        }
+        if (appShell) {
+          appShell.style.display = 'flex';
+          appShell.classList.remove('hidden');
+        }
         if (loginBtn) {
           loginBtn.style.display = 'none';
           loginBtn.classList.add('hidden');
@@ -6317,14 +6638,23 @@
         }
 
         const initial = (user.name || user.email || 'U').charAt(0).toUpperCase();
+        const providerTag = user.provider === 'apple' ? ' (Apple)' : (user.provider === 'google' ? ' (Google)' : '');
         if (displayName) displayName.innerText = user.name || user.email.split('@')[0];
-        if (emailText) emailText.innerText = user.email;
+        if (emailText) emailText.innerText = user.email + providerTag;
         if (avatarInitial) avatarInitial.innerText = initial;
 
         if (sidebarName) sidebarName.innerText = user.name || 'Candidate';
         if (sidebarEmail) sidebarEmail.innerText = user.email;
         if (sidebarAvatar) sidebarAvatar.innerText = initial;
       } else {
+        if (loginGate) {
+          loginGate.style.display = 'flex';
+          loginGate.classList.remove('hidden');
+        }
+        if (appShell) {
+          appShell.style.display = 'none';
+          appShell.classList.add('hidden');
+        }
         if (loginBtn) {
           loginBtn.style.display = 'flex';
           loginBtn.classList.remove('hidden');
@@ -6334,22 +6664,20 @@
           profilePill.classList.add('hidden');
         }
 
-        if (sidebarName) sidebarName.innerText = 'Guest Candidate';
-        if (sidebarEmail) sidebarEmail.innerText = 'Sign in to sync applications';
-        if (sidebarAvatar) sidebarAvatar.innerText = 'G';
+        if (sidebarName) sidebarName.innerText = 'Not signed in';
+        if (sidebarEmail) sidebarEmail.innerText = 'Sign in to continue';
+        if (sidebarAvatar) sidebarAvatar.innerText = '?';
       }
     }
     window.applyAuthUI = applyAuthUI;
 
     async function initAuthSystem() {
-      // 1. Check local storage session
       let savedUser = null;
       try {
         const stored = localStorage.getItem('arya_current_user');
         if (stored) savedUser = JSON.parse(stored);
       } catch(e) {}
 
-      // 2. Check Supabase OAuth redirect or session
       const client = (typeof globalSupabaseClient !== 'undefined' && globalSupabaseClient) ? globalSupabaseClient : (typeof initSupabaseClient === 'function' ? initSupabaseClient() : null);
       if (client && client.auth) {
         try {
@@ -6360,7 +6688,7 @@
               email: supaUser.email,
               name: (supaUser.user_metadata && (supaUser.user_metadata.full_name || supaUser.user_metadata.name)) || supaUser.email.split('@')[0],
               id: supaUser.id,
-              provider: supaUser.app_metadata ? supaUser.app_metadata.provider : 'supabase'
+              provider: (supaUser.app_metadata && supaUser.app_metadata.provider) || 'google'
             };
             localStorage.setItem('arya_current_user', JSON.stringify(savedUser));
           }
@@ -6368,14 +6696,16 @@
           client.auth.onAuthStateChange((event, session) => {
             if (event === 'SIGNED_IN' && session && session.user) {
               const supaUser = session.user;
+              const prov = (supaUser.app_metadata && supaUser.app_metadata.provider) || 'google';
               const userObj = {
                 email: supaUser.email,
                 name: (supaUser.user_metadata && (supaUser.user_metadata.full_name || supaUser.user_metadata.name)) || supaUser.email.split('@')[0],
                 id: supaUser.id,
-                provider: 'google'
+                provider: prov
               };
+              saveKnownAccount(userObj);
               setAuthenticatedUser(userObj);
-              showToast(`Welcome ${userObj.name}! Signed in via Google.`, 'success');
+              showToast(`Welcome ${userObj.name}! Signed in via ${prov}.`, 'success');
             } else if (event === 'SIGNED_OUT') {
               handleUserSignOut();
             }
@@ -6385,8 +6715,7 @@
         }
       }
 
-      // Show user if saved; otherwise display prominent "Sign In" button!
-      if (savedUser) {
+      if (savedUser && savedUser.email) {
         setAuthenticatedUser(savedUser);
       } else {
         applyAuthUI(null);
@@ -6397,125 +6726,6 @@
   </script>
   <!-- Internal Cloud Sync (Hidden) -->
   <div id="modal-supabase" style="display: none !important;" class="hidden"></div>
-
-  <!-- ========================================== -->
-  <!-- MODAL: PROFESSIONAL CANDIDATE PORTAL AUTH  -->
-  <!-- ========================================== -->
-  <div id="modal-auth-login" style="display: none;" class="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-all duration-300">
-    <div class="card-3d glass-card max-w-md w-full p-6 sm:p-7 rounded-3xl border border-blue-500/40 shadow-2xl relative overflow-hidden space-y-5 bg-[#0b1329]">
-      <div class="card-glare"></div>
-      
-      <!-- Modal Header -->
-      <div class="flex items-start justify-between border-b border-gray-800/80 pb-3.5 relative z-10">
-        <div class="space-y-1">
-          <div class="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
-            <i class="fa-solid fa-shield-halved text-[9px]"></i>
-            <span>CANDIDATE PORTAL</span>
-          </div>
-          <h3 id="auth-modal-title" class="text-xl font-extrabold text-white tracking-tight">Sign In to Arya</h3>
-          <p id="auth-modal-subtitle" class="text-xs text-gray-400">Manage autonomous job applications, tailored CVs, and auto-dispatch.</p>
-        </div>
-        <button onclick="closeLoginModal()" aria-label="Close authentication modal" class="text-gray-400 hover:text-white text-lg p-1 transition-colors">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <!-- Tab Switcher: Sign In vs Create Account -->
-      <div class="flex rounded-xl bg-gray-900/90 p-1 border border-gray-800 relative z-10">
-        <button type="button" id="tab-auth-signin" onclick="switchAuthTab('signin')" class="flex-1 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm flex items-center justify-center space-x-1.5">
-          <i class="fa-solid fa-right-to-bracket text-[11px]"></i>
-          <span>Sign In</span>
-        </button>
-        <button type="button" id="tab-auth-signup" onclick="switchAuthTab('signup')" class="flex-1 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all flex items-center justify-center space-x-1.5">
-          <i class="fa-solid fa-user-plus text-[11px]"></i>
-          <span>Create Account</span>
-        </button>
-      </div>
-
-      <!-- Social Login Button: Continue with Google -->
-      <div class="relative z-10">
-        <button type="button" onclick="handleGoogleSignIn()" id="btn-google-signin" class="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center space-x-3 transition-all shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] border border-gray-200">
-          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-          </svg>
-          <span id="google-btn-text">Continue with Google Account</span>
-        </button>
-      </div>
-
-      <div class="relative flex items-center justify-center my-1 z-10">
-        <div class="border-t border-gray-800 w-full"></div>
-        <span class="bg-[#0b1329] px-3 text-[10px] font-bold text-gray-500 uppercase tracking-wider relative z-10">or continue with email</span>
-      </div>
-
-      <!-- Auth Form: Handles both Sign In & Sign Up -->
-      <form onsubmit="handleCandidateAuthSubmit(event)" class="space-y-3.5 relative z-10">
-        
-        <!-- Name field: Visible in Sign Up mode -->
-        <div id="auth-name-group" class="hidden">
-          <label for="auth-name-input" class="block text-xs font-semibold text-gray-300 mb-1">
-            Candidate Full Name <span class="text-blue-400">*</span>
-          </label>
-          <div class="relative">
-            <i class="fa-regular fa-user absolute left-3.5 top-3 text-gray-500 text-xs"></i>
-            <input type="text" id="auth-name-input" placeholder="e.g. John Doe" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
-          </div>
-        </div>
-
-        <!-- Email Field -->
-        <div>
-          <label for="auth-email-input" class="block text-xs font-semibold text-gray-300 mb-1">
-            Email Address <span class="text-blue-400">*</span>
-          </label>
-          <div class="relative">
-            <i class="fa-regular fa-envelope absolute left-3.5 top-3 text-gray-500 text-xs"></i>
-            <input type="email" id="auth-email-input" required placeholder="candidate@example.com" class="w-full pl-9 pr-3 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
-          </div>
-        </div>
-
-        <!-- Password Field -->
-        <div>
-          <div class="flex items-center justify-between mb-1">
-            <label for="auth-password-input" class="block text-xs font-semibold text-gray-300">
-              Password <span class="text-blue-400">*</span>
-            </label>
-            <a href="javascript:void(0)" onclick="handleForgotPassword()" id="auth-forgot-link" class="text-[11px] text-blue-400 hover:text-blue-300 transition-colors">Forgot Password?</a>
-          </div>
-          <div class="relative">
-            <i class="fa-solid fa-lock absolute left-3.5 top-3 text-gray-500 text-xs"></i>
-            <input type="password" id="auth-password-input" required placeholder="••••••••" class="w-full pl-9 pr-10 py-2.5 rounded-xl text-xs bg-gray-900/90 border border-gray-700 focus:outline-none focus:border-blue-500 text-white placeholder-gray-500">
-            <button type="button" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-300 text-xs">
-              <i id="auth-password-eye" class="fa-regular fa-eye"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Options: Remember Me & Security Badge -->
-        <div class="flex items-center justify-between text-xs text-gray-400 pt-0.5">
-          <label class="flex items-center space-x-2 cursor-pointer select-none">
-            <input type="checkbox" id="auth-remember-me" checked class="rounded bg-gray-900 border-gray-700 text-blue-600 focus:ring-0 w-3.5 h-3.5">
-            <span class="text-[11px]">Remember this device</span>
-          </label>
-          <span class="text-[11px] text-emerald-400 flex items-center gap-1 font-medium">
-            <i class="fa-solid fa-shield-check text-[10px]"></i> 256-Bit SSL
-          </span>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" id="btn-auth-submit" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs transition-all shadow-md shadow-blue-600/30 flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-[0.99]">
-          <i id="auth-submit-icon" class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
-          <span id="auth-submit-text">Sign In to Portal</span>
-        </button>
-      </form>
-
-      <!-- Footer -->
-      <div class="pt-2 text-center text-[11px] text-gray-500 border-t border-gray-800/80 relative z-10">
-        Secured with End-to-End Encryption & Candidate Cloud Vault.
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
